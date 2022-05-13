@@ -1,0 +1,7 @@
+.day-box {
+  display: flex;
+}
+.day_num {
+  border: 1px solid black;
+  width: 20px;
+}
