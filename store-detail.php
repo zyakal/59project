@@ -24,9 +24,43 @@
         <div class="store--img--box">
             <img src="https://images.unsplash.com/photo-1564327368633-151ef1d45021?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
         </div>
+        <div class="store-main">
+            <h1>그린 카페</h1>
+            <div class="store-point">
+                <div class="store-point__star">
+                <i class="fa-solid fa-star"></i>
+                <p>4.5</p>
+                </div>
+                <div class="store-point__star">
+                <i class="fa-regular fa-heart"></i>
+                <p>단골 찜</p>
+                </div>
+            </div>
+            <div class="store-cummuni">
+            <a href="#">
+            <i class="fa-solid fa-phone"></i>
+            전화하기
+            </a>
+            <a href="#">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            공유하기
+            </a>
+            </div>
+        </div>
+        <div class="store-tab">
+            <a href="#">
+                <h2>메뉴</h2>
+            </a>
+            <a href="#">
+                <h2>정보</h2>
+            </a>
+            <a href="#">
+                <h2>리뷰</h2>
+            </a>
+        </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
-        <footer>
+        <footer>  
             <?php
             include_once "footer.html";
             ?>
