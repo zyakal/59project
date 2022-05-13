@@ -16,3 +16,4 @@
 @import url('components/footer.css');
 
 /* --------- Screens --------- */
+@import 'screens/store-detail.css';

@@ -17,7 +17,7 @@
 
 <body>
     <!-- 전체사이즈 -->
-    <div>
+    <div class="container">
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
