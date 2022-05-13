@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "htdocs",
+			"path": ".."
+		},
+		{
+			"name": "htdocs-master",
+			"path": "D:\\htdocs-master"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "htdocs"
+	}
+}
