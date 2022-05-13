@@ -1,8 +1,3 @@
-<!-- 오구프로젝트 
-시작일시 : 2022.05.13일
-버전 : 오구 1.0v
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
@@ -21,7 +16,7 @@
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
-            include_once "main-header.html";
+            include_once "store-header.html";
             ?>
         </header>
         <!-- main -->
