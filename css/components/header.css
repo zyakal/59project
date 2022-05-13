@@ -1,0 +1,34 @@
+.header {
+    width: 100%;
+    height: 5.375rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+}
+.header nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 85%;
+    height: 30px;
+}
+.header nav .nav--logo img {
+    width: 2.875rem;
+}
+.header nav a {
+    text-decoration: none;
+    font-size: var(--font-lg);
+    color: var(--text-dark-gray);
+}
+.header nav .nav--addr a {
+    font-size: var(--font-md);
+}
+.header nav .nav--addr i {
+    color: var(--main-pink);
+}
