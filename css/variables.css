@@ -1,11 +1,14 @@
 :root {
-    /* ====== Colors ====== */
+    /* ====== Mobile Colors ====== */
     --main-pink: #ff6464;
     --main-green: #10b981;
     --star-yellow: #fcd34d; /*별점과 그래프에 쓰이는 노랑*/
-    --dark-yellow: #ffb03a; /* 관리자페이지에 쓰이는 노랑*/
     --list-bg: #9ca3af;
     --border-color: #c4c4c4;
+
+    /* ====== Web Colors ======  */
+    --dark-bg: #282828;
+    --dark-yellow: #ffb03a; /* 관리자페이지에 쓰이는 노랑*/
 
     /* ====== Text Colors ====== */
     --text-dark-gray: #1f2937;
@@ -20,7 +23,8 @@
     --tran-05: all 0.5s ease;
 
     /* ====== Size ====== */
-    --main-width: 24.375rem;
+    --mobile-width: 24.375rem;
+    --mobile-height: 52.75rem;
     --box-width: 20.375rem; /* 325px */
     --font-lg: 1.125rem; /* 18px */
     --font-md: 1rem; /* 16px */
