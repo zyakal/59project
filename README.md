@@ -23,3 +23,5 @@ font awesome kit 본인껄로 바꿔주세요
 -   css 애니메이션 https://animista.net/play/basic
 -   그라데이션 https://cssgradient.io/
 -   다양한 javascript 기능 및 꾸미기 https://codepen.io/
+
+php 상단바에 59-project 대문자로 안써도 됩니다.
