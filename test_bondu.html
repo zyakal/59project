@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>👾</title>
+</head>
+<body>
+    <div id="list"></div>
+    <script>
+        let divListElem = document.querySelector('#list');
+        let picOnce = 20;
+
+        function getImgList() {
+            let url = `https://picsum.photos/500`;
+
+            fetch(url).then((res) => {
+                printImgs(res.url);
+            });
+        }
+        
+        let printImgs = (url) => {
+            let newDiv = document.createElement('div');
+            newDiv.innerHTML = `<img src="${url}">`;
+            divListElem.append(newDiv);
+        };
+
+        function onceImg() {
+            for(let i=0; i<picOnce; i++) {
+                getImgList();
+                
+            }
+            console.log("loadTimes: "+ ++howTimes);
+        }
+        let howTimes = 0;
+        onceImg();
+
+        window.onscroll = function(e) {
+
+            if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+            onceImg();
+            }
+        }
+        
+
+
+    </script>
+        
+    
+
+</body>
+</html>
