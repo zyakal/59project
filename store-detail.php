@@ -29,11 +29,11 @@
             <div class="store-point">
                 <div class="store-point__star">
                 <i class="fa-solid fa-star"></i>
-                <p>4.5</p>
+                4.5
                 </div>
                 <div class="store-point__star">
                 <i class="fa-regular fa-heart"></i>
-                <p>단골 찜</p>
+                단골 찜
                 </div>
             </div>
             <div class="store-cummuni">
