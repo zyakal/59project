@@ -3,8 +3,9 @@
     --main-pink: #ff6464;
     --main-green: #10b981;
     --star-yellow: #fcd34d; /*별점과 그래프에 쓰이는 노랑*/
-    --list-bg: #9ca3af;
+    --gray-bg: #9ca3af;
     --border-color: #c4c4c4;
+    --white-bg: #fdfdfd;
 
     /* ====== Web Colors ======  */
     --dark-bg: #282828;
@@ -12,7 +13,7 @@
 
     /* ====== Text Colors ====== */
     --text-dark-gray: #1f2937;
-    --main-text-white: #fff;
+    --text-white: #fdfdfd;
     --text-gray: #9ca3af;
     --text-light-gray: #cccccc;
 
