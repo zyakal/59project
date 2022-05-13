@@ -17,9 +17,9 @@
 
 <body>
     <!-- 전체사이즈 -->
-    <div class="container">
+    <div>
         <!-- header 인클루드해서 사용 -->
-        <header class="header">
+        <header>
             <?php
             include_once "header.html";
             ?>
@@ -27,7 +27,7 @@
         <!-- main -->
         <main></main>
         <!-- footer 인클루드해서 사용 -->
-        <footer class="footer">
+        <footer>
             <?php
             include_once "footer.html";
             ?>
