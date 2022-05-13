@@ -2,7 +2,9 @@
 시작일시 : 2022.05.13일
 버전 : 오구 1.0v
 -->
-
+<?php
+$page_name = "상세페이지";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +23,7 @@
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
-            include_once "main-header.html";
+            include_once "header.php";
             ?>
         </header>
         <!-- main -->
