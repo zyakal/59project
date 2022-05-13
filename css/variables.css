@@ -1,7 +1,19 @@
 :root {
+    /* ====== Colors ====== */
     --main-pink: #ff6464;
     --main-green: #10b981;
     --main-yellow: #fcd34d;
     --list-bg: #9ca3af;
     --border-color: #c4c4c4;
+
+    /* ====== Text Colors ====== */
+    --main-text-gray: #1f2937;
+    --main-text-white: #fff;
+    --text-light-gray: #9ca3af;
+
+    /* ====== Transition ====== */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
 }
