@@ -6,7 +6,7 @@
     </div>
     <div class="nav--addr">
         <a href="#">
-            본인페이지
+            <?=$page_name?>
         </a>
     </div>
     <div class="nav--notice">
