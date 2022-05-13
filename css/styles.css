@@ -11,3 +11,9 @@
 */
 
 /* --------- Screens --------- */
+
+.box {
+    width: 30px;
+    height: 40px;
+    box-shadow: var(--box-shadow);
+}
