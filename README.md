@@ -9,3 +9,9 @@
 CSS 사용시
 - root와 var 사용으로
 - 자주쓰는거 한군데 모아놓기
+
+font awesome kit 본인껄로 바꿔주세요
+
+ 무료 이미지 불러오기 좋은 사이트
+- https://unsplash.com/
+   
