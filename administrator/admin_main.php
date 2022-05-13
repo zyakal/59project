@@ -1,3 +1,28 @@
+<?php
+    function card_top( $card_name){
+        
+        echo " 
+            <div class='listing-card__info--top'>
+            <strong class='listing-card__name'> $card_name > </strong>
+                <span>
+                    <button class='btn_reset' type='reset' >취소</button>
+                    <button class='btn_submit' type='submit' >적용</button>
+                </span>
+            </div>
+            <div> &nbsp </div>";
+    }   
+    $card_name1 = "가게이름";
+    $card_name2 = "영업날짜";
+    $card_name3 = "가게 이미지";
+    $card_name4 = "메일";
+    $card_name5 = "영업 임시중지";
+    $card_name6 = "공지 한마디";
+    $card_name7 = "메뉴 정보 변경";
+    $card_name8 = "메뉴 소개";
+    $card_name9 = "메뉴 이미지";
+    $card_name10 = "쿠폰 추가";
+?>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +37,7 @@
     <title>Document</title>
 </head>
 <body>  
-  
+
     <div class="wrap">
         <div class="header">
             <div><img class="logo" title="logo" src="../img/logo.png"></div>
@@ -89,80 +114,89 @@
                 <div class="listing-card">
                     <ul class="listing-card__list">                        
                         <li class="listing-card__item">
-                          <form class="listing-card__form" action="" method="">
-                          <div class="listing-card__info">
-                              <strong class="listing-card__name">가게소개 ></strong>
-                              <button class="btn_reset" type="reset" >취소</button>
-                              <button class="btn_submit" type="submit" >확인</button>
-                              <textarea placeholder="가게를 소개하세요(DB 해당유저의 가게소개글 없으면 null)"></textarea>
-                            </div>
-                        </li>
-                          <li class="listing-card__item">
-                            <form action="" method="">
-                              <div class="listing-card__info"><strong class="listing-card__name">영업날짜</strong>
-                              
-                              </div>
+                            <form class="listing-card__form" action="" method="">
+                                <div class="listing-card__info">
+                                    <?= card_top($card_name1)?>
+                                    <div>
+                                        <textarea placeholder="가게를 소개하세요(DB 해당유저의 가게소개글 없으면 null)"></textarea>
+                                    </div>
+                                </div>
                             </form>
-                          </li>
-                          <li class="listing-card__item">
+                        </li>
+                        <li class="listing-card__item">
                             <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">가게 이미지</strong>
+                            <div class="listing-card__info">
+                            <?= card_top('영업날짜')?>
+                            </div>
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
+                            <form action="" method="">
+                                <div class="listing-card__info">
+                                <?= card_top($card_name2)?>
+                                
+                                </div>
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
+                            <form action="" method="">
+                                <div class="listing-card__info">
+                                <?= card_top($card_name3)?>
+                                
+                                </div>
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
+                            <form action="" method="">
+                            <div class="listing-card__info">
+                            <?= card_top($card_name4)?>
                             
                             </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
                             <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">메일</strong>
+                            <div class="listing-card__info">
+                            <?= card_top($card_name5)?>
                             
                             </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
-                            <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">영업 임시중지</strong>
-                            
-                            </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
-                            <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">공지 한마디</strong>
-                            
-                            </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
                             <form action="" method="">
                             <div class="listing-card__info"><strong class="listing-card__name">메뉴 편집</strong>
                             
                             </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
                             <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">메뉴 정보 변경</strong>
+                            <div class="listing-card__info">
+                            <?= card_top($card_name6)?>
                             
                             </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
                             <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">메뉴 소개</strong>
+                            <div class="listing-card__info">
+                            <?= card_top($card_name7)?>
                             
                             </div>
-                          </form>
-                          </li>
-                          <li class="listing-card__item">
+                            </form>
+                        </li>
+                        <li class="listing-card__item">
                             <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">메유 이미지</strong>
+                            <div class="listing-card__info">
+                            <?= card_top($card_name8)?>
                             
-                            </div>
+                            </div>  
                           </form>
                           </li>
                           <li class="listing-card__item">
                             <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">쿠폰 추가</strong>
+                            <div class="listing-card__info">
+                            <?= card_top($card_name9)?>
                             
                             </div>
                           </form>
