@@ -1,0 +1,19 @@
+/* --------- reset CSS --------- */
+@import 'reset.css';
+
+/*--------- variables CSS ---------
+처음 쓰실때는 복사해서 위에 붙여놓고 하시는게 편합니다.
+*/
+
+@import 'variables.css';
+
+/* --------- Components --------- 
+공통적으로 쓰이는 header나 footer 사용할 수 있게 하는거에요
+*/
+@import 'components/header.css';
+@import 'components/footer.css';
+
+/* --------- Screens --------- */
+.container {
+    width: var(--);
+}
