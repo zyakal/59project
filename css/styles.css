@@ -17,3 +17,10 @@
 
 /* --------- Screens --------- */
 @import 'screens/store-detail.css';
+
+
+.slide_wrap { position: relative; width: 400px; margin: auto; padding-bottom: 30px; }
+.slide_box { width: 100%; margin: auto; overflow-x: hidden; }
+.slide_content { display: inline-block;}
+.slide_content img {object-fit: contain;width: 400px; height: 400px; overflow-x: hidden;}
+
