@@ -129,6 +129,9 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+a {
+    text-decoration: none;
+}
 .container {
     position: relative;
     width: var(--mobile-width);

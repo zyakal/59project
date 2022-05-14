@@ -37,17 +37,17 @@
                 </div>
             </div>
             <div class="store-cummuni">
-            <a href="#">
-            <i class="fa-solid fa-phone"></i>
-            전화하기
-            </a>
-            <a href="#">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            공유하기
-            </a>
+                <a href="#">
+                <i class="fa-solid fa-phone"></i>
+                전화하기
+                </a>
+                <a href="#">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                공유하기
+                </a>
             </div>
         </div>
-        <div class="store-tab">
+        <div class="store-tab">        
             <a href="#">
                 <h2>메뉴</h2>
             </a>

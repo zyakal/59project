@@ -49,7 +49,7 @@ main .store--img--box img {
     object-fit: cover;
 }
 main .store-main {
-    margin-top: 2.5rem;
+    margin: 2.5rem 0;
     display: flex;
     height: 7.5rem;
     flex-direction: column;
@@ -59,5 +59,29 @@ main .store-main {
 main .store-main .store-point {
     display: flex;
     width: 7.5rem;
-    justify-content: ;
+}
+main .store-main .store-cummuni {
+    display: flex;
+}
+main .store-main .store-cummuni a {
+    width: 6.25rem;
+    height: 2rem;
+    border: 1px solid var(--border-color);
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main .store-tab {
+    display: flex;
+    height: 4rem;
+}
+main .store-tab a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+    padding: auto;
+    border: 1px solid var(--border-color);
+    color: var(--text-light-gray);
 }
