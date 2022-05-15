@@ -56,32 +56,63 @@ main .store-main {
     justify-content: space-between;
     align-items: center;
 }
+main .store-main h1 {
+    font-size: 1.5rem;
+    color: var(--text-dark-gray);
+}
 main .store-main .store-point {
     display: flex;
-    width: 7.5rem;
+}
+main .store-main .store-point div:first-child {
+    margin-right: 0.5rem;
+}
+main .store-main .store-point > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+}
+main .store-main .store-point > div i {
+    margin-right: 0.25rem;
 }
 main .store-main .store-cummuni {
     display: flex;
+}
+main .store-main .store-cummuni a:first-child {
+    margin-right: 1.25rem;
 }
 main .store-main .store-cummuni a {
     width: 6.25rem;
     height: 2rem;
     border: 1px solid var(--border-color);
+    color: var(--text-dark-gray);
     padding: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-main .store-tab {
+main .store-main .store-cummuni a i {
+    margin-right: 0.25rem;
+}
+main .store-tab .list {
+    display: flex;
+}
+main .store-tab .list li {
+    width: 33%;
+    padding: auto;
+}
+main .store-tab .list li a {
+    padding: auto;
     display: flex;
     height: 4rem;
-}
-main .store-tab a {
-    display: flex;
     justify-content: center;
     align-items: center;
-    width: 33%;
     padding: auto;
     border: 1px solid var(--border-color);
     color: var(--text-light-gray);
+}
+main .store-tab .list li.is_on .btn {
+    font-weight: bold;
+    color: var(--main-pink);
+    border: 3px solid var(--main-pink);
 }
