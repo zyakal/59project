@@ -1,30 +1,30 @@
 /*--------- Noto Sans Font ---------  */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 /* --------- reset CSS --------- */
-@import "reset.css";
+@import 'reset.css';
 
 /*--------- variables CSS ---------
 처음 쓰실때는 복사해서 위에 붙여놓고 하시는게 편합니다.
 */
-@import url("variables.css");
+@import url('variables.css');
 
 /* --------- Components --------- 
 공통적으로 쓰이는 header나 footer 사용할 수 있게 하는거에요
 */
-@import url("components/main-header.css");
-@import url("components/footer.css");
+/* @import url('components/main-header.css'); */
+@import 'components/header.css';
+@import url('components/footer.css');
 
 /* --------- Screens --------- */
-@import "screens/store-detail.css";
+@import 'screens/store-detail.css';
 
 /* --------- 승재 csss --------- */
 /* --------- login --------- */
-@import "screens/login.css";
-@import "screens/join.css";
-@import "screens/email.css";
-@import "screens/myinfo_mod.css";
+@import 'screens/login.css';
+@import 'screens/join.css';
+@import 'screens/email.css';
+@import 'screens/myinfo_mod.css';
 /* 은지 css */
-@import "screens/home.css";
-@import "screens/list.css";
-
+@import 'screens/home.css';
+@import 'screens/list.css';

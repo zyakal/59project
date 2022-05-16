@@ -3,7 +3,7 @@
     width: var(--mobile-width);
     height: var(--mobile-height);
 }
-header {
+.home--header {
     background-color: var(--white-bg);
     width: 100%;
     height: 5.375rem;
@@ -16,7 +16,7 @@ header {
     right: 0px;
     top: 0px;
 }
-header nav {
+.home--header nav {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
@@ -25,16 +25,16 @@ header nav {
     height: 30px;
 }
 
-header nav .nav--logo img {
+.home--header nav .nav--logo img {
     width: 2.875rem;
 }
-header nav a {
+.home--header nav a {
     font-size: var(--font-lg);
     color: var(--text-dark-gray);
 }
-header nav .nav--addr a {
+.home--header nav .nav--addr a {
     font-size: var(--font-md);
 }
-header nav .nav--addr i {
+.home--header nav .nav--addr i {
     color: var(--main-pink);
 }
