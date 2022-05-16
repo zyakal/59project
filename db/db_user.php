@@ -19,3 +19,22 @@ value
     mysqli_close($conn);
     return $result;
 }
+
+function id_check(&$param)
+{
+    $user_mail = $param['user_mail'];
+
+    $sql = "SELECT user_mail 
+            from t_user
+            where user_mail = '$user_mail' 
+    ";
+    $conn = get_conn();
+    $row = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_assoc($row);
+    mysqli_close($conn); 
+    if($result['user_mail'])
+    {
+    return false;
+    }
+    return true;
+}
