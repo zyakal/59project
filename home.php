@@ -1,3 +1,11 @@
+<?php
+    include_once "db/db.php";
+    $con = get_conn();
+    $sql = "SELECT user_num, store_num FROM t_sub";
+    $result = mysqli_query($con, $sql);
+    
+
+?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +24,7 @@
             include_once "main-header.html";
             ?>
         </header>
-        <main>
+        <main class="home--main">
             <div id="top">
                 <a href="search.php">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -54,7 +62,7 @@
                 <div class="category">
                     <a href="list.php">
                         <img src="../img/hamburger.png">
-                        <div>버거</div>
+                        <div>food</div>
                     </a>
                 </div>
                 <div class="category">
@@ -93,6 +101,26 @@
                         <div>운동</div>
                     </a>
                 </div>
+            </div>
+            <div class="recommend">
+                <div class="recommend--nav">
+                    <div>맞춤 알림</div>
+                    <div class="recommend--nav" id="nav--right">모두보기</div>
+                </div>
+                <div class="recommend--list">
+                    <div>가게이미지</div>
+                    <div>가게이름</div>
+                </div>
+                <div class="recommend--list">
+                    <div>가게이미지</div>
+                    <div>가게이름</div>
+                </div>
+
+                <?php
+                    require_once("recommend.php");
+                    $re = new Recommend();
+
+                ?>
             </div>
         </main>
         <footer>
