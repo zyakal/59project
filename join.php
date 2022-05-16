@@ -23,11 +23,10 @@ if(isset($_POST['user_mail']))
 'user_nm' => $_POST['user_nm']
     ];
 
-     $result = id_check($param);
+    $result = id_check($param);
     if($result) {
-      $s_id = "<li>".$_POST["user_mail"]."는 중복된 아이디입니다. <br> 다른 아이디를 입력해주세요. <br> </li>";
+      $s_id = $_POST["user_mail"]."는 중복된 아이디입니다. <br> 다른 아이디를 입력해주세요.";
     }
-
     if ($_POST['user_pw'] !== $_POST['user_check_pw']) {
         $wp = "비밀번호가 일치하지 않습니다.";
     }
@@ -40,7 +39,7 @@ if(isset($_POST['user_mail']))
         if (!$_POST['user_nm']) {
         $wnm = "이름을 입력해주세요";
         }
-        if(isset($result) && isset($_POST['user_nm']) && isset($_POST['nickname']) && $_POST['user_pw'] == $_POST['user_check_pw'] && isset($_POST['user_mail']))
+        if(!$result && isset($_POST['user_nm']) && isset($_POST['nickname']) && $_POST['user_pw'] == $_POST['user_check_pw'] && isset($_POST['user_mail']))
         {        
             $result = join_user($param);
             header("Location: join.php");

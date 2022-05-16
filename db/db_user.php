@@ -32,9 +32,9 @@ function id_check(&$param)
     $row = mysqli_query($conn, $sql);
     $result = mysqli_fetch_assoc($row);
     mysqli_close($conn); 
-    if($result['user_mail'])
+    if(isset($result['user_mail']))
     {
-    return false;
-    }
     return true;
+    }
+    return false;
 }

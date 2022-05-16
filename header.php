@@ -1,3 +1,7 @@
+<?php
+            $page_name = "";
+?>
+
 <nav class="header--nav">
     <div class="nav--logo">
         <a href="#" class="nav--back">
