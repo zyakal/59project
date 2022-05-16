@@ -29,7 +29,7 @@
 .slide_item img { height: 106px; width: 80%; object-fit: fill; border-radius: 1.5rem}
 
 .categories {margin: 0 10px;}
-.categories .category { background-color: var(--gray-white-bg); border-radius: 1rem;
+.categories .category { background-color: var(--light-gray-bg); border-radius: 1rem;
     width: 64px; height: 64px; display: inline-flex; justify-content: center; align-items: center;
     margin: 10px;}
 .categories .category img { height: 20.95px; text-align: center;}
