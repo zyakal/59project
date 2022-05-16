@@ -24,21 +24,31 @@
                     <i class="fa-solid fa-sliders"></i>
                 </a>
             </div>
-            <div id="slide_wrap">
-                <div class="slide_box">
-                    <div class="slide_list clearfix">
-                        <div class="slide_content slide01"><img src="../img/가죽공예.jpg" alt=""></div>
-                        <div class="slide_content slide02"><img src="../img/네일샵.jpg" alt=""></div>
-                        <div class="slide_content slide03"><img src="../img/도넛.jpg" alt=""></div>
-                        <div class="slide_content slide04"><img src="../img/미용실.jpg" alt=""></div>
-                        <div class="slide_content slide05"><img src="../img/카페.jpg" alt=""></div>
+            <div class="slide_box">
+                <div class="slide_list">
+                    <div class="slide_item">
+                        <img src="../img/가죽공예.jpg">
+                    </div>
+                    <div class="slide_item">
+                        <img src="../img/네일샵.jpg">
+                    </div>
+                    <div class="slide_item">
+                        <img src="../img/도넛.jpg">
+                    </div>
+                    <div class="slide_item">
+                        <img src="../img/미용실.jpg">
+                    </div>
+                    <div class="slide_item">
+                        <img src="../img/카페.jpg">
                     </div>
                 </div>
                 <div class="slide_btn_box">
-                    <button type="button" class="slide_btn_prev">Prev</button>
-                    <button type="button" class="slide_btn_next">Next</button>
+                    <button class="button1">1</button>
+                    <button class="button2">2</button>
+                    <button class="button3">3</button>
+                    <button class="button4">4</button>
+                    <button class="button5">5</button>
                 </div>
-                <ul class="slide_pagination"></ul>
             </div>
 
         </main>
@@ -47,7 +57,21 @@
             include_once "footer.html";
             ?>
         </footer>
+        <script>
+            var num = '24.375rem';
+            document.querySelector('.button2').addEventListener('click', function() {
+                document.querySelector('.slide_list').style.transform = `translate(-${num})`;
+            })
+            document.querySelector('.button3').addEventListener('click', function() {
+                document.querySelector('.slide_list').style.transform = `translate(-${num*2})`;
+            })
+            document.querySelector('.button4').addEventListener('click', function() {
+                document.querySelector('.slide_list').style.transform = `translate(-${num*3})`;
+            })
+            document.querySelector('.button5').addEventListener('click', function() {
+                document.querySelector('.slide_list').style.transform = `translate(-${num*4})`;
+            })
+        </script>
     </div>
-    <script src="js/slideShow.js"></script>
 </body>
 </html>

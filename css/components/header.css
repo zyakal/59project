@@ -46,7 +46,10 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+<<<<<<< HEAD
+=======
     background-color: var(--white-bg);
+>>>>>>> 1e4ceca2ad60ba0380bab725f8a82e1256e70148
     position: absolute;
     left: 0px;
     right: 0px;
@@ -60,16 +63,23 @@ header nav {
     width: 85%;
     height: 30px;
 }
+<<<<<<< HEAD
+=======
 header nav .nav--back {
     padding: 10px 14px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
     color: var(--main-pink);
 }
+>>>>>>> 1e4ceca2ad60ba0380bab725f8a82e1256e70148
 header nav .nav--logo img {
     width: 2.875rem;
 }
 header nav a {
+<<<<<<< HEAD
+    text-decoration: none;
+=======
+>>>>>>> 1e4ceca2ad60ba0380bab725f8a82e1256e70148
     font-size: var(--font-lg);
     color: var(--text-dark-gray);
 }
