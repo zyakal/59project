@@ -1,4 +1,5 @@
 <?php
+    include_once "../db/db.php";
     function card_top( $card_name){
         
         echo " 
@@ -129,16 +130,17 @@
                                 <div class="listing-card__info">
                                 <?= card_top($card_name2)?>                                
                                 </div>
-                                <div>
-                                    <input class="listing-card__info__week" type="button" value="월"><a href=""></a></input>
-                                    <input class="listing-card__info__week" type="button" value="화"><a href=""></a></input>
-                                    <input class="listing-card__info__week" type="button" value="수"><a href=""></a></input>
-                                    <input class="listing-card__info__week" type="button" value="목"><a href=""></a></input>
-                                    <input class="listing-card__info__week" type="button" value="금"><a href=""></a></input>
-                                    <input class="listing-card__info__week" type="button" value="토"><a href=""></a></input>
-                                    <input class="listing-card__info__week" type="button" value="일"><a href=""></a></input>
+                                <div class="listing-card__ctnt">
+                                    <input class="listing-card__info__week" type="button" value="월"></input>
+                                    <input class="listing-card__info__week" type="button" value="화"></input>
+                                    <input class="listing-card__info__week" type="button" value="수"></input>
+                                    <input class="listing-card__info__week" type="button" value="목"></input>
+                                    <input class="listing-card__info__week" type="button" value="금"></input>
+                                    <input class="listing-card__info__week" type="button" value="토"></input>
+                                    <input class="listing-card__info__week" type="button" value="일"></input>
 
                                 </div>
+                                
                             </form>
                         </li>
                         <li class="listing-card__item">
@@ -213,6 +215,7 @@
 
         </div>
     </div>
+    <script src="admin.js"></script>
 </body>
 </html>
 
