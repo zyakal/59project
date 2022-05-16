@@ -38,3 +38,24 @@ function id_check(&$param)
     }
     return false;
 }
+
+function login_user(&$param){
+
+        $user_email = $param['user_email'];
+        $user_pw = $param['user_pw'];
+
+            $sql = "SELECT user_mail 
+            from t_user
+            where user_mail = '$user_mail' 
+            and user_pw = '$user_pw'
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    if($row['upw'] === $upw) {
+        session_start();
+        $_SESSION['login_user'] = $row;
+    }
+    return $row;
+}

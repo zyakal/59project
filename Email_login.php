@@ -13,17 +13,20 @@ $wp = "";
 
 if(isset($_POST['user_email']))
 {
-$user_email = $_POST['user_email'];
-$user_pw = $_POST['user_pw'];
 
-        if (!$user_email) {
+    $param = [
+        'user_email' => $_POST['user_email'],
+        'user_pw' => $_POST['user_pw']
+        ];
+        if (!$_POST['user_email']) {
         $we = "이메일을 입력해주세요.";
     }
-        if (!$user_pw) {
+        if (!$_POST['user_pw']) {
         $wp = "비밀번호를 입력해주세요.";
     }
         else {        
- 
+            login_user($param);
+            header("Location: myinfo_mod.php");
         }
         }
     ?>
