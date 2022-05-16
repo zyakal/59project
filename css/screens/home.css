@@ -38,5 +38,5 @@
 .recommend {margin: 0 1.5rem; display: inline-block; width: 100%;} 
 .recommend--nav {display: inline-flex;}
 #nav--right { color: var(--main-pink); margin-left: 215px;}
-.recommend--list { background-color: var(--gray-white-bg); width: 326px;
+.recommend--list { background-color: var(--light-gray-bg); width: 326px;
     height: 78px; margin: 12px 0;}
