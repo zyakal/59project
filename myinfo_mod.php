@@ -26,7 +26,14 @@
             ?>
         </header>
         <!-- main -->
-        <main></main>
+        <main>
+            <div class = "flex_box">
+        <div>
+            <div class="info_email_id">이메일 아이디</div>
+
+        </div>
+            </div>
+        </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>
             <?php

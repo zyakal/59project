@@ -12,29 +12,32 @@ $wp = "";
 $wk = "";
 $wnm = "";
 
-if(isset($_POST['user_email']))
+if(isset($_POST['user_mail']))
 {
-$user_email = $_POST['user_email'];
-$user_pw = $_POST['user_pw'];
-$user_check_pw = $_POST['user_check_pw'];
-$nickname = $_POST['nickname'];
-$user_nm = $_POST['user_nm'];
+    $param = [
+'user_mail' => $_POST['user_mail'],
+'user_pw' => $_POST['user_pw'],
+'user_check_pw' => $_POST['user_check_pw'],
+'nickname' => $_POST['nickname'],
+'user_nm' => $_POST['user_nm']
+    ];
 
-
-    if ($user_pw !== $user_check_pw) {
+    if ($_POST['user_pw'] !== $_POST['user_check_pw']) {
         $wp = "비밀번호가 일치하지 않습니다.";
     }
-        if (!$user_email) {
+        if (!$_POST['user_mail']) {
         $we = "이메일을 입력해주세요.";
     }
-        if (!$nickname) {
+        if (!$_POST['nickname']) {
         $wk = "닉네임을 입력해주세요.";
     }
-        if (!$user_nm) {
+        if (!$_POST['user_nm']) {
         $wnm = "이름을 입력해주세요";
         }
-        else {        
-
+        if($_POST['user_nm'] && $_POST['nickname'] && $_POST['user_pw'] == $_POST['user_check_pw'] && $_POST['user_mail'])
+        {        
+            $result = join_user($param);
+            header("Location: join.php");
         }
         }
     ?>
@@ -66,11 +69,10 @@ $user_nm = $_POST['user_nm'];
         <main>
             <div class="form_box">
             <form name="frm" action="join.php" method="post">
-
         <div class="join_email">
             <label for="email">   
             이메일주소</label>
-            <input type="text" id="email" name="user_email" placeholder="이메일 주소 입력" >
+            <input type="text" id="email" name="user_mail" placeholder="이메일 주소 입력" >
         <p class="warning_massage"><?=$we?></p>
         </div>        
 
