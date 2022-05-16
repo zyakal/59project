@@ -1,17 +1,32 @@
 <?php
+  $store_num = 1; //스토어넘버 전페이지에서 받아와야함
+  $menu_num = 1; //메뉴넘버 전페이지에서 받아와야함
+
   $openTime = "09:00";
   $closeTime = "19:00";
   $openDay = "월,화,수,목,금";
    // 영업시간 초기값
   // 휴무일반영되게 추가해야함
-  $store_num = 1; //스토어넘버 전페이지에서 받아와야함
+ 
 
   $param = [
-    "store_num" => $store_num
+    "store_num" => $store_num,
+    "menu_num" => $menu_num
   ];
-  include_once 'db/db_store.php';
-  $list = select_sales_time($param);
-  print_r($list);
+  include_once 'db/db_store_and_menu.php';
+  $list_store = select_one_store($param);
+  if(isset($list_store)) { 
+    $openTime = explode(",", $list_store['sales_time'])[0];
+    $closeTime = explode(",", $list_store['sales_time'])[1];
+  }
+  $list_menu = select_one_menu($param);
+  if(isset($list_store)) {
+    $menu_nm = $list_menu['menu_nm'];
+    $menu_subed_count = $list_menu['subed_count'];
+    echo $menu_nm."<br>";
+    echo $menu_subed_count;
+  }
+  
   
  
  
