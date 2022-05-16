@@ -1,5 +1,6 @@
 <?php
     include_once "../db/db.php";
+    //sadfasdf
 
     function card_top( $card_name){
         
