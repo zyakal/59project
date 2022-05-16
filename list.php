@@ -43,7 +43,7 @@
                     </div>
                     <div class="top--nav">
                         <div>햄버거</div>
-                        <div>주변가게보기</div>
+                        <div id="nav--right">주변가게보기</div>
                     </div>
                 </div>
                 <div class="listmain--list">

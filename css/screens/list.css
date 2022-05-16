@@ -9,7 +9,10 @@
     margin-right: 16px;
     border-radius:0.5rem;
     color: var(--text-gray);}
-.top--nav {display: inline;}
+.top--nav {display: inline-flex;
+    margin-top: 35px;
+    margin-bottom: 16px;}
+#nav--right { color: var(--main-pink); margin-left: 190px;}
 .list--item {background-color: var(--light-gray-bg);
     width: 326px; height: 78px;
     border-radius: 12px;
