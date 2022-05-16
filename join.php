@@ -3,6 +3,34 @@
 버전 : 오구 1.0v
 회원가입 페이지
 -->
+<?php 
+
+include_once "db/db_user.php";
+
+if(isset($_POST['user_email']))
+{
+$user_email = $_POST['user_email'];
+$user_pw = $_POST['user_pw'];
+$user_check_pw = $_POST['user_check_pw'];
+$nickname = $_POST['nickname'];
+$user_nm = $_POST['user_nm'];
+
+    $conn = get_conn();
+    $wp = "";
+    if ($user_pw !== $user_check_pw) {
+        $wp = "비밀번호가 일치하지 않습니다.";
+    }}
+        if ($user_pw !== $user_check_pw) {
+        $wp = "비밀번호가 일치하지 않습니다.";
+    }}
+        if ($user_pw !== $user_check_pw) {
+        $wp = "비밀번호가 일치하지 않습니다.";
+    }}
+        if ($user_pw !== $user_check_pw) {
+        $wp = "비밀번호가 일치하지 않습니다.";
+    }}
+    ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,19 +56,24 @@
         </header>
         <!-- main -->
         <main>
-            <form name="frm" action="join_proc.php" method="post">
+            <form name="frm" action="join.php" method="post">
         <label id="join_email">   
         이메일주소
-            <input type="text" name="user_mail" placeholder="이메일 주소 입력" >
+            <input type="text" name="user_email" placeholder="이메일 주소 입력" >
             <!-- required oninvalid="this.setCustomValidity('이메일 주소를 입력해주세요')" oninput="setCustomValidity('')"> -->
         </label>
         <p></p>
                 <label id="join_pw">   
         비밀번호
-            <input type="text" name="user_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
+            <input type="password" name="user_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
             <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
         </label>
-        <p></p>
+        <label id="join_pw_check"> 
+             비밀번호 확인
+            <input type="password" name="user_check_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
+            <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
+        </label>
+        <p class="warning_massage"><?=$wp?></p>
                 <label id="join_nkname">   
         닉네임
             <input type="text" name="nickname" placeholder="닉네임 입력" >
@@ -50,7 +83,7 @@
                 <label id="join_nm">   
         이름
             <input type="text" name="user_nm" placeholder="이름 입력" >
-            <!-- required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="setCustomValidity('')"> -->
+            <!-- required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="setCustomValidity('')" -->
         </label>
         <p></p>
         <div id="join_insert">

@@ -152,7 +152,7 @@ table {
   transform: translate(-50%);
   top: 65px;
 
-  background-image: url("/59-PROJECT-SEUNG_JAE/img/login_logo.png");
+  background-image: url("/59-PROJECT/img/login_logo.png");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -367,7 +367,7 @@ table {
   position: absolute;
   width: 75px;
   height: 21px;
-  left: 10%;
+  left: 8.5%;
   top: 125px;
 
   font-family: "Poppins";
@@ -384,8 +384,8 @@ table {
   position: absolute;
   width: 75px;
   height: 21px;
-  left: 10%;
-  top: 225px;
+  left: 9%;
+  top: 210px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -397,12 +397,42 @@ table {
   color: #909090;
 }
 
+#join_pw_check {
+  position: absolute;
+  width: 91px;
+  height: 21px;
+  left: 10%;
+  top: 286px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+}
+
+#join_pw_check input {
+  box-sizing: border-box;
+  border: 1px solid #909090;
+  border-radius: 25px;
+  position: absolute;
+  width: 315px;
+  height: 41px;
+  top: 27px;
+  left: 40%;
+  transform: translate(-10%);
+  padding-left: 10px;
+}
+
 #join_nkname {
   position: absolute;
   width: 75px;
   height: 21px;
   left: 10%;
-  top: 320px;
+  top: 385px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -419,7 +449,7 @@ table {
   width: 75px;
   height: 21px;
   left: 10%;
-  top: 420px;
+  top: 470px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -437,11 +467,26 @@ label input {
   border-radius: 25px;
   position: absolute;
   width: 315px;
-  height: 46px;
+  height: 41px;
   top: 27px;
   left: 50%;
   transform: translate(-10%);
   padding-left: 10px;
+}
+
+.warning_massage {
+  position: absolute;
+  width: 197px;
+  height: 18px;
+  left: 36px;
+  top: 359px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 150%;
+  text-align: center;
+  color: #ff6464;
 }
 
 #join_insert {
