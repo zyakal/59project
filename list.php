@@ -13,9 +13,9 @@
         <header>
             <nav class="header--nav">
                 <div class="nav--logo">
-                <a href="#" class="nav--back">
+                <a href="home.php" class="nav--back">
                     <i class="fa-solid fa-arrow-left"></i>
-                </a>
+                </a> 
                 </div>
                 <div class="nav--addr">
                     <a href="#">
@@ -31,70 +31,68 @@
                 </div>
             </nav>
         </header>
-        <main>
-            <div class="listmain">
-                <div class="listmain--top">
-                    <div class="top--list">
-                        <div class="top--item">
-                            모두보기
-                        </div>
-                        <div class="top--item">
-                            버거
-                        </div>
-                        <div class="top--item">
-                            샌드위치
-                        </div>
-                        <div class="top--item">
-                            피자
-                        </div>
-                        <div class="top--item">
-                            샐러드
-                        </div>
-                        <div class="top--item">
-                            죽
-                        </div>
-                        <div class="top--item">
-                            이유식
-                        </div>
+        <main class="listmain">
+            <div class="listmain--top">
+                <div class="top--list">
+                    <div class="top--item">
+                        모두보기
                     </div>
-                    <div class="top--nav">
-                        <div>햄버거</div>
-                        <div id="nav--right">주변가게보기</div>
+                    <div class="top--item">
+                        버거
+                    </div>
+                    <div class="top--item">
+                        샌드위치
+                    </div>
+                    <div class="top--item">
+                        피자
+                    </div>
+                    <div class="top--item">
+                        샐러드
+                    </div>
+                    <div class="top--item">
+                        죽
+                    </div>
+                    <div class="top--item">
+                        이유식
                     </div>
                 </div>
-                <div class="listmain--list">
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
+                <div class="top--nav">
+                    <div>햄버거</div>
+                    <div id="nav--right">주변가게보기</div>
+                </div>
+            </div>
+            <div class="listmain--list">
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
+                </div>
+                <div class="list--item">
+                    <div>가게사진</div>
+                    <div>그린버거</div>
                 </div>
             </div>
         </main>
