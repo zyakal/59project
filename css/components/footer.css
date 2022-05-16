@@ -1,129 +1,37 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.25rem;
+    background-color: var(--white-bg);
+    position: absolute;
+    height: 80px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
+    /* Background/Bg Secondary */
+
+    background: var(--white-bg);
+    box-shadow: 0px -10px 15px rgba(107, 114, 128, 0.05),
+        0px -4px 23px rgba(107, 114, 128, 0.05);
+    border-radius: 0px;
 }
-/* HTML5 display-role reset for older browsers */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-    display: block;
+footer a {
+    color: var(--text-gray);
+    font-size: 24px;
 }
-body {
-    line-height: 1;
+footer nav {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
-ol,
-ul {
-    list-style: none;
+footer nav .nav--footer_center {
+    padding: 16px;
+    background-color: var(--main-pink);
+    border-radius: 35px;
 }
-blockquote,
-q {
-    quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
+footer nav .nav--footer_center a {
+    color: var(--text-white);
 }
