@@ -7,6 +7,11 @@
 
 include_once "db/db_user.php";
 
+$wp = "";
+$we = "";
+$wk = "";
+$wnm = "";
+
 if(isset($_POST['user_email']))
 {
 $user_email = $_POST['user_email'];
@@ -15,20 +20,23 @@ $user_check_pw = $_POST['user_check_pw'];
 $nickname = $_POST['nickname'];
 $user_nm = $_POST['user_nm'];
 
-    $conn = get_conn();
-    $wp = "";
+
     if ($user_pw !== $user_check_pw) {
         $wp = "비밀번호가 일치하지 않습니다.";
-    }}
-        if ($user_pw !== $user_check_pw) {
-        $wp = "비밀번호가 일치하지 않습니다.";
-    }}
-        if ($user_pw !== $user_check_pw) {
-        $wp = "비밀번호가 일치하지 않습니다.";
-    }}
-        if ($user_pw !== $user_check_pw) {
-        $wp = "비밀번호가 일치하지 않습니다.";
-    }}
+    }
+        if (!$user_email) {
+        $we = "이메일을 입력해주세요.";
+    }
+        if (!$nickname) {
+        $wk = "닉네임을 입력해주세요.";
+    }
+        if (!$user_nm) {
+        $wnm = "이름을 입력해주세요";
+        }
+        else {        
+ 
+        }
+        }
     ?>
 
 
@@ -56,40 +64,51 @@ $user_nm = $_POST['user_nm'];
         </header>
         <!-- main -->
         <main>
+            <div class="form_box">
             <form name="frm" action="join.php" method="post">
-        <label id="join_email">   
-        이메일주소
-            <input type="text" name="user_email" placeholder="이메일 주소 입력" >
+
+        <div class="join_email">
+            <label for="email">   
+            이메일주소</label>
+            <input type="text" id="email" name="user_email" placeholder="이메일 주소 입력" >
             <!-- required oninvalid="this.setCustomValidity('이메일 주소를 입력해주세요')" oninput="setCustomValidity('')"> -->
-        </label>
-        <p></p>
-                <label id="join_pw">   
-        비밀번호
-            <input type="password" name="user_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
+        <p class="warning_massage"><?=$we?></p>
+        </div>        
+
+        <div class="join_pw">
+        <label for="user_pw">비밀번호</label>
+            <input type="password" id="user_pw" name="user_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
             <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
-        </label>
-        <label id="join_pw_check"> 
-             비밀번호 확인
-            <input type="password" name="user_check_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
+        </div>
+<div class="join_pw_check">
+        <label for=""> 
+             비밀번호 확인        </label>
+            <input type="password" id="user_check_pw" name="user_check_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
             <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
-        </label>
         <p class="warning_massage"><?=$wp?></p>
-                <label id="join_nkname">   
-        닉네임
+        </div>
+
+        <div class="join_nkname">
+        <label id="join_nkname">   
+        닉네임</label>
             <input type="text" name="nickname" placeholder="닉네임 입력" >
             <!-- required oninvalid="this.setCustomValidity('닉네임을 입력해주세요.')" oninput="setCustomValidity('')"> -->
-        </label>
-        <p></p>
-                <label id="join_nm">   
-        이름
-            <input type="text" name="user_nm" placeholder="이름 입력" >
+         <p class="warning_massage"><?=$wk?></p>
+        </div>
+
+        <div class="join_nm">
+         <label for="user_nm">   
+        이름        </label>
+            <input type="text" id="user_nm" name="user_nm" placeholder="이름 입력" >
             <!-- required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="setCustomValidity('')" -->
-        </label>
-        <p></p>
-        <div id="join_insert">
+        <p class="warning_massage"><?=$wnm?></p>
+        </div>
+
+        <div class="join_insert">
             <button type="submit" name="joinbtd" onclick="InputCheckReq()"> 다음</button>
         </div>      
         </form>
+        </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>
@@ -100,40 +119,3 @@ $user_nm = $_POST['user_nm'];
     </div>
 </body>
 </html>
-
-<!-- <script>
-    function InputCheckReq() {
-        let form = document.frm;
-        if(form.user_mail.value == ""){
-            window.alert("이메일 주소를 입력해주세요. (필수)")
-            form.user_mail.value = null;
-            form.user_mail.focus();
-            return false
-        }
-    
-        if(form.user_pw.value == ""){
-            window.alert("비밀번호를 입력해주세요. (필수)")
-            form.user_pw.value = null;
-            form.user_pw.focus();
-            return false
-        }
-            if(form.nickname.value == ""){
-            window.alert("닉네임을 입력해주세요. (필수)")
-            form.nickname.value = null;
-            form.nickname.focus();
-            return false
-        }
-            if(form.user_nm.value. == ""){
-            window.alert("이름을 입력해주세요. (필수)")
-            form.user_nm.value = null;
-            form.user_nm.focus();
-            return false
-        }
-    }
-else{
-    $('#loding').show()
-    form.method = "POST"
-    form.action = "join_proc.php"
-    form.submit();
-}
-</script> -->

@@ -31,34 +31,48 @@
         </header>
         <!-- main -->
         <main>
-            <div>
+            <div class="flex_box">
+
+        <div>
         <a href="">
             <div id = logo></div>
         </a>   
         </div> 
+
         <div id="intro">
         로그인하고 다양한 혜택을 받아보세요!
         </div>
+
+        <div>
         <a href="">
         <div id="kakao_login"> 
             <div>카카오로 로그인</div>
-        </div>
         </a>
+        </div>
+        
+        </div>
+        <div>
         <a href="">
         <div id="naver_login"> 
              <div>네이버로 로그인</div>
         </div>
         </a>
+        </div>
+        <div>
         <a href="">
         <div id="email_login"> 
              <div>이메일로 로그인</div>
         </div>
         </a>
+        </div>
+        <div>
         <a href="">
         <div id="email_join">
             <div>이메일로 회원가입</div>
         </div>
         </a>
+        </div>
+        </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>
