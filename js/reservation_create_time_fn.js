@@ -1,22 +1,23 @@
 // <div class="day-box"></div>
 // <div class="time-box"></div>
 
-function makeTimeBox(howManyDays = 30, howManyTimes = 48, requiredTimeMin = 0) {
-  let divDayContainer = document.querySelector(".day-box");
-  let divTimeContainer = document.querySelector(".time-box");
+let howManyDays = 30;
+let howManyTimes = 48;
+let requiredTimeMin = 0; //메뉴준비시간
 
-  let orderStartTime = new Date();
-  // console.log orderStartTime);
-  orderStartTime.setMinutes(orderStartTime.getMinutes() + requiredTimeMin);
+let divDayContainer = document.querySelector(".day-box");
+let divTimeContainer = document.querySelector(".time-box");
 
+let orderStartTime = new Date();
+// console.log orderStartTime);
+orderStartTime.setMinutes(orderStartTime.getMinutes() + requiredTimeMin);
+
+function makeResTimes(n = howManyTimes) {
   let year = orderStartTime.getFullYear(); // 년도
   let month = orderStartTime.getMonth(); // 월
   let date = orderStartTime.getDate(); // 날짜
-  let hours = orderStartTime.getHours(); // 시
-  let minutes = orderStartTime.getMinutes(); // 분
-
-  // console.log(new Date());
-  // console.log(orderStartTime);
+  let hours = checkFirstDay ? orderStartTime.getHours() : 23; // 시
+  let minutes = checkFirstDay ? orderStartTime.getMinutes() : 30; // 분
 
   let min30;
   let hour30;
@@ -28,40 +29,56 @@ function makeTimeBox(howManyDays = 30, howManyTimes = 48, requiredTimeMin = 0) {
     hour30 = hours + 1;
   }
 
-  // console.log(new Date(year, month, date, hour30, min30));
+  for (let i = 0; i < n; i++) {
+    let resTime = new Date(year, month, date, hour30, min30 + i * 30);
+    let resDay = resTime.getDate();
+    let resHour = resTime.getHours();
+    let resMinutes = resTime.getMinutes();
 
-  function makeResTimes(n) {
-    for (let i = 0; i < n; i++) {
-      let resTime = new Date(year, month, date, hour30, min30 + i * 30);
-      let resDay = resTime.getDate();
-      let resHour = resTime.getHours();
-      let resMinutes = resTime.getMinutes();
-
-      if (resHour == 0) {
-        break;
-      }
-
-      resMinutes = resMinutes ? resMinutes : "00";
-      if (resHour < 10) {
-        resHour = "0" + resHour;
-      }
-
-      let divTimeBox = document.createElement("div");
-      divTimeBox.innerText = resHour + ":" + resMinutes;
-      divTimeContainer.append(divTimeBox);
+    if (checkFirstDay && resHour == 0) {
+      break;
     }
-  }
-  function makeResDays(n) {
-    for (let i = 0; i < n; i++) {
-      orderStartTime.setDate(orderStartTime.getDate() + (i ? 1 : 0));
-      pickupDate = orderStartTime.getDate();
-      let divDayBox = document.createElement("div");
-      divDayBox.className = "day_num";
-      divDayBox.innerText = pickupDate;
-      divDayContainer.append(divDayBox);
-      console.log(pickupDate);
+
+    resMinutes = resMinutes ? resMinutes : "00";
+    if (resHour < 10) {
+      resHour = "0" + resHour;
     }
+    checked = i ? "" : "checked";
+    valueTime = resHour + ":" + resMinutes;
+
+    let divTimeBox = document.createElement("div");
+    divTimeBox.className = "time_num";
+    divTimeBox.innerHTML = `<label><input type="radio" name="time" ${checked} value=${valueTime} >${valueTime}</label>`;
+    divTimeContainer.append(divTimeBox);
   }
-  makeResDays(howManyDays);
-  makeResTimes(howManyTimes);
+}
+function makeResDays(n = howManyDays) {
+  let makeResStartTime = orderStartTime;
+  for (let i = 0; i < n; i++) {
+    makeResStartTime.setDate(makeResStartTime.getDate() + (i ? 1 : 0));
+    // console.log(makeResStartTime);
+    pickupDate = makeResStartTime.getDate();
+    fullDate = makeResStartTime.toDateString();
+    checked = i ? "" : "checked";
+    let divDayBox = document.createElement("div");
+    divDayBox.className = "day_num";
+    divDayBox.innerHTML = `<label><input type="radio" name="day" id="day${i}" ${checked} onclick="getTimes()" value="${fullDate}">${pickupDate}</label>`;
+    divDayContainer.append(divDayBox);
+    // console.log(pickupDate);
+  }
+}
+
+makeResDays(howManyDays);
+let checkFirstDay = true;
+makeResTimes(howManyTimes);
+
+function getTimes() {
+  divTimeContainer.textContent = "";
+  if (event.target.id == "day0") {
+    checkFirstDay = true;
+  } else {
+    checkFirstDay = false;
+  }
+  console.log(checkFirstDay);
+  makeResTimes();
 }
