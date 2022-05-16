@@ -40,6 +40,7 @@ body {
   grid-template-columns: 20% minmax(420px, 1fr);
   grid-template-rows: 56px 1fr;
 }
+
 .header {
   background-color: var(--dark-bg);
   grid-row: span 2;
