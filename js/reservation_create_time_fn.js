@@ -29,11 +29,29 @@ function makeResTimes(n = howManyTimes) {
     hour30 = hours + 1;
   }
 
+  let openTimeH = openTime.split(":")[0];
+  let openTimeM = openTime.split(":")[1];
+  let closeTimeH = closeTime.split(":")[0];
+  let closeTimeM = closeTime.split(":")[1];
+  let j = 0;
+
   for (let i = 0; i < n; i++) {
     let resTime = new Date(year, month, date, hour30, min30 + i * 30);
-    let resDay = resTime.getDate();
     let resHour = resTime.getHours();
     let resMinutes = resTime.getMinutes();
+
+    if (resHour < openTimeH) {
+      continue;
+    } else if (resHour == openTimeH && resMinutes < openTimeM) {
+      continue;
+    }
+
+    if (resHour > closeTimeH) {
+      break;
+    } else if (resHour == closeTimeH && resMinutes > closeTimeM) {
+      // console.log(resMinutes + "," + closeTimeM);
+      break;
+    }
 
     if (checkFirstDay && resHour == 0) {
       break;
@@ -43,7 +61,8 @@ function makeResTimes(n = howManyTimes) {
     if (resHour < 10) {
       resHour = "0" + resHour;
     }
-    checked = i ? "" : "checked";
+    checked = j++ ? "" : "checked";
+
     valueTime = resHour + ":" + resMinutes;
 
     let divTimeBox = document.createElement("div");
@@ -79,6 +98,6 @@ function getTimes() {
   } else {
     checkFirstDay = false;
   }
-  console.log(checkFirstDay);
+  // console.log(checkFirstDay);
   makeResTimes();
 }

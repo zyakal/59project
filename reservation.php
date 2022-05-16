@@ -1,3 +1,12 @@
+<?php
+  $openTime = "09:00";
+  $closeTime = "19:00";
+  $openDay = "월,화,수,목,금" 
+  // 영업시간 초기값
+  // 휴무일반영되게 추가해야함
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +41,15 @@
       </div>
       <input type="submit" />
     </form>
+    <script>
+      <?= "let openTime = '$openTime';" ?>
+      <?= "let closeTime = '$closeTime';" ?>
+      <?= "let openDay = '$openDay';" ?>
+
+      
+
+    </script>
     <script src="./js/reservation_create_time_fn.js"></script>
-    <script></script>
+    
   </body>
 </html>
