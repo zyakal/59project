@@ -183,22 +183,36 @@ main .store-main .store-cummuni a i {
 .star--point h1 {
     font-size: 1.5rem;
 }
-.star--box {
-    background-color: var(--white-bg);
+.rating {
+    color: #c5c5c5;
+    font-size: 24px;
+    height: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
 }
-.stars {
-    z-index: 1;
-    background-color: var(--white-bg);
-}
-.stars i {
-    font-size: 1.5rem;
-    /* opacity: 0; */
-}
-.stars--bg {
+
+.rating-upper {
+    color: var(--star-yellow);
+    padding: 0;
     position: absolute;
-    top: -40px;
-    /* background-color: var(--star-yellow); */
-    width: 12.5rem;
-    height: 12.5rem;
-    /* overflow: hidden; */
+    z-index: 1;
+    display: flex;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.rating-lower {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    display: flex;
+    z-index: 0;
 }
