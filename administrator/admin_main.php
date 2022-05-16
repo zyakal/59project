@@ -1,6 +1,5 @@
 <?php
-    include_once "../db/db.php";
-    //sadfasdfㅇㄹㅇㄹ
+    include_once "../db/db.php";    
 
     function card_top( $card_name){
         
@@ -219,6 +218,7 @@
 
         </div>
     </div>
+    
     <script src="admin.js"></script>
 </body>
 </html>
