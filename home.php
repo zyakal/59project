@@ -50,7 +50,50 @@
                     <button class="button5">5</button>
                 </div>
             </div>
-
+            <div class="categories">
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/hamburger.png">
+                        <div>버거</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/coffee.png">
+                        <div>카페</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/도넛.png">
+                        <div>디저트</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/nail.png">
+                        <div>네일</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/hair.png">
+                        <div>미용실</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/hobby.png">
+                        <div>취미</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <img src="../img/yoga.png">
+                        <div>운동</div>
+                    </a>
+                </div>
+            </div>
         </main>
         <footer>
             <?php
@@ -58,18 +101,18 @@
             ?>
         </footer>
         <script>
-            var num = '24.375rem';
+            var num = 24.375;
             document.querySelector('.button2').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num})`;
+                document.querySelector('.slide_list').style.transform = `translate(-${num}rem)`;
             })
             document.querySelector('.button3').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*2})`;
+                document.querySelector('.slide_list').style.transform = `translate(-${num*2}rem)`;
             })
             document.querySelector('.button4').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*3})`;
+                document.querySelector('.slide_list').style.transform = `translate(-${num*3}rem)`;
             })
             document.querySelector('.button5').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*4})`;
+                document.querySelector('.slide_list').style.transform = `translate(-${num*4}rem)`;
             })
         </script>
     </div>

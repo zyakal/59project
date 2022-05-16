@@ -18,6 +18,9 @@
 /* --------- Screens --------- */
 @import 'screens/store-detail.css';
 
+header, footer {background-color: #FFFFFF;}
+header span { color: #1F2937;}
+
 #top {
     display: flex;
     flex-direction: row;
@@ -42,8 +45,15 @@
 
 main {padding-top: 172px;}
 
-.slide_box {overflow: hidden;}
-.slide_box .slide_list{width: 121.875rem;}
+.slide_box {overflow: hidden; margin: 0 10%;}
+.slide_box .slide_list{width: 121.875rem; transition: transform 0.5s;}
 .slide_item {width: var(--mobile-width); 
     float: left;}
-.slide_item img { height: 106px; object-fit: fill; border-radius: 1.5rem}
+.slide_item img { height: 106px; width: 80%; object-fit: fill; border-radius: 1.5rem}
+
+.categories {margin: 0 10px;}
+.categories .category { background-color: #F3F4F6; border-radius: 1rem;
+    width: 64px; height: 64px; display: inline-flex; justify-content: center; align-items: center;
+    margin: 10px;}
+.categories .category img { height: 20.95px; text-align: center;}
+.categories .category a {color: #9CA3AF;}
