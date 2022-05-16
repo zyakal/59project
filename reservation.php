@@ -1,6 +1,7 @@
 <?php
   $store_num = 1; //스토어넘버 전페이지에서 받아와야함
   $menu_num = 1; //메뉴넘버 전페이지에서 받아와야함
+  $sub_num = 1; //구독넘버 받아야함
 
   $openTime = "09:00";
   $closeTime = "19:00";
@@ -11,7 +12,8 @@
 
   $param = [
     "store_num" => $store_num,
-    "menu_num" => $menu_num
+    "menu_num" => $menu_num,
+    "sub_num" => $sub_num
   ];
   include_once 'db/db_store_and_menu.php';
   $list_store = select_one_store($param);
@@ -26,6 +28,7 @@
     echo $menu_nm."<br>";
     echo $menu_subed_count;
   }
+  
   
   
  
@@ -56,7 +59,7 @@
         </tr>
       </table>
     </div>
-    <form action="reservation.php" method="post">
+    <form action="reservation_proc.php" method="post">
       <div>
         <div>날짜선택</div>
         <div class="day-box"></div>
