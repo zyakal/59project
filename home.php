@@ -1,14 +1,15 @@
 <?php
-    include_once "db/db.php";
-    $con = get_conn();
-    $sql = "SELECT user_num, store_num FROM t_sub";
-    $result = mysqli_query($con, $sql);
-    
+include_once "db/db.php";
+$con = get_conn();
+$sql = "SELECT user_num, store_num FROM t_sub";
+$result = mysqli_query($con, $sql);
+
 
 ?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,9 +18,10 @@
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <div class="container">
-        <header>
+        <header class="home--header">
             <?php
             include_once "main-header.html";
             ?>
@@ -117,8 +119,8 @@
                 </div>
 
                 <?php
-                    require_once("recommend.php");
-                    $re = new Recommend();
+                require_once("recommend.php");
+                $re = new Recommend();
 
                 ?>
             </div>
@@ -145,4 +147,5 @@
         </script>
     </div>
 </body>
+
 </html>

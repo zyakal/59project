@@ -25,7 +25,7 @@ function sel_store_menu()
     <!-- 전체사이즈 -->
     <div class="container">
         <!-- header 인클루드해서 사용 -->
-        <header>
+        <header class="store--header">
             <?php
             include_once "store-header.html";
             ?>
