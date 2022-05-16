@@ -145,7 +145,7 @@ function sel_store_menu()
                                         <h1>4.5</h1>
                                     </div>
                                     <div class="rating">
-                                        <div class="rating-upper" style="width: 100%">
+                                        <div class="rating-upper" style="width: 50%">
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
                                             <i class="fa-solid fa-star"></i>
@@ -160,11 +160,15 @@ function sel_store_menu()
                                             <i class="fa-solid fa-star"></i>
                                         </div>
                                     </div>
-                                    <div class="point--graph">
 
-                                    </div>
                                 </div>
-                                <div class="stars--bg">
+                                <div class="point--graph">
+                                    <div class="graph">
+                                        5점
+                                        <input type="range" min="0" max="100">
+                                        600
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

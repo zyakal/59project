@@ -173,10 +173,12 @@ main .store-main .store-cummuni a i {
 .tabs__content__box table td:first-child {
     width: 6.25rem;
 }
+.star--box {
+    width: 27.5rem;
+}
 .point--box {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
 }
@@ -215,4 +217,9 @@ main .store-main .store-cummuni a i {
     padding: 0;
     display: flex;
     z-index: 0;
+}
+.point--graph .graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
