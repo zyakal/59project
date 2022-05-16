@@ -72,19 +72,90 @@ function sel_store_menu()
                 </div>
                 <div class="tabs__body">
                     <div class="tabs__content is-active">
-                        <h2 class="tabs__title">First Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                        <div class="tabs__content__box">
+                            <div class="menu-list">
+                                <div class="menu-info">
+                                    <img src="https://images.unsplash.com/photo-1632789395770-20e6f63be806?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=839&q=80" alt="">
+                                    <div class="menu-text">
+                                        <h2 class="menu-info__name">기본버거</h2>
+                                        <div class="menu-info__count">한달 10회</div>
+                                    </div>
+                                </div>
+                                <h2>20,000원</h2>
+                            </div>
+                        </div>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">Second Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                        <div class="tabs__content__box">
+                            <h2 class="tabs__title">가게소개</h2>
+                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                        </div>
+                        <div class="tabs__content__box">
+                            <h2 class="tabs__title">영업정보</h2>
+                            <table>
+                                <tr>
+                                    <td>상호병</td>
+                                    <td>그린카페</td>
+                                </tr>
+                                <tr>
+                                    <td>운영시간</td>
+                                    <td>평일,토요일 - 오후 1:00 ~ 10:00 </td>
+                                </tr>
+                                <tr>
+                                    <td>휴무일</td>
+                                    <td>매주 월요일</td>
+                                </tr>
+                                <tr>
+                                    <td>전화번호</td>
+                                    <td>050-1234-1234</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="tabs__content__box">
+                            <h2 class="tabs__title">안내 및 혜택</h2>
+                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                        </div>
+                        <div class="tabs__content__box">
+                            <h2 class="tabs__title">영업정보</h2>
+                            <table>
+                                <tr>
+                                    <td>구독수</td>
+                                    <td>600+</td>
+                                </tr>
+                                <tr>
+                                    <td>리뷰수</td>
+                                    <td>200+</td>
+                                </tr>
+                                <tr>
+                                    <td>찜</td>
+                                    <td>100+</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">Third Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <div class="tabs__content__box">
+                            <h2 class="tabs__title">사장님 공지</h2>
+                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                        </div>
+                        <div class="tabs__content__box">
+                            <div class="point--box">
+                                <div class="star--box">
+                                    <div class="star--point">
+                                        <h1>4.5</h1>
+                                    </div>
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="stars--bg">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,6 +167,7 @@ function sel_store_menu()
             ?>
         </footer>
     </div>
+
 </body>
 
 </html>
