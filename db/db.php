@@ -7,5 +7,5 @@ define("PORT", "3306");
 
 function get_conn()
 {
-    mysqli_connect(URL, USERNAME, PASSWORD, DB_NAME, PORT);
+    return mysqli_connect(URL, USERNAME, PASSWORD, DB_NAME, PORT);
 }
