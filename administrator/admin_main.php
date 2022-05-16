@@ -1,5 +1,6 @@
 <?php
     include_once "../db/db.php";
+
     function card_top( $card_name){
         
         echo " 
@@ -12,6 +13,7 @@
             </div>
             <div> &nbsp </div>";
     }   
+
     $card_name1 = "가게이름";
     $card_name2 = "영업날짜";
     $card_name3 = "가게 이미지";
@@ -42,7 +44,7 @@
     <div class="wrap"> 
         <div class="header">
             <div><img class="logo" title="logo" src="../img/logo.png"></div>
-            <nav class="nav">
+            <nav class="nav" >
                 <div class="nav__wrap">
                     <div class="nav__container">
                         <strong class="nav__title">가게</strong>
@@ -105,6 +107,7 @@
 
                 </div>
             </nav>
+            <div class="admin_login"> 로그인 </div>
         </div>
         
         <div class="main">
@@ -126,7 +129,7 @@
                         </li>
                         
                         <li class="listing-card__item">
-                            <form action="" method="">
+                            <form action="working_day_proc.php" method="post">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name2)?>                                
                                 </div>

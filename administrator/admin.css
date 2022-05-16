@@ -5,18 +5,23 @@
   box-sizing: border-box;
 }
 :root {
-  /* ====== Colors ====== */
+  /* ====== Mobile Colors ====== */
   --main-pink: #ff6464;
   --main-green: #10b981;
   --star-yellow: #fcd34d; /*별점과 그래프에 쓰이는 노랑*/
-  --dark-yellow: #ffb03a; /* 관리자페이지에 쓰이는 노랑*/
-  --list-bg: #9ca3af;
+  --gray-bg: #9ca3af;
   --border-color: #c4c4c4;
+  --white-bg: #fdfdfd;
+
+  /* ====== Web Colors ======  */
+  --dark-bg: #282828;
+  --dark-yellow: #ffb03a; /* 관리자페이지에 쓰이는 노랑*/
 
   /* ====== Text Colors ====== */
-  --main-text-gray: #1f2937;
-  --main-text-white: #fff;
-  --text-light-gray: #9ca3af;
+  --text-dark-gray: #1f2937;
+  --text-white: #fdfdfd;
+  --text-gray: #9ca3af;
+  --text-light-gray: #cccccc;
 
   /* ====== Transition ====== */
   --tran-02: all 0.2s ease;
@@ -32,14 +37,14 @@ body {
 
 .wrap {
   display: grid;
-  grid-template-columns: 200px minmax(420px, 1fr);
+  grid-template-columns: 20% minmax(420px, 1fr);
   grid-template-rows: 56px 1fr;
 }
 .header {
-  background-color: #000000;
+  background-color: var(--dark-bg);
   grid-row: span 2;
-  min-height: 100vh;
-  min-width: 10%;
+  height: 100vh;
+  width: 100%;
   color: #fff;
 }
 .header .logo {
@@ -144,7 +149,7 @@ body {
   position: relative;
   font-size: 12px;
   padding: 20px 20px;
-  background-color: #000000;
+  background-color: var(--dark-bg);
 }
 .main .main__header::after {
   position: absolute;
@@ -154,7 +159,7 @@ body {
   height: 100%;
   content: "";
   display: block;
-  background-color: rgba(10, 10, 10, 0.6);
+  background-color: var(--dark-bg);
 }
 .main .main__title {
   color: #fff;
@@ -174,9 +179,9 @@ body {
 .main .listing-card__item {
   display: flex;
   flex-direction: column;
-  width: calc(100%, 100px);
-  background-color: #fff;
-  border: 1px solid #f0f0f0;
+  width: 100%;
+  background-color: var(--white-bg);
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -200,7 +205,7 @@ body {
 textarea {
   width: 100%;
   height: 100px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   padding: 10px;
 }
@@ -208,7 +213,7 @@ textarea {
 .btn_reset {
   font-weight: bold;
   color: var(--main-pink);
-  background-color: white;
+  background-color: var(--white-bg);
   border: 1px solid var(--main-pink);
   border-radius: 8px;
   width: 3rem;
@@ -234,18 +239,24 @@ textarea {
   box-sizing: border-box;
   width: 12%;
   height: 94px;
-  border: 1px solid #d9d9d9;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  background-color: white;
+  background-color: var(--white-bg);
   font-weight: bolder;
 }
 
 .listing-card__item .listing-card__info__week.active {
   background-color: var(--main-pink);
-  color: var(--main-text-white);
+  color: var(--text-white);
 }
 
 .listing-card__ctnt {
   display: flex;
   justify-content: space-between;
+}
+
+.admin_login {
+  position: absolute;
+  left: 50px;
+  bottom: 10px;
 }
