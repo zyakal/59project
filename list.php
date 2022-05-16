@@ -11,9 +11,25 @@
 <body>
     <div class="container">
         <header>
-            <?php
-            include_once "main-header.html";
-            ?>
+            <nav class="header--nav">
+                <div class="nav--logo">
+                <a href="#" class="nav--back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                </div>
+                <div class="nav--addr">
+                    <a href="#">
+                        <i class="fa-solid fa-location-dot"></i>
+                        송현동
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </div>
+                <div class="nav--notice">
+                    <a href="#">
+                        <i class="fa-regular fa-bell"></i>
+                    </a>
+                </div>
+            </nav>
         </header>
         <main>
             <div class="listmain">
