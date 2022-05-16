@@ -25,7 +25,7 @@ function sel_store_menu()
     <!-- 전체사이즈 -->
     <div class="container">
         <!-- header 인클루드해서 사용 -->
-        <header>
+        <header class="store--header">
             <?php
             include_once "store-header.html";
             ?>
@@ -144,12 +144,24 @@ function sel_store_menu()
                                     <div class="star--point">
                                         <h1>4.5</h1>
                                     </div>
-                                    <div class="stars">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                    <div class="rating">
+                                        <div class="rating-upper" style="width: 100%">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <div class="rating-lower">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="point--graph">
+
                                     </div>
                                 </div>
                                 <div class="stars--bg">

@@ -12,8 +12,19 @@
 /* --------- Components --------- 
 공통적으로 쓰이는 header나 footer 사용할 수 있게 하는거에요
 */
-@import url('components/main-header.css');
+/* @import url('components/main-header.css'); */
+@import 'components/header.css';
 @import url('components/footer.css');
 
 /* --------- Screens --------- */
 @import 'screens/store-detail.css';
+
+/* --------- 승재 csss --------- */
+/* --------- login --------- */
+@import 'screens/login.css';
+@import 'screens/join.css';
+@import 'screens/email.css';
+@import 'screens/myinfo_mod.css';
+/* 은지 css */
+@import 'screens/home.css';
+@import 'screens/list.css';
