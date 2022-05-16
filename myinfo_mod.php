@@ -28,9 +28,9 @@
         <!-- main -->
         <main>
             <div class = "flex_box">
-        <div>
-            <div class="info_email_id">이메일 아이디</div>
-
+        <div class="info_mail">
+            <div class="info_type">이메일 아이디</div>
+            <div class="myinfo_text">유저 세션으로 불러올 이메일</div>
         </div>
             </div>
         </main>

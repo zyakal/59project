@@ -52,7 +52,7 @@ $user_pw = $_POST['user_pw'];
         </header>
         <!-- main -->
         <main>
-            <div class="flex_box">
+            <div class="center_flex_box">
                        <div>
         <a href="">
             <div class = logo></div>

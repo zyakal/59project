@@ -1,7 +1,8 @@
 lines (10 sloc)  283 Bytes
    
 <?php
-    define("URL", "192.168.0.70");
+    define("URL", "Localhost");
+    // define("URL", "192.168.0.70");
     define("USERNAME", "root");
     define("PASSWORD", "506greendg@");
     define("DB_NAME", "59project");

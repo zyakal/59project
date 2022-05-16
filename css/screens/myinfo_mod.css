@@ -1,4 +1,10 @@
-.info_email_id {
+.info_mail {
+  margin-top: 6rem;
+  margin-left: 2rem;
+  border-bottom: 1px solid #cccccc;
+}
+
+.info_type {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -10,8 +16,15 @@
   text-decoration: none;
   width: 75px;
   height: 15px;
+}
+.myinfo_text {
+  font-family: "Inconsolata";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  color: #000000;
 
-  padding: 10px;
-
-  justify-content: ;
+  padding-top: 7px;
+  padding-bottom: 12px;
 }
