@@ -2,7 +2,9 @@
 시작일시 : 2022.05.13일
 버전 : 오구 1.0v
 -->
-
+<?php
+$page_name = "상세페이지";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,15 +21,15 @@
     <!-- 전체사이즈 -->
     <div class="container">
         <!-- header 인클루드해서 사용 -->
-        <header class="header">
+        <header>
             <?php
-            include_once "header.html";
+            include_once "header.php";
             ?>
         </header>
         <!-- main -->
         <main></main>
         <!-- footer 인클루드해서 사용 -->
-        <footer class="footer">
+        <footer>
             <?php
             include_once "footer.html";
             ?>

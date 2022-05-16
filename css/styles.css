@@ -1,4 +1,4 @@
-/*--------- jua Font ---------  */
+/*--------- Noto Sans Font ---------  */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 /* --------- reset CSS --------- */
@@ -12,11 +12,8 @@
 /* --------- Components --------- 
 공통적으로 쓰이는 header나 footer 사용할 수 있게 하는거에요
 */
-@import url('components/header.css');
+@import url('components/main-header.css');
+@import url('components/footer.css');
 
 /* --------- Screens --------- */
-.container {
-    position: relative;
-    width: var(--mobile-width);
-    height: var(--mobile-height);
-}
+@import 'screens/store-detail.css';
