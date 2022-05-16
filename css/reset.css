@@ -132,9 +132,6 @@ table {
 a {
     text-decoration: none;
 }
-a {
-    text-decoration: none;
-}
 .container {
     position: relative;
     width: var(--mobile-width);
