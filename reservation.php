@@ -1,9 +1,20 @@
 <?php
   $openTime = "09:00";
   $closeTime = "19:00";
-  $openDay = "월,화,수,목,금" 
-  // 영업시간 초기값
+  $openDay = "월,화,수,목,금";
+   // 영업시간 초기값
   // 휴무일반영되게 추가해야함
+  $store_num = 1; //스토어넘버 전페이지에서 받아와야함
+
+  $param = [
+    "store_num" => $store_num
+  ];
+  include_once 'db/db_store.php';
+  $list = select_sales_time($param);
+  print_r($list);
+  
+ 
+ 
 ?>
 
 
