@@ -19,13 +19,12 @@
 /* --------- Screens --------- */
 @import "screens/store-detail.css";
 
-/* --------- 승재 css --------- */
-
 /* --------- login --------- */
 @import "screens/login.css";
 @import "screens/join.css";
 @import "screens/email.css";
 @import "screens/myinfo_mod.css";
+
 /* 은지 css */
 @import "screens/home.css";
 @import "screens/list.css";
