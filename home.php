@@ -32,32 +32,9 @@
                     <i class="fa-solid fa-sliders"></i>
                 </a>
             </div>
-            <div class="slide_box">
-                <div class="slide_list">
-                    <div class="slide_item">
-                        <img src="../img/가죽공예.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/네일샵.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/도넛.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/미용실.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/카페.jpg">
-                    </div>
-                </div>
-                <div class="slide_btn_box">
-                    <button class="button1">1</button>
-                    <button class="button2">2</button>
-                    <button class="button3">3</button>
-                    <button class="button4">4</button>
-                    <button class="button5">5</button>
-                </div>
-            </div>
+            <?php
+            include_once "main-banner.php";
+            ?>
             <div class="categories">
                 <div class="category">
                     <a href="list.php">
@@ -128,21 +105,7 @@
             include_once "footer.html";
             ?>
         </footer>
-        <script>
-            var num = 24.375;
-            document.querySelector('.button2').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num}rem)`;
-            })
-            document.querySelector('.button3').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*2}rem)`;
-            })
-            document.querySelector('.button4').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*3}rem)`;
-            })
-            document.querySelector('.button5').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*4}rem)`;
-            })
-        </script>
     </div>
+    <script src="js/slideShow.js"></script>
 </body>
 </html>
