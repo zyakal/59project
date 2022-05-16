@@ -14,7 +14,7 @@
     $card_name1 = "가게이름";
     $card_name2 = "영업날짜";
     $card_name3 = "가게 이미지";
-    $card_name4 = "메일";
+    $card_name4 = "매일";
     $card_name5 = "영업 임시중지";
     $card_name6 = "공지 한마디";
     $card_name7 = "메뉴 정보 변경";
@@ -38,7 +38,7 @@
 </head>
 <body>  
 
-    <div class="wrap">
+    <div class="wrap"> 
         <div class="header">
             <div><img class="logo" title="logo" src="../img/logo.png"></div>
             <nav class="nav">
@@ -123,18 +123,21 @@
                                 </div>
                             </form>
                         </li>
-                        <li class="listing-card__item">
-                            <form action="" method="">
-                            <div class="listing-card__info">
-                            <?= card_top('영업날짜')?>
-                            </div>
-                            </form>
-                        </li>
+                        
                         <li class="listing-card__item">
                             <form action="" method="">
                                 <div class="listing-card__info">
-                                <?= card_top($card_name2)?>
-                                
+                                <?= card_top($card_name2)?>                                
+                                </div>
+                                <div>
+                                    <input class="listing-card__info__week" type="button" value="월"><a href=""></a></input>
+                                    <input class="listing-card__info__week" type="button" value="화"><a href=""></a></input>
+                                    <input class="listing-card__info__week" type="button" value="수"><a href=""></a></input>
+                                    <input class="listing-card__info__week" type="button" value="목"><a href=""></a></input>
+                                    <input class="listing-card__info__week" type="button" value="금"><a href=""></a></input>
+                                    <input class="listing-card__info__week" type="button" value="토"><a href=""></a></input>
+                                    <input class="listing-card__info__week" type="button" value="일"><a href=""></a></input>
+
                                 </div>
                             </form>
                         </li>
