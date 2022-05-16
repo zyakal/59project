@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -35,17 +35,17 @@
 
         <div>
         <a href="">
-            <div id = logo></div>
+            <div class = 'logo'></div>
         </a>   
         </div> 
 
-        <div id="intro">
+        <div class="intro">
         로그인하고 다양한 혜택을 받아보세요!
         </div>
 
         <div>
         <a href="">
-        <div id="kakao_login"> 
+        <div class="kakao_login"> 
             <div>카카오로 로그인</div>
         </a>
         </div>
@@ -53,22 +53,23 @@
         </div>
         <div>
         <a href="">
-        <div id="naver_login"> 
+        <div class="naver_login"> 
              <div>네이버로 로그인</div>
         </div>
         </a>
         </div>
         <div>
         <a href="">
-        <div id="email_login"> 
+        <div class="email_login"> 
              <div>이메일로 로그인</div>
         </div>
         </a>
         </div>
         <div>
         <a href="">
-        <div id="email_join">
-            <div>이메일로 회원가입</div>
+        <div class="join_email">
+            <div>
+            이메일로 회원가입</div>
         </div>
         </a>
         </div>

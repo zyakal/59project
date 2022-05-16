@@ -1,31 +1,22 @@
 /* login.php css */
 
+a {
+  text-decoration: none;
+}
+
 .flex_box {
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
-.flex_box div {
-  display: flex;
-  flex-direction: column;
-}
-#intro {
-  display: flex;
-  flex-direction: column;
-  margin-top: 12rem;
-  justify-content: center;
 
-  width: 252px;
-  top: 170px;
-
-  color: #535353;
-}
-#logo {
+.logo {
   display: flex;
 
-  margin-top: 3rem;
+  margin-top: 4.5rem;
   justify-content: center;
   align-items: center;
 
@@ -37,20 +28,26 @@
   background-repeat: no-repeat;
 }
 
-#kakao_login {
+.intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 252px;
+  top: 170px;
+
+  color: #535353;
+}
+
+.kakao_login {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-  gap: 28px;
 
-  position: absolute;
+  margin-top: 1rem;
   width: 326px;
   height: 44px;
-  left: 50%;
-  transform: translate(-50%);
-  top: 212px;
 
   background: #ffeb00;
   /* Shadow/Lg */
@@ -60,7 +57,7 @@
   border-radius: 12px;
 }
 
-#kakao_login div {
+.kakao_login div {
   /* Order received */
 
   width: 326px;
@@ -86,20 +83,15 @@
   flex-grow: 1;
 }
 
-#naver_login {
+.naver_login {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-  gap: 28px;
 
-  position: absolute;
+  margin-top: 1rem;
   width: 326px;
   height: 44px;
-  left: 50%;
-  transform: translate(-50%);
-  top: 272px;
 
   background: #03c75a;
   /* Shadow/Lg */
@@ -109,7 +101,7 @@
   border-radius: 12px;
 }
 
-#naver_login div {
+.naver_login div {
   /* Order received */
 
   width: 120px;
@@ -137,20 +129,15 @@
   flex-grow: 0;
 }
 
-#email_login {
+.email_login {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0px;
-  gap: 28px;
 
-  position: absolute;
+  margin-top: 1rem;
   width: 326px;
   height: 44px;
-  left: 50%;
-  transform: translate(-50%);
-  top: 332px;
 
   /* Red Color/400 */
 
@@ -162,7 +149,7 @@
   border-radius: 12px;
 }
 
-#email_login div {
+.email_login div {
   /* Order received */
 
   width: 326px;
@@ -190,11 +177,7 @@
   flex-grow: 1;
 }
 
-#email_join {
-  box-sizing: border-box;
-
-  /* Auto layout */
-
+.join_email div {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -202,24 +185,10 @@
   padding: 0px;
   gap: 28px;
 
-  position: absolute;
+  margin-top: 12rem;
+
   width: 326px;
   height: 44px;
-  left: 50%;
-  transform: translate(-50%);
-  top: 700px;
-
-  border: 1px solid #ff6464;
-  /* Shadow/Lg */
-
-  filter: drop-shadow(0px 10px 15px rgba(123, 97, 255, 0.1))
-    drop-shadow(0px 4px 6px rgba(123, 97, 255, 0.05));
-  border-radius: 12px;
-}
-
-#email_join div {
-  width: 326px;
-  height: 24px;
 
   /* Body Text 2/Semi Bold */
 
@@ -230,8 +199,6 @@
   line-height: 150%;
   /* identical to box height, or 24px */
 
-  text-align: center;
-
   color: #ff6464;
 
   /* Inside auto layout */
@@ -239,4 +206,11 @@
   flex: none;
   order: 0;
   flex-grow: 1;
+
+  border: 1px solid #ff6464;
+  /* Shadow/Lg */
+
+  filter: drop-shadow(0px 10px 15px rgba(123, 97, 255, 0.1))
+    drop-shadow(0px 4px 6px rgba(123, 97, 255, 0.05));
+  border-radius: 12px;
 }

@@ -7,8 +7,8 @@
 
 include_once "db/db_user.php";
 
-$wp = "";
 $we = "";
+$wp = "";
 $wk = "";
 $wnm = "";
 
@@ -71,20 +71,17 @@ $user_nm = $_POST['user_nm'];
             <label for="email">   
             이메일주소</label>
             <input type="text" id="email" name="user_email" placeholder="이메일 주소 입력" >
-            <!-- required oninvalid="this.setCustomValidity('이메일 주소를 입력해주세요')" oninput="setCustomValidity('')"> -->
         <p class="warning_massage"><?=$we?></p>
         </div>        
 
         <div class="join_pw">
         <label for="user_pw">비밀번호</label>
             <input type="password" id="user_pw" name="user_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
-            <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
         </div>
 <div class="join_pw_check">
         <label for=""> 
              비밀번호 확인        </label>
             <input type="password" id="user_check_pw" name="user_check_pw" placeholder="영문,숫자,특수문자 포함 8자리 이상" >
-            <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
         <p class="warning_massage"><?=$wp?></p>
         </div>
 

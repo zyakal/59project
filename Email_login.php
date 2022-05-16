@@ -3,13 +3,38 @@
 버전 : 오구 1.0v
 -->
 
+
+<?php 
+
+include_once "db/db_user.php";
+
+$we = "";
+$wp = "";
+
+if(isset($_POST['user_email']))
+{
+$user_email = $_POST['user_email'];
+$user_pw = $_POST['user_pw'];
+
+        if (!$user_email) {
+        $we = "이메일을 입력해주세요.";
+    }
+        if (!$user_pw) {
+        $wp = "비밀번호를 입력해주세요.";
+    }
+        else {        
+ 
+        }
+        }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
     <title>Document</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -27,28 +52,33 @@
         </header>
         <!-- main -->
         <main>
+            <div class="flex_box">
                        <div>
         <a href="">
-            <div id = logo></div>
+            <div class = logo></div>
         </a>   
         </div> 
-        <form action="" method="post">
-        <label id="login_email">   
-            <input type="text" name="user_mail" placeholder="이메일 주소 입력" >
-            <!-- required oninvalid="this.setCustomValidity('이메일 주소를 입력해주세요')" oninput="setCustomValidity('')"> -->
+        <form action="Email_login.php" method="post">
+        <div>
+        <label class="login_email">   
+            <input type="text" name="user_email" placeholder="이메일 주소 입력" >
         </label>
-        <label id="login_pw">   
+        <p class="warning_massage"><?=$we?></p>
+        </div>
+        <div>
+        <label class="login_pw">   
             <input type="text" name="user_pw" placeholder="비밀번호 입력" >
-            <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
         </label>
-                <div id="login_insert">
+        <p class="warning_massage"><?=$wp?></p>
+        </div>
+                <div class="login_insert">
             <button type="submit"> 다음</button>
         </div> 
         </form>
-        <div>
-            <a href="" class="small_text email_join">이메일 회원가입</a>
-            <a href="" class="small_text email_find">이메일 찾기</a>
-            <a href="" class="small_text pw_find">비밀번호 찾기</a>
+        <div class="small_flex_box">
+            <a href="" class="small_text">이메일 회원가입</a>
+            <a href="" class="small_text">이메일 찾기</a>
+            <a href="" class="small_text">비밀번호 찾기</a>
         </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
@@ -57,6 +87,7 @@
             include_once "footer.html";
             ?>
         </footer>
+        </div>
     </div>
 </body>
 

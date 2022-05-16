@@ -1,6 +1,6 @@
 /* email_login.php css */
 
-#login_email input {
+.login_email input {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -10,19 +10,20 @@
 
   color: #909090;
 
+  display: flex;
+  margin-top: 0.7rem;
+  justify-content: center;
+  align-items: center;
+
   box-sizing: border-box;
   border: 1px solid #909090;
   border-radius: 25px;
-  position: absolute;
   width: 315px;
   height: 46px;
-  top: 178px;
-  left: 50%;
-  transform: translate(-50%);
   padding-left: 10px;
 }
 
-#login_pw input {
+.login_pw input {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -32,31 +33,30 @@
 
   color: #909090;
 
+  display: flex;
+  margin-top: 0.7rem;
+  justify-content: center;
+  align-items: center;
+
   box-sizing: border-box;
   border: 1px solid #909090;
   border-radius: 25px;
-  position: absolute;
   width: 315px;
   height: 46px;
-  top: 240px;
-  left: 50%;
-  transform: translate(-50%);
   padding-left: 10px;
 }
 
-#login_insert {
+.login_insert {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 0px;
   gap: 28px;
+  margin-top: 0.7rem;
 
-  position: absolute;
-  width: 326px;
+  width: 315px;
   height: 44px;
-  left: 32px;
-  top: 308px;
 
   background: #909090;
   /* Shadow/Lg */
@@ -66,10 +66,7 @@
   border-radius: 12px;
 }
 
-#login_insert button {
-  width: 326px;
-  height: 24px;
-
+.login_insert button {
   /* Body Text 2/Semi Bold */
 
   font-family: "Poppins";
@@ -91,6 +88,16 @@
   flex-grow: 1;
   border: 0;
 }
+
+.small_flex_box {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .small_text {
   font-family: "Poppins";
   font-style: normal;
@@ -103,29 +110,8 @@
 
   color: #909090;
   text-decoration: none;
-}
-
-.email_join {
-  position: absolute;
   width: 75px;
   height: 15px;
-  left: 25%;
-  top: 370px;
-  transform: translate(-50%);
-}
-.email_find {
-  position: absolute;
-  width: 67px;
-  height: 15px;
-  left: 50%;
-  top: 370px;
-  transform: translate(-50%);
-}
-.pw_find {
-  position: absolute;
-  width: 67px;
-  height: 15px;
-  left: 75%;
-  top: 370px;
-  transform: translate(-50%);
+
+  padding: 10px;
 }
