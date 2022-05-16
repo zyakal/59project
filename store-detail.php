@@ -140,17 +140,19 @@ function sel_store_menu()
                         </div>
                         <div class="tabs__content__box">
                             <div class="point--box">
-                                <div class="star--point">
-                                    <h1>4.5</h1>
-                                </div>
-                                <div class="stars">
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <div class="stars--bg">
+                                <div class="star--box">
+                                    <div class="star--point">
+                                        <h1>4.5</h1>
                                     </div>
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="stars--bg">
                                 </div>
                             </div>
                         </div>
@@ -165,6 +167,7 @@ function sel_store_menu()
             ?>
         </footer>
     </div>
+
 </body>
 
 </html>
