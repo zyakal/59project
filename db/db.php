@@ -9,6 +9,3 @@ function get_conn()
 {
     return mysqli_connect(URL, USERNAME, PASSWORD, DB_NAME, PORT);
 }
-
-//     
-
