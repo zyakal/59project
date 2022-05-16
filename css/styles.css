@@ -13,7 +13,7 @@
 공통적으로 쓰이는 header나 footer 사용할 수 있게 하는거에요
 */
 /* @import url('components/main-header.css'); */
-@import "components/header.css";
+@import url("components/header.css");
 @import url("components/footer.css");
 
 /* --------- Screens --------- */
