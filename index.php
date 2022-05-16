@@ -21,7 +21,8 @@
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
-            include_once "main-header.html";
+            $page_name = "";
+            include_once "header.php";
             ?>
         </header>
         <!-- main -->

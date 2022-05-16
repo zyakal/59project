@@ -1,8 +1,8 @@
 <!-- 오구프로젝트 
 시작일시 : 2022.05.13일
 버전 : 오구 1.0v
-로그인 페이지
 -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +13,6 @@
     <title>Document</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
-    <style>
-
-</style>
-
 </head>
 
 <body>
@@ -31,34 +27,29 @@
         </header>
         <!-- main -->
         <main>
-            <div>
+                       <div>
         <a href="">
             <div id = logo></div>
         </a>   
         </div> 
-        <div id="intro">
-        로그인하고 다양한 혜택을 받아보세요!
+        <form action="" method="post">
+        <label id="login_email">   
+            <input type="text" name="user_mail" placeholder="이메일 주소 입력" >
+            <!-- required oninvalid="this.setCustomValidity('이메일 주소를 입력해주세요')" oninput="setCustomValidity('')"> -->
+        </label>
+        <label id="login_pw">   
+            <input type="text" name="user_pw" placeholder="비밀번호 입력" >
+            <!-- required oninvalid="this.setCustomValidity('비밀번호를 입력해주세요.')" oninput="setCustomValidity('')"> -->
+        </label>
+                <div id="login_insert">
+            <button type="submit"> 다음</button>
+        </div> 
+        </form>
+        <div>
+            <a href="" class="small_text email_join">이메일 회원가입</a>
+            <a href="" class="small_text email_find">이메일 찾기</a>
+            <a href="" class="small_text pw_find">비밀번호 찾기</a>
         </div>
-        <a href="">
-        <div id="kakao_login"> 
-            <div>카카오로 로그인</div>
-        </div>
-        </a>
-        <a href="">
-        <div id="naver_login"> 
-             <div>네이버로 로그인</div>
-        </div>
-        </a>
-        <a href="">
-        <div id="email_login"> 
-             <div>이메일로 로그인</div>
-        </div>
-        </a>
-        <a href="">
-        <div id="email_join">
-            <div>이메일로 회원가입</div>
-        </div>
-        </a>
         </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>
@@ -68,5 +59,5 @@
         </footer>
     </div>
 </body>
-</html>
 
+</html>

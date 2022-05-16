@@ -84,13 +84,13 @@ time,
 mark,
 audio,
 video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-    font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: "Noto Sans KR", sans-serif;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -104,32 +104,522 @@ hgroup,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 body {
-    line-height: 1;
+  line-height: 1;
 }
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: '';
-    content: none;
+  content: "";
+  content: none;
 }
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 .container {
-    position: relative;
-    width: var(--mobile-width);
-    height: var(--mobile-height);
+  position: relative;
+  width: var(--mobile-width);
+  height: var(--mobile-height);
+}
+
+/* login.php css */
+
+#intro {
+  position: absolute;
+  width: 252px;
+  top: 170px;
+  left: 50%;
+  transform: translate(-50%);
+  color: #535353;
+}
+#logo {
+  position: absolute;
+  width: 119px;
+  height: 100px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 65px;
+
+  background-image: url("/59-PROJECT-SEUNG_JAE/img/login_logo.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#kakao_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 28px;
+
+  position: absolute;
+  width: 326px;
+  height: 44px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 212px;
+
+  background: #ffeb00;
+  /* Shadow/Lg */
+
+  box-shadow: 0px 10px 15px rgba(123, 97, 255, 0.1),
+    0px 4px 6px rgba(123, 97, 255, 0.05);
+  border-radius: 12px;
+}
+
+#kakao_login div {
+  /* Order received */
+
+  width: 326px;
+  height: 24px;
+
+  /* Body Text 2/Semi Bold */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+#naver_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 28px;
+
+  position: absolute;
+  width: 326px;
+  height: 44px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 272px;
+
+  background: #03c75a;
+  /* Shadow/Lg */
+
+  box-shadow: 0px 10px 15px rgba(123, 97, 255, 0.1),
+    0px 4px 6px rgba(123, 97, 255, 0.05);
+  border-radius: 12px;
+}
+
+#naver_login div {
+  /* Order received */
+
+  width: 120px;
+  height: 24px;
+
+  /* Body Text 2/Semi Bold */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  /* Black&WHite/White */
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+#email_login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 28px;
+
+  position: absolute;
+  width: 326px;
+  height: 44px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 332px;
+
+  /* Red Color/400 */
+
+  background: #ff6464;
+  /* Shadow/Lg */
+
+  box-shadow: 0px 10px 15px rgba(123, 97, 255, 0.1),
+    0px 4px 6px rgba(123, 97, 255, 0.05);
+  border-radius: 12px;
+}
+
+#email_login div {
+  /* Order received */
+
+  width: 326px;
+  height: 24px;
+
+  /* Body Text 2/Semi Bold */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  /* Black&WHite/White */
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+#email_join {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 28px;
+
+  position: absolute;
+  width: 326px;
+  height: 44px;
+  left: 50%;
+  transform: translate(-50%);
+  top: 700px;
+
+  border: 1px solid #ff6464;
+  /* Shadow/Lg */
+
+  filter: drop-shadow(0px 10px 15px rgba(123, 97, 255, 0.1))
+    drop-shadow(0px 4px 6px rgba(123, 97, 255, 0.05));
+  border-radius: 12px;
+}
+
+#email_join div {
+  width: 326px;
+  height: 24px;
+
+  /* Body Text 2/Semi Bold */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  color: #ff6464;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+/* join.php css */
+
+#join_email {
+  position: absolute;
+  width: 75px;
+  height: 21px;
+  left: 10%;
+  top: 125px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+}
+
+#join_pw {
+  position: absolute;
+  width: 75px;
+  height: 21px;
+  left: 10%;
+  top: 225px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+}
+
+#join_nkname {
+  position: absolute;
+  width: 75px;
+  height: 21px;
+  left: 10%;
+  top: 320px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+}
+
+#join_nm {
+  position: absolute;
+  width: 75px;
+  height: 21px;
+  left: 10%;
+  top: 420px;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+}
+
+label input {
+  box-sizing: border-box;
+  border: 1px solid #909090;
+  border-radius: 25px;
+  position: absolute;
+  width: 315px;
+  height: 46px;
+  top: 27px;
+  left: 50%;
+  transform: translate(-10%);
+  padding-left: 10px;
+}
+
+#join_insert {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 28px;
+
+  position: absolute;
+  width: 326px;
+  height: 44px;
+  left: 32px;
+  top: 580px;
+
+  background: #909090;
+  /* Shadow/Lg */
+
+  box-shadow: 0px 10px 15px rgba(123, 97, 255, 0.1),
+    0px 4px 6px rgba(123, 97, 255, 0.05);
+  border-radius: 12px;
+}
+
+#join_insert button {
+  width: 326px;
+  height: 24px;
+
+  /* Body Text 2/Semi Bold */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  /* Black&WHite/White */
+  background: #909090;
+  color: #ffffff;
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  border: 0;
+}
+
+/* email_login.php css */
+
+#login_email input {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+
+  box-sizing: border-box;
+  border: 1px solid #909090;
+  border-radius: 25px;
+  position: absolute;
+  width: 315px;
+  height: 46px;
+  top: 178px;
+  left: 50%;
+  transform: translate(-50%);
+  padding-left: 10px;
+}
+
+#login_pw input {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  color: #909090;
+
+  box-sizing: border-box;
+  border: 1px solid #909090;
+  border-radius: 25px;
+  position: absolute;
+  width: 315px;
+  height: 46px;
+  top: 240px;
+  left: 50%;
+  transform: translate(-50%);
+  padding-left: 10px;
+}
+
+#login_insert {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 28px;
+
+  position: absolute;
+  width: 326px;
+  height: 44px;
+  left: 32px;
+  top: 308px;
+
+  background: #909090;
+  /* Shadow/Lg */
+
+  box-shadow: 0px 10px 15px rgba(123, 97, 255, 0.1),
+    0px 4px 6px rgba(123, 97, 255, 0.05);
+  border-radius: 12px;
+}
+
+#login_insert button {
+  width: 326px;
+  height: 24px;
+
+  /* Body Text 2/Semi Bold */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* identical to box height, or 24px */
+
+  text-align: center;
+
+  /* Black&WHite/White */
+  background: #909090;
+  color: #ffffff;
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+  border: 0;
+}
+.small_text {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 150%;
+  /* identical to box height, or 15px */
+
+  text-align: center;
+
+  color: #909090;
+  text-decoration: none;
+}
+
+.email_join {
+  position: absolute;
+  width: 75px;
+  height: 15px;
+  left: 25%;
+  top: 370px;
+  transform: translate(-50%);
+}
+.email_find {
+  position: absolute;
+  width: 67px;
+  height: 15px;
+  left: 50%;
+  top: 370px;
+  transform: translate(-50%);
+}
+.pw_find {
+  position: absolute;
+  width: 67px;
+  height: 15px;
+  left: 75%;
+  top: 370px;
+  transform: translate(-50%);
 }

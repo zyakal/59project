@@ -1,12 +1,10 @@
 {
 	"folders": [
 		{
-			"name": "htdocs",
-			"path": ".."
+			"path": "..\\..\\..\\..\\Users\\User\\Downloads\\2022_PHP_FrontEnd-master"
 		},
 		{
-			"name": "htdocs-master",
-			"path": "D:\\htdocs-master"
+			"path": "..\\.."
 		}
 	],
 	"settings": {
