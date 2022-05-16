@@ -12,7 +12,7 @@ footer {
 
     /* Background/Bg Secondary */
 
-    background: var(--main-white);
+    background: var(--white-bg);
     box-shadow: 0px -10px 15px rgba(107, 114, 128, 0.05),
         0px -4px 23px rgba(107, 114, 128, 0.05);
     border-radius: 0px;

@@ -58,40 +58,33 @@ function sel_store_menu()
                     </a>
                 </div>
             </div>
-            <div class="store-tab">
-                <ul class="list">
-                    <li class="is_on">
-                        <a href="#tab1" class="btn">메뉴</a>
-                    </li>
-                    <li>
-                        <a href="#tab2" class="btn">정보</a>
-                    </li>
-                    <li>
-                        <a href="#tab3" class="btn">리뷰</a>
-                    </li>
-                </ul>
-                <div class="cont_area">
-                    <div id="tab1" class="cont">
-                        <div class="store-tab__menu">
-                            <div class="menu-img">
-                                <img src="" alt="">
-                            </div>
-                            <div class="menu-info">
-                                <h1>아메리카노</h1>
-                                <div class="menu-info__count">
-                                    한달 10회
-                                </div>
-                            </div>
-                            <div class="menu-price">
-                                20,000원
-                            </div>
-                        </div>
+            <div class="store-tabs">
+                <div class="tabs__head">
+                    <div class="tabs__toggle is-active">
+                        <a class="tabs__name">메뉴</a>
                     </div>
-                    <div id="tab2" class="cont">
-                        Tab Content2
+                    <div class="tabs__toggle">
+                        <a class="tabs__name">정보</a>
                     </div>
-                    <div id="tab3" class="cont">
-                        Tab Content3
+                    <div class="tabs__toggle">
+                        <a class="tabs__name">리뷰</a>
+                    </div>
+                </div>
+                <div class="tabs__body">
+                    <div class="tabs__content is-active">
+                        <h2 class="tabs__title">First Title</h2>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                    </div>
+                    <div class="tabs__content">
+                        <h2 class="tabs__title">Second Title</h2>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                    </div>
+                    <div class="tabs__content">
+                        <h2 class="tabs__title">Third Title</h2>
+                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
                     </div>
                 </div>
             </div>

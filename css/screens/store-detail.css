@@ -94,25 +94,50 @@ main .store-main .store-cummuni a {
 main .store-main .store-cummuni a i {
     margin-right: 0.25rem;
 }
-main .store-tab .list {
+.store-tabs {
+    max-width: 400px;
     display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+    box-shadow: var(--box-shadow);
 }
-main .store-tab .list li {
-    width: 33%;
-    padding: auto;
-}
-main .store-tab .list li a {
-    padding: auto;
+
+.tabs__head {
     display: flex;
-    height: 4rem;
-    justify-content: center;
+    align-items: stretch;
+}
+
+.tabs__toggle {
+    display: flex;
     align-items: center;
-    padding: auto;
-    border: 1px solid var(--border-color);
-    color: var(--text-light-gray);
+    justify-content: center;
+    width: 33.333%;
+    height: 3.125rem;
+    background: var(--text-light-gray);
+    cursor: pointer;
 }
-main .store-tab .list li.is_on .btn {
+
+.tabs__toggle.is-active {
     font-weight: bold;
+    background: var(--white-bg);
     color: var(--main-pink);
     border: 3px solid var(--main-pink);
+}
+.tabs__content {
+    padding: 30px;
+    display: none;
+}
+.tabs__content.is-active {
+    display: block;
+}
+.tabs__title {
+    font-size: var(--text-lg);
+    color: var(--text-dark-gray);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.tabs__text {
+    font-size: var(--text-sm);
+    color: var(--text-dark-gray);
 }
