@@ -3,14 +3,14 @@
 }
 .top--list {width: 100vw;}
 .top--list .top--item { float: left;
-    background-color: var(--gray-white-bg);
+    background-color: var(--light-gray-bg);
     width: 78px; height: 40px;
     display: flex; justify-content: center; align-items: center;
     margin-right: 16px;
     border-radius:0.5rem;
     color: var(--text-gray);}
 .top--nav {display: inline;}
-.list--item {background-color: var(--gray-white-bg);
+.list--item {background-color: var(--light-gray-bg);
     width: 326px; height: 78px;
     border-radius: 12px;
     margin-bottom: 12px;}
