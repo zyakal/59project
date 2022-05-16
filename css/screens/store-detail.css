@@ -1,0 +1,204 @@
+:root {
+    /* ====== Mobile Colors ====== */
+    --main-pink: #ff6464;
+    --main-green: #10b981;
+    --star-yellow: #fcd34d; /*별점과 그래프에 쓰이는 노랑*/
+    --gray-bg: #9ca3af;
+    --border-color: #c4c4c4;
+    --white-bg: #fdfdfd;
+    --light-gray-bg: #d6d6d6;
+
+    /* ====== Web Colors ======  */
+    --dark-bg: #282828;
+    --dark-yellow: #ffb03a; /* 관리자페이지에 쓰이는 노랑*/
+
+    /* ====== Text Colors ====== */
+    --text-dark-gray: #1f2937;
+    --text-white: #fdfdfd;
+    --text-gray: #9ca3af;
+    --text-light-gray: #cccccc;
+
+    /* ====== Transition ====== */
+    --tran-02: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.4s ease;
+    --tran-05: all 0.5s ease;
+
+    /* ====== Size ====== */
+    --mobile-width: 24.375rem;
+    --mobile-height: 52.75rem;
+    --box-width: 20.375rem; /* 325px */
+    --font-lg: 1.125rem; /* 18px */
+    --font-md: 1rem; /* 16px */
+    --font-sm: 0.875rem; /* 14px */
+    /* ====== Shadow ====== */
+    --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+header {
+    background: none;
+}
+header nav a {
+    color: var(--text-white);
+    font-size: 1.5rem;
+}
+header nav a i {
+    text-shadow: 5px 5px 3px #000000;
+}
+main .store--img--box img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+main .store-main {
+    margin: 2.5rem 0;
+    display: flex;
+    height: 7.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+main .store-main h1 {
+    font-size: 1.5rem;
+    color: var(--text-dark-gray);
+}
+main .store-main .store-point {
+    display: flex;
+}
+main .store-main .store-point div:first-child {
+    margin-right: 0.5rem;
+}
+main .store-main .store-point > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+}
+main .store-main .store-point > div i {
+    margin-right: 0.25rem;
+}
+main .store-main .store-cummuni {
+    display: flex;
+}
+main .store-main .store-cummuni a:first-child {
+    margin-right: 1.25rem;
+}
+main .store-main .store-cummuni a {
+    width: 6.25rem;
+    height: 2rem;
+    border: 1px solid var(--border-color);
+    color: var(--text-dark-gray);
+    padding: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+main .store-main .store-cummuni a i {
+    margin-right: 0.25rem;
+}
+.store-tabs {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #fff;
+}
+
+.tabs__head {
+    display: flex;
+    align-items: stretch;
+}
+
+.tabs__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33.333%;
+    height: 3.125rem;
+    background: var(--text-light-gray);
+    cursor: pointer;
+}
+
+.tabs__toggle.is-active {
+    font-weight: bold;
+    background: var(--white-bg);
+    color: var(--main-pink);
+    border: 3px solid var(--main-pink);
+}
+.tabs__content {
+    display: none;
+}
+.tabs__content.is-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-gray-bg);
+}
+.tabs__content__box {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--white-bg);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.25rem;
+}
+.tabs__title {
+    font-size: var(--text-lg);
+    color: var(--text-dark-gray);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.tabs__text {
+    font-size: var(--text-sm);
+    color: var(--text-dark-gray);
+}
+.menu-list {
+    width: 100%;
+    background-color: var(--light-gray-bg);
+    border-radius: 0.625rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu-list .menu-info {
+    display: flex;
+    align-items: center;
+}
+.menu-list .menu-info img {
+    border-radius: 4px;
+    margin: 0.5rem;
+    width: 6.25rem;
+    height: 5rem;
+    object-fit: cover;
+}
+.tabs__content__box table td:first-child {
+    width: 6.25rem;
+}
+.point--box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.star--point h1 {
+    font-size: 1.5rem;
+}
+.star--box {
+    background-color: var(--white-bg);
+}
+.stars {
+    z-index: 1;
+    background-color: var(--white-bg);
+}
+.stars i {
+    font-size: 1.5rem;
+    /* opacity: 0; */
+}
+.stars--bg {
+    position: absolute;
+    top: -40px;
+    /* background-color: var(--star-yellow); */
+    width: 12.5rem;
+    height: 12.5rem;
+    /* overflow: hidden; */
+}

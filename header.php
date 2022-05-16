@@ -6,7 +6,8 @@
     </div>
     <div class="nav--addr">
         <a href="#">
-            <?=$page_name?>
+            <!-- 본인페이지에서 $page_name에 페이지이름 문자열로 넣어주기  -->
+            <?= $page_name ?>
         </a>
     </div>
     <div class="nav--notice">

@@ -1,14 +1,11 @@
-lines (10 sloc)  283 Bytes
-   
 <?php
-    define("URL", "Localhost");
-    // define("URL", "192.168.0.70");
-    define("USERNAME", "root");
-    define("PASSWORD", "506greendg@");
-    define("DB_NAME", "59project");
-    define("PORT", "3306");
+define("URL", "192.168.0.70");
+define("USERNAME", "root");
+define("PASSWORD", "506greendg@");
+define("DB_NAME", "59project");
+define("PORT", "3306");
 
-    function get_conn() 
-    {
-        return mysqli_connect(URL, USERNAME, PASSWORD, DB_NAME, PORT);
-    }
+function get_conn()
+{
+    return mysqli_connect(URL, USERNAME, PASSWORD, DB_NAME, PORT);
+}
