@@ -16,10 +16,11 @@
     </form>
     <h1>로그인</h1>
     <div>이메일로 로그인</div>
-    <form action="admin_login_proc.php" method="post"></form>
-    <div class="login_email" ><input  type="email" name="aid" placeholder="이메일"></div>
-    <div class="login_pw" ><input type="password" name="apw" id="admin_login_pw" placeholder="비밀번호"></div>
-    <div><button type=""></button></div>
+    <form action="admin_login_proc.php" method="post">
+    <div class="login_email" ><input  type="email" name="store_email" placeholder="이메일" autocomplete="on"></div>    
+    <div class="login_pw" ><input type="password" name="store_pw" placeholder="비밀번호"></div>    
+    <div><button type="submit" >로그인</button></div>
+    </form>
     
 </body>
 </html>

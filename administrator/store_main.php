@@ -36,8 +36,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="nanalike.css"> -->
-    <link rel="stylesheet" href="admin.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="store.css">
+    <title>사업자 메인 페이지</title>
 </head>
 <body>  
 
@@ -107,7 +107,7 @@
 
                 </div>
             </nav>
-            <div class="admin_login"> 로그인 </div>
+            <div class="store_login"> <a href="store_login.php">로그인</a></div>
         </div>
         
         <div class="main">
@@ -219,7 +219,7 @@
         </div>
     </div>
     
-    <script src="admin.js"></script>
+    <script src="store.js"></script>
 </body>
 </html>
 
