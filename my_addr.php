@@ -17,10 +17,15 @@
             ?>
         </header>
         <main class="my_addr--main">
-            <form action="addr_proc.php" method="post">
-                <div class="my_addr--top">
-                    <button><i class='fa-solid fa-magnifying-glass'></i></button>
-                    <input type="text" name="my_addr" placeholder="건물명, 도로명 또는 지번으로 검색">
+            <form action="home.php" method="post">
+                <div class="my_addr--input">
+                    <div class="input--top">
+                        <i class='fa-solid fa-magnifying-glass'></i>
+                        <input type="text" id="my_address" name="my_addr" placeholder="건물명, 도로명 또는 지번으로 검색">
+                    </div>
+                </div>
+                <div class="my_addr--button">
+                    <input type="submit" value="주소 설정">
                 </div>
             </form>
         </main>
@@ -31,4 +36,17 @@
         </footer>
     </div>
 </body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+window.onload = function(){
+    document.getElementById("my_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("my_address").value = data.address; // 주소 넣기
+            }
+        }).open();
+    });
+}
+</script>
 </html>
