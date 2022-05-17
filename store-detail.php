@@ -19,6 +19,7 @@ function sel_store_menu()
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <script src="js/store-tabs.js" defer></script>
+    <script src="js/star.js" defer></script>
 </head>
 
 <body>
@@ -141,30 +142,70 @@ function sel_store_menu()
                         <div class="tabs__content__box">
                             <div class="point--box">
                                 <div class="star--box">
-                                    <div class="star--point">
-                                        <h1>4.5</h1>
+                                    <div class="form-group">
+                                        <h1 class="ratingPoint">4.0
+                                        </h1>
                                     </div>
-                                    <div class="rating">
-                                        <div class="rating-upper" style="width: 100%">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
+                                    <div class="star">
+                                        <div class="stars-outer">
+                                            <div class="stars-inner"></div>
                                         </div>
-                                        <div class="rating-lower">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="point--graph">
-
                                     </div>
                                 </div>
-                                <div class="stars--bg">
+                                <div class="point--graph">
+                                    <div class="gray-star">
+                                        <ul class="star-list-gray">
+                                            <li>
+                                                5점
+                                            </li>
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill five"></div>
+                                                </div>
+                                            </li>
+                                            <li>(2940)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            <li>
+                                                4점
+                                            </li>
+
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill four"></div>
+                                                </div>
+                                            </li>
+                                            <li>(230)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            3점
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill three"></div>
+                                                </div>
+                                            </li>
+                                            <li>(50)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            2점
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill two"></div>
+                                                </div>
+                                            </li>
+                                            <li>(5)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            1점
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill one"></div>
+                                                </div>
+                                            </li>
+                                            <li>(7)</li>
+                                        </ul>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -173,11 +214,11 @@ function sel_store_menu()
             </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
-        <footer>
+        <!-- <footer>
             <?php
             include_once "footer.html";
             ?>
-        </footer>
+        </footer> -->
     </div>
 
 </body>
