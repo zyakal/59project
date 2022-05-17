@@ -141,14 +141,13 @@ function sel_store_menu()
                         </div>
                         <div class="tabs__content__box">
                             <div class="point--box">
-                                <div class="star--box">
+                                <div class="star--box store--rating">
                                     <div class="form-group">
-                                        <h1 class="ratingPoint">4.0
-                                        </h1>
+                                        <h1 class="ratingPoint">1.7</h1>
                                     </div>
                                     <div class="star">
                                         <div class="stars-outer">
-                                            <div class="stars-inner"></div>
+                                            <div class="stars-inner shop--rating"></div>
                                         </div>
                                     </div>
                                 </div>
@@ -205,7 +204,26 @@ function sel_store_menu()
                                             <li>(7)</li>
                                         </ul>
                                     </div>
-
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs__content__box">
+                            <div class="review--content">
+                                <div class="review--header">
+                                    <h2>닉네임</h2>
+                                    <div class="star--box">
+                                        <div class="star">
+                                            <div class="stars-outer">
+                                                <div class="stars-inner star5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review--image">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="review--comment">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos temporibus, iure eligendi asperiores laudantium iste itaque animi tenetur, obcaecati explicabo, ducimus perspiciatis facere veritatis enim minus ratione natus sapiente nemo!
                                 </div>
                             </div>
                         </div>

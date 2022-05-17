@@ -182,12 +182,11 @@ main .store-main .store-cummuni a i {
     position: relative;
 }
 .star--box {
-    width: 18.75rem;
+    width: 30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 2rem;
 }
 .star--box .ratingPoint {
     font-size: 1.5rem;
@@ -228,7 +227,8 @@ main .store-main .store-cummuni a i {
 }
 /* 리뷰 막대 */
 .point--graph {
-    width: 50rem;
+    width: 70%;
+    margin-left: 2rem;
 }
 .point--graph .graph {
     display: flex;
@@ -285,4 +285,31 @@ main .store-main .store-cummuni a i {
 
 .one {
     width: 0%;
+}
+re .hidden {
+    display: none;
+}
+
+.review--header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.stars-inner.star5 {
+    width: 100% !important;
+}
+.stars-inner.star4 {
+    width: 80% !important;
+}
+.stars-inner.star3 {
+    width: 60% !important;
+}
+.stars-inner.star2 {
+    width: 40% !important;
+}
+.stars-inner.star1 {
+    width: 20% !important;
+}
+.stars-inner.star0 {
+    width: 0% !important;
 }
