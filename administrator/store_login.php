@@ -39,7 +39,8 @@ if(isset($_POST['store_email']) && isset($_POST['store_pw']))
     {        
             session_start();
             $_SESSION['login_store'] = $result;
-            header("Location: myinfo_mod.php");
+            header("Location: store_main.php");
+            
     }
 }
     ?>
@@ -53,7 +54,7 @@ if(isset($_POST['store_email']) && isset($_POST['store_pw']))
     <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
     <title>이메일로그인</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
@@ -63,26 +64,25 @@ if(isset($_POST['store_email']) && isset($_POST['store_pw']))
     <h1>사장님 회원가입</h1>
     <div>오구 아이디로 모든</div>
     <div>관리자 서비스를 이용할 수 있습니다.</div>
-    <form action="create_account.php">
-        <button type="submit" href="create_account.php" >회원가입</button>
-    </form>
-        <form action="store_login_after.php" method="post">
+    <button type="submit" href="create_account.php" >회원가입</button>
+    
+    <form action="store_login.php" method="post">
         <div>
-        <label class="login_email">   
-            <input type="text" name="store_email" placeholder="이메일 주소 입력" >
-        </label>
-        <p class="warning_massage"><?=$we?></p>
+            <label class="login_email">   
+                <input type="text" name="store_email" placeholder="이메일 주소 입력" >
+            </label>
+            <p class="warning_massage"><?=$we?></p>
         </div>
         <div>
-        <label class="login_pw">   
-            <input type="text" name="store_pw" placeholder="비밀번호 입력" >
-        </label>
-        <p class="warning_massage"><?=$wp?></p>
+            <label class="login_pw">   
+                <input type="text" name="store_pw" placeholder="비밀번호 입력" >
+            </label>
+            <p class="warning_massage"><?=$wp?></p>
         </div>
-                <div class="login_insert">
+        <div class="login_insert">
             <button type="submit"> 로그인 </button>
         </div> 
-        </form>
+    </form>
         <div class="small_flex_box">            
             <a href="" class="small_text">이메일 찾기</a>
             <a href="" class="small_text">비밀번호 찾기</a>

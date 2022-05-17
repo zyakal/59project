@@ -1,5 +1,18 @@
 <?php
-    include_once "../db/db.php";    
+    include_once "../db/db_store.php";    
+    session_start();
+    $login = $_SESSION['login_store'];
+    $login_email=$login['store_email'];
+    
+
+    $result = login_store($login);
+    
+    $store_name = $result['store_nm'];
+    $store_info = $result['store_info'];
+
+
+    
+
 
     function card_top( $card_name){
         
@@ -14,7 +27,7 @@
             <div> &nbsp </div>";
     }   
 
-    $card_name1 = "가게이름";
+    $card_name1 = $store_name;
     $card_name2 = "영업날짜";
     $card_name3 = "가게 이미지";
     $card_name4 = "매일";
@@ -107,22 +120,29 @@
 
                 </div>
             </nav>
-            <div class="store_login"> <a href="store_login.php">로그인</a></div>
+            
+            <?php if(isset($login_email)){ ?>
+                <div class="store_login"> <a href="store_logout.php">로그아웃</a></div>
+            <?php ; } else { ?>
+            
+                <div class="store_login"> <a href="store_login.php">로그인</a></div>
+            <?php ; } ?>
+            
         </div>
         
         <div class="main">
             <div class="main__header">
-                <h2 class="main__title"> 홍길동 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
+                <h2 class="main__title"> <?=$store_name?>,<br>입금 예정금액은 210,000 원입니다.</h2>
             </div>
             <div class="main__body">
                 <div class="listing-card">
                     <ul class="listing-card__list">                        
                         <li class="listing-card__item">
-                            <form class="listing-card__form" action="" method="">
+                            <form class="listing-card__form" action="store_main_intro.php" method="post">
                                 <div class="listing-card__info">
                                     <?= card_top($card_name1)?>
                                     <div>
-                                        <textarea placeholder="가게를 소개하세요(DB 해당유저의 가게소개글 없으면 null)"></textarea>
+                                        <textarea name="store_intro" placeholder="가게를 소개하세요"><?=$store_info?></textarea>
                                     </div>
                                 </div>
                             </form>
