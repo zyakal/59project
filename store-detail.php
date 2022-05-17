@@ -238,7 +238,17 @@ function sel_store_menu()
             ?>
         </footer> -->
     </div>
+    <script>
+        const rows = document.querySelectorAll(".menu-list");
 
+        for (const row of rows) {
+            function handleRowClick() {
+                location.href = `menu-detail.php`;
+            }
+            row.addEventListener("click", handleRowClick);
+
+        }
+    </script>
 </body>
 
 </html>

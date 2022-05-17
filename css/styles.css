@@ -15,11 +15,11 @@
 /* @import url('components/main-header.css'); */
 @import 'components/header.css';
 @import url('components/footer.css');
-
+@import 'components/store-header.css';
 /* --------- Screens --------- */
 @import 'screens/store-detail.css';
-
-/* --------- 승재 csss --------- */
+@import 'screens/menu-detail.css';
+/* --------- 승재 css --------- */
 /* --------- login --------- */
 @import 'screens/login.css';
 @import 'screens/join.css';
