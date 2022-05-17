@@ -1,15 +1,19 @@
-var num = 24.375;
-document.querySelector('.button2').addEventListener('click', function() {
-    document.querySelector('.slide_list').style.transform = `translate(-${num}rem)`;
-})
-document.querySelector('.button3').addEventListener('click', function() {
-    document.querySelector('.slide_list').style.transform = `translate(-${num*2}rem)`;
-})
-document.querySelector('.button4').addEventListener('click', function() {
-    document.querySelector('.slide_list').style.transform = `translate(-${num*3}rem)`;
-})
-document.querySelector('.button5').addEventListener('click', function() {
-    document.querySelector('.slide_list').style.transform = `translate(-${num*4}rem)`;
-})
-   
+var slideIndex = 0;
+showSlides();
 
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("slide_item");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
