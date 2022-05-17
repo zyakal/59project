@@ -11,9 +11,21 @@ $we = "";
 $wp = "";
 $wk = "";
 $wnm = "";
-$s_id = "";
-
+$ue = "";
+$uk = "";
+$unm = "";
+if(isset($_GET['user_num']))
+{
+$title = "회원정보수정";
+include_once "mod_proc.php";
+$on = 1;
+}
+else
+{
+$title = "회원가입";
 include_once "join_proc.php";
+}
+
 ?>
 
 
@@ -24,7 +36,7 @@ include_once "join_proc.php";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title><?=$title?></title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -35,7 +47,7 @@ include_once "join_proc.php";
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
-            $page_name = "회원가입";
+            $page_name = $title;
             include_once "header.php";
             ?>
         </header>
@@ -46,7 +58,7 @@ include_once "join_proc.php";
         <div class="join_email">
             <label for="email">   
             이메일주소</label>
-            <input type="text" id="email" name="user_mail" placeholder="이메일 주소 입력" >
+            <input type="text" id="email" name="user_mail" placeholder="이메일 주소 입력" value='<?=$ue?>'>
         <p class="warning_massage"><?=$we?></p>
         </div>        
 
@@ -64,7 +76,7 @@ include_once "join_proc.php";
         <div class="join_nkname">
         <label id="join_nkname">   
         닉네임</label>
-            <input type="text" name="nickname" placeholder="닉네임 입력" >
+            <input type="text" name="nickname" placeholder="닉네임 입력" value=<?=$uk?>>
             <!-- required oninvalid="this.setCustomValidity('닉네임을 입력해주세요.')" oninput="setCustomValidity('')"> -->
          <p class="warning_massage"><?=$wk?></p>
         </div>
@@ -72,7 +84,7 @@ include_once "join_proc.php";
         <div class="join_nm">
          <label for="user_nm">   
         이름        </label>
-            <input type="text" id="user_nm" name="user_nm" placeholder="이름 입력" >
+            <input type="text" id="user_nm" name="user_nm" placeholder="이름 입력" value=<?=$unm?>>
             <!-- required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="setCustomValidity('')" -->
         <p class="warning_massage"><?=$wnm?></p>
         </div>
@@ -90,5 +102,13 @@ include_once "join_proc.php";
             ?>
         </footer>
     </div>
+    <?php if($on == 1)
+    { ?>
+    <script>
+        const email = document.querySelector('#email');
+        console.log(email);
+        email.setAttribute('readonly',true);
+    </script>
+    <?php }?>
 </body>
 </html>

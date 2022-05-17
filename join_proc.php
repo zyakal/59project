@@ -1,6 +1,8 @@
-    <?php
+<?php
 
     include_once "db/db_user.php";
+
+
 if(isset($_POST['user_mail']))
 {
 if ($_POST['user_mail'] == "") {
@@ -42,7 +44,7 @@ else
                 'user_nm' => $_POST['user_nm']
             ];
             join_user($param);
-            header("Location: join.php");
+            header("Location: login.php");
         }
     }
 }

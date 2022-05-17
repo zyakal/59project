@@ -24,6 +24,7 @@ if(isset($_POST['user_email']) && isset($_POST['user_pw']))
         'user_email' => $_POST['user_email'],
         ];
     $result = login_user($param);
+
     if(empty($result))
     {
         $we = "없는 아이디입니다.";
@@ -39,7 +40,8 @@ if(isset($_POST['user_email']) && isset($_POST['user_pw']))
     {        
             session_start();
             $_SESSION['login_user'] = $result;
-            header("Location: myinfo_mod.php");
+            $user_num = $result['user_num'];
+            header("Location: myinfo_mod.php?user_num=$user_num");
     }
 }
     ?>
@@ -74,7 +76,7 @@ if(isset($_POST['user_email']) && isset($_POST['user_pw']))
             <div class = logo></div>
         </a>   
         </div> 
-        <form action="Email_login.php" method="post">
+        <form action="email_login.php" method="post">
         <div>
         <label class="login_email">   
             <input type="text" name="user_email" placeholder="이메일 주소 입력" >
@@ -92,7 +94,7 @@ if(isset($_POST['user_email']) && isset($_POST['user_pw']))
         </div> 
         </form>
         <div class="small_flex_box">
-            <a href="" class="small_text">이메일 회원가입</a>
+            <a href="join.php" class="small_text">이메일 회원가입</a>
             <a href="" class="small_text">이메일 찾기</a>
             <a href="" class="small_text">비밀번호 찾기</a>
         </div>

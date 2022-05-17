@@ -58,14 +58,14 @@
         </a>
         </div>
         <div>
-        <a href="">
+        <a href="email_login.php">
         <div class="email_login"> 
              <div>이메일로 로그인</div>
         </div>
         </a>
         </div>
         <div>
-        <a href="">
+        <a href="join.php">
         <div class="join_email">
             <div>
             이메일로 회원가입</div>

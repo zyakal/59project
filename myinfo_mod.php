@@ -6,6 +6,14 @@
 include_once "db/db_user.php";
         session_start();
         $login_user = $_SESSION['login_user'];
+if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user']))
+{ ?>
+    <script>
+    alert("잘못된 접근입니다.");
+    location.href = "login.php";
+    </script>
+<?php }
+
 ?>
 
 
@@ -40,15 +48,15 @@ include_once "db/db_user.php";
         </div>
         <div class="info_div">
             <div class="info_type"> 비밀번호</div>
-            <div class="myinfo_text"><?=$login_user['user_pw']?> <button class="upd_button" onclick="location.href='mod_proc.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+            <div class="myinfo_text"><?=$login_user['user_pw']?> <button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
         <div class="info_div">
             <div class="info_type">휴대전화 번호</div>
-            <div class="myinfo_text"><?=$login_user['user_phnum']?><button class="upd_button" onclick="location.href='mod_proc.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+            <div class="myinfo_text"><?=$login_user['user_phnum']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
         <div class="info_div">
             <div class="info_type">닉네임</div>
-            <div class="myinfo_text"><?=$login_user['nickname']?><button class="upd_button" onclick="location.href='mod_proc.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+            <div class="myinfo_text"><?=$login_user['nickname']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
             </div>
         </main>

@@ -5,7 +5,6 @@ function join_user(&$param) {
 
 $user_mail = $param['user_mail'];
 $user_pw = $param['user_pw'];
-$user_check_pw = $param['user_check_pw'];
 $nickname = $param['nickname'];
 $user_nm = $param['user_nm'];
 
@@ -44,8 +43,21 @@ function login_user(&$param){
         $user_email = $param['user_email'];
 
             $sql = "SELECT *
-            from t_user
+            from t_user 
             where user_mail = '$user_email'
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row;
+}
+
+function sel_user(&$param)
+{
+    $user_num = $param['user_num'];
+
+    $sql = "SELECT * from t_user where user_num = $user_num
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
@@ -56,9 +68,22 @@ function login_user(&$param){
 
 function upd_pw(&$param)
 {
-    $user_num = $param['user_num'];
+        $user_num = $param['user_num'];
+        $user_mail = $param['user_mail'];
+        $user_pw = $param['user_pw'];
+        $nickname = $param['nickname'];
+        $user_nm = $param['user_nm'];
 
     $sql = "UPDATE t_user
-    set user_pw = ""
+            SET user_mail = '$user_mail',
+            user_pw = '$user_pw',
+            nickname = '$nickname',
+            user_nm = '$user_nm'
+            WHERE user_num = '$user_num'
     ";
+        $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row;
 }
