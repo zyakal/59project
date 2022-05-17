@@ -15,6 +15,7 @@ $page_name = "메뉴";
     <title>Document</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/input.js" defer></script>
 </head>
 
 <body>
@@ -38,14 +39,32 @@ $page_name = "메뉴";
             <div class="menu--img">
                 <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1637&q=80" alt="">
             </div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat totam, architecto nostrum minima aspernatur hic consequatur blanditiis eaque optio, error illum culpa necessitatibus, velit aperiam atque laudantium pariatur quasi ab!
+            <div class="menu--box">
+                <form>
+                    <div class="num--box">
+                        <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
+                        <input type="number" class="number" value="0" />
+                        <div class="value-button .increase" onclick="increaseValue()" value="Increase Value">+</div>
+                    </div>
+                    <div class="menu--info">
+                        <div>
+                            <h1>그린라떼</h1>
+                            <h1 class="menu--price">
+                                20,000원
+                            </h1>
+                        </div>
+                        <p class="sub-count">월 10회</p>
+                        <div class="menu--content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem architecto ipsam eum dicta cum temporibus, placeat nobis rem recusandae dolore praesentium, asperiores, laborum iusto dolor aut natus deleniti ab nostrum?
+                        </div>
+                    </div>
+                    <div class="bottom--box">
+                        <input class="input--sub" type="submit" value="장바구니 담기">
+                    </div>
+                </form>
+            </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
-        <footer>
-            <?php
-            include_once "footer.html";
-            ?>
-        </footer>
     </div>
 </body>
 
