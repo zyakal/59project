@@ -3,6 +3,9 @@ let tabStatus2 = 0;
 let moveCount = 0;
 // 0:총할인금액, 1:구독리스트
 let divContainer2 = document.querySelector("#sub_manage_container2");
+let subListContainer = document.querySelector("#sub_list_container");
+console.log(subListContainer);
+console.log(divContainer2);
 
 getTotalSave();
 
@@ -65,7 +68,11 @@ function getSubList() {
   if (tabStatus === 1) {
     return;
   }
-  divContainer2.textContent = "";
+
+  tabStatus = 1;
+}
+
+function makeSubList() {
   for (let i = 0; i < list.length; i++) {
     let divEachSub = document.createElement("div");
     let subHTML = `
@@ -78,9 +85,8 @@ function getSubList() {
   <div>예약하기</div>
   `;
     divEachSub.innerHTML = subHTML;
-    divContainer2.append(divEachSub);
+    subListContainer.append(divEachSub);
   }
-  tabStatus = 1;
 }
 
 function getSaveData() {

@@ -19,6 +19,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/screens/sub_manage.css">
     <title>sub_manage</title>
 </head>
 <body>
@@ -26,13 +27,20 @@
         <label for="total_save"><input type="radio" name="manage_tab" id="total_save" onclick="getTotalSave()">총 할인금액</label>
         <label for="sub_list"><input type="radio" name="manage_tab" id="sub_list" onclick="getSubList()" >구독 리스트</label>
     </div>
-    <div id="sub_manage_container2"></div>
+    <div id="sub_manage_container2">
+        <div></div>
+        <div id="sub_list_container"></div>
+    </div>
 
     <script>
         let list = JSON.parse('<?=$list_json?>');
-        
     </script>
     <script src="./js/sub_manage.js"></script>
+    <script>
+        // makeSubList();
+    </script>
+    
+    
     
 </body>
 </html>
