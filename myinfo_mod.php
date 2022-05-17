@@ -2,6 +2,12 @@
 시작일시 : 2022.05.13일
 버전 : 오구 1.0v
 -->
+<?php
+include_once "db/db_user.php";
+        session_start();
+        $login_user = $_SESSION['login_user'];
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +36,19 @@
             <div class = "flex_box">
         <div class="info_mail">
             <div class="info_type">이메일 아이디</div>
-            <div class="myinfo_text">유저 세션으로 불러올 이메일</div>
+            <div class="myinfo_text"><?=$login_user['user_mail']?> <button class="upd_button">변경</button></div>
+        </div>
+        <div class="info_div">
+            <div class="info_type"> 비밀번호</div>
+            <div class="myinfo_text"><?=$login_user['user_pw']?></div>
+        </div>
+        <div class="info_div">
+            <div class="info_type">휴대전화 번호</div>
+            <div class="myinfo_text"><?=$login_user['user_phnum']?><button class="upd_button">변경</button></div>
+        </div>
+        <div class="info_div">
+            <div class="info_type">닉네임</div>
+            <div class="myinfo_text"><?=$login_user['nickname']?><button class="upd_button">변경</button></div>
         </div>
             </div>
         </main>

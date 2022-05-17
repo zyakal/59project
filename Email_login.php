@@ -10,25 +10,38 @@ include_once "db/db_user.php";
 
 $we = "";
 $wp = "";
-
-if(isset($_POST['user_email']))
-{
-
-    $param = [
-        'user_email' => $_POST['user_email'],
-        'user_pw' => $_POST['user_pw']
-        ];
-        if (!$_POST['user_email']) {
+if(isset($_POST['user_email'])){
+        if (empty($_POST['user_email'])) {
         $we = "이메일을 입력해주세요.";
     }
-        if (!$_POST['user_pw']) {
+        if (empty($_POST['user_pw'])) {
         $wp = "비밀번호를 입력해주세요.";
     }
-        else {        
-            login_user($param);
+    }
+if(isset($_POST['user_email']) && isset($_POST['user_pw']))
+{
+    $param = [
+        'user_email' => $_POST['user_email'],
+        ];
+    $result = login_user($param);
+    if(empty($result))
+    {
+        $we = "없는 아이디입니다.";
+    }
+    else
+    {
+        if($result['user_pw'] !== $_POST['user_pw'])
+        {
+            $wp = "비밀번호가 틀렸습니다.";
+        }
+    }
+    if(!empty($result) && $result['user_pw'] == $_POST['user_pw'])
+    {        
+            session_start();
+            $_SESSION['login_user'] = $result;
             header("Location: myinfo_mod.php");
-        }
-        }
+    }
+}
     ?>
 
 <!DOCTYPE html>
