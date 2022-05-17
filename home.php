@@ -27,13 +27,13 @@ $result = mysqli_query($con, $sql);
             ?>
         </header>
         <main class="home--main">
-            <div id="top">
-                <a href="search.php">
+            <a href="search.php">
+                <div id="top">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>Search</span>
                     <i class="fa-solid fa-sliders"></i>
-                </a>
-            </div>
+                </div>
+            </a>
             <?php
             include_once "main-banner.php";
             ?>

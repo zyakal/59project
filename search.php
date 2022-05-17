@@ -11,10 +11,12 @@
 <body>
     <div class="container">
         <header>
-            <div class="search--top">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" placeholder="가게나 메뉴로 검색해보세요">
-            </div>
+            <form action="search_proc">
+                <div class="search--top">
+                    <button><i class='fa-solid fa-magnifying-glass'></i></button>
+                    <input type="search" placeholder="가게나 메뉴로 검색해보세요">
+                </div>
+            </form>
         </header>
         <main class="search--main">
             <div class="main--selectTop">

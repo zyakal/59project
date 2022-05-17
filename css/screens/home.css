@@ -25,8 +25,9 @@
 .categories .category img { height: 20.95px; text-align: center;}
 .categories .category a {color: var(--text-gray);}
 
-.recommend {display: inline-block; width: 100%;} 
+.recommend {display: inline-block; width: 100%; margin: 20px 0;} 
 .recommend--nav {display: inline-flex;}
 #nav--right { color: var(--main-pink); margin-left: 215px;}
 .recommend--list { background-color: var(--light-gray-bg); width: 326px;
-    height: 78px; margin: 12px 0;}
+    height: 78px; margin: 15px 0;
+    border-radius: 1rem;}
