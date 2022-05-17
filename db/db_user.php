@@ -53,3 +53,12 @@ function login_user(&$param){
     mysqli_close($conn);
     return $row;
 }
+
+function upd_pw(&$param)
+{
+    $user_num = $param['user_num'];
+
+    $sql = "UPDATE t_user
+    set user_pw = ""
+    ";
+}
