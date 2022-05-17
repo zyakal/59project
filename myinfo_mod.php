@@ -36,19 +36,19 @@ include_once "db/db_user.php";
             <div class = "flex_box">
         <div class="info_mail">
             <div class="info_type">이메일 아이디</div>
-            <div class="myinfo_text"><?=$login_user['user_mail']?> <button class="upd_button">변경</button></div>
+            <div class="myinfo_text" ><?=$login_user['user_mail']?></div>
         </div>
         <div class="info_div">
             <div class="info_type"> 비밀번호</div>
-            <div class="myinfo_text"><?=$login_user['user_pw']?></div>
+            <div class="myinfo_text"><?=$login_user['user_pw']?> <button class="upd_button" onclick="location.href='mod_proc.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
         <div class="info_div">
             <div class="info_type">휴대전화 번호</div>
-            <div class="myinfo_text"><?=$login_user['user_phnum']?><button class="upd_button">변경</button></div>
+            <div class="myinfo_text"><?=$login_user['user_phnum']?><button class="upd_button" onclick="location.href='mod_proc.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
         <div class="info_div">
             <div class="info_type">닉네임</div>
-            <div class="myinfo_text"><?=$login_user['nickname']?><button class="upd_button">변경</button></div>
+            <div class="myinfo_text"><?=$login_user['nickname']?><button class="upd_button" onclick="location.href='mod_proc.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
             </div>
         </main>
