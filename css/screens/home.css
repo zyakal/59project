@@ -55,16 +55,18 @@
   background: #fcd34d;
 }
  
+.home__categories { margin: 30px 0; text-align: center;}
+.home__categories .category { background-color: var(--light-gray-bg); border-radius: 1rem;
+    width: 75px; height: 70px; display: inline-flex; justify-content: center; align-items: center;
+    margin: 12px;}
+.home__categories .category__img { text-align: center;}
+.home__categories .category__img img { height: 30px;}
+.home__categories .category__name { font-size: 0.9rem; }
+.home__categories .category a {color: var(--text-gray);}
 
-.categories .category { background-color: var(--light-gray-bg); border-radius: 1rem;
-    width: 64px; height: 64px; display: inline-flex; justify-content: center; align-items: center;
-    margin: 7px;}
-.categories .category img { height: 20.95px; text-align: center;}
-.categories .category a {color: var(--text-gray);}
-
-.recommend {display: inline-block; width: 100%; margin: 20px 0;} 
+.recommend {display: inline-block; width: 100%;} 
 .recommend--nav {display: inline-flex;}
 #nav--right { color: var(--main-pink); margin-left: 215px;}
 .recommend--list { background-color: var(--light-gray-bg); width: 326px;
-    height: 78px; margin: 15px 0;
+    height: 78px; margin: 20px 0;
     border-radius: 1rem;}

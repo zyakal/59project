@@ -1,19 +1,19 @@
 <div class="slide__box">
     <ul class="slide__list">
         <li class="slide__item">
-            <img class="slide__img" src="../img/가죽공예.jpg">
+            <img class="slide__img" src="img/banner_icon/banner_1.jpg">
         </li>
         <li class="slide__item">
-            <img class="slide__img" src="../img/네일샵.jpg">
+            <img class="slide__img" src="img/banner_icon/banner_2.jpg">
         </li>
         <li class="slide__item">
-            <img class="slide__img" src="../img/도넛.jpg">
+            <img class="slide__img" src="img/banner_icon/banner_3.jpg">
         </li>
         <li class="slide__item">
-            <img class="slide__img" src="../img/미용실.jpg">
+            <img class="slide__img" src="img/banner_icon/banner_4.jpg">
         </li>
         <li class="slide__item">
-            <img class="slide__img" src="../img/카페.jpg">
+            <img class="slide__img" src="img/banner_icon/banner_5.jpg">
         </li>
     </ul>
     <div class="paginations"></div>

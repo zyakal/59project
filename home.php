@@ -37,49 +37,10 @@ $result = mysqli_query($con, $sql);
             <?php
             include_once "main-banner.php";
             ?>
-            <div class="categories">
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/hamburger.png">
-                        <div>food</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/coffee.png">
-                        <div>카페</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/도넛.png">
-                        <div>디저트</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/nail.png">
-                        <div>네일</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/hair.png">
-                        <div>미용실</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/hobby.png">
-                        <div>취미</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <img src="../img/yoga.png">
-                        <div>운동</div>
-                    </a>
-                </div>
+            <div class="home__categories">
+                <?php
+                    include_once "categories.php";
+                ?>
             </div>
             <div class="recommend">
                 <div class="recommend--nav">
