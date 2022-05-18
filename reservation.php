@@ -1,4 +1,8 @@
 <?php
+  print $_POST['store_num'];
+  print   "aaaaaa<br>";
+
+
   $store_num = 1; //스토어넘버 전페이지에서 받아와야함
   $menu_num = 1; //메뉴넘버 전페이지에서 받아와야함
   $sub_num = 1; //구독넘버 받아야함

@@ -1,4 +1,6 @@
 <?php
+
+
     $user_num = 1; //세션 로그인정보 받기
     $param = [
         "user_num" => $user_num
@@ -33,6 +35,11 @@
         <div><canvas id="bar-chart" width="300" height="230"></canvas></div>
     </div>
     <div class="sub-list__container"> </div>
+    <form action="reservation.php" method="post" id="info_form">
+        <input type="hidden" id="store_num" name="store_num">
+        <input type="hidden" id="sub_num" name="sub_num">
+        <input type="hidden" id = "menu_num"name="menu_num">
+    </form>
 
     <script>
         const list = JSON.parse('<?=$list_json?>');

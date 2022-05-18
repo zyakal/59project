@@ -50,7 +50,7 @@ function printSubList() {
 <div>${list[i].pay_date}~${list[i].end_date}</div>
 <div>총 할인금액 ${list[i].save_price}</div>
 <div>상세페이지</div>
-<div>예약하기</div>
+<div onclick="moveToReservation(${i})">예약하기</div>
 `;
     divEachSub.innerHTML = subHTML;
     subListContainer.append(divEachSub);
@@ -78,6 +78,18 @@ function getSubList() {
   console.log("getSubList");
   divContainer1.style.display = "none";
   subListContainer.style.display = "block";
+}
+
+//예약페이지이동
+function moveToReservation(i) {
+  // console.log(list[i].store_num, list[i].sub_num, list[i].menu_num);
+  document.getElementById("store_num").value = list[i].store_num;
+  document.getElementById("sub_num").value = list[i].sub_num;
+  document.getElementById("menu_num").value = list[i].menu_num;
+
+  document.getElementById("info_form").submit();
+
+  // location.href = "reservation.php";
 }
 
 //월별 할인금액 데이터산출
