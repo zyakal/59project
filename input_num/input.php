@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <form>
+    <form class="num--form">
         <div class="num--box">
             <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
             <input type="number" class="number" value="0" />
