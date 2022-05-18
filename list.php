@@ -31,66 +31,46 @@
                 </div>
             </nav>
         </header>
-        <main class="listmain">
-            <div class="listmain--top">
-                <div class="top--list">
-                    <div class="top--item">
-                        모두보기
-                    </div>
-                    <div class="top--item">
-                        버거
-                    </div>
-                    <div class="top--item">
-                        샌드위치
-                    </div>
-                    <div class="top--item">
-                        피자
-                    </div>
-                    <div class="top--item">
-                        샐러드
-                    </div>
-                    <div class="top--item">
-                        죽
-                    </div>
-                    <div class="top--item">
-                        이유식
-                    </div>
-                </div>
-                <div class="top--nav">
+        <main class="list__main">
+            <div class="list__main__top">
+                <?php
+                    include_once "categories.php";
+                ?>
+                <div class="top__nav">
                     <div>햄버거</div>
-                    <div id="nav--right">주변가게보기</div>
+                    <div id="nav__right">주변가게보기</div>
                 </div>
             </div>
-            <div class="listmain--list">
-                <div class="list--item">
+            <div class="listmain__list">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
-                <div class="list--item">
+                <div class="list__item">
                     <div>가게사진</div>
                     <div>그린버거</div>
                 </div>
