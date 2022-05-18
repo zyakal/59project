@@ -23,6 +23,6 @@ function select_one_menu(&$param) {
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
+    mysqli_close($conn); 
     return mysqli_fetch_assoc($result);
 }
