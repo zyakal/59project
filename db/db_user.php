@@ -11,7 +11,7 @@ $user_nm = $param['user_nm'];
 $sql = "INSERT INTO t_user
 (user_mail,user_pw,nickname,user_nm)
 value
-('$user_mail','$user_pw','$nickname','$user_nm')
+('$user_mail',password($user_pw),'$nickname','$user_nm')
 ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
@@ -101,7 +101,7 @@ function upd_user_info(&$param)
 
     $sql = "UPDATE t_user
             SET user_mail = '$user_mail',
-            user_pw = '$user_pw',
+            user_pw = password($user_pw),
             nickname = '$nickname',
             user_nm = '$user_nm'
             WHERE user_num = '$user_num'
