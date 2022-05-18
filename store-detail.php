@@ -1,11 +1,39 @@
 <?php
-include_once 'db/db.php';
+include_once "db/db.php";
 
-$param = [];
 
-function sel_store_menu()
+$param = [
+    "store_num" => 1
+];
+// 가게정보
+function sel_store_info(&$param)
 {
+    $store_num = $param['store_num'];
+
+    $conn = get_conn();
+    $sql = "select * from t_store where store_num={$store_num}";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+
+    return mysqli_fetch_assoc($result);
 }
+// 가게메뉴
+function sel_store_menu(&$param)
+{
+    $store_num = $param['store_num'];
+
+    $conn = get_conn();
+    $sql = "select * from t_menu where store_num={$store_num}";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+
+    return $result;
+}
+$menu_info = sel_store_menu($param);
+
+$store_info = sel_store_info($param);
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +65,7 @@ function sel_store_menu()
                 <img src="https://images.unsplash.com/photo-1564327368633-151ef1d45021?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
             </div>
             <div class="store-main">
-                <h1>그린 카페</h1>
+                <h1><?= $store_info['store_nm'] ?></h1>
                 <div class="store-point">
                     <div class="store-point__star">
                         <i class="fa-solid fa-star"></i>
@@ -72,20 +100,25 @@ function sel_store_menu()
                     </div>
                 </div>
                 <div class="tabs__body">
+                    <!-- -------- 가게메뉴 -------- -->
                     <div class="tabs__content is-active">
                         <div class="tabs__content__box">
-                            <div class="menu-list">
-                                <div class="menu-info">
-                                    <img src="https://images.unsplash.com/photo-1632789395770-20e6f63be806?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=839&q=80" alt="">
-                                    <div class="menu-text">
-                                        <h2 class="menu-info__name">기본버거</h2>
-                                        <div class="menu-info__count">한달 10회</div>
+                            <?php foreach ($menu_info as $menu) { ?>
+                                <div class="menu-list">
+                                    <div class="menu-info">
+                                        <div class="menu_num" style="display: none;"><?= $menu['menu_num'] ?></div>
+                                        <img src="https://images.unsplash.com/photo-1632789395770-20e6f63be806?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=839&q=80" alt="">
+                                        <div class="menu-text">
+                                            <h2 class="menu-info__name"><?= $menu['menu_nm'] ?></h2>
+                                            <div class="menu-info__count">월 <?= $menu['subed_count'] ?>회</div>
+                                        </div>
                                     </div>
+                                    <h2 class="menu--price"><?= $menu['subed_price'] ?>원</h2>
                                 </div>
-                                <h2>20,000원</h2>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
+                    <!-- -------- 가게정보 -------- -->
                     <div class="tabs__content">
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">가게소개</h2>
@@ -95,12 +128,12 @@ function sel_store_menu()
                             <h2 class="tabs__title">영업정보</h2>
                             <table>
                                 <tr>
-                                    <td>상호병</td>
-                                    <td>그린카페</td>
+                                    <td>상호명</td>
+                                    <td><?= $store_info['store_nm'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>운영시간</td>
-                                    <td>평일,토요일 - 오후 1:00 ~ 10:00 </td>
+                                    <td><?= $store_info['sales_day'] ?> - <?= $store_info['sales_time'] ?> </td>
                                 </tr>
                                 <tr>
                                     <td>휴무일</td>
@@ -108,16 +141,16 @@ function sel_store_menu()
                                 </tr>
                                 <tr>
                                     <td>전화번호</td>
-                                    <td>050-1234-1234</td>
+                                    <td><?= $store_info['store_ph'] ?></td>
+                                </tr>
+                                <tr>
+                                    <td>사업자번호</td>
+                                    <td><?= $store_info['business_num'] ?></td>
                                 </tr>
                             </table>
                         </div>
                         <div class="tabs__content__box">
-                            <h2 class="tabs__title">안내 및 혜택</h2>
-                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
-                        </div>
-                        <div class="tabs__content__box">
-                            <h2 class="tabs__title">영업정보</h2>
+                            <h2 class="tabs__title">가게통계</h2>
                             <table>
                                 <tr>
                                     <td>구독수</td>
@@ -134,6 +167,7 @@ function sel_store_menu()
                             </table>
                         </div>
                     </div>
+                    <!-- -------- 가게리뷰 -------- -->
                     <div class="tabs__content">
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">사장님 공지</h2>
@@ -143,7 +177,7 @@ function sel_store_menu()
                             <div class="point--box">
                                 <div class="star--box store--rating">
                                     <div class="form-group">
-                                        <h1 class="ratingPoint">1.7</h1>
+                                        <h1 class="ratingPoint">3.7</h1>
                                     </div>
                                     <div class="star">
                                         <div class="stars-outer">
@@ -239,14 +273,16 @@ function sel_store_menu()
         </footer> -->
     </div>
     <script>
+        // 리스트 클릭해도 페이지이동
         const rows = document.querySelectorAll(".menu-list");
 
         for (const row of rows) {
+            const menu = row.querySelector(".menu_num").innerHTML;
+
             function handleRowClick() {
-                location.href = `menu-detail.php`;
+                location.href = `menu-detail.php?menu_num=${menu}`;
             }
             row.addEventListener("click", handleRowClick);
-
         }
     </script>
 </body>
