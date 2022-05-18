@@ -50,36 +50,6 @@ const makePagination = () => {
     }
 };
 
-// Make prev and next buttons.
-const handlePrev = () => {
-    selected -= 1;
-    setTransition('transform 0.3s linear');
-    setTranslate({ index: selected });
-    if (selected < 0) {
-        selected = lastIndex;
-        setTimeout(() => {
-            setTransition('');
-            setTranslate({ index: selected });
-        }, 300);
-    }
-    if (selected >= 0) activePagination(selected);
-};
-
-const handleNext = () => {
-    console.log(selected);
-    selected += 1;
-    setTransition('transform 0.3s linear');
-    setTranslate({ index: selected });
-    if (selected > lastIndex) {
-        selected = 0;
-        setTimeout(() => {
-            setTransition('');
-            setTranslate({ index: selected });
-        }, 300);
-    }
-    if (selected <= lastIndex) activePagination(selected);
-};
-
 // Clone the first and last elements.
 const cloneElement = () => {
     list.prepend(items[lastIndex].cloneNode(true));

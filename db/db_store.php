@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
     include_once "db.php";
 
@@ -67,3 +68,6 @@
             return $result;
          }
 ?>
+=======
+include_once 'db.php';
+>>>>>>> 8e42897faa831b87e05e71b0efa13e8053808268
