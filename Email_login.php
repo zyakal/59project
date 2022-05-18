@@ -3,21 +3,12 @@
 버전 : 오구 1.0v
 -->
 
-
 <?php 
 
 include_once "db/db_user.php";
 
 $we = "";
 $wp = "";
-if(isset($_POST['user_mail'])){
-        if (empty($_POST['user_mail'])) {
-        $we = "이메일을 입력해주세요.";
-    }
-        if (empty($_POST['user_pw'])) {
-        $wp = "비밀번호를 입력해주세요.";
-    }
-    }
 if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
 {
     $param = [
@@ -28,19 +19,21 @@ if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
 
     if(empty($result))
     {
-        $we = "없는 아이디입니다.";
+        $wp = "아이디 또는 비밀번호가 틀렸습니다.";
     }
-    else
-    {
-        if($result['user_pw'] !== $_POST['user_pw'])
-        {
-            $wp = "비밀번호가 틀렸습니다.";
-        }
-    }
-    if(!empty($result) && $result['user_pw'] == $_POST['user_pw'])
+    if(!empty($result))
     {        
             $user_num = $result['user_num'];
             header("Location: myinfo_mod.php?user_num=$user_num");
+    }
+}
+if(isset($_POST['user_mail']))
+{
+if ($_POST['user_mail'] == "") {
+        $we = "이메일을 입력해주세요.";
+    }
+if ($_POST['user_pw'] == "") {
+        $wp = "비밀번호를 입력해주세요.";
     }
 }
     ?>
@@ -84,7 +77,7 @@ if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
         </div>
         <div>
         <label class="login_pw">   
-            <input type="text" name="user_pw" placeholder="비밀번호 입력" >
+            <input type="password" name="user_pw" placeholder="비밀번호 입력" >
         </label>
         <p class="warning_massage"><?=$wp?></p>
         </div>

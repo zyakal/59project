@@ -2,8 +2,6 @@
 
 include_once "db/db_user.php";
 
-if(isset($_GET['user_num']))
-
 $user_num = $_GET['user_num'];
 
 $param = [
@@ -15,6 +13,20 @@ $result = sel_user($param);
 $ue = $result['user_mail'];
 $uk = $result['nickname'];
 $unm = $result['user_nm'];
+
+session_start();
+$login_user = $_SESSION['login_user'];
+
+if($_GET['user_num'] !== $login_user['user_num'])
+{ ?>
+<script>
+    alert("잘못된 접근입니다.")
+    location.href = "login.php"
+</script>
+<?php
+}
+
+
 
 if(isset($_POST['user_mail']))
 {

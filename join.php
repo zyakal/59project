@@ -14,6 +14,7 @@ $wnm = "";
 $ue = "";
 $uk = "";
 $unm = "";
+
 if(isset($_GET['user_num']))
 {
 $user_num = $_GET['user_num'];

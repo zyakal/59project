@@ -11,7 +11,7 @@ $user_nm = $param['user_nm'];
 $sql = "INSERT INTO t_user
 (user_mail,user_pw,nickname,user_nm)
 value
-('$user_mail',password($user_pw),'$nickname','$user_nm')
+('$user_mail','$user_pw','$nickname','$user_nm')
 ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
@@ -64,15 +64,14 @@ function login_user(&$param){
 
             $sql = "SELECT *
             from t_user 
-            where user_mail = '$user_mail'
+            where user_mail = '$user_mail' and user_pw = password($user_pw)
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     mysqli_close($conn);
-    if(!empty($row) && $row['user_pw'] == $user_pw)
-    {
-            session_start();
+    if(!empty($row))
+    {       session_start();
             $_SESSION['login_user'] = $row;
     }
     return $row;
@@ -101,7 +100,7 @@ function upd_user_info(&$param)
 
     $sql = "UPDATE t_user
             SET user_mail = '$user_mail',
-            user_pw = password($user_pw),
+            user_pw = '$user_pw',
             nickname = '$nickname',
             user_nm = '$user_nm'
             WHERE user_num = '$user_num'
