@@ -28,10 +28,6 @@
     echo $menu_nm."<br>";
     echo $menu_subed_count;
   }
-  
-  
-  
- 
  
 ?>
 

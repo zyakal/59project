@@ -1,22 +1,24 @@
-let tabStatus = 1;
-let tabStatus2 = 0;
 let moveCount = 0;
-// 0:총할인금액, 1:구독리스트
-let divContainer2 = document.querySelector("#sub_manage_container2");
-let subListContainer = document.querySelector("#sub_list_container");
-console.log(subListContainer);
-console.log(divContainer2);
+//총할인금액 월 변경을 체크 위한 변수
 
+let divContainer1 = document.querySelector(".total-save-price__container");
+let divContainer2 = document.querySelector(".month-save-price__container");
+let subListContainer = document.querySelector(".sub-list__container");
+let monthSave = getSaveData();
+
+console.log(list);
 getTotalSave();
+printSubList();
+//첫화면 총할인금액,구독리스트(display:none) 출력
 
+//총할인금액 출력 함수
 function getTotalSave(m = 0) {
-  if (tabStatus === 0 && tabStatus2 === 0) {
-    return;
-  }
+  console.log("getTotalSave");
+  divContainer1.style.display = "block";
   divContainer2.textContent = "";
+  subListContainer.style.display = "none";
   let divTextSave = document.createElement("div");
 
-  let monthSave = getSaveData();
   let key = monthSave.keys.length - 1 + m;
 
   divTextSave.innerHTML = `<div>
@@ -28,15 +30,34 @@ function getTotalSave(m = 0) {
     <div>월 할인금액 ${monthSave[monthSave.keys[key]]}</div>
   </div> 
   `;
-
   divContainer2.append(divTextSave);
-
-  getSaveGraph();
-
-  tabStatus = 0;
-  tabStatus2 = 0;
 }
 
+//구독리스트출력함수
+function printSubList() {
+  for (let i = 0; i < list.length; i++) {
+    let ValidityCheck = new Date(list[i].end_date + " 23:59:59") - new Date();
+    console.log(ValidityCheck);
+    if (ValidityCheck < 0) {
+      continue;
+    }
+
+    let divEachSub = document.createElement("div");
+    let subHTML = `
+<div><img src='${list[i].menu_photo}'></div>
+<div>${list[i].menu_nm}</div>
+<div>사용가능 회수 ${list[i].remaining_count}</div>
+<div>${list[i].pay_date}~${list[i].end_date}</div>
+<div>총 할인금액 ${list[i].save_price}</div>
+<div>상세페이지</div>
+<div>예약하기</div>
+`;
+    divEachSub.innerHTML = subHTML;
+    subListContainer.append(divEachSub);
+  }
+}
+
+//총할인금액-월 변경
 function moveMonth(n, key) {
   if (n) {
     moveCount += 1;
@@ -49,46 +70,17 @@ function moveMonth(n, key) {
   } else if (moveCount < -key - 2) {
     moveCount += 1;
   }
-  tabStatus2 = 1;
   getTotalSave(moveCount);
 }
 
-function getSaveGraph() {
-  if (tabStatus2 === 1) {
-    return;
-  }
-  let divGraphSave = document.createElement("div");
-  divGraphSave.innerHTML =
-    '<canvas id="bar-chart" width="300" height="230"></canvas>';
-  divContainer2.append(divGraphSave);
-}
-
+//구독리스트 display 스위치
 function getSubList() {
-  console.log(tabStatus);
-  if (tabStatus === 1) {
-    return;
-  }
-
-  tabStatus = 1;
+  console.log("getSubList");
+  divContainer1.style.display = "none";
+  subListContainer.style.display = "block";
 }
 
-function makeSubList() {
-  for (let i = 0; i < list.length; i++) {
-    let divEachSub = document.createElement("div");
-    let subHTML = `
-  <div><img src='${list[i].menu_photo}'></div>
-  <div>${list[i].menu_nm}</div>
-  <div>사용가능 회수 ${list[i].remaining_count}</div>
-  <div>${list[i].pay_date}~${list[i].end_date}</div>
-  <div>총 할인금액 ${list[i].save_price}</div>
-  <div>상세페이지</div>
-  <div>예약하기</div>
-  `;
-    divEachSub.innerHTML = subHTML;
-    subListContainer.append(divEachSub);
-  }
-}
-
+//월별 할인금액 데이터산출
 function getSaveData() {
   let savePriceMonth = {};
   savePriceMonth["keys"] = [];
@@ -154,3 +146,32 @@ function getSaveData() {
 
   return savePriceMonthCeil;
 }
+
+console.log(monthSave.keys);
+
+let monthSaveVals = [];
+monthSave.keys.forEach((val) => {
+  monthSaveVals.push(monthSave[`${val}`]);
+});
+console.log(monthSaveVals);
+
+new Chart(document.getElementById("bar-chart"), {
+  type: "bar",
+  data: {
+    labels: monthSave.keys,
+    datasets: [
+      {
+        // label: "Population (millions)",
+        backgroundColor: "#3cba9f",
+        data: monthSaveVals,
+      },
+    ],
+  },
+  options: {
+    legend: { display: false },
+    title: {
+      // display: true,
+      // text: "Predicted world population (millions) in 2050",
+    },
+  },
+});
