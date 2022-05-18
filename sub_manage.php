@@ -39,6 +39,7 @@
         <input type="hidden" id="store_num" name="store_num">
         <input type="hidden" id="sub_num" name="sub_num">
         <input type="hidden" id = "menu_num"name="menu_num">
+        <input type="hidden" id = "remaining_count" name="remaining_count">
     </form>
 
     <script>

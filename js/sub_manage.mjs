@@ -86,6 +86,7 @@ function moveToReservation(i) {
   document.getElementById("store_num").value = list[i].store_num;
   document.getElementById("sub_num").value = list[i].sub_num;
   document.getElementById("menu_num").value = list[i].menu_num;
+  document.getElementById("remaining_count").value = list[i].remaining_count;
 
   document.getElementById("info_form").submit();
 

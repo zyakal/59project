@@ -1,11 +1,9 @@
 <?php
-  print $_POST['store_num'];
-  print   "aaaaaa<br>";
-
-
-  $store_num = 1; //스토어넘버 전페이지에서 받아와야함
-  $menu_num = 1; //메뉴넘버 전페이지에서 받아와야함
-  $sub_num = 1; //구독넘버 받아야함
+  $store_num = $_POST['store_num'];
+  $menu_num = $_POST['menu_num'];
+  $sub_num = $_POST['sub_num'];
+  $remaining_count = $_POST['remaining_count'];
+  
 
   $openTime = "09:00";
   $closeTime = "19:00";
@@ -21,19 +19,30 @@
   ];
   include_once 'db/db_store_and_menu.php';
   $list_store = select_one_store($param);
+  $sales_time = str_replace(" ","",$list_store['sales_time']);
   if(isset($list_store)) { 
-    $openTime = explode(",", $list_store['sales_time'])[0];
-    $closeTime = explode(",", $list_store['sales_time'])[1];
+    $openTime = explode(",", $sales_time)[0];
+    $closeTime = explode(",", $sales_time)[1];
   }
   $list_menu = select_one_menu($param);
-  if(isset($list_store)) {
+  if(isset($list_menu)) {
     $menu_nm = $list_menu['menu_nm'];
     $menu_subed_count = $list_menu['subed_count'];
-    echo $menu_nm."<br>";
-    echo $menu_subed_count;
+    
   }
- 
+  // print_r($list_menu);
+  // echo "<br>";
+  // print_r($list_store);
+  // echo "<br>".$list_store['sales_time'];
+  // echo "<br>";
+  // echo "open:".$openTime."<br>";
+  // echo "close:".$closeTime;
 ?>
+
+<script>
+  let requireTimeMin = <?= $list_menu['required_time'] ?>;
+  console.log("requiredTime:"+requireTimeMin);
+</script>
 
 
 <!DOCTYPE html>
@@ -50,12 +59,12 @@
       <h1>예약하기</h1>
       <table>
         <tr>
-          <td>ex구독메뉴</td>
-          <td>ex그린카페</td>
+          <td>구독메뉴</td>
+          <td><?=$menu_nm?></td>
         </tr>
         <tr>
-          <td>ex남은횟수</td>
-          <td>ex 17회</td>
+          <td>남은횟수</td>
+          <td><?=$remaining_count?></td>
         </tr>
       </table>
     </div>
