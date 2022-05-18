@@ -3,7 +3,6 @@
 
 let howManyDays = 30;
 let howManyTimes = 48;
-let requiredTimeMin = 0; //메뉴준비시간
 
 let divDayContainer = document.querySelector(".day-box");
 let divTimeContainer = document.querySelector(".time-box");
