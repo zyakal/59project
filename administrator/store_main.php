@@ -148,20 +148,28 @@
                             </form>
                         </li>
                         
-                        <li class="listing-card__item">
+                        <li class="listing-card__item"> 
+                            <!-- 실수로 수정하지 않도록 수정 버튼을 삽입 후 클릭하였을때만 수정되도록 구현 -->
                             <form action="working_day_proc.php" method="post">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name2)?>                                
                                 </div>
-                                <div class="listing-card__ctnt">
-                                    <input class="listing-card__info__week" type="button" value="월"></input>
+                                <div class="listing-card__ctnt" name="sale_day">
+                                    <button class="listing-card__info__week" type="submit" value="월">월</button>
+                                    <button class="listing-card__info__week" type="submit" value="화">화</button>
+                                    <button class="listing-card__info__week" type="submit" value="수">수</button>
+                                    <button class="listing-card__info__week" type="submit" value="목">목</button>
+                                    <button class="listing-card__info__week" type="submit" value="금">금</button>
+                                    <button class="listing-card__info__week" type="submit" value="토">토</button>
+                                    <button class="listing-card__info__week" type="submit" value="일">일</button>
+                                    
+                                    <!-- <input class="listing-card__info__week" type="button" value="월"></input>
                                     <input class="listing-card__info__week" type="button" value="화"></input>
                                     <input class="listing-card__info__week" type="button" value="수"></input>
                                     <input class="listing-card__info__week" type="button" value="목"></input>
                                     <input class="listing-card__info__week" type="button" value="금"></input>
                                     <input class="listing-card__info__week" type="button" value="토"></input>
-                                    <input class="listing-card__info__week" type="button" value="일"></input>
-
+                                    <input class="listing-card__info__week" type="button" value="일"></input> -->
                                 </div>
                                 
                             </form>

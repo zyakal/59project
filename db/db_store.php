@@ -66,5 +66,8 @@
             mysqli_close($conn);
             return $result;
          }
-?>
+
+         function test (){
+             print "A";
+         }
 
