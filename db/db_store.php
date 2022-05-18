@@ -57,5 +57,13 @@
             return $row;
         }
         
-
+        function upd_store_photo(&$param) {
+            $sql = "UPDATE t_store
+                       SET store_photo = '{$param["store_photo"]}' 
+                     WHERE store_email = '{$param["store_email"]}'";
+            $conn = get_conn();
+            $result = mysqli_query($conn, $sql);
+            mysqli_close($conn);
+            return $result;
+         }
 ?>

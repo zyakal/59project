@@ -27,7 +27,7 @@
             <div> &nbsp </div>";
     }   
 
-    $card_name1 = $store_name;
+    $card_name1 = $store_name . " 가게 소개";
     $card_name2 = "영업날짜";
     $card_name3 = "가게 이미지";
     $card_name4 = "매일";
@@ -132,7 +132,7 @@
         
         <div class="main">
             <div class="main__header">
-                <h2 class="main__title"> <?=$store_name?>,<br>입금 예정금액은 210,000 원입니다.</h2>
+                <h2 class="main__title"> <?=$store_name?> 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
             </div>
             <div class="main__body">
                 <div class="listing-card">
@@ -166,13 +166,22 @@
                                 
                             </form>
                         </li>
-                        <li class="listing-card__item">
-                            <form action="" method="">
+                        <li class="listing-card__item">                        
+                            <form action="store_photo.php" method="post" enctype="multipart/form-data">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name3)?>
-                                
+                                <div><label><input type="file" name="img" accept="image/*"></label></div>
+                                <?php  
+                                    $session_img = $_SESSION["login_store"]["store_photo"];
+                                    $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
+                                ?>
+                                <div class="circular__img circular__size40">                                    
+                                    <img src="<?=$store_img?>">
                                 </div>
+                            </a>
+                                            </div>
                             </form>
+                            
                         </li>
                         <li class="listing-card__item">
                             <form action="" method="">
