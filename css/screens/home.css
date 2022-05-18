@@ -57,16 +57,16 @@
  
 .home__categories { margin: 15px 0; text-align: center;}
 .home__categories .category { background-color: var(--light-gray-bg); border-radius: 1rem;
-    width: 75px; height: 70px; display: inline-flex; justify-content: center; align-items: center;
-    margin: 12px;}
+    width: 80px; height: 75px; display: inline-flex; justify-content: center; align-items: center;
+    margin: 10px;}
 .home__categories .category__img { text-align: center;}
 .home__categories .category__img img { height: 30px;}
-.home__categories .category__name { font-size: 0.9rem; }
+.home__categories .category__name { font-size: 1rem; }
 .home__categories .category a {color: var(--text-gray);}
 
 .recommend {display: inline-block; width: 100%;} 
 .recommend--nav {display: inline-flex;}
-#nav--right { color: var(--main-pink); margin-left: 215px;}
+#nav--right { color: var(--main-pink); margin-left: 200px;}
 .recommend--list { background-color: var(--light-gray-bg); width: 326px;
     height: 78px; margin: 20px 0;
     border-radius: 1rem;}

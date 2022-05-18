@@ -89,13 +89,13 @@ $result = mysqli_query($con, $sql);
                 <div class="category">
                     <a href="list.php">
                         <div class="category__img"><img src="img/banner_icon/nail.png"></div>
-                        <div class="category__name">네일</div>
+                        <div class="category__name">네일샵</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
                         <div class="category__img"><img src="img/banner_icon/hair.png"></div>
-                        <div class="category__name">미용실</div>
+                        <div class="category__name">헤어샵</div>
                     </a>
                 </div>
                 <div class="category">
