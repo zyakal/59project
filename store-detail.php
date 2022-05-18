@@ -18,20 +18,11 @@ function sel_store_info(&$param)
 
     return mysqli_fetch_assoc($result);
 }
-// 가게메뉴
-function sel_store_menu(&$param)
-{
-    $store_num = $param['store_num'];
 
-    $conn = get_conn();
-    $sql = "select * from t_menu where store_num={$store_num}";
-
-    $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
-
-    return $result;
-}
 $menu_info = sel_store_menu($param);
+foreach ($menu_info as $menu) {
+    print_r($menu);
+};
 
 $store_info = sel_store_info($param);
 

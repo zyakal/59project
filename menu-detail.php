@@ -3,7 +3,20 @@
 버전 : 오구 1.0v
 -->
 <?php
+include_once 'db/db.php';
+
 $page_name = "메뉴";
+
+$menu_num = $_GET['menu_num'];
+$param = [
+    "menu_num" => $menu_num
+];
+
+$menu = sel_store_menu(&$param){
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
