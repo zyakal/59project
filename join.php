@@ -16,14 +16,17 @@ $uk = "";
 $unm = "";
 if(isset($_GET['user_num']))
 {
+$user_num = $_GET['user_num'];
 $title = "회원정보수정";
 include_once "mod_proc.php";
 $on = 1;
+$join = "join.php?user_num=$user_num";
 }
 else
 {
 $title = "회원가입";
 include_once "join_proc.php";
+$join = 'join.php';
 }
 
 ?>
@@ -54,7 +57,7 @@ include_once "join_proc.php";
         <!-- main -->
         <main>
             <div class="form_box">
-            <form name="frm" action="join.php" method="post">
+            <form name="frm" action="<?=$join?>" method="post">
         <div class="join_email">
             <label for="email">   
             이메일주소</label>

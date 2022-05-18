@@ -11,14 +11,18 @@ if ($_POST['user_mail'] == "") {
 else 
 {
     $param = [
-        'user_mail' => $_POST['user_mail']
+        'user_mail' => $_POST['user_mail'],
+        'nickname' => $_POST['nickname']
     ];
 
-    $result = id_check($param);
+    $id_check = id_check($param);
+    $nkname_check = nkname_check($param);
 
-
-    if($result) {
+    if($id_check) {
       $we = $_POST["user_mail"]."는 중복된 아이디입니다. <br> 다른 아이디를 입력해주세요.";
+    }
+    if($nkname_check) {
+      $wk = $_POST['nickname']."는 중복된 닉네임입니다. <br> 다른 닉네임을 입력해주세요.";
     }
     if (!$_POST['user_pw'])
     {
@@ -35,12 +39,10 @@ else
         $wnm = "이름을 입력해주세요";
         }
 
-        if(!$result && $_POST['user_nm'] !== "" && $_POST['nickname'] !== "" && $_POST['user_pw'] == $_POST['user_check_pw'] && $_POST['user_mail'] !== "")
+        if(!$id_check && !$nkname_check && $_POST['user_nm'] !== "" && $_POST['nickname'] !== "" && $_POST['user_pw'] == $_POST['user_check_pw'] && $_POST['user_mail'] !== "")
         {        
             $param += [
                 'user_pw' => $_POST['user_pw'],
-                'user_check_pw' => $_POST['user_check_pw'],
-                'nickname' => $_POST['nickname'],
                 'user_nm' => $_POST['user_nm']
             ];
             join_user($param);

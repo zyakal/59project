@@ -38,18 +38,43 @@ function id_check(&$param)
     return false;
 }
 
+function nkname_check(&$param)
+{
+    $nickname = $param['nickname'];
+
+    $sql = "SELECT nickname 
+            from t_user
+            where nickname = '$nickname' 
+    ";
+    $conn = get_conn();
+    $row = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_assoc($row);
+    mysqli_close($conn); 
+    if(isset($result['nickname']))
+    {
+    return true;
+    }
+    return false;
+}
+
 function login_user(&$param){
 
-        $user_email = $param['user_email'];
+        $user_mail = $param['user_mail'];
+        $user_pw = $param['user_pw'];
 
             $sql = "SELECT *
             from t_user 
-            where user_mail = '$user_email'
+            where user_mail = '$user_mail'
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     mysqli_close($conn);
+    if(!empty($row) && $row['user_pw'] == $user_pw)
+    {
+            session_start();
+            $_SESSION['login_user'] = $row;
+    }
     return $row;
 }
 
@@ -66,7 +91,7 @@ function sel_user(&$param)
     return $row;
 }
 
-function upd_pw(&$param)
+function upd_user_info(&$param)
 {
         $user_num = $param['user_num'];
         $user_mail = $param['user_mail'];
@@ -81,9 +106,8 @@ function upd_pw(&$param)
             user_nm = '$user_nm'
             WHERE user_num = '$user_num'
     ";
-        $conn = get_conn();
+    $conn = get_conn();
     $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
     mysqli_close($conn);
-    return $row;
+    return $result;
 }

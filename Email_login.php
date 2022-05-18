@@ -10,18 +10,19 @@ include_once "db/db_user.php";
 
 $we = "";
 $wp = "";
-if(isset($_POST['user_email'])){
-        if (empty($_POST['user_email'])) {
+if(isset($_POST['user_mail'])){
+        if (empty($_POST['user_mail'])) {
         $we = "이메일을 입력해주세요.";
     }
         if (empty($_POST['user_pw'])) {
         $wp = "비밀번호를 입력해주세요.";
     }
     }
-if(isset($_POST['user_email']) && isset($_POST['user_pw']))
+if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
 {
     $param = [
-        'user_email' => $_POST['user_email'],
+        'user_mail' => $_POST['user_mail'],
+        'user_pw' => $_POST['user_pw']
         ];
     $result = login_user($param);
 
@@ -38,8 +39,6 @@ if(isset($_POST['user_email']) && isset($_POST['user_pw']))
     }
     if(!empty($result) && $result['user_pw'] == $_POST['user_pw'])
     {        
-            session_start();
-            $_SESSION['login_user'] = $result;
             $user_num = $result['user_num'];
             header("Location: myinfo_mod.php?user_num=$user_num");
     }
@@ -79,7 +78,7 @@ if(isset($_POST['user_email']) && isset($_POST['user_pw']))
         <form action="email_login.php" method="post">
         <div>
         <label class="login_email">   
-            <input type="text" name="user_email" placeholder="이메일 주소 입력" >
+            <input type="text" name="user_mail" placeholder="이메일 주소 입력" >
         </label>
         <p class="warning_massage"><?=$we?></p>
         </div>
