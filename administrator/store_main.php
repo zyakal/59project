@@ -175,11 +175,11 @@
                                     $session_img = $_SESSION["login_store"]["store_photo"];
                                     $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
                                 ?>
-                                <div class="circular__img circular__size40">                                    
+                                <div class="circular__img circular__size">                                    
                                     <img src="<?=$store_img?>">
                                 </div>
                             </a>
-                                            </div>
+                                </div>
                             </form>
                             
                         </li>
