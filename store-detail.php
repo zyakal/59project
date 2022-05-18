@@ -19,6 +19,7 @@ function sel_store_menu()
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <script src="js/store-tabs.js" defer></script>
+    <script src="js/star.js" defer></script>
 </head>
 
 <body>
@@ -140,31 +141,89 @@ function sel_store_menu()
                         </div>
                         <div class="tabs__content__box">
                             <div class="point--box">
-                                <div class="star--box">
-                                    <div class="star--point">
-                                        <h1>4.5</h1>
+                                <div class="star--box store--rating">
+                                    <div class="form-group">
+                                        <h1 class="ratingPoint">1.7</h1>
                                     </div>
-                                    <div class="rating">
-                                        <div class="rating-upper" style="width: 100%">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
+                                    <div class="star">
+                                        <div class="stars-outer">
+                                            <div class="stars-inner shop--rating"></div>
                                         </div>
-                                        <div class="rating-lower">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                    </div>
-                                    <div class="point--graph">
-
                                     </div>
                                 </div>
-                                <div class="stars--bg">
+                                <div class="point--graph">
+                                    <div class="gray-star">
+                                        <ul class="star-list-gray">
+                                            <li>
+                                                5점
+                                            </li>
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill five"></div>
+                                                </div>
+                                            </li>
+                                            <li>(2940)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            <li>
+                                                4점
+                                            </li>
+
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill four"></div>
+                                                </div>
+                                            </li>
+                                            <li>(230)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            3점
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill three"></div>
+                                                </div>
+                                            </li>
+                                            <li>(50)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            2점
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill two"></div>
+                                                </div>
+                                            </li>
+                                            <li>(5)</li>
+                                        </ul>
+                                        <ul class="star-list-gray">
+                                            1점
+                                            <li>
+                                                <div class="bar">
+                                                    <div class="fill one"></div>
+                                                </div>
+                                            </li>
+                                            <li>(7)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs__content__box">
+                            <div class="review--content">
+                                <div class="review--header">
+                                    <h2>닉네임</h2>
+                                    <div class="star--box">
+                                        <div class="star">
+                                            <div class="stars-outer">
+                                                <div class="stars-inner star5"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="review--image">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="review--comment">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos temporibus, iure eligendi asperiores laudantium iste itaque animi tenetur, obcaecati explicabo, ducimus perspiciatis facere veritatis enim minus ratione natus sapiente nemo!
                                 </div>
                             </div>
                         </div>
@@ -173,13 +232,23 @@ function sel_store_menu()
             </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
-        <footer>
+        <!-- <footer>
             <?php
             include_once "footer.html";
             ?>
-        </footer>
+        </footer> -->
     </div>
+    <script>
+        const rows = document.querySelectorAll(".menu-list");
 
+        for (const row of rows) {
+            function handleRowClick() {
+                location.href = `menu-detail.php`;
+            }
+            row.addEventListener("click", handleRowClick);
+
+        }
+    </script>
 </body>
 
 </html>

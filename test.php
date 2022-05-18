@@ -15,26 +15,42 @@ $page_name = "상세페이지";
     <title>Document</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background: rgb(255, 100, 100);
+            background: linear-gradient(90deg, rgba(255, 100, 100, 1) 0%, rgba(220, 88, 136, 1) 100%);
+        }
+
+        .custom-shape-divider-bottom-1652765546 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom-1652765546 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 250px;
+        }
+
+        .custom-shape-divider-bottom-1652765546 .shape-fill {
+            fill: #FFFFFF;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- 전체사이즈 -->
-    <div class="container">
-        <!-- header 인클루드해서 사용 -->
-        <header>
-            <?php
-            include_once "header.php";
-            ?>
-        </header>
-        <!-- main -->
-        <main></main>
-        <!-- footer 인클루드해서 사용 -->
-        <footer>
-            <?php
-            include_once "footer.html";
-            ?>
-        </footer>
+    <div class="custom-shape-divider-bottom-1652765546">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
+        </svg>
     </div>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias quisquam, odio incidunt repellendus accusamus, dolorum magnam sapiente nulla architecto illo possimus voluptatum totam est commodi aliquam fugit quae consectetur dicta?
 </body>
 
 </html>
