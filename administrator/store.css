@@ -261,3 +261,18 @@ textarea {
   left: 50px;
   bottom: 10px;
 }
+
+.circular__img {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.circular__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.circular__size {
+  width: 100% !important;
+  height: 100% !important;
+}

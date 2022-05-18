@@ -1,6 +1,18 @@
 <?php
-    include_once "../db/db.php";
-    //sadfasdf
+    include_once "../db/db_store.php";    
+    session_start();
+    $login = $_SESSION['login_store'];
+    $login_email=$login['store_email'];
+    
+
+    $result = login_store($login);
+    
+    $store_name = $result['store_nm'];
+    $store_info = $result['store_info'];
+
+
+    
+
 
     function card_top( $card_name){
         
@@ -15,7 +27,7 @@
             <div> &nbsp </div>";
     }   
 
-    $card_name1 = "가게이름";
+    $card_name1 = $store_name . " 가게 소개";
     $card_name2 = "영업날짜";
     $card_name3 = "가게 이미지";
     $card_name4 = "매일";
@@ -37,8 +49,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <!-- <link rel="stylesheet" href="nanalike.css"> -->
-    <link rel="stylesheet" href="admin.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="store.css">
+    <title>사업자 메인 페이지</title>
 </head>
 <body>  
 
@@ -108,22 +120,29 @@
 
                 </div>
             </nav>
-            <div class="admin_login"> 로그인 </div>
+            
+            <?php if(isset($login_email)){ ?>
+                <div class="store_login"> <a href="store_logout.php">로그아웃</a></div>
+            <?php ; } else { ?>
+            
+                <div class="store_login"> <a href="store_login.php">로그인</a></div>
+            <?php ; } ?>
+            
         </div>
         
         <div class="main">
             <div class="main__header">
-                <h2 class="main__title"> 홍길동 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
+                <h2 class="main__title"> <?=$store_name?> 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
             </div>
             <div class="main__body">
                 <div class="listing-card">
                     <ul class="listing-card__list">                        
                         <li class="listing-card__item">
-                            <form class="listing-card__form" action="" method="">
+                            <form class="listing-card__form" action="store_main_intro.php" method="post">
                                 <div class="listing-card__info">
                                     <?= card_top($card_name1)?>
                                     <div>
-                                        <textarea placeholder="가게를 소개하세요(DB 해당유저의 가게소개글 없으면 null)"></textarea>
+                                        <textarea name="store_intro" placeholder="가게를 소개하세요"><?=$store_info?></textarea>
                                     </div>
                                 </div>
                             </form>
@@ -147,13 +166,22 @@
                                 
                             </form>
                         </li>
-                        <li class="listing-card__item">
-                            <form action="" method="">
+                        <li class="listing-card__item">                        
+                            <form action="store_photo.php" method="post" enctype="multipart/form-data">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name3)?>
-                                
+                                <div><label><input type="file" name="img" accept="image/*"></label></div>
+                                <?php  
+                                    $session_img = $_SESSION["login_store"]["store_photo"];
+                                    $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
+                                ?>
+                                <div class="circular__img circular__size">                                    
+                                    <img src="<?=$store_img?>">
+                                </div>
+                            </a>
                                 </div>
                             </form>
+                            
                         </li>
                         <li class="listing-card__item">
                             <form action="" method="">
@@ -219,7 +247,8 @@
 
         </div>
     </div>
-    <script src="admin.js"></script>
+    
+    <script src="store.js"></script>
 </body>
 </html>
 
