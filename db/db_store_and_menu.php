@@ -1,5 +1,6 @@
 <?php
 include_once('db/db.php');
+// 가게하나 불러오기
 function select_one_store(&$param)
 {
     $store_num = $param['store_num'];
@@ -15,7 +16,7 @@ function select_one_store(&$param)
 }
 
 // 가게메뉴들 불러오기
-function sel_store_menu(&$param)
+function select_store_menus(&$param)
 {
     $store_num = $param['store_num'];
 
@@ -27,7 +28,7 @@ function sel_store_menu(&$param)
 
     return $result;
 }
-
+// 메뉴하나 불러오기
 function select_one_menu(&$param)
 {
     $menu_num = $param['menu_num'];

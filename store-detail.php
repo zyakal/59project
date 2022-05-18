@@ -1,30 +1,17 @@
 <?php
-include_once "db/db.php";
+include_once "db/db_store_and_menu.php";
 
 
 $param = [
     "store_num" => 1
 ];
-// 가게정보
-function sel_store_info(&$param)
-{
-    $store_num = $param['store_num'];
 
-    $conn = get_conn();
-    $sql = "select * from t_store where store_num={$store_num}";
-
-    $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
-
-    return mysqli_fetch_assoc($result);
-}
-
-$menu_info = sel_store_menu($param);
+$menu_info = select_store_menus($param);
 foreach ($menu_info as $menu) {
     print_r($menu);
 };
 
-$store_info = sel_store_info($param);
+$store_info = select_one_store($param);
 
 ?>
 <!DOCTYPE html>
@@ -79,6 +66,7 @@ $store_info = sel_store_info($param);
                 </div>
             </div>
             <div class="store-tabs">
+                <!-- -------- 탭 헤드 -------- -->
                 <div class="tabs__head">
                     <div class="tabs__toggle is-active">
                         <a class="tabs__name">메뉴</a>
@@ -90,6 +78,7 @@ $store_info = sel_store_info($param);
                         <a class="tabs__name">리뷰</a>
                     </div>
                 </div>
+                <!-- -------- 탭 바디 -------- -->
                 <div class="tabs__body">
                     <!-- -------- 가게메뉴 -------- -->
                     <div class="tabs__content is-active">

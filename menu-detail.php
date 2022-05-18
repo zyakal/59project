@@ -3,7 +3,7 @@
 버전 : 오구 1.0v
 -->
 <?php
-include_once 'db/db.php';
+include_once 'db/db_store_and_menu.php';
 
 $page_name = "메뉴";
 
@@ -12,11 +12,7 @@ $param = [
     "menu_num" => $menu_num
 ];
 
-$menu = sel_store_menu(&$param){
-
-}
-
-
+$menu = select_one_menu($param);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,22 +49,27 @@ $menu = sel_store_menu(&$param){
                 <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1637&q=80" alt="">
             </div>
             <div class="menu--box">
-                <form>
+                <form class="num--form">
                     <div class="num--box">
                         <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
                         <input type="number" class="number" value="0" />
                         <div class="value-button .increase" onclick="increaseValue()" value="Increase Value">+</div>
                     </div>
                     <div class="menu--info">
-                        <div>
-                            <h1>그린라떼</h1>
-                            <h1 class="menu--price">
-                                20,000원
-                            </h1>
+                        <div class="menu--info__box">
+                            <div>
+                                <h2 class="menu--price"><?= $menu['price'] ?></h2>
+                            </div>
+                            <div>
+                                <h1><?= $menu['menu_nm'] ?></h1>
+                                <h1 class="menu--sub__price">
+                                    <?= $menu['subed_price'] ?>원
+                                </h1>
+                            </div>
                         </div>
-                        <p class="sub-count">월 10회</p>
+                        <p class="sub-count">월<?= $menu['subed_count'] ?>회</p>
                         <div class="menu--content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem architecto ipsam eum dicta cum temporibus, placeat nobis rem recusandae dolore praesentium, asperiores, laborum iusto dolor aut natus deleniti ab nostrum?
+                            <?= $menu['menu_intro'] ?>
                         </div>
                     </div>
                     <div class="bottom--box">
