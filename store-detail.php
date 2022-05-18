@@ -7,12 +7,8 @@ $param = [
 ];
 
 $menu_info = select_store_menus($param);
-foreach ($menu_info as $menu) {
-    print_r($menu);
-};
-
 $store_info = select_one_store($param);
-
+$store_reviews = select_store_review($param);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,11 +153,22 @@ $store_info = select_one_store($param);
                             <div class="point--box">
                                 <div class="star--box store--rating">
                                     <div class="form-group">
-                                        <h1 class="ratingPoint">3.7</h1>
+                                        <h1 class="ratingPoint">3.0</h1>
                                     </div>
                                     <div class="star">
                                         <div class="stars-outer">
-                                            <div class="stars-inner shop--rating"></div>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <div class="stars-inner shop--rating">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -222,24 +229,37 @@ $store_info = select_one_store($param);
                             </div>
                         </div>
                         <div class="tabs__content__box">
-                            <div class="review--content">
-                                <div class="review--header">
-                                    <h2>닉네임</h2>
-                                    <div class="star--box">
-                                        <div class="star">
-                                            <div class="stars-outer">
-                                                <div class="stars-inner star5"></div>
+                            <?php foreach ($store_reviews as $review) { ?>
+                                <div class="review--content">
+                                    <div class="review--header">
+                                        <h2 class="nickname"><?= $review['nickname'] ?></h2>
+                                        <div class="star--box">
+                                            <div class="star">
+                                                <div class="stars-outer">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <div class="stars-inner star<?= $review['star_rating'] ?>">
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="review--image">
+                                        <img src="https://images.unsplash.com/photo-1615324606695-afaaf3a8554e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974" alt="">
+                                    </div>
+                                    <div class="review--comment">
+                                        <?= $review['ctnt'] ?>
+                                    </div>
                                 </div>
-                                <div class="review--image">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="review--comment">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos temporibus, iure eligendi asperiores laudantium iste itaque animi tenetur, obcaecati explicabo, ducimus perspiciatis facere veritatis enim minus ratione natus sapiente nemo!
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

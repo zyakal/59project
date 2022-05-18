@@ -13,6 +13,12 @@ $param = [
 ];
 
 $menu = select_one_menu($param);
+// 월--개 월--회 바꿔주는것
+if ($menu['cd_unit'] == 2) {
+    $menu['cd_unit'] = '개';
+} elseif ($menu['cd_unit'] == 1) {
+    $menu['cd_unit'] = '회';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,22 +58,22 @@ $menu = select_one_menu($param);
                 <form class="num--form">
                     <div class="num--box">
                         <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-                        <input type="number" class="number" value="0" />
+                        <input type="number" class="number" value="1" />
                         <div class="value-button .increase" onclick="increaseValue()" value="Increase Value">+</div>
                     </div>
                     <div class="menu--info">
                         <div class="menu--info__box">
                             <div>
-                                <h2 class="menu--price"><?= $menu['price'] ?></h2>
+                                <h2 class="menu--price"></h2>
                             </div>
                             <div>
                                 <h1><?= $menu['menu_nm'] ?></h1>
                                 <h1 class="menu--sub__price">
-                                    <?= $menu['subed_price'] ?>원
+                                    원
                                 </h1>
                             </div>
                         </div>
-                        <p class="sub-count">월<?= $menu['subed_count'] ?>회</p>
+                        <p class="sub-count">월<?= $menu['subed_count'] ?><?= $menu['cd_unit']  ?></p>
                         <div class="menu--content">
                             <?= $menu['menu_intro'] ?>
                         </div>
@@ -80,6 +86,21 @@ $menu = select_one_menu($param);
         </main>
         <!-- footer 인클루드해서 사용 -->
     </div>
+    <script>
+        const valueButtons = document.querySelectorAll('.value-button');
+        const price = document.querySelector('.menu--price');
+        const subPrice = document.querySelector('.menu--sub__price');
+        const inputNum = document.querySelector('.number');
+        valueButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const inputValue = inputNum.value;
+                price.innerText = inputValue * <?= $menu['price'] ?>;
+                subPrice.innerText = `${inputValue * <?= $menu['subed_price'] ?>}원`;
+            })
+        })
+        price.innerText = inputNum.value * <?= $menu['price'] ?>;
+        subPrice.innerText = `${inputNum.value * <?= $menu['subed_price'] ?>}원`;
+    </script>
 </body>
 
 </html>
