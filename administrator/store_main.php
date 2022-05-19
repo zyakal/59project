@@ -71,28 +71,31 @@
         $param['sun'] = $week_sun;
     }
     
-   
-    
-    // $week_mon = $_POST['mon'];
-    // $week_tue = $_POST['tue'];
-    // $week_wed = $_POST['wed'];
-    // $week_thu = $_POST['thu'];
-    // $week_fri = $_POST['fri'];
-    // $week_sat = $_POST['sat'];
-    // $week_sun = $_POST['sun'];
+    $week_value = [
+        "월",
+        "화",
+        "수",
+        "목",
+        "금",
+        "토",
+        "일"
+    ];
+    $week_id = [
+        "mon",
+        "tue",
+        "wed",
+        "thu",
+        "fri",
+        "sat",
+        "sun"
+    ];
 
-    // $param = [
-    //     'mon' => $week_mon,
-    //     'tue' => $week_tue,
-    //     'wed' => $week_wed,
-    //     'thu' => $week_thu,
-    //     'fri' => $week_fri,
-    //     'sat' => $week_sat,
-    //     'sun' => $week_sun
-    // ];
+
+    
 
     $sales_day_arr = explode(" ",$store_sales_day);
-    print_r($sales_day_arr);
+    
+    $test = weeks($week_value, $week_id);
 
   
 
@@ -217,21 +220,22 @@
                                 <?= card_top($card_name2)?>                                
                                 </div>
                                 
-                                <div class="listing-card__ctnt" name="sale_day">                                    
-                                    <input id="week_mon" type="checkbox" name="mon" value="월" hidden>
-                                    <label class="listing-card__info__week" for="week_mon">월</label>
-                                    <input id="week_tue" type="checkbox" name="tue" value="화" hidden>
-                                    <label class="listing-card__info__week" for="week_tue">화</label>
-                                    <input id="week_wed" type="checkbox" name="wed" value="수" hidden>
-                                    <label class="listing-card__info__week" for="week_wed">수</label>                                    
-                                    <input id="week_thu" type="checkbox" name="thu" value="목" hidden>
-                                    <label class="listing-card__info__week" for="week_thu">목</label>
-                                    <input id="week_fri" type="checkbox" name="fri" value="금" hidden>
-                                    <label class="listing-card__info__week" for="week_fri">금</label>
-                                    <input id="week_sat" type="checkbox" name="sat" value="토" hidden>
-                                    <label class="listing-card__info__week" for="week_sat">토</label>
-                                    <input id="week_sun" type="checkbox" name="sun" value="일" hidden>
-                                    <label class="listing-card__info__week" for="week_sun">일</label>
+                                <div class="listing-card__ctnt" name="sale_day">  
+                                    <?=$test?>
+                                    <!-- <input id="mon" type="checkbox" name="mon" value="월" hidden>
+                                    <label class="listing-card__info__week" for="mon">월</label>
+                                    <input id="tue" type="checkbox" name="tue" value="화" hidden>
+                                    <label class="listing-card__info__week" for="tue">화</label>
+                                    <input id="wed" type="checkbox" name="wed" value="수" hidden>
+                                    <label class="listing-card__info__week" for="wed">수</label>                                    
+                                    <input id="thu" type="checkbox" name="thu" value="목" hidden>
+                                    <label class="listing-card__info__week" for="thu">목</label>
+                                    <input id="fri" type="checkbox" name="fri" value="금" hidden>
+                                    <label class="listing-card__info__week" for="fri">금</label>
+                                    <input id="sat" type="checkbox" name="sat" value="토" hidden>
+                                    <label class="listing-card__info__week" for="sat">토</label>
+                                    <input id="sun" type="checkbox" name="sun" value="일" hidden>
+                                    <label class="listing-card__info__week" for="sun">일</label> -->
                                 </div>
                                 
                             </form>
