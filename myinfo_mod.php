@@ -2,6 +2,27 @@
 시작일시 : 2022.05.13일
 버전 : 오구 1.0v
 -->
+<?php
+include_once "db/db_user.php";
+        session_start();
+        $login_user = $_SESSION['login_user'];
+
+        $param = [
+            'user_num' => $login_user['user_num']
+        ];
+
+        $user_info = sel_user($param);
+
+if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user']))
+{ ?>
+    <script>
+    alert("잘못된 접근입니다.");
+    location.href = "login.php";
+    </script>
+<?php }
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +51,26 @@
             <div class = "flex_box">
         <div class="info_mail">
             <div class="info_type">이메일 아이디</div>
-            <div class="myinfo_text">유저 세션으로 불러올 이메일</div>
+            <div class="myinfo_text" ><?=$user_info['user_mail']?></div>
+        </div>
+        <div class="info_div">
+            <div class="info_type"> 비밀번호</div>
+            <div class="myinfo_text">********<button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+        </div>
+        <div class="info_div">
+            <div class="info_type">휴대전화 번호</div>
+            <div class="right_flex">
+                <div class="myinfo_text">
+                    <?=$user_info['user_phnum']?>
+                </div>
+                <div class="myinfo_right_button">
+                    <button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button>
+                </div>
+            </div>
+        </div>
+        <div class="info_div">
+            <div class="info_type">닉네임</div>
+            <div class="myinfo_text"><?=$user_info['nickname']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
             </div>
         </main>
