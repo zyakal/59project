@@ -55,11 +55,18 @@ if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user'
         </div>
         <div class="info_div">
             <div class="info_type"> 비밀번호</div>
-            <div class="myinfo_text">******** <button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+            <div class="myinfo_text">********<button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
         <div class="info_div">
             <div class="info_type">휴대전화 번호</div>
-            <div class="myinfo_text"><?=$user_info['user_phnum']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+            <div class="right_flex">
+                <div class="myinfo_text">
+                    <?=$user_info['user_phnum']?>
+                </div>
+                <div class="myinfo_right_button">
+                    <button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button>
+                </div>
+            </div>
         </div>
         <div class="info_div">
             <div class="info_type">닉네임</div>

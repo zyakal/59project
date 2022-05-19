@@ -9,12 +9,15 @@ include_once "db/db_user.php";
 
 $we = "";
 $wp = "";
+
+//아이디 또는 비밀번호 일치하는지 체크 후 로그인
 if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
 {
-    $param = [
+$param = [
         'user_mail' => $_POST['user_mail'],
         'user_pw' => $_POST['user_pw']
         ];
+        
     $result = login_user($param);
 
     if(empty($result))
@@ -27,6 +30,8 @@ if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
             header("Location: myinfo_mod.php?user_num=$user_num");
     }
 }
+
+//이메일 비밀번호 공백이면 뜨는 알림
 if(isset($_POST['user_mail']))
 {
 if ($_POST['user_mail'] == "") {

@@ -106,13 +106,15 @@ $join = 'join.php';
             ?>
         </footer>
     </div>
-    <?php if($on == 1)
+    <?php 
+    if(isset($_GET['user_num'])) {
+    if($on == 1)
     { ?>
     <script>
         const email = document.querySelector('#email');
         console.log(email);
         email.setAttribute('readonly',true);
     </script>
-    <?php }?>
+    <?php }}?>
 </body>
 </html>

@@ -11,7 +11,7 @@ $user_nm = $param['user_nm'];
 $sql = "INSERT INTO t_user
 (user_mail,user_pw,nickname,user_nm)
 value
-('$user_mail','$user_pw','$nickname','$user_nm')
+('$user_mail',password('$user_pw'),'$nickname','$user_nm')
 ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
@@ -52,9 +52,9 @@ function nkname_check(&$param)
     mysqli_close($conn); 
     if(isset($result['nickname']))
     {
-    return true;
+    return array(false,$result['nickname']);
     }
-    return false;
+    return array(true);
 }
 
 function login_user(&$param){
@@ -64,7 +64,7 @@ function login_user(&$param){
 
             $sql = "SELECT *
             from t_user 
-            where user_mail = '$user_mail' and user_pw = password($user_pw)
+            where user_mail = '$user_mail' and user_pw = password('$user_pw')
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
@@ -100,7 +100,7 @@ function upd_user_info(&$param)
 
     $sql = "UPDATE t_user
             SET user_mail = '$user_mail',
-            user_pw = '$user_pw',
+            user_pw = password('$user_pw'),
             nickname = '$nickname',
             user_nm = '$user_nm'
             WHERE user_num = '$user_num'
@@ -109,4 +109,46 @@ function upd_user_info(&$param)
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
     return $result;
+}
+
+function mailCheck($_str)
+// 아이디 이메일형식 정규화
+{
+    if (preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $_str) == false)
+    {
+        return array(false,"올바른 이메일 주소를 입력해주세요.");
+    }
+    else
+    {
+        return array(true);
+    }
+}
+
+function passwordCheck($_str)
+// 비밀번호 정규화
+{
+    $pw = $_str;
+    $num = preg_match('/[0-9]/u', $pw);
+    $eng = preg_match('/[a-z]/u', $pw);
+    $spe = preg_match("/[\!\@\#\$\%\^\&\*]/u",$pw);
+ 
+    if(strlen($pw) < 10 || strlen($pw) > 30)
+    {
+        return array(false,"비밀번호는 영문, 숫자, 특수문자를 혼합하여 최소 10자리 ~ 최대 30자리 이내로 입력해주세요.");
+        exit;
+    }
+ 
+    if(preg_match("/\s/u", $pw) == true)
+    {
+        return array(false, "비밀번호는 공백없이 입력해주세요.");
+        exit;
+    }
+ 
+    if( $num == 0 || $eng == 0 || $spe == 0)
+    {
+        return array(false, "영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
+        exit;
+    }
+ 
+    return array(true);
 }

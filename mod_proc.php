@@ -34,7 +34,7 @@ if(isset($_POST['user_mail']))
     'nickname' => $_POST['nickname']
     ];   
     $nkname_check = nkname_check($param);
-    if($nkname_check) {
+    if($nkname_check[1] !== $result['nickname'] && $nkname_check[1]) {
     $wk = $_POST['nickname']."는 중복된 닉네임입니다. <br> 다른 닉네임을 입력해주세요.";
     }
     else{
@@ -53,7 +53,20 @@ if($_POST['user_mail'] == $result['user_mail'])
         $wnm = "이름을 입력해주세요";
         }
 
-        if($_POST['user_nm'] !== "" && $_POST['nickname'] !== "" && $_POST['user_pw'] == $_POST['user_check_pw'] && $_POST['user_mail'] == $result['user_mail'])
+        $user_mail = $_POST['user_mail'];
+        $user_pw = $_POST['user_pw'];
+
+        $mailCheck = mailCheck($user_mail);
+        $passwordCheck = passwordCheck($user_pw);
+
+        if($passwordCheck[0] == false){
+        $we = $mailCheck[1];
+        }
+        if ($passwordCheck[0] == false){
+        $wp = $passwordCheck[1];
+        }
+
+        if($_POST['user_nm'] !== "" && $_POST['nickname'] !== "" && $_POST['user_pw'] == $_POST['user_check_pw'] && $_POST['user_mail'] == $result['user_mail'] && $mailCheck[0] && $passwordCheck[0])
         {        
             $param += [
                 'user_mail' => $_POST['user_mail'],
