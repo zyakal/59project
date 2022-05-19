@@ -1,9 +1,4 @@
 <?php
-include_once "db/db.php";
-$con = get_conn();
-$sql = "SELECT user_num, store_num FROM t_sub";
-$result = mysqli_query($con, $sql);
-
 
 ?>
 <!-- 은지 - Home -->
@@ -27,80 +22,87 @@ $result = mysqli_query($con, $sql);
             ?>
         </header>
         <main class="home--main">
-            <div id="top">
-                <a href="search.php">
+            <a href="search.php">
+                <div id="top">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span>Search</span>
                     <i class="fa-solid fa-sliders"></i>
-                </a>
-            </div>
-            <div class="slide_box">
-                <div class="slide_list">
-                    <div class="slide_item">
-                        <img src="../img/가죽공예.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/네일샵.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/도넛.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/미용실.jpg">
-                    </div>
-                    <div class="slide_item">
-                        <img src="../img/카페.jpg">
-                    </div>
                 </div>
-                <div class="slide_btn_box">
-                    <button class="button1">1</button>
-                    <button class="button2">2</button>
-                    <button class="button3">3</button>
-                    <button class="button4">4</button>
-                    <button class="button5">5</button>
-                </div>
-            </div>
-            <div class="categories">
+            </a>
+            <?php
+            include_once "main-banner.php";
+            ?>
+            <div class="home__categories">
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/hamburger.png">
-                        <div>food</div>
+                        <div class="category__img"><img src="img/banner_icon/Korean_Food.png"></div>
+                        <div class="category__name">한식</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/coffee.png">
-                        <div>카페</div>
+                        <div class="category__img"><img src="img/banner_icon/bunsik.png"></div>
+                        <div class="category__name">분식</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/도넛.png">
-                        <div>디저트</div>
+                        <div class="category__img"><img src="img/banner_icon/hamburger.png"></div>
+                        <div class="category__name">패스트푸드</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/nail.png">
-                        <div>네일</div>
+                        <div class="category__img"><img src="img/banner_icon/lunches.png"></div>
+                        <div class="category__name">도시락</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/hair.png">
-                        <div>미용실</div>
+                        <div class="category__img"><img src="img/banner_icon/Chinese_Food.png"></div>
+                        <div class="category__name">중식</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/hobby.png">
-                        <div>취미</div>
+                        <div class="category__img"><img src="img/banner_icon/American_Food.png"></div>
+                        <div class="category__name">양식</div>
                     </a>
                 </div>
                 <div class="category">
                     <a href="list.php">
-                        <img src="../img/yoga.png">
-                        <div>운동</div>
+                        <div class="category__img"><img src="img/banner_icon/Japanese_Food.png"></div>
+                        <div class="category__name">일식</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <div class="category__img"><img src="img/banner_icon/dessert.png"></div>
+                        <div class="category__name">커피,디저트</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <div class="category__img"><img src="img/banner_icon/nail.png"></div>
+                        <div class="category__name">네일샵</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <div class="category__img"><img src="img/banner_icon/hair.png"></div>
+                        <div class="category__name">헤어샵</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <div class="category__img"><img src="img/banner_icon/hobby.png"></div>
+                        <div class="category__name">취미</div>
+                    </a>
+                </div>
+                <div class="category">
+                    <a href="list.php">
+                        <div class="category__img"><img src="img/banner_icon/yoga.png"></div>
+                        <div class="category__name">운동</div>
                     </a>
                 </div>
             </div>
@@ -109,43 +111,59 @@ $result = mysqli_query($con, $sql);
                     <div>맞춤 알림</div>
                     <div class="recommend--nav" id="nav--right">모두보기</div>
                 </div>
-                <div class="recommend--list">
-                    <div>가게이미지</div>
-                    <div>가게이름</div>
-                </div>
-                <div class="recommend--list">
-                    <div>가게이미지</div>
-                    <div>가게이름</div>
-                </div>
-
                 <?php
                 require_once("recommend.php");
                 $re = new Recommend();
-
+                //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
+                $subs = array(
+                    "1" => array("쿠팡" => null, "베라" => 3.5, "술" => null),
+                    "5" => array("베라" =>null, "파바" => 3.0),
+                    "13" => array("술" => null),
+                    "20" => array("쿠팡" => 4.0, "술" => 2)
+                );
+                $result = $re->getRecommendations($subs, "13")
                 ?>
+                <div class="recommend--list">
+                    <?php
+                    $arr = array_keys($result);
+                    for($i=0; $i <count($arr); $i++) {
+                        print "$arr[$i]<br>";
+                    }
+                    ?>
+                </div>
             </div>
+            <div
+                id="kakao-talk-channel-chat-button"
+                data-channel-public-id="_kxastb"
+                data-title="consult"
+                data-size="small"
+                data-color="yellow"
+                data-shape="pc"
+                data-support-multiple-densities="true"
+                class="home__main__kakao"
+                ></div>
         </main>
         <footer>
             <?php
             include_once "footer.html";
             ?>
         </footer>
-        <script>
-            var num = 24.375;
-            document.querySelector('.button2').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num}rem)`;
-            })
-            document.querySelector('.button3').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*2}rem)`;
-            })
-            document.querySelector('.button4').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*3}rem)`;
-            })
-            document.querySelector('.button5').addEventListener('click', function() {
-                document.querySelector('.slide_list').style.transform = `translate(-${num*4}rem)`;
-            })
-        </script>
     </div>
+    <script src="js/slideShow.js"></script>
 </body>
+<script>
+  window.kakaoAsyncInit = function() {
+    Kakao.Channel.createChatButton({
+      container: '#kakao-talk-channel-chat-button',
+    });
+  };
 
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
+    fjs.parentNode.insertBefore(js, fjs);
+  })(document, 'script', 'kakao-js-sdk');
+</script>
 </html>
