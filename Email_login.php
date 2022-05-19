@@ -3,7 +3,6 @@
 버전 : 오구 1.0v
 -->
 
-
 <?php 
 
 include_once "db/db_user.php";
@@ -11,21 +10,37 @@ include_once "db/db_user.php";
 $we = "";
 $wp = "";
 
-if(isset($_POST['user_email']))
+//아이디 또는 비밀번호 일치하는지 체크 후 로그인
+if(isset($_POST['user_mail']) && isset($_POST['user_pw']))
 {
-$user_email = $_POST['user_email'];
-$user_pw = $_POST['user_pw'];
+$param = [
+        'user_mail' => $_POST['user_mail'],
+        'user_pw' => $_POST['user_pw']
+        ];
+        
+    $result = login_user($param);
 
-        if (!$user_email) {
+    if(empty($result))
+    {
+        $wp = "아이디 또는 비밀번호가 틀렸습니다.";
+    }
+    if(!empty($result))
+    {        
+            $user_num = $result['user_num'];
+            header("Location: myinfo_mod.php?user_num=$user_num");
+    }
+}
+
+//이메일 비밀번호 공백이면 뜨는 알림
+if(isset($_POST['user_mail']))
+{
+if ($_POST['user_mail'] == "") {
         $we = "이메일을 입력해주세요.";
     }
-        if (!$user_pw) {
+if ($_POST['user_pw'] == "") {
         $wp = "비밀번호를 입력해주세요.";
     }
-        else {        
- 
-        }
-        }
+}
     ?>
 
 <!DOCTYPE html>
@@ -58,16 +73,16 @@ $user_pw = $_POST['user_pw'];
             <div class = logo></div>
         </a>   
         </div> 
-        <form action="Email_login.php" method="post">
+        <form action="email_login.php" method="post">
         <div>
         <label class="login_email">   
-            <input type="text" name="user_email" placeholder="이메일 주소 입력" >
+            <input type="text" name="user_mail" placeholder="이메일 주소 입력" >
         </label>
         <p class="warning_massage"><?=$we?></p>
         </div>
         <div>
         <label class="login_pw">   
-            <input type="text" name="user_pw" placeholder="비밀번호 입력" >
+            <input type="password" name="user_pw" placeholder="비밀번호 입력" >
         </label>
         <p class="warning_massage"><?=$wp?></p>
         </div>
@@ -76,7 +91,7 @@ $user_pw = $_POST['user_pw'];
         </div> 
         </form>
         <div class="small_flex_box">
-            <a href="" class="small_text">이메일 회원가입</a>
+            <a href="join.php" class="small_text">이메일 회원가입</a>
             <a href="" class="small_text">이메일 찾기</a>
             <a href="" class="small_text">비밀번호 찾기</a>
         </div>
