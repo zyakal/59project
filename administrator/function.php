@@ -14,11 +14,11 @@ function card_top( $card_name){
 }   
 function weeks($week_value, $week_id){
     $i=0;
+    $week1 = "";
     for($i=0; $i<7; $i++){
-        echo $week_id[$i];
-        echo $week_value[$i];
-        echo `<input id='. $week_id[$i].' type='checkbox' name='" . $week_id[$i] . "' value='" . $week_value[$i] ."' hidden>
-        <label class='listing-card__info__week' for='" . $week_id[$i] ."'>". $week_value[$i] . "</label>`;
+        $week1 .= "<input id='$week_id[$i]' type='checkbox' name='$week_id[$i]' value='$week_value[$i]' hidden>
+        <label class='listing-card__info__week' for='$week_id[$i]'>$week_value[$i]</label>";
     }
+    return $week1;
 }
 

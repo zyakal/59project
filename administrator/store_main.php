@@ -95,8 +95,7 @@
 
     $sales_day_arr = explode(" ",$store_sales_day);
     
-    $test = weeks($week_value, $week_id);
-
+    
   
 
 ?>
@@ -221,21 +220,8 @@
                                 </div>
                                 
                                 <div class="listing-card__ctnt" name="sale_day">  
-                                    <?=$test?>
-                                    <!-- <input id="mon" type="checkbox" name="mon" value="월" hidden>
-                                    <label class="listing-card__info__week" for="mon">월</label>
-                                    <input id="tue" type="checkbox" name="tue" value="화" hidden>
-                                    <label class="listing-card__info__week" for="tue">화</label>
-                                    <input id="wed" type="checkbox" name="wed" value="수" hidden>
-                                    <label class="listing-card__info__week" for="wed">수</label>                                    
-                                    <input id="thu" type="checkbox" name="thu" value="목" hidden>
-                                    <label class="listing-card__info__week" for="thu">목</label>
-                                    <input id="fri" type="checkbox" name="fri" value="금" hidden>
-                                    <label class="listing-card__info__week" for="fri">금</label>
-                                    <input id="sat" type="checkbox" name="sat" value="토" hidden>
-                                    <label class="listing-card__info__week" for="sat">토</label>
-                                    <input id="sun" type="checkbox" name="sun" value="일" hidden>
-                                    <label class="listing-card__info__week" for="sun">일</label> -->
+                                    <?=weeks($week_value, $week_id)?>
+                                    
                                 </div>
                                 
                             </form>
