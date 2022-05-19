@@ -55,7 +55,7 @@
   background: #fcd34d;
 }
  
-.home__categories { margin: 15px 0; text-align: center;}
+.home__categories { margin: 100px 0; text-align: center;}
 .home__categories .category { background-color: var(--light-gray-bg); border-radius: 1rem;
     width: 80px; height: 75px; display: inline-flex; justify-content: center; align-items: center;
     margin: 10px;}

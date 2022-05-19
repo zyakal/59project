@@ -1,9 +1,4 @@
 <?php
-include_once "db/db.php";
-$con = get_conn();
-$sql = "SELECT user_num, store_num FROM t_sub";
-$result = mysqli_query($con, $sql);
-
 
 ?>
 <!-- 은지 - Home -->
@@ -116,20 +111,26 @@ $result = mysqli_query($con, $sql);
                     <div>맞춤 알림</div>
                     <div class="recommend--nav" id="nav--right">모두보기</div>
                 </div>
-                <div class="recommend--list">
-                    <div>가게이미지</div>
-                    <div>가게이름</div>
-                </div>
-                <div class="recommend--list">
-                    <div>가게이미지</div>
-                    <div>가게이름</div>
-                </div>
-
                 <?php
                 require_once("recommend.php");
                 $re = new Recommend();
-
+                //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
+                $subs = array(
+                    "1" => array("쿠팡" => null, "베라" => 3.5, "술" => null),
+                    "5" => array("베라" =>null, "파바" => 3.0),
+                    "13" => array("술" => null),
+                    "20" => array("쿠팡" => 4.0, "술" => 2)
+                );
+                $result = $re->getRecommendations($subs, "13")
                 ?>
+                <div class="recommend--list">
+                    <?php
+                    $arr = array_keys($result);
+                    for($i=0; $i <count($arr); $i++) {
+                        print "$arr[$i]<br>";
+                    }
+                    ?>
+                </div>
             </div>
             <div
                 id="kakao-talk-channel-chat-button"
