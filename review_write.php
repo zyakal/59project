@@ -18,156 +18,6 @@ $page_name = '리뷰페이지';
   <title>Document</title>
   <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
   <link rel="stylesheet" href="css/styles.css">
-  <style>
-    #full-stars-example .rating-group {
-      display: inline-flex;
-    }
-
-    #full-stars-example .rating__icon {
-      pointer-events: none;
-    }
-
-    #full-stars-example .rating__input {
-      position: absolute !important;
-      left: -9999px !important;
-    }
-
-    #full-stars-example .rating__label {
-      cursor: pointer;
-      padding: 0 0.1em;
-      font-size: 2rem;
-    }
-
-    #full-stars-example .rating__icon--star {
-      color: orange;
-    }
-
-    #full-stars-example .rating__icon--none {
-      color: #eee;
-    }
-
-    #full-stars-example .rating__input--none:checked+.rating__label .rating__icon--none {
-      color: red;
-    }
-
-    #full-stars-example .rating__input:checked~.rating__label .rating__icon--star {
-      color: #ddd;
-    }
-
-    #full-stars-example .rating-group:hover .rating__label .rating__icon--star {
-      color: orange;
-    }
-
-    #full-stars-example .rating__input:hover~.rating__label .rating__icon--star {
-      color: #ddd;
-    }
-
-    #full-stars-example .rating-group:hover .rating__input--none:not(:hover)+.rating__label .rating__icon--none {
-      color: #eee;
-    }
-
-    #full-stars-example .rating__input--none:hover+.rating__label .rating__icon--none {
-      color: red;
-    }
-
-    #half-stars-example .rating-group {
-      display: inline-flex;
-    }
-
-    #half-stars-example .rating__icon {
-      pointer-events: none;
-    }
-
-    #half-stars-example .rating__input {
-      position: absolute !important;
-      left: -9999px !important;
-    }
-
-    #half-stars-example .rating__label {
-      cursor: pointer;
-      padding: 0 0.1em;
-      font-size: 2rem;
-    }
-
-    #half-stars-example .rating__label--half {
-      padding-right: 0;
-      margin-right: -0.6em;
-      z-index: 2;
-    }
-
-    #half-stars-example .rating__icon--star {
-      color: orange;
-    }
-
-    #half-stars-example .rating__icon--none {
-      color: #eee;
-    }
-
-    #half-stars-example .rating__input--none:checked+.rating__label .rating__icon--none {
-      color: red;
-    }
-
-    #half-stars-example .rating__input:checked~.rating__label .rating__icon--star {
-      color: #ddd;
-    }
-
-    #half-stars-example .rating-group:hover .rating__label .rating__icon--star,
-    #half-stars-example .rating-group:hover .rating__label--half .rating__icon--star {
-      color: orange;
-    }
-
-    #half-stars-example .rating__input:hover~.rating__label .rating__icon--star,
-    #half-stars-example .rating__input:hover~.rating__label--half .rating__icon--star {
-      color: #ddd;
-    }
-
-    #half-stars-example .rating-group:hover .rating__input--none:not(:hover)+.rating__label .rating__icon--none {
-      color: #eee;
-    }
-
-    #half-stars-example .rating__input--none:hover+.rating__label .rating__icon--none {
-      color: red;
-    }
-
-    #full-stars-example-two .rating-group {
-      display: inline-flex;
-    }
-
-    #full-stars-example-two .rating__icon {
-      pointer-events: none;
-    }
-
-    #full-stars-example-two .rating__input {
-      position: absolute !important;
-      left: -9999px !important;
-    }
-
-    #full-stars-example-two .rating__input--none {
-      display: none;
-    }
-
-    #full-stars-example-two .rating__label {
-      cursor: pointer;
-      padding: 0 0.1em;
-      font-size: 2rem;
-    }
-
-    #full-stars-example-two .rating__icon--star {
-      color: orange;
-    }
-
-    #full-stars-example-two .rating__input:checked~.rating__label .rating__icon--star {
-      color: #ddd;
-    }
-
-    #full-stars-example-two .rating-group:hover .rating__label .rating__icon--star {
-      color: orange;
-    }
-
-    #full-stars-example-two .rating__input:hover~.rating__label .rating__icon--star {
-      color: #ddd;
-    }
-  </style>
 </head>
 
 <body>
@@ -189,28 +39,46 @@ $page_name = '리뷰페이지';
         </div>
         <div class="review--content">
           <form action="" method="post">
-            <div id="full-stars-example-two">
-              <div class="rating-group">
-                <input disabled checked class="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio">
-                <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-              </div>
-              <p class="desc" style="font-family: sans-serif; font-size:0.9rem">Full stars<br />
-                Must select a star value</p>
+            <div class="stars-widget">
+              <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_1" name="star" value="1" /></label>
+              <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_2" name="star" value="2" /></label>
+              <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_3" name="star" value="3" /></label>
+              <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_4" name="star" value="4" /></label>
+              <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_5" name="star" value="5" /></label>
+            </div>
+            <div>
+              <textarea name="review_ctnt" id="review_ctnt" cols="30" rows="10" placeholder="구독한 상품에 대한 솔직한 리뷰를 남겨주세요."></textarea>
+            </div>
+            <div>
+              <input type="submit" value="완료">
             </div>
           </form>
         </div>
       </div>
     </main>
   </div>
+  <script>
+    let radioInputs = document.getElementsByClassName("star-radio");
+
+    let selected = 0;
+
+    for (let idx = 0; idx < radioInputs.length; idx++) {
+      let current = radioInputs[idx];
+      current.onclick = function() {
+        selected = current.value;
+        for (let idx2 = 0; idx2 < radioInputs.length; idx2++) {
+          let radioGuy = radioInputs[idx2];
+          if (radioGuy.value <= selected) {
+            let icon = radioGuy.previousSibling;
+            icon.classList.add("checked");
+          } else {
+            let icon = radioGuy.previousSibling;
+            icon.classList.remove("checked");
+          }
+        }
+      };
+    }
+  </script>
 </body>
 
 </html>
