@@ -59,3 +59,26 @@ function select_store_review(&$param)
 
     return $result;
 };
+// 별 점수마다 개수와 총합 총개수
+function select_store_stars(&$param)
+{
+    $store_num = $param['store_num'];
+
+    $conn = get_conn();
+    $sql = "SELECT COUNT(CASE WHEN star_rating=5 THEN 1 END)AS star5,
+    COUNT(CASE WHEN star_rating=4 THEN 1 END)AS star4,
+    COUNT(CASE WHEN star_rating=3 THEN 1 END)AS star3,
+    COUNT(CASE WHEN star_rating=2 THEN 1 END)AS star2,
+    COUNT(CASE WHEN star_rating=1 THEN 1 END)AS star1,
+    (COUNT(CASE WHEN star_rating=5 THEN 1 END)+
+    COUNT(CASE WHEN star_rating=4 THEN 1 END)+
+    COUNT(CASE WHEN star_rating=3 THEN 1 END)+
+    COUNT(CASE WHEN star_rating=2 THEN 1 END)+
+    COUNT(CASE WHEN star_rating=1 THEN 1 END))AS star_total
+    FROM t_review as star WHERE store_num=$store_num";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+
+    return mysqli_fetch_assoc($result);
+};

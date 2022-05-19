@@ -265,26 +265,6 @@ main .store-main .store-cummuni a i {
   padding-left: 5px;
 }
 
-.five {
-  width: 90%;
-}
-
-.four {
-  width: 7%;
-}
-
-.three {
-  width: 2%;
-}
-
-.two {
-  width: 0%;
-}
-
-.one {
-  width: 0%;
-}
-
 .review--content .review--header {
   display: flex;
   justify-content: space-between;

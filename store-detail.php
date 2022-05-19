@@ -9,6 +9,17 @@ $param = [
 $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
 $store_reviews = select_store_review($param);
+$store_stars = select_store_stars($param);
+$star_avg = round(($store_stars['star_total'] / 5), 1);
+$stars_avg = [
+    'star5_avg' => round(($store_stars['star5'] / $store_stars['star_total']) * 100),
+    'star4_avg' => round(($store_stars['star4'] / $store_stars['star_total']) * 100),
+    'star3_avg' => round(($store_stars['star3'] / $store_stars['star_total']) * 100),
+    'star2_avg' => round(($store_stars['star2'] / $store_stars['star_total']) * 100),
+    'star1_avg' => round(($store_stars['star1'] / $store_stars['star_total']) * 100)
+];
+print_r($stars_avg);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +54,7 @@ $store_reviews = select_store_review($param);
                 <div class="store-point">
                     <div class="store-point__star">
                         <i class="fa-solid fa-star"></i>
-                        <div>4.5</div>
+                        <div><?= $star_avg ?></div>
                     </div>
                     <div class="store-point__heart">
                         <i class="fa-regular fa-heart"></i>
@@ -98,7 +109,7 @@ $store_reviews = select_store_review($param);
                     <div class="tabs__content">
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">가게소개</h2>
-                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                            <p class="tabs__text"><?= $store_info['store_info'] ?></p>
                         </div>
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">영업정보</h2>
@@ -147,13 +158,13 @@ $store_reviews = select_store_review($param);
                     <div class="tabs__content">
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">사장님 공지</h2>
-                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                            <p class="tabs__text"><?= $store_info['store_notice'] ?></p>
                         </div>
                         <div class="tabs__content__box">
                             <div class="point--box">
                                 <div class="star--box store--rating">
                                     <div class="form-group">
-                                        <h1 class="ratingPoint">3.0</h1>
+                                        <h1 class="ratingPoint"><?= $star_avg ?></h1>
                                     </div>
                                     <div class="star">
                                         <div class="stars-outer">
@@ -183,7 +194,7 @@ $store_reviews = select_store_review($param);
                                                     <div class="fill five"></div>
                                                 </div>
                                             </li>
-                                            <li>(2940)</li>
+                                            <li>(<?= $store_stars['star5'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             <li>
@@ -195,7 +206,7 @@ $store_reviews = select_store_review($param);
                                                     <div class="fill four"></div>
                                                 </div>
                                             </li>
-                                            <li>(230)</li>
+                                            <li>(<?= $store_stars['star4'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             3점
@@ -204,7 +215,7 @@ $store_reviews = select_store_review($param);
                                                     <div class="fill three"></div>
                                                 </div>
                                             </li>
-                                            <li>(50)</li>
+                                            <li>(<?= $store_stars['star3'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             2점
@@ -213,7 +224,7 @@ $store_reviews = select_store_review($param);
                                                     <div class="fill two"></div>
                                                 </div>
                                             </li>
-                                            <li>(5)</li>
+                                            <li>(<?= $store_stars['star2'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             1점
@@ -222,7 +233,7 @@ $store_reviews = select_store_review($param);
                                                     <div class="fill one"></div>
                                                 </div>
                                             </li>
-                                            <li>(7)</li>
+                                            <li>(<?= $store_stars['star1'] ?>)</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -284,6 +295,19 @@ $store_reviews = select_store_review($param);
             }
             row.addEventListener("click", handleRowClick);
         }
+        // 점수 평균으로 그래프 칠하기 
+        const graph = document.querySelector('.point--graph'),
+            five = graph.querySelector('.five'),
+            four = graph.querySelector('.four'),
+            three = graph.querySelector('.three'),
+            two = graph.querySelector('.two'),
+            one = graph.querySelector('.one');
+
+        five.style.width = '<?= $stars_avg['star5_avg'] ?>%';
+        four.style.width = '<?= $stars_avg['star4_avg'] ?>%';
+        three.style.width = '<?= $stars_avg['star3_avg'] ?>%';
+        two.style.width = '<?= $stars_avg['star2_avg'] ?>%';
+        one.style.width = '<?= $stars_avg['star1_avg'] ?>%';
     </script>
 </body>
 
