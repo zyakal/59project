@@ -45,6 +45,7 @@
                     include_once "categories.php";
                 ?>
                 <div class="top__nav">
+                    <div id="nav__right">주변가게보기</div>
                     <?php
                         while($row = mysqli_fetch_assoc($result)) { 
                             $param = [
@@ -53,7 +54,6 @@
                         $cate_nm = cate_name($param)['cate_nm'];
                         ?>
                         <div><?=$cate_nm?></div>
-                    <div id="nav__right">주변가게보기</div>
                 </div>
             </div>
             <div class="list__main__list">
