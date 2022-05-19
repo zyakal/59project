@@ -67,7 +67,24 @@
             return $result;
          }
 
-         function test (){
-             print "A";
-         }
-
+         
+        function sales_day(&$param){
+            $mon = $param['mon'];
+            $tue = $param['tue'];
+            $wed = $param['wed'];
+            $thu = $param['thu'];
+            $fri = $param['fri'];
+            $sat = $param['sat'];
+            $sun = $param['sun'];
+        
+            $sql = 
+            "   UPDATE t_store
+                SET sales_day = '$mon $tue $wed $thu $fri $sat $sun'
+                WHERE store_email = 'test@naver.com'
+        
+            ";
+            $conn = get_conn();
+        
+            $result = mysqli_query($conn, $sql);
+            
+        }

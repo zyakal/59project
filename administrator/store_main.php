@@ -1,31 +1,17 @@
 <?php
     include_once "../db/db_store.php";    
+    include_once "function.php";
     session_start();
     $login = $_SESSION['login_store'];
-    $login_email=$login['store_email'];
+    $login_email = $login['store_email'];
     
 
     $result = login_store($login);
     
     $store_name = $result['store_nm'];
-    $store_info = $result['store_info'];
+    $store_info = $result['store_info'];   
+    $store_sales_day = $result['sales_day'];
 
-
-    
-
-
-    function card_top( $card_name){
-        
-        echo " 
-            <div class='listing-card__info--top'>
-            <strong class='listing-card__name'> $card_name > </strong>
-                <span>
-                    <button class='btn_reset' type='reset' >취소</button>
-                    <button class='btn_submit' type='submit' >적용</button>
-                </span>
-            </div>
-            <div> &nbsp </div>";
-    }   
 
     $card_name1 = $store_name . " 가게 소개";
     $card_name2 = "영업날짜";
@@ -37,6 +23,79 @@
     $card_name8 = "메뉴 소개";
     $card_name9 = "메뉴 이미지";
     $card_name10 = "쿠폰 추가";
+
+    $param = [
+        'mon' => "",
+        'tue' => "",
+        'wed' => "",
+        'thu' => "",
+        'fri' => "",
+        'sat' => "",
+        'sun' => ""
+    ];
+
+   
+    if(isset($_POST['mon']))
+    {
+        $week_mon = $_POST['mon'];
+        $param['mon'] = $week_mon;
+    }
+    if(isset($_POST['tue']))
+    {
+        $week_tue = $_POST['tue'];
+        $param['tue'] = $week_tue;
+    }
+    if(isset($_POST['wed']))
+    {
+        $week_wed = $_POST['wed'];
+        $param['wed'] = $week_wed;
+    }
+    if(isset($_POST['thu']))
+    {
+        $week_thu = $_POST['thu'];
+        $param['thu'] = $week_thu;
+    }
+    if(isset($_POST['fri']))
+    {
+        $week_fri = $_POST['fri'];
+        $param['fri'] = $week_fri;
+    }
+    if(isset($_POST['sat']))
+    {
+        $week_sat = $_POST['sat'];
+        $param['sat'] = $week_sat;
+    }
+    if(isset($_POST['sun']))
+    {
+        $week_sun = $_POST['sun'];
+        $param['sun'] = $week_sun;
+    }
+    
+   
+    
+    // $week_mon = $_POST['mon'];
+    // $week_tue = $_POST['tue'];
+    // $week_wed = $_POST['wed'];
+    // $week_thu = $_POST['thu'];
+    // $week_fri = $_POST['fri'];
+    // $week_sat = $_POST['sat'];
+    // $week_sun = $_POST['sun'];
+
+    // $param = [
+    //     'mon' => $week_mon,
+    //     'tue' => $week_tue,
+    //     'wed' => $week_wed,
+    //     'thu' => $week_thu,
+    //     'fri' => $week_fri,
+    //     'sat' => $week_sat,
+    //     'sun' => $week_sun
+    // ];
+
+    $sales_day_arr = explode(" ",$store_sales_day);
+    print_r($sales_day_arr);
+
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +192,9 @@
         <div class="main">
             <div class="main__header">
                 <h2 class="main__title"> <?=$store_name?> 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
+                
             </div>
+            
             <div class="main__body">
                 <div class="listing-card">
                     <ul class="listing-card__list">                        
@@ -149,27 +210,28 @@
                         </li>
                         
                         <li class="listing-card__item"> 
-                            <!-- 실수로 수정하지 않도록 수정 버튼을 삽입 후 클릭하였을때만 수정되도록 구현 -->
-                            <form action="working_day_proc.php" method="post">
+                            <!-- 실수로 수정하지 않도록 수정 버튼을 삽입 후 클릭하였을때만 수정되도록 구현 필요-->
+                            <form method="post">
+                                <?= sales_day($param) ?>
                                 <div class="listing-card__info">
                                 <?= card_top($card_name2)?>                                
                                 </div>
-                                <div class="listing-card__ctnt" name="sale_day">
-                                    <button class="listing-card__info__week" type="submit" value="월">월</button>
-                                    <button class="listing-card__info__week" type="submit" value="화">화</button>
-                                    <button class="listing-card__info__week" type="submit" value="수">수</button>
-                                    <button class="listing-card__info__week" type="submit" value="목">목</button>
-                                    <button class="listing-card__info__week" type="submit" value="금">금</button>
-                                    <button class="listing-card__info__week" type="submit" value="토">토</button>
-                                    <button class="listing-card__info__week" type="submit" value="일">일</button>
-                                    
-                                    <!-- <input class="listing-card__info__week" type="button" value="월"></input>
-                                    <input class="listing-card__info__week" type="button" value="화"></input>
-                                    <input class="listing-card__info__week" type="button" value="수"></input>
-                                    <input class="listing-card__info__week" type="button" value="목"></input>
-                                    <input class="listing-card__info__week" type="button" value="금"></input>
-                                    <input class="listing-card__info__week" type="button" value="토"></input>
-                                    <input class="listing-card__info__week" type="button" value="일"></input> -->
+                                
+                                <div class="listing-card__ctnt" name="sale_day">                                    
+                                    <input id="week_mon" type="checkbox" name="mon" value="월" hidden>
+                                    <label class="listing-card__info__week" for="week_mon">월</label>
+                                    <input id="week_tue" type="checkbox" name="tue" value="화" hidden>
+                                    <label class="listing-card__info__week" for="week_tue">화</label>
+                                    <input id="week_wed" type="checkbox" name="wed" value="수" hidden>
+                                    <label class="listing-card__info__week" for="week_wed">수</label>                                    
+                                    <input id="week_thu" type="checkbox" name="thu" value="목" hidden>
+                                    <label class="listing-card__info__week" for="week_thu">목</label>
+                                    <input id="week_fri" type="checkbox" name="fri" value="금" hidden>
+                                    <label class="listing-card__info__week" for="week_fri">금</label>
+                                    <input id="week_sat" type="checkbox" name="sat" value="토" hidden>
+                                    <label class="listing-card__info__week" for="week_sat">토</label>
+                                    <input id="week_sun" type="checkbox" name="sun" value="일" hidden>
+                                    <label class="listing-card__info__week" for="week_sun">일</label>
                                 </div>
                                 
                             </form>

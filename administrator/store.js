@@ -4,7 +4,9 @@ weekButtons.forEach((weekButton, index) => {
   weekButton.addEventListener("click", () => {
     console.log(weekButtons[index].classList);
     if (weekButtons[index].classList == "listing-card__info__week") {
-      weekButtons[index].classList.toggle("active");
+      weekButtons[index].classList.add("active");
+    } else {
+      weekButtons[index].classList.remove("active");
     }
   });
 });
@@ -23,3 +25,5 @@ function Buttontoggle() {
 }
 mon.addEventListener("click", Buttontoggle);
 */
+let week = document.querySelector($sel_week);
+console.log(week);
