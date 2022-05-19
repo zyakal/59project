@@ -14,7 +14,4 @@
     margin-top: 35px;
     margin-bottom: 16px;}
 #nav__right { color: var(--main-pink); margin-left: 190px;}
-.listmain__list .list__item {background-color: var(--light-gray-bg);
-    width: 326px; height: 78px;
-    border-radius: 12px;
-    margin-bottom: 12px;}
+
