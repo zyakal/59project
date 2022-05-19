@@ -51,17 +51,13 @@
             </div>
             <div class="list__main__list">
                 <?php
-                    while($row = mysqli_fetch_assoc($result)) { ?>
-                    <div class="list__item">
-                        <div class="list__store__img"><img src="img/store/<?=$row['store_nm']?>/Main_img/<?=$row['store_photo']?>"></div>
-                        <div class="list__store__info">
-                            <div class="store__info__nm"><?=$row['store_nm']?></div>
-                            <div class="store__info__info">가게 정보</div>
-                            <div class="store__info__star_rating"><i class="fa-solid fa-star"></i>가게 별점</div>
-                        </div>
-                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                    </div>
-                <?php } ?>
+                    while($row = mysqli_fetch_assoc($result)) { 
+                    $param = [
+                        'store_num' => $row['store_num']
+                    ];
+                    $star = store_star($param);
+                    include_once "store_list_form.php";
+                } ?>
         </main>
         <footer>
             <?php
