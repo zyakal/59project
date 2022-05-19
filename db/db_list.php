@@ -19,4 +19,15 @@
         mysqli_close($conn);
         return $result;
     }
+
+    function cate_name(&$param) {
+        $store_num = $param['store_num'];
+        $conn = get_conn();
+        $sql = "SELECT A.cate_nm FROM t_categorie A
+        INNER JOIN t_store B
+        ON A.cate_num = B.cate_num
+        WHERE B.store_num = $store_num";
+        $result = mysqli_query($conn, $sql);
+        return mysqli_fetch_assoc($result);
+    }
     

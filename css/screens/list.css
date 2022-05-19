@@ -12,6 +12,12 @@
     
 .top__nav {display: inline-flex;
     margin-top: 35px;
-    margin-bottom: 16px;}
-#nav__right { color: var(--main-pink); margin-left: 190px;}
+    margin-bottom: 16px;
+    }
+#nav__right { 
+    position: fixed;
+    left: 270px;
+    color: var(--main-pink) !important;
+    cursor: pointer;
+}
 

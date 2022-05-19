@@ -45,16 +45,19 @@
                     include_once "categories.php";
                 ?>
                 <div class="top__nav">
-                    <div>햄버거</div>
+                    <?php
+                        while($row = mysqli_fetch_assoc($result)) { 
+                            $param = [
+                                'store_num' => $row['store_num']
+                            ];
+                        $cate_nm = cate_name($param)['cate_nm'];
+                        ?>
+                        <div><?=$cate_nm?></div>
                     <div id="nav__right">주변가게보기</div>
                 </div>
             </div>
             <div class="list__main__list">
                 <?php
-                    while($row = mysqli_fetch_assoc($result)) { 
-                    $param = [
-                        'store_num' => $row['store_num']
-                    ];
                     $star = store_star($param);
                     include_once "store_list_form.php";
                 } ?>
@@ -64,6 +67,13 @@
             include_once "footer.html";
             ?>
         </footer>
+        <script>
+            //a태그 대신 자바스크립트로 페이지 이동
+            const row = document.querySelector('#nav__right');
+            row.addEventListener("click", function(){
+                location.href = `map.php`;
+            });
+        </script>
     </div>
 </body>
 </html>
