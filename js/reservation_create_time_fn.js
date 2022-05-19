@@ -75,8 +75,11 @@ function makeResDays(n = howManyDays) {
   for (let i = 0; i < n; i++) {
     makeResStartTime.setDate(makeResStartTime.getDate() + (i ? 1 : 0));
     // console.log(makeResStartTime);
-    pickupDate = makeResStartTime.getDate();
-    fullDate = makeResStartTime.toDateString();
+    let pickupDate = makeResStartTime.getDate();
+    let pickupYear = makeResStartTime.getFullYear();
+    let pickupMonth = makeResStartTime.getMonth() + 1;
+    fullDate = pickupYear + "-" + pickupMonth + "-" + pickupDate;
+
     checked = i ? "" : "checked";
     let divDayBox = document.createElement("div");
     divDayBox.className = "day_num";

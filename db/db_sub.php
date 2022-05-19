@@ -1,5 +1,5 @@
 <?php
-    include('db/db_bd_home.php');
+    include_once('db/db_bd_home.php');
     function search_sub_for_user(&$param) {
         $user_num = $param['user_num'];
         $sql = 
@@ -16,5 +16,39 @@
         return $result;
     }
 
+    function search_now_reservation_for_user(&$param) {
+        $user_num = $param['user_num'];
+        $sql = 
+        "   SELECT A.*, B.user_num 
+            FROM t_usedsub as A
+            INNER JOIN t_sub as B
+            ON A.sub_num = B.sub_num
+            WHERE B.user_num = ${user_num}
+        ";
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
 
-    
+
+    function insert_usedsub(&$param) {
+        $sub_num = $param['sub_num'];
+        $reservation_date = $param['reservation_date'];
+        $remaining_count = $param['remaining_count'];
+
+        if($remaining_count<=0) {
+            return 0;
+        }
+        $sql = 
+        "   INSERT INTO t_usedsub
+            (sub_num, reservation_date)
+            VALUES
+            ('$sub_num', '$reservation_date')
+        ";
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+
+    }

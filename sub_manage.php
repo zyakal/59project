@@ -13,6 +13,15 @@
     }
     mysqli_free_result($result);
     $list_json = json_encode($list); 
+
+    $now_res_list = [];
+    $result = search_now_reservation_for_user($param);
+    foreach($result as $item) {
+        if($item['cd_sub_status']!=9) {
+            array_push($now_res_list, $item);
+        }
+    }
+    print_r($now_res_list);
     
 ?>
 <!DOCTYPE html>
@@ -27,14 +36,15 @@
 </head>
 <body>
     <div>
-        <label for="total_save"><input type="radio" name="manage_tab" id="total_save" onclick="getTotalSave()" checked>총 할인금액</label>
-        <label for="sub_list"><input type="radio" name="manage_tab" id="sub_list" onclick="getSubList()" >구독 리스트</label>
+        <label for="sub_list"><input type="radio" name="manage_tab" id="sub_list" onclick="getSubList()" checked >구독 리스트</label>
+        <label for="total_save"><input type="radio" name="manage_tab" id="total_save" onclick="getTotalSave()" >총 할인금액</label>
     </div>
     <div class="total-save-price__container">
         <div class="month-save-price__container"></div>
         <div><canvas id="bar-chart" width="300" height="230"></canvas></div>
     </div>
     <div class="sub-list__container"> </div>
+    <div class="reserved-sub"></div>
     <form action="reservation.php" method="post" id="info_form">
         <input type="hidden" id="store_num" name="store_num">
         <input type="hidden" id="sub_num" name="sub_num">

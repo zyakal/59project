@@ -40,8 +40,8 @@
 ?>
 
 <script>
-  let requireTimeMin = <?= $list_menu['required_time'] ?>;
-  console.log("requiredTime:"+requireTimeMin);
+  let requiredTimeMin = <?= $list_menu['required_time'] ?>;
+  console.log("requiredTime:"+requiredTimeMin);
 </script>
 
 
@@ -77,6 +77,8 @@
         <div>시간선택</div>
         <div class="time-box"></div>
       </div>
+      <input type="hidden" name="sub_num" value="<?=$sub_num?>">
+      <input type="hidden" name="remaining_count" value="<?=$remaining_count?>">
       <input type="submit" />
     </form>
     <script>

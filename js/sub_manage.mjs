@@ -7,16 +7,18 @@ let subListContainer = document.querySelector(".sub-list__container");
 let monthSave = getSaveData();
 
 console.log(list);
-getTotalSave();
 printSubList();
-//첫화면 총할인금액,구독리스트(display:none) 출력
+printTotalSave();
+//첫화면 총할인금액,총할인금액(display:none) 출력
 
 //총할인금액 출력 함수
-function getTotalSave(m = 0) {
-  console.log("getTotalSave");
-  divContainer1.style.display = "block";
+function printTotalSave(m = 0, moved = 0) {
+  console.log("movecount" + m);
+  if (!moved) {
+    divContainer1.style.display = "none";
+  }
   divContainer2.textContent = "";
-  subListContainer.style.display = "none";
+
   let divTextSave = document.createElement("div");
 
   let key = monthSave.keys.length - 1 + m;
@@ -70,7 +72,7 @@ function moveMonth(n, key) {
   } else if (moveCount < -key - 2) {
     moveCount += 1;
   }
-  getTotalSave(moveCount);
+  printTotalSave(moveCount, 1);
 }
 
 //구독리스트 display 스위치
@@ -80,9 +82,20 @@ function getSubList() {
   subListContainer.style.display = "block";
 }
 
+//총할인금액 displaay스위치
+function getTotalSave() {
+  subListContainer.style.display = "none";
+  // printTotalSave();
+  divContainer1.style.display = "block";
+  printChart();
+}
+
 //예약페이지이동
 function moveToReservation(i) {
   // console.log(list[i].store_num, list[i].sub_num, list[i].menu_num);
+  if (list[i].remaining_count <= 0) {
+    return alert("남은 횟수가 없습니다");
+  }
   document.getElementById("store_num").value = list[i].store_num;
   document.getElementById("sub_num").value = list[i].sub_num;
   document.getElementById("menu_num").value = list[i].menu_num;
@@ -168,23 +181,25 @@ monthSave.keys.forEach((val) => {
 });
 console.log(monthSaveVals);
 
-new Chart(document.getElementById("bar-chart"), {
-  type: "bar",
-  data: {
-    labels: monthSave.keys,
-    datasets: [
-      {
-        // label: "Population (millions)",
-        backgroundColor: "#3cba9f",
-        data: monthSaveVals,
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    title: {
-      // display: true,
-      // text: "Predicted world population (millions) in 2050",
+function printChart() {
+  new Chart(document.getElementById("bar-chart"), {
+    type: "bar",
+    data: {
+      labels: monthSave.keys,
+      datasets: [
+        {
+          // label: "Population (millions)",
+          backgroundColor: "#3cba9f",
+          data: monthSaveVals,
+        },
+      ],
     },
-  },
-});
+    options: {
+      legend: { display: false },
+      title: {
+        // display: true,
+        // text: "Predicted world population (millions) in 2050",
+      },
+    },
+  });
+}
