@@ -1,3 +1,10 @@
+<?php
+    include_once "db/db_list.php";
+
+    $result = sel_store_list();
+
+
+?>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,87 +13,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/screens/store_list.css">
     <title>59 - list</title>
 </head>
 <body>
     <div class="container">
         <header>
-            <?php
-            include_once "main-header.html";
-            ?>
-        </header>
-        <main>
-            <div class="listmain">
-                <div class="listmain--top">
-                    <div class="top--list">
-                        <div class="top--item">
-                            모두보기
-                        </div>
-                        <div class="top--item">
-                            버거
-                        </div>
-                        <div class="top--item">
-                            샌드위치
-                        </div>
-                        <div class="top--item">
-                            피자
-                        </div>
-                        <div class="top--item">
-                            샐러드
-                        </div>
-                        <div class="top--item">
-                            죽
-                        </div>
-                        <div class="top--item">
-                            이유식
-                        </div>
-                    </div>
-                    <div class="top--nav">
-                        <div>햄버거</div>
-                        <div>주변가게보기</div>
-                    </div>
+            <nav class="header--nav">
+                <div class="nav--logo">
+                <a href="home.php" class="nav--back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a> 
                 </div>
-                <div class="listmain--list">
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
-                    <div class="list--item">
-                        <div>가게사진</div>
-                        <div>그린버거</div>
-                    </div>
+                <div class="nav--addr">
+                    <a href="#">
+                        <i class="fa-solid fa-location-dot"></i>
+                        송현동
+                        <i class="fa-solid fa-angle-down"></i>
+                    </a>
+                </div>
+                <div class="nav--notice">
+                    <a href="#">
+                        <i class="fa-regular fa-bell"></i>
+                    </a>
+                </div>
+            </nav>
+        </header>
+        <main class="list__main">
+            <div class="list__main__top">
+                <?php
+                    include_once "categories.php";
+                ?>
+                <div class="top__nav">
+                    <?php
+                        while($row = mysqli_fetch_assoc($result)) { 
+                            $param = [
+                                'store_num' => $row['store_num']
+                            ];
+                        $cate_nm = cate_name($param)['cate_nm'];
+                        ?>
+                        <div><?=$cate_nm?></div>
+                    <div id="nav__right">주변가게보기</div>
                 </div>
             </div>
+            <div class="list__main__list">
+                <?php
+                    $star = store_star($param);
+                    include_once "store_list_form.php";
+                } ?>
         </main>
         <footer>
             <?php
             include_once "footer.html";
             ?>
         </footer>
+        <script>
+            //a태그 대신 자바스크립트로 페이지 이동
+            const row = document.querySelector('#nav__right');
+            row.addEventListener("click", function(){
+                location.href = `map.php`;
+            });
+        </script>
     </div>
 </body>
 </html>
