@@ -45,7 +45,10 @@
     $cate_num = $_POST['cate_num'];
     $store_ph = $_POST['store_ph'];
     $store_adr = $_POST['store_adr'];
-    $sales_day = $_REQUEST['sales_day'];
+    $sales_days = $_REQUEST['sales_day'];
+    for ($i=0; $i < count($sales_days); $i++) { 
+        $sales_day += $sales_days[$i];
+    }
     $sales_time = $_POST['sales_time_start'] . "," . $_POST['sales_time_end'];
     $business_num = $_POST['business_num'];
     $store_info = $_POST['store_info'];
