@@ -50,7 +50,7 @@ $page_name = '리뷰페이지';
               <textarea name="review_ctnt" id="review_ctnt" cols="30" rows="10" placeholder="구독한 상품에 대한 솔직한 리뷰를 남겨주세요."></textarea>
             </div>
             <div>
-              <input type="submit" value="완료">
+              <input class="review--submit" type="submit" value="완료">
             </div>
           </form>
         </div>

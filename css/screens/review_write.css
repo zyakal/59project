@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: grey;
+  color: var(--gray-bg);
   font-size: 18px;
 }
 
@@ -33,15 +33,26 @@
 }
 
 .stars-widget label:hover {
-  color: var(--star-yellow) gold;
+  color: var(--star-yellow);
   cursor: pointer;
 }
 #review_ctnt {
   border: none;
-  font-size: 16px;
-  padding: 15px;
+  font-size: var(--font-sm);
+  font-weight: bold;
+  padding: 12px;
   outline: none;
   background-color: #e8eeef;
   color: var(--text-gray);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+}
+.review--submit {
+  margin-top: 20px;
+  background-color: var(--main-pink);
+  color: var(--text-white);
+  padding: 10px 100px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
 }
