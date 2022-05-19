@@ -1,7 +1,7 @@
-function check_reserve(user_num) {
+function check_reserve_for_user(user_num) {
   setInterval(function () {
     //인터벌로 실행될 코드
-    fetch("../json_now_reservation_for_user.php?user_num=1")
+    fetch(`../json_now_reservation_for_user.php?${user_num}`)
       .then((response) => {
         return response.json();
       })
@@ -15,10 +15,6 @@ function check_reserve(user_num) {
 
 function whenNewReservation(nowRes) {
   console.log(nowRes);
-  // if (관리자일때) {
-  //   alert('');
-  // } else if (일반유저일때) {
-  // }
 }
 
-check_reserve();
+check_reserve(1);

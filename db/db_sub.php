@@ -31,6 +31,21 @@
         return $result;
     }
 
+    function search_now_reservation_for_store(&$param) {
+        $store_num = $param['store_num'];
+        $sql = 
+        "   SELECT A.*, B.store_num
+            FROM t_usedsub as A
+            INNER JOIN t_sub as B
+            ON A.sub_num = B.sub_num
+            WHERE B.store_num = $store_num
+        ";
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
+
 
     function insert_usedsub(&$param) {
         $sub_num = $param['sub_num'];
