@@ -11,36 +11,26 @@ $we = "";
 $wp = "";
 $wk = "";
 $wnm = "";
+$ue = "";
+$uk = "";
+$unm = "";
 
-if(isset($_POST['user_mail']))
+if(isset($_GET['user_num']))
 {
-    $param = [
-'user_mail' => $_POST['user_mail'],
-'user_pw' => $_POST['user_pw'],
-'user_check_pw' => $_POST['user_check_pw'],
-'nickname' => $_POST['nickname'],
-'user_nm' => $_POST['user_nm']
-    ];
+$user_num = $_GET['user_num'];
+$title = "회원정보수정";
+include_once "mod_proc.php";
+$on = 1;
+$join = "join.php?user_num=$user_num";
+}
+else
+{
+$title = "회원가입";
+include_once "join_proc.php";
+$join = 'join.php';
+}
 
-    if ($_POST['user_pw'] !== $_POST['user_check_pw']) {
-        $wp = "비밀번호가 일치하지 않습니다.";
-    }
-        if (!$_POST['user_mail']) {
-        $we = "이메일을 입력해주세요.";
-    }
-        if (!$_POST['nickname']) {
-        $wk = "닉네임을 입력해주세요.";
-    }
-        if (!$_POST['user_nm']) {
-        $wnm = "이름을 입력해주세요";
-        }
-        if($_POST['user_nm'] && $_POST['nickname'] && $_POST['user_pw'] == $_POST['user_check_pw'] && $_POST['user_mail'])
-        {        
-            $result = join_user($param);
-            header("Location: join.php");
-        }
-        }
-    ?>
+?>
 
 
 <!DOCTYPE html>
@@ -50,7 +40,7 @@ if(isset($_POST['user_mail']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>회원가입</title>
+    <title><?=$title?></title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -61,18 +51,18 @@ if(isset($_POST['user_mail']))
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
-            $page_name = "회원가입";
+            $page_name = $title;
             include_once "header.php";
             ?>
         </header>
         <!-- main -->
         <main>
             <div class="form_box">
-            <form name="frm" action="join.php" method="post">
+            <form name="frm" action="<?=$join?>" method="post">
         <div class="join_email">
             <label for="email">   
             이메일주소</label>
-            <input type="text" id="email" name="user_mail" placeholder="이메일 주소 입력" >
+            <input type="text" id="email" name="user_mail" placeholder="이메일 주소 입력" value='<?=$ue?>'>
         <p class="warning_massage"><?=$we?></p>
         </div>        
 
@@ -90,7 +80,7 @@ if(isset($_POST['user_mail']))
         <div class="join_nkname">
         <label id="join_nkname">   
         닉네임</label>
-            <input type="text" name="nickname" placeholder="닉네임 입력" >
+            <input type="text" name="nickname" placeholder="닉네임 입력" value=<?=$uk?>>
             <!-- required oninvalid="this.setCustomValidity('닉네임을 입력해주세요.')" oninput="setCustomValidity('')"> -->
          <p class="warning_massage"><?=$wk?></p>
         </div>
@@ -98,7 +88,7 @@ if(isset($_POST['user_mail']))
         <div class="join_nm">
          <label for="user_nm">   
         이름        </label>
-            <input type="text" id="user_nm" name="user_nm" placeholder="이름 입력" >
+            <input type="text" id="user_nm" name="user_nm" placeholder="이름 입력" value=<?=$unm?>>
             <!-- required oninvalid="this.setCustomValidity('이름을 입력해주세요.')" oninput="setCustomValidity('')" -->
         <p class="warning_massage"><?=$wnm?></p>
         </div>
@@ -116,5 +106,15 @@ if(isset($_POST['user_mail']))
             ?>
         </footer>
     </div>
+    <?php 
+    if(isset($_GET['user_num'])) {
+    if($on == 1)
+    { ?>
+    <script>
+        const email = document.querySelector('#email');
+        console.log(email);
+        email.setAttribute('readonly',true);
+    </script>
+    <?php }}?>
 </body>
 </html>
