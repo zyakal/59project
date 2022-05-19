@@ -74,7 +74,8 @@ function select_store_stars(&$param)
     COUNT(CASE WHEN star_rating=4 THEN 1 END)+
     COUNT(CASE WHEN star_rating=3 THEN 1 END)+
     COUNT(CASE WHEN star_rating=2 THEN 1 END)+
-    COUNT(CASE WHEN star_rating=1 THEN 1 END))AS star_total
+    COUNT(CASE WHEN star_rating=1 THEN 1 END))AS star_total,
+    AVG(star_rating)AS star_avg
     FROM t_review as star WHERE store_num=$store_num";
 
     $result = mysqli_query($conn, $sql);

@@ -4,6 +4,8 @@
 -->
 <?php
 include_once 'db/db_store_and_menu.php';
+// 세션에 장바구니 정보 담기
+session_start();
 
 $page_name = "메뉴";
 
@@ -55,7 +57,8 @@ if ($menu['cd_unit'] == 2) {
                 <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1637&q=80" alt="">
             </div>
             <div class="menu--box">
-                <form class="num--form">
+                <!-- 정보 -->
+                <form class="num--form" method="post" action="payment.php?user_num=">
                     <div class="num--box">
                         <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
                         <input type="number" class="number" value="1" />

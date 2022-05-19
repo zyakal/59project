@@ -279,3 +279,7 @@ main .store-main .store-cummuni a i {
   width: 100%;
   object-fit: cover;
 }
+
+.heart--click {
+  color: var(--main-pink);
+}

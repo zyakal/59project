@@ -1,7 +1,7 @@
 <?php
 include_once "db/db_store_and_menu.php";
 
-
+$store_detail = $_GET['store-detail'];
 $param = [
     "store_num" => 1
 ];
@@ -10,7 +10,9 @@ $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
 $store_reviews = select_store_review($param);
 $store_stars = select_store_stars($param);
-$star_avg = round(($store_stars['star_total'] / 5), 1);
+
+// 별점 평균과 각 점수별 퍼센트 만들기
+$star_avg = round($store_stars['star_avg'], 1);
 $stars_avg = [
     'star5_avg' => round(($store_stars['star5'] / $store_stars['star_total']) * 100),
     'star4_avg' => round(($store_stars['star4'] / $store_stars['star_total']) * 100),
@@ -18,8 +20,10 @@ $stars_avg = [
     'star2_avg' => round(($store_stars['star2'] / $store_stars['star_total']) * 100),
     'star1_avg' => round(($store_stars['star1'] / $store_stars['star_total']) * 100)
 ];
-print_r($stars_avg);
-
+// 쉬는날 배열만들기
+$week = ['월', '화', '수', '목', '금', '토', '일'];
+$sales_days = explode(',', $store_info['sales_day']);
+$off_days = array_diff($week, $sales_days);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,7 +128,9 @@ print_r($stars_avg);
                                 </tr>
                                 <tr>
                                     <td>휴무일</td>
-                                    <td>매주 월요일</td>
+                                    <td>매주 <?php foreach ($off_days as $day) {
+                                                print $day;
+                                            }; ?></td>
                                 </tr>
                                 <tr>
                                     <td>전화번호</td>
@@ -145,7 +151,7 @@ print_r($stars_avg);
                                 </tr>
                                 <tr>
                                     <td>리뷰수</td>
-                                    <td>200+</td>
+                                    <td><?= $store_stars['star_total'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>찜</td>
@@ -308,6 +314,16 @@ print_r($stars_avg);
         three.style.width = '<?= $stars_avg['star3_avg'] ?>%';
         two.style.width = '<?= $stars_avg['star2_avg'] ?>%';
         one.style.width = '<?= $stars_avg['star1_avg'] ?>%';
+
+        // 단골 찜하기 토글 
+        const heartCtn = document.querySelector(".store-point__heart"),
+            heartIcon = heartCtn.querySelector('i');
+
+        heartCtn.addEventListener('click', () => {
+            heartCtn.classList.toggle('heart--click');
+            heartIcon.classList.toggle('fa-regular');
+            heartIcon.classList.toggle('fa-solid');
+        })
     </script>
 </body>
 
