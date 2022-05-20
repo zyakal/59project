@@ -21,13 +21,13 @@ function weeks($week_value, $week_id, $sales_day_arr){
     for($i=0; $i<7; $i++){
         
         if($sales_day_arr[$i]==$week_value[$i] ){
-        $weeks_style = "active";
+        $weeks_style = " active";
         $check="checked='checked'";
 
     }
         else {$weeks_style =""; $check=""; }
         $week .= "<input id='$week_id[$i]' type='checkbox' name='$week_id[$i]' value='$week_value[$i]' $check hidden>
-        <label class='listing-card__info__week $weeks_style' for='$week_id[$i]'>$week_value[$i]</label>";
+        <label class='listing-card__info__week$weeks_style' for='$week_id[$i]'>$week_value[$i]</label>";
     }
     return $week;
 }

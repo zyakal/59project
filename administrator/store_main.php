@@ -12,6 +12,7 @@
     $store_info = $result['store_info'];   
     $store_sales_day = $result['sales_day'];
 
+    //메인 페이지 카드별 이름 설정
 
     $card_name1 = $store_name . " 가게 소개";
     $card_name2 = "영업날짜";
@@ -26,7 +27,7 @@
 
     
 
-   
+   //for문 돌리기위해 배열값 넣어줌
     
     $week_value = [
         "월",
@@ -66,7 +67,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="nanalike.css"> -->
+    
     <link rel="stylesheet" href="store.css">
     <title>사업자 메인 페이지</title>
 </head>
@@ -176,9 +177,8 @@
                                 <?= card_top($card_name2)?>                                
                                 </div>
                                 
-                                <div class="listing-card__ctnt" name="sale_day">  
-                                    <?=weeks($week_value, $week_id, $sales_day_arr)?>
-                                    
+                                <div class="listing-card__ctnt" name="sale_day">                                  
+                                <?=weeks($week_value, $week_id, $sales_day_arr)?>                                    
                                 </div>
                                 
                             </form>
