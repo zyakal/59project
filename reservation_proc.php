@@ -22,8 +22,10 @@
       echo "<script>alert('오류가 발생했습니다');
       window.location.href = 'sub_manage.php';</script>";
    } else {
+      //유저 본인에게 상태변경을 알리는 프로세스추가
+      echo "<script>alert('예약을 요청했습니다');
+      window.location.href = 'home.php';</script>";
       
-      header('Location: sub_manage.php');
      
    }
 ?>

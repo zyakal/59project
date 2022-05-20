@@ -67,3 +67,14 @@
         return $result;
 
     }
+
+    function change_cd_sub_status(&$param) {
+        $sub_num = $param['sub_num'];
+        $used_at = $param['used_at'];
+
+        $sql = 
+        "   UPDATE t_usedsub
+            SET cd_sub_status = 1
+            WHERE sub_num='$sub_num' AND used_at = '$used_at'
+        ";
+    }
