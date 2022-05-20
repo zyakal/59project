@@ -1,0 +1,63 @@
+.main--box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.review--content form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.review--title {
+  padding-top: 100px;
+}
+
+.stars-widget {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-bg);
+  font-size: 18px;
+}
+
+.stars-widget input {
+  display: none;
+}
+
+.stars-widget .checked {
+  color: var(--star-yellow);
+}
+
+.stars-widget label:hover {
+  color: var(--star-yellow);
+  cursor: pointer;
+}
+#review_ctnt {
+  border: none;
+  font-size: var(--font-sm);
+  font-weight: bold;
+  padding: 12px;
+  outline: none;
+  background-color: #e8eeef;
+  color: var(--text-gray);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
+}
+.review--submit {
+  margin-top: 20px;
+  background-color: var(--main-pink);
+  color: var(--text-white);
+  padding: 10px 100px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.filereader .image-input__input,
+.filereader .image-input__pseudo,
+.filereader .image-input__thumb {
+  width: 100%;
+}

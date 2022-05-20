@@ -1,40 +1,29 @@
 <?php
-include_once "db/db.php";
+include_once "db/db_store_and_menu.php";
 
-
+$store_detail = $_GET['store-detail'];
 $param = [
     "store_num" => 1
 ];
-// 가게정보
-function sel_store_info(&$param)
-{
-    $store_num = $param['store_num'];
 
-    $conn = get_conn();
-    $sql = "select * from t_store where store_num={$store_num}";
+$menu_info = select_store_menus($param);
+$store_info = select_one_store($param);
+$store_reviews = select_store_review($param);
+$store_stars = select_store_stars($param);
 
-    $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
-
-    return mysqli_fetch_assoc($result);
-}
-// 가게메뉴
-function sel_store_menu(&$param)
-{
-    $store_num = $param['store_num'];
-
-    $conn = get_conn();
-    $sql = "select * from t_menu where store_num={$store_num}";
-
-    $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
-
-    return $result;
-}
-$menu_info = sel_store_menu($param);
-
-$store_info = sel_store_info($param);
-
+// 별점 평균과 각 점수별 퍼센트 만들기
+$star_avg = round($store_stars['star_avg'], 1);
+$stars_avg = [
+    'star5_avg' => round(($store_stars['star5'] / $store_stars['star_total']) * 100),
+    'star4_avg' => round(($store_stars['star4'] / $store_stars['star_total']) * 100),
+    'star3_avg' => round(($store_stars['star3'] / $store_stars['star_total']) * 100),
+    'star2_avg' => round(($store_stars['star2'] / $store_stars['star_total']) * 100),
+    'star1_avg' => round(($store_stars['star1'] / $store_stars['star_total']) * 100)
+];
+// 쉬는날 배열만들기
+$week = ['월', '화', '수', '목', '금', '토', '일'];
+$sales_days = explode(',', $store_info['sales_day']);
+$off_days = array_diff($week, $sales_days);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,7 +58,7 @@ $store_info = sel_store_info($param);
                 <div class="store-point">
                     <div class="store-point__star">
                         <i class="fa-solid fa-star"></i>
-                        <div>4.5</div>
+                        <div><?= $star_avg ?></div>
                     </div>
                     <div class="store-point__heart">
                         <i class="fa-regular fa-heart"></i>
@@ -88,6 +77,7 @@ $store_info = sel_store_info($param);
                 </div>
             </div>
             <div class="store-tabs">
+                <!-- -------- 탭 헤드 -------- -->
                 <div class="tabs__head">
                     <div class="tabs__toggle is-active">
                         <a class="tabs__name">메뉴</a>
@@ -99,6 +89,7 @@ $store_info = sel_store_info($param);
                         <a class="tabs__name">리뷰</a>
                     </div>
                 </div>
+                <!-- -------- 탭 바디 -------- -->
                 <div class="tabs__body">
                     <!-- -------- 가게메뉴 -------- -->
                     <div class="tabs__content is-active">
@@ -122,7 +113,7 @@ $store_info = sel_store_info($param);
                     <div class="tabs__content">
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">가게소개</h2>
-                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                            <p class="tabs__text"><?= $store_info['store_info'] ?></p>
                         </div>
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">영업정보</h2>
@@ -137,7 +128,9 @@ $store_info = sel_store_info($param);
                                 </tr>
                                 <tr>
                                     <td>휴무일</td>
-                                    <td>매주 월요일</td>
+                                    <td>매주 <?php foreach ($off_days as $day) {
+                                                print $day;
+                                            }; ?></td>
                                 </tr>
                                 <tr>
                                     <td>전화번호</td>
@@ -158,7 +151,7 @@ $store_info = sel_store_info($param);
                                 </tr>
                                 <tr>
                                     <td>리뷰수</td>
-                                    <td>200+</td>
+                                    <td><?= $store_stars['star_total'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>찜</td>
@@ -171,17 +164,28 @@ $store_info = sel_store_info($param);
                     <div class="tabs__content">
                         <div class="tabs__content__box">
                             <h2 class="tabs__title">사장님 공지</h2>
-                            <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                            <p class="tabs__text"><?= $store_info['store_notice'] ?></p>
                         </div>
                         <div class="tabs__content__box">
                             <div class="point--box">
                                 <div class="star--box store--rating">
                                     <div class="form-group">
-                                        <h1 class="ratingPoint">3.7</h1>
+                                        <h1 class="ratingPoint"><?= $star_avg ?></h1>
                                     </div>
                                     <div class="star">
                                         <div class="stars-outer">
-                                            <div class="stars-inner shop--rating"></div>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <div class="stars-inner shop--rating">
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                                <i class="fa-solid fa-star"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -196,7 +200,7 @@ $store_info = sel_store_info($param);
                                                     <div class="fill five"></div>
                                                 </div>
                                             </li>
-                                            <li>(2940)</li>
+                                            <li>(<?= $store_stars['star5'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             <li>
@@ -208,7 +212,7 @@ $store_info = sel_store_info($param);
                                                     <div class="fill four"></div>
                                                 </div>
                                             </li>
-                                            <li>(230)</li>
+                                            <li>(<?= $store_stars['star4'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             3점
@@ -217,7 +221,7 @@ $store_info = sel_store_info($param);
                                                     <div class="fill three"></div>
                                                 </div>
                                             </li>
-                                            <li>(50)</li>
+                                            <li>(<?= $store_stars['star3'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             2점
@@ -226,7 +230,7 @@ $store_info = sel_store_info($param);
                                                     <div class="fill two"></div>
                                                 </div>
                                             </li>
-                                            <li>(5)</li>
+                                            <li>(<?= $store_stars['star2'] ?>)</li>
                                         </ul>
                                         <ul class="star-list-gray">
                                             1점
@@ -235,31 +239,44 @@ $store_info = sel_store_info($param);
                                                     <div class="fill one"></div>
                                                 </div>
                                             </li>
-                                            <li>(7)</li>
+                                            <li>(<?= $store_stars['star1'] ?>)</li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tabs__content__box">
-                            <div class="review--content">
-                                <div class="review--header">
-                                    <h2>닉네임</h2>
-                                    <div class="star--box">
-                                        <div class="star">
-                                            <div class="stars-outer">
-                                                <div class="stars-inner star5"></div>
+                            <?php foreach ($store_reviews as $review) { ?>
+                                <div class="review--content">
+                                    <div class="review--header">
+                                        <h2 class="nickname"><?= $review['nickname'] ?></h2>
+                                        <div class="star--box">
+                                            <div class="star">
+                                                <div class="stars-outer">
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <i class="fa-solid fa-star"></i>
+                                                    <div class="stars-inner star<?= $review['star_rating'] ?>">
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                        <i class="fa-solid fa-star"></i>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="review--image">
+                                        <img src="https://images.unsplash.com/photo-1615324606695-afaaf3a8554e?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974" alt="">
+                                    </div>
+                                    <div class="review--comment">
+                                        <?= $review['ctnt'] ?>
+                                    </div>
                                 </div>
-                                <div class="review--image">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="review--comment">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quos temporibus, iure eligendi asperiores laudantium iste itaque animi tenetur, obcaecati explicabo, ducimus perspiciatis facere veritatis enim minus ratione natus sapiente nemo!
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -284,6 +301,29 @@ $store_info = sel_store_info($param);
             }
             row.addEventListener("click", handleRowClick);
         }
+        // 점수 평균으로 그래프 칠하기 
+        const graph = document.querySelector('.point--graph'),
+            five = graph.querySelector('.five'),
+            four = graph.querySelector('.four'),
+            three = graph.querySelector('.three'),
+            two = graph.querySelector('.two'),
+            one = graph.querySelector('.one');
+
+        five.style.width = '<?= $stars_avg['star5_avg'] ?>%';
+        four.style.width = '<?= $stars_avg['star4_avg'] ?>%';
+        three.style.width = '<?= $stars_avg['star3_avg'] ?>%';
+        two.style.width = '<?= $stars_avg['star2_avg'] ?>%';
+        one.style.width = '<?= $stars_avg['star1_avg'] ?>%';
+
+        // 단골 찜하기 토글 
+        const heartCtn = document.querySelector(".store-point__heart"),
+            heartIcon = heartCtn.querySelector('i');
+
+        heartCtn.addEventListener('click', () => {
+            heartCtn.classList.toggle('heart--click');
+            heartIcon.classList.toggle('fa-regular');
+            heartIcon.classList.toggle('fa-solid');
+        })
     </script>
 </body>
 

@@ -3,7 +3,24 @@
 버전 : 오구 1.0v
 -->
 <?php
+include_once 'db/db_store_and_menu.php';
+// 세션에 장바구니 정보 담기
+session_start();
+
 $page_name = "메뉴";
+
+$menu_num = $_GET['menu_num'];
+$param = [
+    "menu_num" => $menu_num
+];
+
+$menu = select_one_menu($param);
+// 월--개 월--회 바꿔주는것
+if ($menu['cd_unit'] == 2) {
+    $menu['cd_unit'] = '개';
+} elseif ($menu['cd_unit'] == 1) {
+    $menu['cd_unit'] = '회';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,22 +57,28 @@ $page_name = "메뉴";
                 <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1637&q=80" alt="">
             </div>
             <div class="menu--box">
-                <form>
+                <!-- 정보 -->
+                <form class="num--form" method="post" action="payment.php?user_num=">
                     <div class="num--box">
                         <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
-                        <input type="number" class="number" value="0" />
+                        <input type="number" class="number" value="1" />
                         <div class="value-button .increase" onclick="increaseValue()" value="Increase Value">+</div>
                     </div>
                     <div class="menu--info">
-                        <div>
-                            <h1>그린라떼</h1>
-                            <h1 class="menu--price">
-                                20,000원
-                            </h1>
+                        <div class="menu--info__box">
+                            <div>
+                                <h2 class="menu--price"></h2>
+                            </div>
+                            <div>
+                                <h1><?= $menu['menu_nm'] ?></h1>
+                                <h1 class="menu--sub__price">
+                                    원
+                                </h1>
+                            </div>
                         </div>
-                        <p class="sub-count">월 10회</p>
+                        <p class="sub-count">월<?= $menu['subed_count'] ?><?= $menu['cd_unit']  ?></p>
                         <div class="menu--content">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem architecto ipsam eum dicta cum temporibus, placeat nobis rem recusandae dolore praesentium, asperiores, laborum iusto dolor aut natus deleniti ab nostrum?
+                            <?= $menu['menu_intro'] ?>
                         </div>
                     </div>
                     <div class="bottom--box">
@@ -66,6 +89,21 @@ $page_name = "메뉴";
         </main>
         <!-- footer 인클루드해서 사용 -->
     </div>
+    <script>
+        const valueButtons = document.querySelectorAll('.value-button');
+        const price = document.querySelector('.menu--price');
+        const subPrice = document.querySelector('.menu--sub__price');
+        const inputNum = document.querySelector('.number');
+        valueButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const inputValue = inputNum.value;
+                price.innerText = inputValue * <?= $menu['price'] ?>;
+                subPrice.innerText = `${inputValue * <?= $menu['subed_price'] ?>}원`;
+            })
+        })
+        price.innerText = inputNum.value * <?= $menu['price'] ?>;
+        subPrice.innerText = `${inputNum.value * <?= $menu['subed_price'] ?>}원`;
+    </script>
 </body>
 
 </html>
