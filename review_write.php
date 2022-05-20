@@ -39,7 +39,7 @@ $page_name = '가게이름';
           </h1>
         </div>
         <div class="review--content">
-          <form action="" method="post">
+          <form action="review_write_proc.php" method="post">
             <div class="stars-widget">
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_1" name="star" value="1" /></label>
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_2" name="star" value="2" /></label>

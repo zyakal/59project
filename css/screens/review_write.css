@@ -56,3 +56,8 @@
   font-weight: bold;
   cursor: pointer;
 }
+.filereader .image-input__input,
+.filereader .image-input__pseudo,
+.filereader .image-input__thumb {
+  width: 100%;
+}
