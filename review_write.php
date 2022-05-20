@@ -5,7 +5,7 @@
 <?php
 include_once 'db/db_store.php';
 
-$page_name = '리뷰페이지';
+$page_name = '가게이름';
 
 ?>
 <!DOCTYPE html>
@@ -17,6 +17,7 @@ $page_name = '리뷰페이지';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
+  <script src="js/image-input.js" defer></script>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -34,7 +35,7 @@ $page_name = '리뷰페이지';
       <div class="main--box">
         <div class="review--title">
           <h1 class="store--name">
-            가게이름
+            메뉴이름
           </h1>
         </div>
         <div class="review--content">
@@ -48,6 +49,15 @@ $page_name = '리뷰페이지';
             </div>
             <div>
               <textarea name="review_ctnt" id="review_ctnt" cols="30" rows="10" placeholder="구독한 상품에 대한 솔직한 리뷰를 남겨주세요."></textarea>
+            </div>
+            <div class="image-input">
+              <div id="inputWrapper" class="image-input__input-wrapper">
+                <input type="file" name="imageInput" id="imageInput" class="ui-input image-input__input" tabindex="0" />
+                <div class="image-input__pseudo">
+                  <div><i class="fa-solid fa-plus"></i></div>
+                  <div>이미지 넣기</div>
+                </div>
+              </div>
             </div>
             <div>
               <input class="review--submit" type="submit" value="완료">
