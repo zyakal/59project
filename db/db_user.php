@@ -87,6 +87,10 @@ function sel_user(&$param)
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     mysqli_close($conn);
+    if(!empty($row))
+    {       session_start();
+            $_SESSION['login_user'] = $row;
+    }
     return $row;
 }
 
@@ -152,3 +156,34 @@ function passwordCheck($_str)
  
     return array(true);
 }
+
+function user_Hours_of_use(&$param)
+{
+    $created_at = $param['created_at'];
+    $sub_created_at = mb_substr($created_at,0,10);
+
+$firstDate = $sub_created_at;
+$secondDate = date("Y-m-d");
+
+$dateDifference = abs(strtotime($secondDate) - strtotime($firstDate));
+
+$years  = floor($dateDifference / (365 * 60 * 60 * 24));
+$months = floor(($dateDifference - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+$days   = floor(($dateDifference - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 *24) / (60 * 60 * 24));
+
+echo "${years}" . '년 ' . "${months}" . '월 ' . "${days}" . "일 " ;
+}
+
+function all_discount_price(&$param)
+{
+    $user_num = $param['user_num'];
+    
+    $sql = "SELECT sum(save_price) from t_sub where user_num = $user_num
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row['sum(save_price)'];
+
+} 

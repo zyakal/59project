@@ -73,6 +73,10 @@ if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user'
             <div class="myinfo_text"><?=$user_info['nickname']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
             </div>
+        <div class="myinfo_small_flex_box">
+            <a href="logout.php">로그아웃</a>
+            <a href="user_dropout.php?user_num=<?=$login_user['user_num']?>">회원탈퇴</a>
+        </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>
