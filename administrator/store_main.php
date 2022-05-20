@@ -24,52 +24,9 @@
     $card_name9 = "메뉴 이미지";
     $card_name10 = "쿠폰 추가";
 
-    $param = [
-        'mon' => "",
-        'tue' => "",
-        'wed' => "",
-        'thu' => "",
-        'fri' => "",
-        'sat' => "",
-        'sun' => ""
-    ];
+    
 
    
-    if(isset($_POST['mon']))
-    {
-        $week_mon = $_POST['mon'];
-        $param['mon'] = $week_mon;
-    }
-    if(isset($_POST['tue']))
-    {
-        $week_tue = $_POST['tue'];
-        $param['tue'] = $week_tue;
-    }
-    if(isset($_POST['wed']))
-    {
-        $week_wed = $_POST['wed'];
-        $param['wed'] = $week_wed;
-    }
-    if(isset($_POST['thu']))
-    {
-        $week_thu = $_POST['thu'];
-        $param['thu'] = $week_thu;
-    }
-    if(isset($_POST['fri']))
-    {
-        $week_fri = $_POST['fri'];
-        $param['fri'] = $week_fri;
-    }
-    if(isset($_POST['sat']))
-    {
-        $week_sat = $_POST['sat'];
-        $param['sat'] = $week_sat;
-    }
-    if(isset($_POST['sun']))
-    {
-        $week_sun = $_POST['sun'];
-        $param['sun'] = $week_sun;
-    }
     
     $week_value = [
         "월",
@@ -213,14 +170,14 @@
                         
                         <li class="listing-card__item"> 
                             <!-- 실수로 수정하지 않도록 수정 버튼을 삽입 후 클릭하였을때만 수정되도록 구현 필요-->
-                            <form method="post">
-                                <?= sales_day($param) ?>
+                            <form action="sales_day_proc.php" method="post">
+                                
                                 <div class="listing-card__info">
                                 <?= card_top($card_name2)?>                                
                                 </div>
                                 
                                 <div class="listing-card__ctnt" name="sale_day">  
-                                    <?=weeks($week_value, $week_id)?>
+                                    <?=weeks($week_value, $week_id, $sales_day_arr)?>
                                     
                                 </div>
                                 

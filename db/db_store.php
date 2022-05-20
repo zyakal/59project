@@ -86,5 +86,6 @@
             $conn = get_conn();
         
             $result = mysqli_query($conn, $sql);
+            return $result;
             
         }
