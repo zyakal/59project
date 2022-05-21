@@ -24,11 +24,11 @@
         
         function id_check(&$param)
         {
-            $store_mail = $param['store_email'];
+            $store_email = $param['store_email'];
         
             $sql = "SELECT store_email 
                     from t_store
-                    where store_email = '$store_mail' 
+                    where store_email = '$store_email' 
             ";
             $conn = get_conn();
             $row = mysqli_query($conn, $sql);
@@ -88,4 +88,23 @@
             $result = mysqli_query($conn, $sql);
             return $result;
             
+        }
+
+        function store_time_insert($store_email){
+            $store_open_hour = $_POST['store_open_hour'];           
+            $store_open_minute = $_POST['store_opne_minute'];           
+            $store_close_hour = $_POST['store_close_hour'];           
+            $store_close_minute = $_POST['store_close_minute'];           
+            $sql = 
+            "   INSERT INTO t_store
+                (sales_time)
+                VALUE
+                ('$store_open_hour$store_open_minute,$store_close_hour$store_close_minute')
+                where store_email = '$store_email'
+            ";
+            $conn = get_conn();
+            $result = mysqli_query($conn, $sql);   
+            
+            mysqli_close($conn);   
+            return $result; 
         }

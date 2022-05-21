@@ -201,9 +201,21 @@
                             
                         </li>
                         <li class="listing-card__item">
-                            <form action="" method="">
+                            <form action="store_main_sales_time.php" method="post">
                             <div class="listing-card__info">
                             <?= card_top($card_name4)?>
+                            
+                                <div>
+                                    <h3>오픈 시간</h3>
+                                    <?= sales_time_open_hour()?>
+                                    <?= sales_time_open_minute()?> 
+                                </div>                            
+                                <div>
+                                    <h3>마감 시간</h3>
+                                    <?= sales_time_close_hour()?>
+                                    <?= sales_time_close_minute()?> 
+                                </div>
+                            
                             
                             </div>
                             </form>
