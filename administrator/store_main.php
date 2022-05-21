@@ -17,7 +17,7 @@
     $card_name1 = $store_name . " 가게 소개";
     $card_name2 = "영업날짜";
     $card_name3 = "가게 이미지";
-    $card_name4 = "매일";
+    $card_name4 = "영업시간";
     $card_name5 = "영업 임시중지";
     $card_name6 = "공지 한마디";
     $card_name7 = "메뉴 정보 변경";
@@ -59,7 +59,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
