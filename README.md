@@ -27,3 +27,4 @@ font awesome kit 본인껄로 바꿔주세요
 -   다양한 javascript 기능 및 꾸미기 https://codepen.io/
 
 localhost 주소 입력 할 때 59-project 대문자로 안써도 됩니다.
+스와이프 테스트 
