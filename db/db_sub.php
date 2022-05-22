@@ -1,5 +1,5 @@
 <?php
-    include_once('db/db_bd_home.php');
+    include_once('db/db.php');
     function search_sub_for_user(&$param) {
         $user_num = $param['user_num'];
         $sql = 
@@ -39,6 +39,7 @@
             INNER JOIN t_sub as B
             ON A.sub_num = B.sub_num
             WHERE B.store_num = $store_num
+            ORDER BY used_at
         ";
         $conn = get_conn();
         $result = mysqli_query($conn, $sql);
@@ -77,4 +78,8 @@
             SET cd_sub_status = 1
             WHERE sub_num='$sub_num' AND used_at = '$used_at'
         ";
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
     }

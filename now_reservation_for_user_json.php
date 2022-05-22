@@ -10,6 +10,6 @@
         array_push($now_reserve, $list);
         }
     }
-    // print_r($now_reserve);
+
     $now_reserve_json = json_encode($now_reserve);
     print $now_reserve_json;

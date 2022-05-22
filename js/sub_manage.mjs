@@ -1,9 +1,10 @@
 let moveCount = 0;
 //총할인금액 월 변경을 체크 위한 변수
 
-let divContainer1 = document.querySelector(".total-save-price__container");
-let divContainer2 = document.querySelector(".month-save-price__container");
-let subListContainer = document.querySelector(".sub-list__container");
+let divContainer1 = document.querySelector(".total-save-price");
+let divContainer2 = document.querySelector(".total-save-price__month");
+let subListContainer = document.querySelector(".sub-list");
+console.log(subListContainer);
 let monthSave = getSaveData();
 
 console.log(list);
@@ -45,14 +46,16 @@ function printSubList() {
     }
 
     let divEachSub = document.createElement("div");
+    divEachSub.classList.add("sub-list__each");
     let subHTML = `
-<div><img src='${list[i].menu_photo}'></div>
-<div>${list[i].menu_nm}</div>
-<div>사용가능 회수 ${list[i].remaining_count}</div>
-<div>${list[i].pay_date}~${list[i].end_date}</div>
-<div>총 할인금액 ${list[i].save_price}</div>
-<div>상세페이지</div>
-<div onclick="moveToReservation(${i})">예약하기</div>
+<div class='sub-list__img'><img src='${list[i].menu_photo}'></div>
+<div class='sub-list__menu-nm'>${list[i].menu_nm}</div>
+<div class='sub-list__remaining-count'>사용가능 회수 ${list[i].remaining_count}</div>
+<div class='sub-list__validity'>${list[i].pay_date}~${list[i].end_date}</div>
+<div class='sub-list__price'>${list[i].subed_price}</div>
+<div class='sub-list__save-price'>총 할인금액 ${list[i].save_price}</div>
+<div class='sub-list__detail'>상세페이지</div>
+<div class='sub-list__reservation' onclick="moveToReservation(${i})">예약하기</div>
 `;
     divEachSub.innerHTML = subHTML;
     subListContainer.append(divEachSub);

@@ -1,5 +1,5 @@
 <?php
-include_once('db/db_bd_home.php');
+include_once('db/db.php');
 function select_one_store(&$param) {
     $store_num = $param['store_num'];
 

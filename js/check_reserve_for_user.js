@@ -18,3 +18,5 @@ function whenNewReservation(nowRes) {
 }
 
 check_reserve(1);
+
+// 유저에게 어느경우에 알람이 필요한지 체크후 체계적으로 ㄱㄱ

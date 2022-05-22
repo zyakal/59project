@@ -1,12 +1,14 @@
 function check_reserve_for_store(store_num) {
+  if (store_num == 0) {
+    return;
+  }
   setInterval(function () {
     //인터벌로 실행될 코드
-    fetch(`../now_reservation_for_store_json.php?store_num=${store_num}`)
+    fetch(`../now_reservation_for_store_jason.php?store_num=${store_num}`)
       .then((response) => {
         return response.json();
       })
       .then((nowRes) => {
-        console.log(nowRes.length);
         if (nowRes.length > 0) {
           whenNewReservation(nowRes);
         }
@@ -17,9 +19,21 @@ function check_reserve_for_store(store_num) {
 function whenNewReservation(nowRes) {
   console.log(nowRes);
   if (confirm("예약 요청이 들어왔습니다")) {
-    location.href = "now_reservation_for_store_proc.php";
+    goPostValue(nowRes);
   }
 }
 
-// check_reserve_for_store(1);
-// 이 파일을 import하고 ()안에 store_num 넣어서 함수호출하면 알림기능 켜지는것.
+function goPostValue(nowRes) {
+  let f = document.createElement("form");
+  let obj;
+  obj = document.createElement("input");
+  obj.setAttribute("type", "hidden");
+  obj.setAttribute("name", "nowResJson");
+  obj.setAttribute("value", JSON.stringify(nowRes));
+
+  f.appendChild(obj);
+  f.setAttribute("method", "post");
+  f.setAttribute("action", "../now_reservation_for_store_proc.php");
+  document.body.appendChild(f);
+  f.submit();
+}

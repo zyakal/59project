@@ -1,5 +1,99 @@
 /* 개발용 임시작업 */
+header {
+  border: 1px solid blue;
+}
 
-.sub-list__container img {
+img {
   width: 100px;
+}
+
+main {
+  border: 1px solid red;
+
+  padding-top: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-manage-tap {
+  margin-bottom: 15px;
+  background-color: #e5e7eb;
+  width: 90%;
+  height: 45px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.sub-manage-tap div {
+  width: 48%;
+  height: 90%;
+  font-size: 1rem;
+}
+
+.sub-manage-tap input {
+  display: none;
+}
+
+.sub-manage-tap label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-gray);
+}
+
+.sub-manage-tap input:checked + label {
+  background-color: var(--main-pink);
+  border-radius: 8px;
+  color: var(--text-white);
+}
+
+.sub-list {
+  border: 1px solid red;
+  width: 90%;
+}
+
+.sub-list__each {
+  border: 1px solid blue;
+  margin-bottom: 15px;
+  height: 190px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 20px, 20px, 20px, 20px, 30px;
+  grid-template-areas:
+    "a b b b"
+    "a c c c"
+    "a d d e"
+    "a f f f"
+    "g g h h";
+}
+
+.sub-list__img {
+  grid-area: a;
+}
+.sub-list__menu-nm {
+  grid-area: b;
+}
+.sub-list__remaining-count {
+  grid-area: c;
+}
+.sub-list__validity {
+  grid-area: d;
+}
+.sub-list__price {
+  grid-area: e;
+}
+.sub-list__save-price {
+  grid-area: f;
+}
+.sub-list__detail {
+  grid-area: g;
+}
+.sub-list__reservation {
+  grid-area: h;
 }
