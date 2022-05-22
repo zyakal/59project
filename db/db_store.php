@@ -90,18 +90,31 @@
             
         }
 
-        function store_time_insert($store_email){
-            $store_open_hour = $_POST['store_open_hour'];           
-            $store_open_minute = $_POST['store_opne_minute'];           
-            $store_close_hour = $_POST['store_close_hour'];           
-            $store_close_minute = $_POST['store_close_minute'];           
-            $sql = 
+        function store_time_insert(&$login){
+            $store_email = $login['store_email'];
+            $sales_time = $login['sales_time'];
+    
+            $store_open_hour = $_POST['sales_open_hour'];           
+            $store_open_minute = $_POST['sales_open_minute'];           
+            $store_close_hour = $_POST['sales_close_hour'];           
+            $store_close_minute = $_POST['sales_close_minute'];      
+            if(!isset($sales_time))  {
+                $sql = 
             "   INSERT INTO t_store
                 (sales_time)
                 VALUE
                 ('$store_open_hour$store_open_minute,$store_close_hour$store_close_minute')
                 where store_email = '$store_email'
             ";
+            }
+            else{
+                $sql = 
+            "   UPDATE t_store
+                SET sales_time = '$store_open_hour$store_open_minute,$store_close_hour$store_close_minute'
+                where store_email = '$store_email'
+            ";
+            }
+            
             $conn = get_conn();
             $result = mysqli_query($conn, $sql);   
             

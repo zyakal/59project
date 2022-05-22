@@ -36,7 +36,7 @@ function sales_time_open_hour(){
     $hour = "";
     $i=0;
     $hour .= "<select name='sales_open_hour'><option value=''>시간 선택</option>";
-    for($i;$i < 25;$i++){
+    for($i;$i < 24;$i++){
         if($i < 10){
             $hour .= "<option value='0$i:'>0$i 시</option>";
         }
@@ -53,7 +53,7 @@ function sales_time_open_minute(){
     $minute = "";
     $i=0;
     $minute .= "<select name='sales_open_minute'><option value=''>분 선택</option>";
-    for($i;$i < 61;$i+=10){
+    for($i;$i < 60;$i+=10){
         if($i < 10){
             $minute .= "<option value='0$i'>0$i 분</option>";
         }
@@ -70,7 +70,7 @@ function sales_time_close_hour(){
     $hour = "";
     $i=0;
     $hour .= "<select name='sales_close_hour'><option value=''>시간 선택</option>";
-    for($i;$i < 25;$i++){
+    for($i;$i < 24;$i++){
         if($i < 10){
             $hour .= "<option value='0$i:'>0$i 시</option>";
         }
@@ -87,7 +87,7 @@ function sales_time_close_minute(){
     $minute = "";
     $i=0;
     $minute .= "<select name='sales_close_minute'><option value=''>분 선택</option>";
-    for($i;$i < 61;$i+=10){
+    for($i;$i < 60;$i+=10){
         if($i < 10){
             $minute .= "<option value='0$i'>0$i 분</option>";
         }

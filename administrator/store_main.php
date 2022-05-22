@@ -5,12 +5,14 @@
     $login = $_SESSION['login_store'];
     $login_email = $login['store_email'];
     
+    
 
     $result = login_store($login);
     
     $store_name = $result['store_nm'];
     $store_info = $result['store_info'];   
     $store_sales_day = $result['sales_day'];
+    $sales_time = $result['sales_time'];
 
     //메인 페이지 카드별 이름 설정
 
@@ -52,7 +54,7 @@
     
 
     $sales_day_arr = explode(" ",$store_sales_day);
-    
+    $sales_time_arr = explode(",",$sales_time);
     
   
 
@@ -206,15 +208,16 @@
                             <?= card_top($card_name4)?>
                             
                                 <div>
-                                    <h3>오픈 시간</h3>
+                                    <h3>오픈 시간 <?=$sales_time_arr[0]?></h3>
                                     <?= sales_time_open_hour()?>
                                     <?= sales_time_open_minute()?> 
                                 </div>                            
                                 <div>
-                                    <h3>마감 시간</h3>
+                                    <h3>마감 시간 <?=$sales_time_arr[1]?></h3>
                                     <?= sales_time_close_hour()?>
                                     <?= sales_time_close_minute()?> 
                                 </div>
+                                <?=$null_error?>
                             
                             
                             </div>

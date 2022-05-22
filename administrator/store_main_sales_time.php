@@ -6,8 +6,10 @@
     $login = $_SESSION['login_store'];
     $store_email = $login['store_email'];   
 
-    store_time_insert($store_email);
 
+    
+    
+    $result = store_time_insert($login);
     if($result){
         header("location: store_main.php");
     }
