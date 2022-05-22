@@ -14,6 +14,7 @@
 @import 'components/store-header.css';
 @import 'components/input-num.css';
 @import 'components/image-input.css';
+@import 'components/cate-list.css';
 
 /* --------- Screens --------- */
 @import 'screens/store-detail.css';
