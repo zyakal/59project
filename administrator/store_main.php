@@ -224,9 +224,24 @@
                             </form>
                         </li>
                         <li class="listing-card__item">
-                            <form action="" method="">
+                            <form action="store_main_dayOff.php" method="post">
                             <div class="listing-card__info">
                             <?= card_top($card_name5)?>
+                            <?php
+                                
+
+                            ?>
+                            
+                            <div>
+                                <input type = "date" name = "testDate_start" value = "<?=$testDate_start?>" ><span>부터</span>
+                                ~
+                                <input type = "date" name = "testDate_end" value = "<?=$testDate_end?>"> <span>까지</span>
+                                
+                            </div>
+                            
+                            
+                            
+
                             
                             </div>
                             </form>
