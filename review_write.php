@@ -5,16 +5,17 @@
 <?php
 include_once 'db/db_store_and_menu.php';
 
-$page_name = '가게이름';
-
 $store_num = $_POST['store_num'];
+$menu_num = $_POST['menu_num'];
 
 $param = [
-  'store_num' => $store_num
+  'store_num' => $store_num,
+  'menu_num' => $menu_num
 ];
 
-$store_name = select_one_store($param);
+$store_menu = select_one_menu($param);
 
+$page_name = '가게이름';
 ?>
 <!DOCTYPE html>
 <html lang="en">
