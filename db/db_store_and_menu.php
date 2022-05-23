@@ -35,12 +35,12 @@ function select_one_menu(&$param)
     $menu_num = $param['menu_num'];
 
     $sql =
-        "   SELECT * FROM t_menu
+        "SELECT * FROM t_menu
         WHERE menu_num = ${menu_num}
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
-    mysqli_close($conn);
+    mysqli_close($conn); 
     return mysqli_fetch_assoc($result);
 }
 // 가게 리뷰들 불러오기

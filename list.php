@@ -1,9 +1,6 @@
 <?php
     include_once "db/db_list.php";
 
-    $result = sel_store_list();
-
-
 ?>  
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +11,9 @@
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/screens/store_list.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+    <script src="js/swiper.js" defer></script>
     <title>59 - list</title>
 </head>
 <body>
@@ -40,27 +40,34 @@
             </nav>
         </header>
         <main class="list__main">
-            <div class="list__main__top">
+            <div class="list__main__top mySwiper">
                 <?php
                     include_once "categories.php";
                 ?>
                 <div class="top__nav">
-                    <?php
-                        while($row = mysqli_fetch_assoc($result)) { 
-                            $param = [
-                                'store_num' => $row['store_num']
-                            ];
-                        $cate_nm = cate_name($param)['cate_nm'];
-                        ?>
-                        <div><?=$cate_nm?></div>
                     <div id="nav__right">주변가게보기</div>
                 </div>
             </div>
             <div class="list__main__list">
                 <?php
-                    $star = store_star($param);
-                    include_once "store_list_form.php";
-                } ?>
+                    $result = sel_store_list();
+                    while($row = mysqli_fetch_assoc($result)) { 
+                        $param = [
+                            'store_num' => $row['store_num']
+                        ];
+                        $cate_nm = cate_name($param)['cate_nm'];
+                        ?>
+                        <div><?=$cate_nm?></div>
+                        <?php
+                        $star = store_star($param);
+                        if (!$star) {
+                            $star = "";
+                        } else {
+                            $star = $star['star'];
+                        }
+                        include_once "store_list_form.php";
+                    } ?>
+            </div>
         </main>
         <footer>
             <?php

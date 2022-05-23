@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <title>가게 - join</title>
 </head>
 <body>
@@ -50,8 +51,8 @@
                     <label><input type="checkbox" name="sales_day[]" value="일">일</label>
                 </div> 
                 <div>영업시간 <br>
-                    영업 시작 시간 : <input type="time" name="sales_time_start"><br>
-                    영업 종료 시간 : <input type="time" name="sales_time_end">
+                    영업 시작 시간 : <input type="text" class="timepicker" name="sales_time_start"><br>
+                    영업 종료 시간 : <input type="text" class="timepicker" name="sales_time_end">
                 </div>
                 <div>
                     <textarea name="store_info"cols="30" rows="10" placeholder="가게 소개(500자까지 입력가능)"></textarea>
@@ -67,6 +68,7 @@
     </div>
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
 <script>
 window.onload = function(){
     document.getElementById("store_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
@@ -78,5 +80,21 @@ window.onload = function(){
         }).open();
     });
 }
+
+$(document).ready(function(){
+    $('input.timepicker').timepicker({});
+});
+$('.timepicker').timepicker({
+    timeFormat: 'h:mm p',
+    interval: 60,
+    minTime: '10',
+    maxTime: '6:00pm',
+    defaultTime: '11',
+    startTime: '10:00',
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true
+});
+
 </script>
 </html>

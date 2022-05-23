@@ -5,10 +5,10 @@
             <div class="store__info__nm"><?=$row['store_nm']?></div>
             <div class="store__info__info">가게 정보</div>
             <?php 
-            if (isset($star)) { ?>
+            if ($star == "") { ?>
                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
             <?php } else { ?>
-                
+                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
             <?php } ?>
         </div>
         <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>

@@ -1,5 +1,5 @@
 .list__main { padding-top: 122px; margin: 0 32px;
-    /* overflow: hidden;     */
+    overflow: hidden;    
 }
 .top__list {width: 100vw;}
 .top__list .top__item { float: left;

@@ -11,6 +11,8 @@
 }
 #top i,span {color: var(--text-gray);}
 
+.home--main .home__main__top {margin: 0 90px;}
+
 .home--main {padding-top: 103px; margin: 0 30px;}
 
 .slide__box {
@@ -55,7 +57,7 @@
   background: #fcd34d;
 }
  
-.home__categories { margin: 100px 0; text-align: center;}
+.home__categories { margin: 10px 0; text-align: center;}
 .home__categories .category { background-color: var(--light-gray-bg); border-radius: 1rem;
     width: 80px; height: 75px; display: inline-flex; justify-content: center; align-items: center;
     margin: 10px;}

@@ -24,11 +24,11 @@
         
         function id_check(&$param)
         {
-            $store_mail = $param['store_email'];
+            $store_email = $param['store_email'];
         
             $sql = "SELECT store_email 
                     from t_store
-                    where store_email = '$store_mail' 
+                    where store_email = '$store_email' 
             ";
             $conn = get_conn();
             $row = mysqli_query($conn, $sql);
@@ -66,5 +66,84 @@
             mysqli_close($conn);
             return $result;
          }
-?>
 
+         
+        function sales_day(&$param){
+            $mon = $param['mon'];
+            $tue = $param['tue'];
+            $wed = $param['wed'];
+            $thu = $param['thu'];
+            $fri = $param['fri'];
+            $sat = $param['sat'];
+            $sun = $param['sun'];
+        
+            $sql = 
+            "   UPDATE t_store
+                SET sales_day = '$mon $tue $wed $thu $fri $sat $sun'
+                WHERE store_email = 'test@naver.com'
+        
+            ";
+            $conn = get_conn();
+        
+            $result = mysqli_query($conn, $sql);
+            return $result;
+            
+        }
+
+        function store_time_insert(&$login){
+            $store_email = $login['store_email'];
+            $sales_time = $login['sales_time'];
+    
+            $store_open_hour = $_POST['sales_open_hour'];           
+            $store_open_minute = $_POST['sales_open_minute'];           
+            $store_close_hour = $_POST['sales_close_hour'];           
+            $store_close_minute = $_POST['sales_close_minute'];      
+            if(!isset($sales_time))  {
+                $sql = 
+            "   INSERT INTO t_store
+                (sales_time)
+                VALUE
+                ('$store_open_hour$store_open_minute,$store_close_hour$store_close_minute')
+                where store_email = '$store_email'
+            ";
+            }
+            else{
+                $sql = 
+            "   UPDATE t_store
+                SET sales_time = '$store_open_hour$store_open_minute,$store_close_hour$store_close_minute'
+                where store_email = '$store_email'
+            ";
+            }
+            
+            $conn = get_conn();
+            $result = mysqli_query($conn, $sql);   
+            
+            mysqli_close($conn);   
+            return $result; 
+        }
+        function store_notice_insert(&$login){
+            $store_notice = $_POST['store_notice'];
+            $store_email = $login['store_email'];
+            if(!isset($store_notice))  {
+                $sql = 
+            "   INSERT INTO t_store
+                (store_notice)
+                VALUE
+                ('$store_notice')
+                where store_email = '$store_email'
+            ";
+            }
+            else{
+                $sql = 
+            "   UPDATE t_store
+                SET store_notice = '$store_notice'
+                where store_email = '$store_email'
+            ";
+            }
+            
+            $conn = get_conn();
+            $result = mysqli_query($conn, $sql);   
+            
+            mysqli_close($conn);   
+            return $result; 
+    }
