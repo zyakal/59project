@@ -1,6 +1,8 @@
 .swiper_box {
   width: 360px;
   height: 50px;
+  position: fixed;
+  top: 0;
 }
 .swiper {
   width: 100%;
