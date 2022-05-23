@@ -10,6 +10,7 @@ $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
 $store_reviews = select_store_review($param);
 $store_stars = select_store_stars($param);
+$cates = select_menu_cate($param);
 
 // 별점 평균과 각 점수별 퍼센트 만들기
 $star_avg = round($store_stars['star_avg'], 1);
@@ -22,8 +23,9 @@ $stars_avg = [
 ];
 // 쉬는날 배열만들기
 $week = ['월', '화', '수', '목', '금', '토', '일'];
-$sales_days = explode(',', $store_info['sales_day']);
+$sales_days = explode(' ', $store_info['sales_day']);
 $off_days = array_diff($week, $sales_days);
+$cate = '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,8 +37,11 @@ $off_days = array_diff($week, $sales_days);
     <title>Document</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
     <script src="js/store-tabs.js" defer></script>
     <script src="js/star.js" defer></script>
+    <script src="js/swiper.js" defer></script>
 </head>
 
 <body>
@@ -93,8 +98,17 @@ $off_days = array_diff($week, $sales_days);
                 <div class="tabs__body">
                     <!-- -------- 가게메뉴 -------- -->
                     <div class="tabs__content is-active">
-                        <div class="tabs__content__box">
-                            <?php foreach ($menu_info as $menu) { ?>
+                        <div class="tabs__content__box menu__content">
+                            <!-- -------- 메뉴 카테고리 스와이프-------- -->
+                            <?php
+                            include_once 'swiper.php';
+                            foreach ($menu_info as $menu) {
+                                if ($menu['menu_cate'] != $cate) {
+                                    $cate = $menu['menu_cate'];
+                                    print "<h1 id='$cate' class='cate_title'>$cate</h1>";
+                                }
+                            ?>
+                                <!-- -------- 카테고리별 메뉴 리스트 -------- -->
                                 <div class="menu-list">
                                     <div class="menu-info">
                                         <div class="menu_num" style="display: none;"><?= $menu['menu_num'] ?></div>

@@ -89,7 +89,7 @@ function select_menu_cate(&$param)
     $store_num = $param['store_num'];
 
     $conn = get_conn();
-    $sql = "SELECT menu_cate FROM t_menu WHERE store_num=$store_num GROUP BY menu_cate";
+    $sql = "SELECT menu_cate FROM t_menu WHERE store_num=$store_num GROUP BY menu_cate DESC";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
