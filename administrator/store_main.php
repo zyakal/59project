@@ -199,7 +199,7 @@
                                     </div>
                                 </div>
                             </form>
-                        </li>
+                        </li> 
                         <!-- 가게 이미지 -->
                         <li id = "store_img" class="listing-card__item">                        
                             <form action="store_photo.php" method="post" enctype="multipart/form-data">
