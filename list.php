@@ -54,14 +54,14 @@
             <div class="list__main__list">
                 <?php
                     while($row = mysqli_fetch_assoc($result)) { 
-                        $param = [
-                            'store_num' => $row['store_num']
-                        ];
-                        //$cate_nm = cate_name($param)['cate_nm'];
-                        ?>
-                        <!-- <div>$cate_nm?></div> -->
+                        // $param = [
+                        //     'store_num' => $row['store_num']
+                        // ];
+                        // $cate_nm = cate_name($param)['cate_nm'];
+                        // ?>
+                        <!-- <div><?=$cate_nm?></div> -->
                         <?php
-                        //$star = store_star($param);
+                        // $star = store_star($param);
                         include_once "store_list_form.php";
                     } ?>
             </div>
