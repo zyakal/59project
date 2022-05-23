@@ -13,7 +13,7 @@
     $store_info = $result['store_info'];   
     $store_sales_day = $result['sales_day'];
     $sales_time = $result['sales_time'];
-    $store_notice = $result['sotre_notice'];
+    $store_notice = $result['store_notice'];
 
     //메인 페이지 카드별 이름 설정
 
@@ -178,7 +178,7 @@
                     <ul class="listing-card__list">     
                         <!-- 공지 -->
                         <li id = "store_notice" class="listing-card__item"> 
-                            <form action="" method="">
+                            <form action="store_main_notice.php" method="post">
                             <div class="listing-card__info">
                             
                             <?= card_top($card_name6)?>

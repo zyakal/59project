@@ -121,3 +121,29 @@
             mysqli_close($conn);   
             return $result; 
         }
+        function store_notice_insert(&$login){
+            $store_notice = $_POST['store_notice'];
+            $store_email = $login['store_email'];
+            if(!isset($store_notice))  {
+                $sql = 
+            "   INSERT INTO t_store
+                (store_notice)
+                VALUE
+                ('$store_notice')
+                where store_email = '$store_email'
+            ";
+            }
+            else{
+                $sql = 
+            "   UPDATE t_store
+                SET store_notice = '$store_notice'
+                where store_email = '$store_email'
+            ";
+            }
+            
+            $conn = get_conn();
+            $result = mysqli_query($conn, $sql);   
+            
+            mysqli_close($conn);   
+            return $result; 
+    }
