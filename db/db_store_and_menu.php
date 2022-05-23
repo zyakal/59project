@@ -35,7 +35,7 @@ function select_one_menu(&$param)
     $menu_num = $param['menu_num'];
 
     $sql =
-        "   SELECT * FROM t_menu
+        "SELECT * FROM t_menu
         WHERE menu_num = ${menu_num}
     ";
     $conn = get_conn();
