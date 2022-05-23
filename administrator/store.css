@@ -1,3 +1,7 @@
+@import "../css/reset.css";
+@import "../css/variables.css";
+@import "../css/components/image-input.css";
+
 * {
   margin: 0;
   padding: 0;

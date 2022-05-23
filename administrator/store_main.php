@@ -13,6 +13,7 @@
     $store_info = $result['store_info'];   
     $store_sales_day = $result['sales_day'];
     $sales_time = $result['sales_time'];
+    $store_notice = $result['sotre_notice'];
 
     //메인 페이지 카드별 이름 설정
 
@@ -181,6 +182,9 @@
                             <div class="listing-card__info">
                             
                             <?= card_top($card_name6)?>
+                            <div>
+                                <textarea name="store_notice" placeholder="공지사항"><?=$store_notice?></textarea>
+                            </div>
                             
                             </div>
                             </form>
@@ -290,8 +294,8 @@
                                 <div><textarea name="" id="" cols="30" rows="10"></textarea>
                             </div>
                             <div class="store_img_input"> 메뉴 이미지</div>
-                                <div><label>
-                                    <input type="file" name="img" accept="image/*">
+                                <div><label class="">
+                                    <input class="" type="file" name="img" accept="image/*">
                                 </label>
                             </div>
                             <div>월 총 횟수</div>
