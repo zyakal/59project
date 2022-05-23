@@ -52,7 +52,7 @@ $page_name = "마이페이지";
         <!-- header 인클루드해서 사용 -->
         <header>
             <?php
-            include_once "header.php";
+            include_once "user-header.php";
             ?>
         </header>
         <!-- main -->

@@ -108,16 +108,16 @@
 }
 
 .myinfo_login_intro {
-  /* Body regular */
-
-  font-family: "Sk-Modernist";
+  font-family: "Poppins";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 150%;
-  /* identical to box height, or 21px */
+  /* or 21px */
 
-  color: #000000;
+  text-align: center;
+
+  color: #535353;
 }
 
 .myinfo_login_box {

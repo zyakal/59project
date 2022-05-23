@@ -43,7 +43,7 @@ if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user'
         <header>
             <?php
             $page_name = "내 정보 수정";
-            include_once "header.php";
+            include_once "user-header.php";
             ?>
         </header>
         <!-- main -->
