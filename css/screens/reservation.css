@@ -42,3 +42,18 @@
   height: 280px;
   padding: 26.3px 30px;
 }
+.day_num {
+  display: flex;
+}
+
+.day_num label {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100%;
+}
+.day_num input {
+  display: none;
+}
