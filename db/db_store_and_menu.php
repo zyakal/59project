@@ -1,5 +1,5 @@
 <?php
-include_once('db/db.php');
+include_once('db.php');
 
 // 가게하나 불러오기
 function select_one_store(&$param)
@@ -83,3 +83,15 @@ function select_store_stars(&$param)
 
     return mysqli_fetch_assoc($result);
 };
+// 메뉴 카테고리 불러오기
+function select_menu_cate(&$param)
+{
+    $store_num = $param['store_num'];
+
+    $conn = get_conn();
+    $sql = "SELECT menu_cate FROM t_menu WHERE store_num=$store_num GROUP BY menu_cate DESC";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
