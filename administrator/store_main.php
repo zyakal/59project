@@ -17,14 +17,13 @@
     //메인 페이지 카드별 이름 설정
 
     $card_name1 = $store_name . " 가게 소개";
-    $card_name2 = "영업날짜";
+    $card_name2 = "영업 요일";
     $card_name3 = "가게 이미지";
     $card_name4 = "영업시간";
-    $card_name5 = "영업 임시중지";
+    $card_name5 = "영업 임시휴일";
     $card_name6 = "공지 한마디";
-    $card_name7 = "메뉴 정보 변경";
-    $card_name8 = "메뉴 소개";
-    $card_name9 = "메뉴 이미지";
+    $card_name7 = "메뉴 등록";
+    $card_name8 = "메뉴 편집";
     $card_name10 = "쿠폰 추가";
 
     
@@ -48,6 +47,15 @@
         "fri",
         "sat",
         "sun"
+    ];
+    $menu_cate = [
+        "음식",
+        "의류",
+        "여행/도서",
+        "생필품",
+        "뷰티",
+        "출산/유아",
+        "스포츠"
     ];
 
 
@@ -84,25 +92,32 @@
                         <strong class="nav__title">가게</strong>
                         <div class="nav__list">                            
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">전체현황</a>
+                                <a href=""  class="nav__link">전체현황</a>
                             </div>
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">가게관리</a>
+                                <a href="#store_notice" class="nav__link">공지 한마디</a>
                             </div>
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">영업임시중지</a>
+                                <a href="#store_info"  class="nav__link">가게 소개</a>
+                            </div>   
+                            
+                            <div class="nav__item">
+                                <a href="#store_img"  class="nav__link">가게 이미지</a>
                             </div>                            
                         </div>
                     </div>
 
                     <div class="nav__container">
-                        <strong class="nav__title">리뷰</strong>
+                        <strong class="nav__title">영업</strong>
                         <div class="nav__list">                            
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">리뷰관리</a>
+                                <a href="#store_week"  class="nav__link">영업 요일</a>
                             </div>
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">공지 한마디</a>
+                                <a href="#store_time"  class="nav__link">영업 시간</a>
+                            </div>
+                            <div class="nav__item">
+                                <a href="#store_dayOff"  class="nav__link">임시 휴일</a>
                             </div>                           
                         </div>
                     </div>
@@ -111,10 +126,10 @@
                         <strong class="nav__title">메뉴</strong>
                         <div class="nav__list">                            
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">메뉴판 관리</a>
+                                <a href="#store_menu_input"  class="nav__link">메뉴 등록</a>
                             </div>
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">메뉴관리</a>
+                                <a href="#store_menu_edit"  class="nav__link">메뉴 편집</a>
                             </div>                           
                         </div>
                     </div>
@@ -122,7 +137,7 @@
                         <strong class="nav__title">혜택</strong>
                         <div class="nav__list">                            
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">쿠폰내역</a>
+                                <a href=""  class="nav__link">쿠폰내역</a>
                             </div>                                        
                         </div>
                     </div>
@@ -130,10 +145,10 @@
                         <strong class="nav__title">주문정산</strong>
                         <div class="nav__list">                            
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">주문내역</a>
+                                <a href=""  class="nav__link">주문내역</a>
                             </div>                                        
                             <div class="nav__item">
-                                <a href="" target="_blank" class="nav__link">정산내역</a>
+                                <a href=""  class="nav__link">정산내역</a>
                             </div>                                        
                         </div>
                     </div>
@@ -159,8 +174,19 @@
             
             <div class="main__body">
                 <div class="listing-card">
-                    <ul class="listing-card__list">                        
-                        <li class="listing-card__item">
+                    <ul class="listing-card__list">     
+                        <!-- 공지 -->
+                        <li id = "store_notice" class="listing-card__item"> 
+                            <form action="" method="">
+                            <div class="listing-card__info">
+                            
+                            <?= card_top($card_name6)?>
+                            
+                            </div>
+                            </form>
+                        </li> 
+                        <!-- 가게 소개 -->
+                        <li id = "store_info" class="listing-card__item">
                             <form class="listing-card__form" action="store_main_intro.php" method="post">
                                 <div class="listing-card__info">
                                     <?= card_top($card_name1)?>
@@ -170,8 +196,26 @@
                                 </div>
                             </form>
                         </li>
-                        
-                        <li class="listing-card__item"> 
+                        <!-- 가게 이미지 -->
+                        <li id = "store_img" class="listing-card__item">                        
+                            <form action="store_photo.php" method="post" enctype="multipart/form-data">
+                                <div class="listing-card__info">
+                                <?= card_top($card_name3)?>
+                                <div class="store_img_input"><label><input type="file" name="img" accept="image/*"></label></div>
+                                <?php  
+                                    $session_img = $_SESSION["login_store"]["store_photo"];
+                                    $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
+                                ?>
+                                <div class="store__img">                                    
+                                    <img src="<?=$store_img?>">
+                                </div>
+                            </a>
+                                </div>
+                            </form>
+                            
+                        </li>
+                        <!-- 영업 요일 -->
+                        <li id = "store_week" class="listing-card__item"> 
                             <!-- 실수로 수정하지 않도록 수정 버튼을 삽입 후 클릭하였을때만 수정되도록 구현 필요-->
                             <form action="sales_day_proc.php" method="post">
                                 
@@ -185,24 +229,9 @@
                                 
                             </form>
                         </li>
-                        <li class="listing-card__item">                        
-                            <form action="store_photo.php" method="post" enctype="multipart/form-data">
-                                <div class="listing-card__info">
-                                <?= card_top($card_name3)?>
-                                <div><label><input type="file" name="img" accept="image/*"></label></div>
-                                <?php  
-                                    $session_img = $_SESSION["login_store"]["store_photo"];
-                                    $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
-                                ?>
-                                <div class="circular__img circular__size">                                    
-                                    <img src="<?=$store_img?>">
-                                </div>
-                            </a>
-                                </div>
-                            </form>
-                            
-                        </li>
-                        <li class="listing-card__item">
+                        
+                        <!-- 영업 시간 -->
+                        <li id = "store_time" class="listing-card__item">
                             <form action="store_main_sales_time.php" method="post">
                             <div class="listing-card__info">
                             <?= card_top($card_name4)?>
@@ -217,13 +246,13 @@
                                     <?= sales_time_close_hour()?>
                                     <?= sales_time_close_minute()?> 
                                 </div>
-                                <?=$null_error?>
                             
                             
                             </div>
                             </form>
                         </li>
-                        <li class="listing-card__item">
+                        <!-- 임시 휴일 -->
+                        <li id = "store_dayOff" class="listing-card__item">
                             <form action="store_main_dayOff.php" method="post">
                             <div class="listing-card__info">
                             <?= card_top($card_name5)?>
@@ -246,30 +275,33 @@
                             </div>
                             </form>
                         </li>
-                        <li class="listing-card__item">
-                            <form action="" method="">
-                            <div class="listing-card__info"><strong class="listing-card__name">메뉴 편집</strong>
-                            
-                            </div>
-                            </form>
-                        </li>
-                        <li class="listing-card__item">
-                            <form action="" method="">
-                            <div class="listing-card__info">
-                            <?= card_top($card_name6)?>
-                            
-                            </div>
-                            </form>
-                        </li>
-                        <li class="listing-card__item">
+                        
+                        <!-- 메뉴 등록 -->
+                        <li id = "store_menu_input" class="listing-card__item">
                             <form action="" method="">
                             <div class="listing-card__info">
                             <?= card_top($card_name7)?>
+                            <div>메뉴 카테고리</div>
+                            <div><?=menu_select($menu_cate)?></div>
+                            <div>메뉴명</div>
+                                <div><input type="text" name="" id="">
+                            </div>
+                            <div>메뉴 소개</div>
+                                <div><textarea name="" id="" cols="30" rows="10"></textarea>
+                            </div>
+                            <div class="store_img_input"> 메뉴 이미지</div>
+                                <div><label>
+                                    <input type="file" name="img" accept="image/*">
+                                </label>
+                            </div>
+                            <div>월 총 횟수</div>
+                            <div><?=sales_count()?></div>
                             
                             </div>
                             </form>
                         </li>
-                        <li class="listing-card__item">
+                        <!-- 메뉴 편집 -->
+                        <li id = "store_menu_edit" class="listing-card__item">
                             <form action="" method="">
                             <div class="listing-card__info">
                             <?= card_top($card_name8)?>
@@ -277,14 +309,7 @@
                             </div>  
                           </form>
                           </li>
-                          <li class="listing-card__item">
-                            <form action="" method="">
-                            <div class="listing-card__info">
-                            <?= card_top($card_name9)?>
-                            
-                            </div>
-                          </form>
-                          </li>
+                          
 
 
                     </ul>

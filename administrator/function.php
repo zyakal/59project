@@ -7,7 +7,7 @@ function card_top( $card_name){
         <strong class='listing-card__name'> $card_name > </strong>
             <span>
                 <button class='btn_reset' type='reset' >취소</button>
-                <button class='btn_submit' type='submit' >적용</button>
+                <button class='btn_submit' type='submit' >등록</button>
             </span>
         </div>
         <div> &nbsp </div>";
@@ -35,7 +35,7 @@ function weeks($week_value, $week_id, $sales_day_arr){
 function sales_time_open_hour(){
     $hour = "";
     $i=0;
-    $hour .= "<select name='sales_open_hour'><option value=''>시간 선택</option>";
+    $hour .= "<select name='sales_open_hour'><option value=''>--- 시간 ---</option>";
     for($i;$i < 24;$i++){
         if($i < 10){
             $hour .= "<option value='0$i:'>0$i 시</option>";
@@ -52,7 +52,7 @@ function sales_time_open_hour(){
 function sales_time_open_minute(){
     $minute = "";
     $i=0;
-    $minute .= "<select name='sales_open_minute'><option value=''>분 선택</option>";
+    $minute .= "<select name='sales_open_minute'><option value=''>--- 분 ---</option>";
     for($i;$i < 60;$i+=10){
         if($i < 10){
             $minute .= "<option value='0$i'>0$i 분</option>";
@@ -69,7 +69,7 @@ function sales_time_open_minute(){
 function sales_time_close_hour(){
     $hour = "";
     $i=0;
-    $hour .= "<select name='sales_close_hour'><option value=''>시간 선택</option>";
+    $hour .= "<select name='sales_close_hour'><option value=''>--- 시간 ---</option>";
     for($i;$i < 24;$i++){
         if($i < 10){
             $hour .= "<option value='0$i:'>0$i 시</option>";
@@ -86,7 +86,7 @@ function sales_time_close_hour(){
 function sales_time_close_minute(){
     $minute = "";
     $i=0;
-    $minute .= "<select name='sales_close_minute'><option value=''>분 선택</option>";
+    $minute .= "<select name='sales_close_minute'><option value=''>--- 분 ---</option>";
     for($i;$i < 60;$i+=10){
         if($i < 10){
             $minute .= "<option value='0$i'>0$i 분</option>";
@@ -98,4 +98,28 @@ function sales_time_close_minute(){
     }
     $minute .= "</select>";
     return $minute;
+}
+
+function menu_select($menu_cate){
+    $menu_category = "";
+    $i=0;
+    $menu_category .= "<select name='menu_select'><option value=''>-- 카테고리 --</option>";
+    for($i;$i < count($menu_cate);$i++){        
+            $menu_category .= "<option value='$menu_cate[$i]'>$menu_cate[$i]</option>";
+        }     
+    
+    $menu_category .= "</select>";
+    return $menu_category;
+}
+
+function sales_count(){
+    $count = "";
+    $i=1;
+    $count .= "<select name='menu_select'><option value=''>-- 구독 횟수 --</option>";
+    for($i;$i <= 30;$i++){        
+            $count .= "<option value='$i'>$i 회</option>";
+        }     
+    
+    $count .= "</select>";
+    return $count;
 }
