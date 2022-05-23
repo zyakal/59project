@@ -1,6 +1,14 @@
 <?php
     include_once "db/db.php";
 
+    function sel_categories() {
+        $conn = get_conn();
+        $sql = "SELECT cate_nm FROM t_categorie";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
+
     //list page - 전체 가게
     function sel_store_list() {
         $conn = get_conn();

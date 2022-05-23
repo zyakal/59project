@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/screens/store_list.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <title>59 - list</title>
 </head>
 <body>
@@ -46,21 +47,22 @@
                 ?>
                 <div class="top__nav">
                     <div id="nav__right">주변가게보기</div>
-                    <?php
-                        while($row = mysqli_fetch_assoc($result)) { 
-                            $param = [
-                                'store_num' => $row['store_num']
-                            ];
-                        $cate_nm = cate_name($param)['cate_nm'];
-                        ?>
-                        <div><?=$cate_nm?></div>
                 </div>
             </div>
             <div class="list__main__list">
                 <?php
-                    $star = store_star($param);
-                    include_once "store_list_form.php";
-                } ?>
+                    while($row = mysqli_fetch_assoc($result)) { 
+                        $param = [
+                            'store_num' => $row['store_num']
+                        ];
+                        //$cate_nm = cate_name($param)['cate_nm'];
+                        ?>
+                        <!-- <div>$cate_nm?></div> -->
+                        <?php
+                        //$star = store_star($param);
+                        include_once "store_list_form.php";
+                    } ?>
+            </div>
         </main>
         <footer>
             <?php
@@ -73,6 +75,12 @@
             row.addEventListener("click", function(){
                 location.href = `map.php`;
             });
+        </script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3.5
+        });
         </script>
     </div>
 </body>
