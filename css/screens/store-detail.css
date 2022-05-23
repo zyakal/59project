@@ -125,6 +125,14 @@ main .store-main .store-cummuni a i {
   font-size: var(--text-sm);
   color: var(--text-dark-gray);
 }
+.menu__content {
+  position: relative;
+}
+.cate_title {
+  font-weight: bold;
+  padding: 20px 5px;
+  color: var(--main-pink);
+}
 .menu-list {
   margin-bottom: 0.625rem;
   width: 100%;
