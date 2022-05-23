@@ -7,10 +7,13 @@ include_once 'db/db_store_and_menu.php';
 
 $page_name = '가게이름';
 
-$param = [];
+$store_num = $_POST['store_num'];
+
+$param = [
+  'store_num' => $store_num
+];
 
 $store_name = select_one_store($param);
-
 
 ?>
 <!DOCTYPE html>
