@@ -3,9 +3,14 @@
 버전 : 오구 1.0v
 -->
 <?php
-include_once 'db/db_store.php';
+include_once 'db/db_store_and_menu.php';
 
 $page_name = '가게이름';
+
+$param = [];
+
+$store_name = select_one_store($param);
+
 
 ?>
 <!DOCTYPE html>
