@@ -52,7 +52,9 @@ foreach ($result as $item) {
             </div>
             <div class="total-save-price">
                 <div class="total-save-price__month"></div>
-                <div class="total-save-price__graph"><canvas id="bar-chart" width="300" height="230"></canvas></div>
+                <div class="total-save-price__graph">
+                    <div><canvas id="bar-chart" width="300" height="230"></canvas></div>
+                </div>
             </div>
             <div class="sub-list"> </div>
             <!-- <div class="reserved-sub"></div> -->

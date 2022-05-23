@@ -20,20 +20,17 @@ function printTotalSave(m = 0, moved = 0) {
   }
   divContainer2.textContent = "";
 
-  let divTextSave = document.createElement("div");
-
   let key = monthSave.keys.length - 1 + m;
 
-  divTextSave.innerHTML = `<div>
-    <div>
-      <div onclick="moveMonth(0,${key})"><</div>
-      <div>${monthSave.keys[key]}</div>
-      <div onclick="moveMonth(1,${key})">></div>
-    </div>
-    <div>월 할인금액 ${monthSave[monthSave.keys[key]]}</div>
-  </div> 
+  divContainer2.innerHTML = `
+      <div class='total-save-price__left' onclick="moveMonth(0,${key})"><</div>
+      <div class='total-save-price__this-month' >${monthSave.keys[key]}</div>
+      <div class='total-save-price__right' onclick="moveMonth(1,${key})">></div>
+    <div class='total-save-price__month-save'>월 할인금액  ${
+      monthSave[monthSave.keys[key]]
+    }원</div>
+ 
   `;
-  divContainer2.append(divTextSave);
 }
 
 //구독리스트출력함수
@@ -45,21 +42,32 @@ function printSubList() {
       continue;
     }
 
+    let validity = getValidity(list[i].pay_date, list[i].end_date);
+
     let divEachSub = document.createElement("div");
     divEachSub.classList.add("sub-list__each");
     let subHTML = `
 <div class='sub-list__img'><img src='${list[i].menu_photo}'></div>
 <div class='sub-list__menu-nm'>${list[i].menu_nm}</div>
-<div class='sub-list__remaining-count'>사용가능 회수 ${list[i].remaining_count}</div>
-<div class='sub-list__validity'>${list[i].pay_date}~${list[i].end_date}</div>
-<div class='sub-list__price'>${list[i].subed_price}</div>
-<div class='sub-list__save-price'>총 할인금액 ${list[i].save_price}</div>
+<div class='sub-list__remaining-count'>사용가능 회수 ${list[i].remaining_count}회</div>
+<div class='sub-list__validity'>${validity}</div>
+<div class='sub-list__price'>${list[i].subed_price}원</div>
+<div class='sub-list__save-price'>총 할인금액 ${list[i].save_price}원</div>
+<div class='sub-list__button'>
 <div class='sub-list__detail'>상세페이지</div>
 <div class='sub-list__reservation' onclick="moveToReservation(${i})">예약하기</div>
+</div>
 `;
     divEachSub.innerHTML = subHTML;
     subListContainer.append(divEachSub);
   }
+}
+
+function getValidity(payDateTime, endDateTime) {
+  let payDate = payDateTime.substr(0, 10).split("-");
+  let endDate = endDateTime.split("-");
+  let validity = `${payDate[0]}.${payDate[1]}.${payDate[2]} ~ ${endDate[0]}.${endDate[1]}.${endDate[2]}`;
+  return validity;
 }
 
 //총할인금액-월 변경
@@ -192,7 +200,7 @@ function printChart() {
       datasets: [
         {
           // label: "Population (millions)",
-          backgroundColor: "#3cba9f",
+          backgroundColor: "#10B981",
           data: monthSaveVals,
         },
       ],
