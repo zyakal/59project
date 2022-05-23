@@ -185,5 +185,56 @@ function all_discount_price(&$param)
     $row = mysqli_fetch_assoc($result);
     mysqli_close($conn);
     return $row['sum(save_price)'];
-
 } 
+
+function user_dropout(&$param)
+{   
+    $user_num = $param['user_num'];
+    
+    $sql = "DELETE FROM t_user where user_num = $user_num
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+
+function user_coupon_count(&$param)
+{
+    $user_num = $param['user_num'];
+
+    $sql = "SELECT count(coupon_num) as cnt FROM t_coupon WHERE user_num = $user_num AND used_at IS NULL
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row['cnt'];
+
+}
+
+function user_sub_count(&$param)
+{
+    $user_num = $param['user_num'];
+
+    $sql = "SELECT COUNT(coupon_num) as cnt FROM t_sub WHERE user_num = $user_num
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row['cnt'];
+}
+
+function user_review_count(&$param)
+{
+    $user_num = $param['user_num'];
+
+    $sql = "SELECT COUNT(review_num) as cnt FROM t_review WHERE user_num = $user_num
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row['cnt'];
+}

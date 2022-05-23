@@ -69,6 +69,10 @@ if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user'
             </div>
         </div>
         <div class="info_div">
+            <div class="info_type">이름</div>
+            <div class="myinfo_text"><?=$user_info['user_nm']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+        </div>
+        <div class="info_div">
             <div class="info_type">닉네임</div>
             <div class="myinfo_text"><?=$user_info['nickname']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>

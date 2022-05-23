@@ -4,6 +4,7 @@ include_once 'db/db_user.php';
 
 session_start();
 $login_user = $_SESSION['login_user'];
+$user_num = $login_user['user_num']; 
 if($_GET['user_num'] !== $login_user['user_num'] || empty($_GET['user_num']))
 { ?>
     <script>
@@ -44,13 +45,16 @@ $param = [
         </header>
         <!-- main -->
         <main>
-        <div class = "flex_box">
+        <div class = "center_flex_box">
             <div class = "user_drop_message">
-            <?=$login_user['nickname']?>님께서 함께 해주신 
+            <?=$login_user['nickname']?>님께서 함께 해주신 <br>
             <?=user_Hours_of_use($param)?> 동안 <br>
             할인받으신 금액은 <?=all_discount_price($param)?> 입니다.
             <br>
             정말 탈퇴하실건가요?
+            </div>
+            <div class = user_dropout>
+            <button type="botton" onclick="location.href='user_dropout_proc.php'">탈퇴하기</button>
             </div>
         </div>
         </main>
@@ -62,5 +66,4 @@ $param = [
         </footer>
     </div>
 </body>
-
 </html>
