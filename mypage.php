@@ -62,7 +62,7 @@ $page_name = "마이페이지";
         <div class = "mypage_id">
             <div class = "myinfo_text">
             <div class = "mypage_user_nm"><?=$user_info['user_nm']?></div>
-            <a href="myinfo_mod.php?user_num=<?=$user_info['user_num']?>"><div class="arrow_bg"></div></a>
+            <a href="myinfo_mod.php?user_num=<?=$user_info['user_num']?>"><div><i class="fa-solid fa-chevron-right"></i></div></a>
             </div>
             <div class = "mypage_user_mail"><?=$user_info['user_mail']?></div>
         </div>
