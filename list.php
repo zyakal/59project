@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/screens/store_list.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+    <script src="js/swiper.js" defer></script>
     <title>59 - list</title>
 </head>
 <body>
@@ -41,7 +43,7 @@
             </nav>
         </header>
         <main class="list__main">
-            <div class="list__main__top">
+            <div class="list__main__top mySwiper">
                 <?php
                     include_once "categories.php";
                 ?>
@@ -75,12 +77,6 @@
             row.addEventListener("click", function(){
                 location.href = `map.php`;
             });
-        </script>
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3.5
-        });
         </script>
     </div>
 </body>
