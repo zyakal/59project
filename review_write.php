@@ -2,6 +2,7 @@
 시작일시 : 2022.05.13일
 버전 : 오구 1.0v
 -->
+<!-- 아무거나 -->
 <?php
 include_once 'db/db_store_and_menu.php';
 
