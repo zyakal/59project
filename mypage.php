@@ -86,11 +86,9 @@ $page_name = "마이페이지";
         </div>
             <?php } else { ?>
             <div class = "center_flex_box">
-            <div class = "mypage_id">
-                <div><h2>오구에 오신 것을 환영합니다</h2></div>
-                <div>로그인 후 매일 새로운 할인을 만나보세요</div>
+                <div class = "myinfo_ogu_intro">오구에 오신 것을 환영합니다</div>
+                <div class = "myinfo_login_intro">로그인 후 매일 새로운 할인을 만나보세요</div>
                 <button class = "myinfo_login_box" onclick="location.href='login.php'">로그인 / 회원가입</button>
-            </div>
             </div>
             <?php } ?>
         <div>
