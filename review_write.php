@@ -4,18 +4,18 @@
 -->
 <?php
 include_once 'db/db_store_and_menu.php';
+session_start();
+$login_user = $_SESSION['login_user'];
 
-$store_num = $_POST['store_num'];
 $menu_num = $_POST['menu_num'];
 
 $param = [
-  'store_num' => $store_num,
-  'menu_num' => $menu_num
+  'menu_num' => 4
 ];
 
 $store_menu = select_one_menu($param);
 
-$page_name = '가게이름';
+$page_name = $store_menu['store_nm'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +44,13 @@ $page_name = '가게이름';
       <div class="main--box">
         <div class="review--title">
           <h1 class="store--name">
-            메뉴이름
+            <?= $store_menu['menu_nm'] ?>
           </h1>
         </div>
         <div class="review--content">
           <form action="review_write_proc.php" method="post">
+            <input type="hidden" name="store_num" value="<?= $store_menu['store_num'] ?>">
+            <input type="hidden" name="user_num" value="<?= $login_user['user_num'] ?>">
             <div class="stars-widget">
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_1" name="star" value="1" /></label>
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_2" name="star" value="2" /></label>
