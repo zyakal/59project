@@ -75,7 +75,7 @@ if(isset($_POST['store_email']) && isset($_POST['store_pw']))
         </div>
         <div>
             <label class="login_pw">   
-                <input type="text" name="store_pw" placeholder="비밀번호 입력" >
+                <input type="password" name="store_pw" placeholder="비밀번호 입력" >
             </label>
             <p class="warning_massage"><?=$wp?></p>
         </div>
