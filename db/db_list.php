@@ -23,12 +23,15 @@
     function store_star(&$param) {
         $store_num = $param['store_num'];
         $conn = get_conn();
-        $sql = "SELECT AVG(star_rating) 
+        $sql = "SELECT AVG(star_rating) as star
         FROM t_review
         WHERE store_num = '$store_num'";
         $result = mysqli_query($conn, $sql);
+        if($result == null) {
+            return false;
+        }
         mysqli_close($conn);
-        return $result;
+        return mysqli_fetch_assoc($result);
     }
 
     //list page - 카테고리 들고오는 함수

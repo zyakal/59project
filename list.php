@@ -1,9 +1,6 @@
 <?php
     include_once "db/db_list.php";
 
-    $result = sel_store_list();
-
-
 ?>  
 <!DOCTYPE html>
 <html lang="en">
@@ -53,15 +50,21 @@
             </div>
             <div class="list__main__list">
                 <?php
+                    $result = sel_store_list();
                     while($row = mysqli_fetch_assoc($result)) { 
-                        // $param = [
-                        //     'store_num' => $row['store_num']
-                        // ];
-                        // $cate_nm = cate_name($param)['cate_nm'];
-                        // ?>
-                        <!-- <div><?=$cate_nm?></div> -->
+                        $param = [
+                            'store_num' => $row['store_num']
+                        ];
+                        $cate_nm = cate_name($param)['cate_nm'];
+                        ?>
+                        <div><?=$cate_nm?></div>
                         <?php
-                        // $star = store_star($param);
+                        $star = store_star($param);
+                        if (!$star) {
+                            $star = "";
+                        } else {
+                            $star = $star['star'];
+                        }
                         include_once "store_list_form.php";
                     } ?>
             </div>
