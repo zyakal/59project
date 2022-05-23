@@ -53,8 +53,10 @@ if (isset($list_menu)) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <link rel="stylesheet" href="css/screens/reservation.css" />
   <link rel="stylesheet" href="css/styles_std.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 
   <title>reservation</title>
 </head>
@@ -82,16 +84,30 @@ if (isset($list_menu)) {
       </div>
       <form action="reservation_proc.php" method="post">
         <div class="reservation__select-day">
-          <div>날짜선택</div>
-          <div class="day-box"></div>
-          <?php
-          include 'reservation_day_swipe.html';
-          ?>
+          <div class="reservation__select-day-title">날짜선택</div>
+          <div class="day-box">
+            <div class="swiper mySwiper1">
+              <div class="swiper-wrapper">
+
+              </div>
+            </div>
+          </div>
         </div>
         <div class="reservation__select-time">
           <div>시간선택</div>
-          <div class="time-box"></div>
+          <div class="time-box">
+            <div class="swiper mySwiper2">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide swiper-slide2">
+
+
+                </div>
+              </div>
+              <div class="swiper-scrollbar"></div>
+            </div>
+          </div>
         </div>
+
 
 
         <input type="hidden" name="sub_num" value="<?= $sub_num ?>">
@@ -102,6 +118,26 @@ if (isset($list_menu)) {
         <?= "let openTime = '$openTime';" ?>
         <?= "let closeTime = '$closeTime';" ?>
         <?= "let openDay = '$openDay';" ?>
+
+        // 스와이퍼 작동
+        var swiper = new Swiper(".mySwiper1", {
+          slidesPerView: 6.5,
+          spaceBetween: 15,
+          pagination: {
+            // el: ".swiper-pagination",
+            clickable: false,
+          },
+        });
+
+        var swiper = new Swiper(".mySwiper2", {
+          direction: "vertical",
+          slidesPerView: "auto",
+          freeMode: true,
+          scrollbar: {
+            el: ".swiper-scrollbar",
+          },
+          mousewheel: true,
+        });
       </script>
       <script src="./js/reservation_create_time_fn.js"></script>
     </main>

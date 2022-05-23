@@ -1,6 +1,8 @@
+console.log(document.querySelector(".swiper-slide2"));
+
 // <div class="day-box"></div>
 // <div class="time-box"></div>
-
+console.log(document.querySelector(".swiper-slide.swiper-slide2"));
 let howManyDays = 30;
 let howManyTimes = 48;
 
@@ -65,9 +67,11 @@ function makeResTimes(n = howManyTimes) {
     valueTime = resHour + ":" + resMinutes;
 
     let divTimeBox = document.createElement("div");
-    divTimeBox.className = "time_num";
-    divTimeBox.innerHTML = `<label><input type="radio" name="time" ${checked} value=${valueTime} >${valueTime}</label>`;
-    divTimeContainer.append(divTimeBox);
+    // divTimeBox.className = "time_num swiper-slide";
+    divTimeBox.innerHTML = `<input type="radio" name="time" id=${valueTime} ${checked} value=${valueTime} ><label for=${valueTime}>${valueTime}</label>`;
+    // divTimeContainer.append(divTimeBox);
+    document.querySelector(".swiper-slide2").append(divTimeBox);
+    // document.querySelector("swiper-wrapper2").append(divTimeBox);
   }
 }
 function makeResDays(n = howManyDays) {
@@ -83,7 +87,7 @@ function makeResDays(n = howManyDays) {
     checked = i ? "" : "checked";
     let divDayBox = document.createElement("div");
     divDayBox.className = "day_num swiper-slide";
-    divDayBox.innerHTML = `<label><input type="radio" name="day" id="day${i}" ${checked} onclick="getTimes()" value="${fullDate}">${pickupDate}</label>`;
+    divDayBox.innerHTML = `<input type="radio" name="day" id="day${i}" ${checked} onclick="getTimes()" value="${fullDate}"><label for="day${i}">${pickupDate}</label>`;
     // divDayContainer.append(divDayBox);
     document.querySelector(".swiper-wrapper").append(divDayBox);
     // console.log(pickupDate);
@@ -95,7 +99,7 @@ let checkFirstDay = true;
 makeResTimes(howManyTimes);
 
 function getTimes() {
-  divTimeContainer.textContent = "";
+  document.querySelector(".swiper-slide2").textContent = "";
   if (event.target.id == "day0") {
     checkFirstDay = true;
   } else {
