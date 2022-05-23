@@ -1,3 +1,7 @@
+<?php
+    include_once "db/db_list.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,10 +15,10 @@
 <body>
     <div class="container">
         <header>
-            <form action="search_proc">
+            <form action="search_proc.php" method="post">
                 <div class="search--top">
                     <button><i class='fa-solid fa-magnifying-glass'></i></button>
-                    <input type="search" placeholder="가게나 메뉴로 검색해보세요">
+                    <input type="search" name="search_txt" placeholder="가게나 메뉴로 검색해보세요">
                 </div>
             </form>
         </header>
@@ -22,16 +26,14 @@
             <div class="main--selectTop">
                 <div class="selectTop--nav">인기검색어</div>
                 <div class="selectTop--list">
-                    <div class="selectTop--item">1</div>
-                    <div class="selectTop--item">2</div>
-                    <div class="selectTop--item">3</div>
-                    <div class="selectTop--item">4</div>
-                    <div class="selectTop--item">5</div>
-                    <div class="selectTop--item">6</div>
-                    <div class="selectTop--item">7</div>
-                    <div class="selectTop--item">8</div>
-                    <div class="selectTop--item">9</div>
-                    <div class="selectTop--item">10</div>
+                    <?php
+                        $result = search_top_10();
+                        $num = 1;
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                            <div class="selectTop--item"><?=$num?>. <?=$row['search']?></div> 
+                    <?php 
+                            $num++;
+                        } ?>
                 </div>
             </div>
             <div class="search--slide">

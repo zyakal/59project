@@ -25,7 +25,7 @@
             <a href="search.php">
                 <div id="top">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>Search</span>
+                    <span class="home__main__top">Search</span>
                     <i class="fa-solid fa-sliders"></i>
                 </div>
             </a>
