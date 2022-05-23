@@ -1,36 +1,36 @@
 let moveCount = 0;
 //총할인금액 월 변경을 체크 위한 변수
 
-let divContainer1 = document.querySelector(".total-save-price__container");
-let divContainer2 = document.querySelector(".month-save-price__container");
-let subListContainer = document.querySelector(".sub-list__container");
+let divContainer1 = document.querySelector(".total-save-price");
+let divContainer2 = document.querySelector(".total-save-price__month");
+let subListContainer = document.querySelector(".sub-list");
+console.log(subListContainer);
 let monthSave = getSaveData();
 
 console.log(list);
-getTotalSave();
 printSubList();
-//첫화면 총할인금액,구독리스트(display:none) 출력
+printTotalSave();
+//첫화면 총할인금액,총할인금액(display:none) 출력
 
 //총할인금액 출력 함수
-function getTotalSave(m = 0) {
-  console.log("getTotalSave");
-  divContainer1.style.display = "block";
+function printTotalSave(m = 0, moved = 0) {
+  console.log("movecount" + m);
+  if (!moved) {
+    divContainer1.style.display = "none";
+  }
   divContainer2.textContent = "";
-  subListContainer.style.display = "none";
-  let divTextSave = document.createElement("div");
 
   let key = monthSave.keys.length - 1 + m;
 
-  divTextSave.innerHTML = `<div>
-    <div>
-      <div onclick="moveMonth(0,${key})"><</div>
-      <div>${monthSave.keys[key]}</div>
-      <div onclick="moveMonth(1,${key})">></div>
-    </div>
-    <div>월 할인금액 ${monthSave[monthSave.keys[key]]}</div>
-  </div> 
+  divContainer2.innerHTML = `
+      <div class='total-save-price__left' onclick="moveMonth(0,${key})"><</div>
+      <div class='total-save-price__this-month' >${monthSave.keys[key]}</div>
+      <div class='total-save-price__right' onclick="moveMonth(1,${key})">></div>
+    <div class='total-save-price__month-save'>월 할인금액  ${
+      monthSave[monthSave.keys[key]]
+    }원</div>
+ 
   `;
-  divContainer2.append(divTextSave);
 }
 
 //구독리스트출력함수
@@ -42,19 +42,32 @@ function printSubList() {
       continue;
     }
 
+    let validity = getValidity(list[i].pay_date, list[i].end_date);
+
     let divEachSub = document.createElement("div");
+    divEachSub.classList.add("sub-list__each");
     let subHTML = `
-<div><img src='${list[i].menu_photo}'></div>
-<div>${list[i].menu_nm}</div>
-<div>사용가능 회수 ${list[i].remaining_count}</div>
-<div>${list[i].pay_date}~${list[i].end_date}</div>
-<div>총 할인금액 ${list[i].save_price}</div>
-<div>상세페이지</div>
-<div>예약하기</div>
+<div class='sub-list__img'><img src='${list[i].menu_photo}'></div>
+<div class='sub-list__menu-nm'>${list[i].menu_nm}</div>
+<div class='sub-list__remaining-count'>사용가능 회수 ${list[i].remaining_count}회</div>
+<div class='sub-list__validity'>${validity}</div>
+<div class='sub-list__price'>${list[i].subed_price}원</div>
+<div class='sub-list__save-price'>총 할인금액 ${list[i].save_price}원</div>
+<div class='sub-list__button'>
+<div class='sub-list__detail'>상세페이지</div>
+<div class='sub-list__reservation' onclick="moveToReservation(${i})">예약하기</div>
+</div>
 `;
     divEachSub.innerHTML = subHTML;
     subListContainer.append(divEachSub);
   }
+}
+
+function getValidity(payDateTime, endDateTime) {
+  let payDate = payDateTime.substr(0, 10).split("-");
+  let endDate = endDateTime.split("-");
+  let validity = `${payDate[0]}.${payDate[1]}.${payDate[2]} ~ ${endDate[0]}.${endDate[1]}.${endDate[2]}`;
+  return validity;
 }
 
 //총할인금액-월 변경
@@ -70,7 +83,7 @@ function moveMonth(n, key) {
   } else if (moveCount < -key - 2) {
     moveCount += 1;
   }
-  getTotalSave(moveCount);
+  printTotalSave(moveCount, 1);
 }
 
 //구독리스트 display 스위치
@@ -78,6 +91,30 @@ function getSubList() {
   console.log("getSubList");
   divContainer1.style.display = "none";
   subListContainer.style.display = "block";
+}
+
+//총할인금액 displaay스위치
+function getTotalSave() {
+  subListContainer.style.display = "none";
+  // printTotalSave();
+  divContainer1.style.display = "block";
+  printChart();
+}
+
+//예약페이지이동
+function moveToReservation(i) {
+  // console.log(list[i].store_num, list[i].sub_num, list[i].menu_num);
+  if (list[i].remaining_count <= 0) {
+    return alert("남은 횟수가 없습니다");
+  }
+  document.getElementById("store_num").value = list[i].store_num;
+  document.getElementById("sub_num").value = list[i].sub_num;
+  document.getElementById("menu_num").value = list[i].menu_num;
+  document.getElementById("remaining_count").value = list[i].remaining_count;
+
+  document.getElementById("info_form").submit();
+
+  // location.href = "reservation.php";
 }
 
 //월별 할인금액 데이터산출
@@ -155,23 +192,25 @@ monthSave.keys.forEach((val) => {
 });
 console.log(monthSaveVals);
 
-new Chart(document.getElementById("bar-chart"), {
-  type: "bar",
-  data: {
-    labels: monthSave.keys,
-    datasets: [
-      {
-        // label: "Population (millions)",
-        backgroundColor: "#3cba9f",
-        data: monthSaveVals,
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    title: {
-      // display: true,
-      // text: "Predicted world population (millions) in 2050",
+function printChart() {
+  new Chart(document.getElementById("bar-chart"), {
+    type: "bar",
+    data: {
+      labels: monthSave.keys,
+      datasets: [
+        {
+          // label: "Population (millions)",
+          backgroundColor: "#10B981",
+          data: monthSaveVals,
+        },
+      ],
     },
-  },
-});
+    options: {
+      legend: { display: false },
+      title: {
+        // display: true,
+        // text: "Predicted world population (millions) in 2050",
+      },
+    },
+  });
+}
