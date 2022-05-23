@@ -113,22 +113,37 @@
                 </div>
                 <?php
                 require_once("recommend.php");
-                $re = new Recommend();
-                //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
-                $subs = array(
-                    "1" => array("쿠팡" => null, "베라" => 3.5, "술" => null),
-                    "5" => array("베라" =>null, "파바" => 3.0),
-                    "13" => array("술" => null),
-                    "20" => array("쿠팡" => 4.0, "술" => 2)
-                );
-                $result = $re->getRecommendations($subs, "13")
+                session_start();
+                // if(isset($_SESSION['login_user'])) {
+                //     $login_user = $_SESSION['login_user'];
+                //     $user_num = $login_user['user_num'];
+                $user_num = 10;
+                if($user_num) {
+                    $sub = sel_sub_num();
+                    while($row = mysqli_fetch_assoc($sub)) {
+                        $param = [
+                            'user_num' => $row['user_num'],
+                            'store_num' => $row['store_num']
+                        ];
+                        $star = sel_reviwe_star($param);
+                        $subs = array (
+                            $row['user_num'] => array($row['store_num'] => $star) 
+                        );
+                        
+                    }
+    
+                    $re = new Recommend();
+                    //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
+                    $result = $re->getRecommendations($subs, $user_num);
+                } else {
+
+                }
+
+               
                 ?>
                 <div class="recommend--list">
                     <?php
-                    $arr = array_keys($result);
-                    for($i=0; $i <count($arr); $i++) {
-                        print "$arr[$i]<br>";
-                    }
+                        print_r($result);
                     ?>
                 </div>
             </div>
