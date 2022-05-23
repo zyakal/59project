@@ -82,9 +82,10 @@ function makeResDays(n = howManyDays) {
 
     checked = i ? "" : "checked";
     let divDayBox = document.createElement("div");
-    divDayBox.className = "day_num";
+    divDayBox.className = "day_num swiper-slide";
     divDayBox.innerHTML = `<label><input type="radio" name="day" id="day${i}" ${checked} onclick="getTimes()" value="${fullDate}">${pickupDate}</label>`;
-    divDayContainer.append(divDayBox);
+    // divDayContainer.append(divDayBox);
+    document.querySelector(".swiper-wrapper").append(divDayBox);
     // console.log(pickupDate);
   }
 }

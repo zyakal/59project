@@ -85,7 +85,7 @@ if (isset($list_menu)) {
           <div>날짜선택</div>
           <div class="day-box"></div>
           <?php
-          // include 'reservation_day_swipe.html';
+          include 'reservation_day_swipe.html';
           ?>
         </div>
         <div class="reservation__select-time">
