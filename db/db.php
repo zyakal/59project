@@ -2,6 +2,7 @@
 define("URL", "192.168.0.70");
 define("USERNAME", "root");
 define("PASSWORD", "506greendg@");
+// define("PASSWORD", "506greendg@");
 define("DB_NAME", "59project");
 define("PORT", "3306");
 
