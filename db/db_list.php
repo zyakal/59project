@@ -19,6 +19,16 @@
         return $result;
     }
 
+    //list page - 원하는 가게
+    function sel_result_store(&$param) {
+        $conn = get_conn();
+        $sql = "SELECT store_nm, store_photo, store_num FROM t_store 
+            WHERE store_num = {$param['store_num']}";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
+
     //list page - 별점구하는 함수
     function store_star(&$param) {
         $store_num = $param['store_num'];
@@ -86,3 +96,19 @@
         return $result;
     }
     
+    function search_result_list(&$param) {
+        $search_txt = explode(" ", $param['search_txt']);
+        $conn = get_conn();
+        $sql = "SELECT A.store_num FROM t_store A
+        INNER JOIN t_menu B
+        ON A.store_num = B.store_num
+        WHERE ";
+        for ($i=0; $i < count($search_txt); $i++) { 
+            $sql .= "A.store_nm LIKE '%{$search_txt[$i]}%' OR B.menu_nm LIKE '%{$search_txt[$i]}%'";
+            if($i != count($search_txt)-1) {
+                $sql .= " OR ";
+            }
+        }
+        $result = mysqli_query($conn, $sql);
+        return $result;
+    }
