@@ -1,6 +1,7 @@
 <?php
     include_once "db/db.php";
 
+    //카테고리 목록 받아오는 함수
     function sel_categories() {
         $conn = get_conn();
         $sql = "SELECT cate_nm FROM t_categorie";
@@ -56,4 +57,29 @@
         return $result;
     }
 
+    //검색어 추가 함수
+    function ins_search(&$param) {
+        $search_txt = explode(" ", $param['search_txt']);
+        for ($i=0; $i < count($search_txt); $i++) { 
+            $conn = get_conn();
+            $sql = "INSERT INTO t_search
+            (search)
+            VALUES ('$search_txt[$i]')";
+            $result = mysqli_query($conn, $sql);
+        }
+        mysqli_close($conn);
+        return $result;
+    }
+
+    //인기검색어 함수
+    function search_top_10() {
+        $conn = get_conn();
+        $sql = "SELECT search FROM t_search
+        GROUP BY search
+        ORDER BY COUNT(search) DESC
+        LIMIT 10";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
     
