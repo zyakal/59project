@@ -91,7 +91,10 @@ video {
   font: inherit;
   vertical-align: baseline;
   box-sizing: border-box;
-  font-family: "Noto Sans KR", sans-serif;
+  /* font-family: 'Black Han Sans', sans-serif; */
+  /* font-family: 'Noto Sans KR', sans-serif; */
+  font-family: "Do Hyeon", sans-serif;
+  scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -134,6 +137,8 @@ a {
 }
 .container {
   position: relative;
-  width: var(--mobile-width);
+  width: 100%;
+  min-width: var(--mobile-min-width);
+  max-width: var(--mobile-max-width);
   height: var(--mobile-height);
 }

@@ -1,5 +1,5 @@
 /* --------- Noto Sans Font --------- */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
 
 /* --------- reset CSS --------- */
 @import "reset.css";
@@ -13,21 +13,24 @@
 @import "components/footer.css";
 @import "components/store-header.css";
 @import "components/input-num.css";
+@import "components/image-input.css";
+@import "components/cate-list.css";
+@import "components/swiper.css";
 
 /* --------- Screens --------- */
 @import "screens/store-detail.css";
 @import "screens/menu-detail.css";
+@import "screens/review_write.css";
 
 /* --------- login --------- */
 @import "screens/login.css";
 @import "screens/join.css";
 @import "screens/email.css";
 @import "screens/myinfo_mod.css";
-@import "screens/user_dropout.css";
-@import "screens/mypage.css";
-
 /* 은지 css */
 @import "screens/home.css";
 @import "screens/list.css";
 @import "screens/search.css";
 @import "screens/my_addr.css";
+
+/* 최소사이즈 320px 최대사이즈 460px */
