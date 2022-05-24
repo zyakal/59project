@@ -7,7 +7,7 @@
         'search_txt' => $search_txt
     ];
 
-    $result = search_result_list($param);
+    $result = search_result_list($param);  
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
     <script defer src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/screens/store_list.css">
-    <title>Document</title>
+    <title>59 - search</title>
 </head>
 <body>
     <div class="container">
@@ -51,11 +51,10 @@
                         $param = [
                             '$store_num' => $row['store_num']
                         ];
-                        $row = sel_result_store($param);
-                        include_once "store_list_form.php";
-                    }
-                    
-                ?>
+                        $re_store = sel_result_store($param);
+                        $store_nm = mysqli_fetch_assoc($re_store)['store_nm'];
+                        print $store_nm;
+                        } ?>
             </div>
         </main>
     </div>

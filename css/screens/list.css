@@ -20,4 +20,5 @@
     color: var(--main-pink) !important;
     cursor: pointer;
 }
-
+.list__main .list__main__top input[type="radio"] { display: none;}
+.list__main .list__main__top input[type="radio"] + label {display: inline-block; cursor: pointer;}

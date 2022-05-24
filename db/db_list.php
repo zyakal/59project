@@ -97,18 +97,12 @@
     }
     
     function search_result_list(&$param) {
-        $search_txt = explode(" ", $param['search_txt']);
+        $search = $param['search_txt'];
+        // $search_txt = explode(" ", $search);
         $conn = get_conn();
-        $sql = "SELECT A.store_num FROM t_store A
-        INNER JOIN t_menu B
-        ON A.store_num = B.store_num
-        WHERE ";
-        for ($i=0; $i < count($search_txt); $i++) { 
-            $sql .= "A.store_nm LIKE '%{$search_txt[$i]}%' OR B.menu_nm LIKE '%{$search_txt[$i]}%'";
-            if($i != count($search_txt)-1) {
-                $sql .= " OR ";
-            }
-        }
+        $sql = "SELECT store_num, store_nm FROM t_store
+        WHERE store_nm LIKE '%$search%'";
         $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
         return $result;
     }

@@ -4,7 +4,7 @@
 ?>
 
 <div class="top__list swiper-wrapper">
-    <div class="top__item tabs__toggle is-active swiper-slide">
+    <div class="top__item tabs__toggle swiper-slide">
         모두보기
     </div>
     <?php
