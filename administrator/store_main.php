@@ -9,7 +9,9 @@
         header("location: store_login.php");
     }
     $login_email = $login['store_email'];
+    $store_num = $login['store_num'];
     
+    $param = [ "store_num" => $store_num];
     
 
     $result = login_store($login);
@@ -196,7 +198,7 @@
                             
                             <?= card_top($card_name6)?>
                             <div>
-                                <textarea name="store_notice" placeholder="공지사항"><?=$store_notice?></textarea>
+                                <textarea name="store_notice" placeholder="공지사항을 입력하세요"><?=$store_notice?></textarea>
                             </div>
                             
                             </div>
@@ -218,7 +220,12 @@
                             <form class="img_test" action="store_photo.php" method="post" enctype="multipart/form-data">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name3)?>
-                                <div class="store_img_input"><label><input type="file" name="img" accept="image/*"></label></div>
+                                <div class="image-input">
+                                <div class="image-input__input-wrapper" id="inputWrapper"><label><input type="file" id="imageInput"  name="img" accept="image/*"></label></div>
+                                <div class="image-input__pseudo">
+                                <div><i class="fa-solid fa-plus"></i></div>
+                                <div>이미지 넣기</div>
+                                </div>
                                 <?php  
                                     $session_img = $_SESSION["login_store"]["store_photo"];
                                     $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
@@ -226,7 +233,8 @@
                                 <div class="store__img">                                    
                                     <img src="<?=$store_img?>">
                                 </div>
-                            </a>
+                                </div>
+                           
                                 </div>
                             </form>
                             
@@ -278,10 +286,10 @@
                             <div>메뉴 카테고리</div>
                             <div><?=menu_category($menu_cate)?></div>
                             <div>메뉴명</div>
-                                <div><input type="text" name="menu_nm" id="">
+                                <div><input type="text" name="menu_nm" placeholder="메뉴명을 입력하세요" id="">
                             </div>
                             <div>메뉴 소개</div>
-                                <div><textarea name="menu_intro" id="" cols="30" rows="10"></textarea>
+                                <div><textarea name="menu_intro" id="" cols="30" rows="10" placeholder="메뉴를 소개하세요"></textarea>
                             </div>
                             <div class="store_img_input"> 메뉴 이미지</div>
                                 <div><label class="">
@@ -289,9 +297,9 @@
                                 </label>
                             </div>
                             <div>메뉴 정가</div>
-                            <div><input type="number" name="price" id="" ></div>
+                            <div><input type="number" name="price" id="" step="500" placeholder="구독할인전 가격" ></div>
                             <div>구독 할인가</div>
-                            <div><input type="number" name="sub_price" id=""></div>
+                            <div><input type="number" name="sub_price" id="" step="500" placeholder="구독할인 가격"></div>
                             <div>월 총 횟수</div>
                             <div><?=sales_count()?><?=menu_count_cd($menu_count_cd)?></div>
                             
@@ -300,9 +308,30 @@
                         </li>
                         <!-- 메뉴 편집 -->
                         <li id = "store_menu_edit" class="listing-card__item">
-                            <form action="" method="">
+                            <form action="" method="get">
                             <div class="listing-card__info">
-                            <?= card_top($card_name8)?>
+                            <div class='listing-card__info--top'>
+                                <strong class='listing-card__name'> <?=$card_name8?> > </strong>
+                                    
+                            </div>
+                            <?php 
+                            $row = menu_edit($param);
+                            foreach($row as $item) {
+                                $menu_num = $item['menu_num'];
+                                $menu_cate = $item['menu_cate'];
+                                $menu_nm = $item['menu_nm'];
+                                $price = $item['price'];
+                                $subed_price = $item['subed_price'];
+                                $subed_count = $item['subed_count'];
+                                $cd_unit = $item['cd_unit'];
+                                $menu_intro = $item['menu_intro'];
+                                $menu_photo = $item['menu_photo'];
+
+                                echo "$menu_num $menu_cate $menu_nm $price $subed_price $subed_count $cd_unit $menu_intro $menu_photo<br>";
+
+                            }
+                            ?>
+                            <div> &nbsp </div>
                             
                             </div>  
                           </form>
@@ -319,6 +348,7 @@
     </div>
     
     <script src="store.js"></script>
+    <script src="../image-input/image-input.js"></script>
 </body>
 </html>
 

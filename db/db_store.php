@@ -194,3 +194,18 @@
         mysqli_close($conn);   
         return $result; 
 }
+
+
+function menu_edit(&$param){
+    $store_num = $param['store_num'];    
+    $sql = 
+    "   SELECT * FROM t_menu
+        WHERE store_num = $store_num
+
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    
+    mysqli_close($conn);
+    return $result;
+}
