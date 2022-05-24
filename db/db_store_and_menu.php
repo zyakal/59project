@@ -42,7 +42,7 @@ function select_one_menu(&$param)
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
-    mysqli_close($conn); 
+    mysqli_close($conn);
     return mysqli_fetch_assoc($result);
 }
 // 가게 리뷰들 불러오기
@@ -95,5 +95,22 @@ function select_menu_cate(&$param)
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
+    return $result;
+}
+
+function get_menus_for_shopping(&$param)
+{
+    $menu_or = "menu_num=0";
+    foreach ($param as $k => $v) {
+        $menu_or =  $menu_or . " OR menu_num=" . $k;
+    }
+    $sql =
+        "   SELECT A.*, B.store_nm FROM t_menu A 
+        INNER JOIN t_store B 
+        ON A.store_num = B.store_num 
+        WHERE $menu_or
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
     return $result;
 }
