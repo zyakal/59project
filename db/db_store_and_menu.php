@@ -100,6 +100,7 @@ function select_menu_cate(&$param)
 
 function get_menus_for_shopping(&$param)
 {
+
     $menu_or = "menu_num=0";
     foreach ($param as $k => $v) {
         $menu_or =  $menu_or . " OR menu_num=" . $k;
@@ -112,5 +113,6 @@ function get_menus_for_shopping(&$param)
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
+
     return $result;
 }
