@@ -1,9 +1,8 @@
 .swiper_box {
-  padding: 10px 0;
-  position: sticky;
-  height: 100px;
+  width: 360px;
+  height: 50px;
+  position: fixed;
   top: 0;
-  background-color: var(--white-bg);
 }
 .swiper {
   width: 100%;
