@@ -60,7 +60,7 @@ $page_name = $store_menu['store_nm'];
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_4" name="star" value="4" /></label>
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_5" name="star" value="5" /></label>
             </div>
-            <main class="review__main">
+            <div class="review__main">
               <div>
                 <textarea name="review_ctnt" id="review_ctnt" cols="30" rows="10" placeholder="구독한 상품에 대한 솔직한 리뷰를 남겨주세요."></textarea>
               </div>
@@ -73,11 +73,11 @@ $page_name = $store_menu['store_nm'];
                   </div>
                 </div>
               </div>
-            </main>
-            <footer class="review__footer">
+            </div>
+            <div class="review__footer">
               <p class="review-sanctions">솔직하게 작성하신 리뷰는 구독을 고민하는 분들께 도움이 됩니다. 하지만 허위리뷰나 명예훼손, 욕설, 타인비방글 등 선량한 업주나 제3자의 권리를 침해하는 게시물은 서비스 이용약관이나 관련 법률에 따라 제재를 받을 수 있습니다. </p>
               <input class="review--submit" type="submit" value="완료">
-            </footer>
+            </div>
           </form>
         </div>
       </div>
