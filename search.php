@@ -30,8 +30,8 @@
                         $result = search_top_10();
                         $num = 1;
                         while($row = mysqli_fetch_assoc($result)) { ?>
-                            <div class="selectTop--item"><?=$num?>. <?=$row['search']?></div> 
-                    <?php 
+                            <div class="selectTop--item"><?=$num?>. <a href="search_list.php?search_txt=<?=$row['search']?>"><?=$row['search']?></a></div> 
+                        <?php 
                             $num++;
                         } ?>
                 </div>

@@ -35,8 +35,10 @@ function select_one_menu(&$param)
     $menu_num = $param['menu_num'];
 
     $sql =
-        "SELECT * FROM t_menu
-        WHERE menu_num = ${menu_num}
+        "SELECT A.*, B.store_nm FROM t_menu A 
+        INNER JOIN t_store B 
+        ON A.store_num = B.store_num 
+        WHERE menu_num=$menu_num
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
