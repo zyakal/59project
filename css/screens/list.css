@@ -9,6 +9,7 @@
     margin-right: 16px;
     border-radius:0.5rem;
     color: var(--text-gray);}
+
     
 .top__nav {display: inline-flex;
     margin-top: 35px;
@@ -20,4 +21,6 @@
     color: var(--main-pink) !important;
     cursor: pointer;
 }
-
+.list__main .list__main__top input[type="radio"] { display: none; }
+.list__main .list__main__top input[type="radio"] + label {cursor: pointer; }
+.list__main .list__main__top input[type="radio"]:checked + label {color: var(--text-white);}

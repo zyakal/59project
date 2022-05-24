@@ -4,13 +4,13 @@
 ?>
 
 <div class="top__list swiper-wrapper">
-    <div class="top__item swiper-slide">
+    <div class="top__item tabs__toggle swiper-slide">
         모두보기
     </div>
     <?php
         while($row = mysqli_fetch_assoc($result)) { ?>
-            <div class="top__item swiper-slide">
-                <?= $row['cate_nm'] ?>
+            <div class="top__item tabs__toggle swiper-slide <?= $row['cate_nm'] ?>">
+                <span class="tabs__name"><?= $row['cate_nm'] ?></span>
             </div>
         <?php } ?>
 </div>
