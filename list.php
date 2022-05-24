@@ -18,7 +18,9 @@ $get_cate_nm = $_GET['cate_nm'];
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
     <script src="js/swiper.js" defer></script>
     <title>59 - list</title>
-
+    <style>
+       
+    </style>
 </head>
 
 <body>
