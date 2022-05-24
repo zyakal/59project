@@ -4,17 +4,18 @@
 -->
 <?php
 include_once 'db/db_store_and_menu.php';
+session_start();
+$login_user = $_SESSION['login_user'];
 
-$page_name = '가게이름';
-
-$store_num = $_POST['store_num'];
+$menu_num = $_POST['menu_num'];
 
 $param = [
-  'store_num' => $store_num
+  'menu_num' => 4
 ];
 
-$store_name = select_one_store($param);
+$store_menu = select_one_menu($param);
 
+$page_name = $store_menu['store_nm'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +44,15 @@ $store_name = select_one_store($param);
       <div class="main--box">
         <div class="review--title">
           <h1 class="store--name">
-            메뉴이름
+            <?= $store_menu['menu_nm'] ?>
           </h1>
         </div>
         <div class="review--content">
           <form action="review_write_proc.php" method="post">
+            <input type="hidden" name="store_num" value="<?= $store_menu['store_num'] ?>">
+            <input type="hidden" name="user_num" value="<?= $login_user['user_num'] ?>">
+            <img class="review-logo" src="img/logo.png" alt="">
+            <h2 class="review-h2">구독상품은 어떠셨어요?</h2>
             <div class="stars-widget">
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_1" name="star" value="1" /></label>
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_2" name="star" value="2" /></label>
@@ -55,21 +60,24 @@ $store_name = select_one_store($param);
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_4" name="star" value="4" /></label>
               <label><i class="fa-solid fa-star"></i><input type="radio" class="star-radio" id="star_5" name="star" value="5" /></label>
             </div>
-            <div>
-              <textarea name="review_ctnt" id="review_ctnt" cols="30" rows="10" placeholder="구독한 상품에 대한 솔직한 리뷰를 남겨주세요."></textarea>
-            </div>
-            <div class="image-input">
-              <div id="inputWrapper" class="image-input__input-wrapper">
-                <input type="file" name="imageInput" id="imageInput" class="ui-input image-input__input" tabindex="0" />
-                <div class="image-input__pseudo">
-                  <div><i class="fa-solid fa-plus"></i></div>
-                  <div>이미지 넣기</div>
+            <main class="review__main">
+              <div>
+                <textarea name="review_ctnt" id="review_ctnt" cols="30" rows="10" placeholder="구독한 상품에 대한 솔직한 리뷰를 남겨주세요."></textarea>
+              </div>
+              <div class="image-input">
+                <div id="inputWrapper" class="image-input__input-wrapper">
+                  <input type="file" name="imageInput" id="imageInput" class="ui-input image-input__input" tabindex="0" />
+                  <div class="image-input__pseudo">
+                    <div><i class="fa-solid fa-plus"></i></div>
+                    <div>이미지 넣기</div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div>
+            </main>
+            <footer class="review__footer">
+              <p class="review-sanctions">솔직하게 작성하신 리뷰는 구독을 고민하는 분들께 도움이 됩니다. 하지만 허위리뷰나 명예훼손, 욕설, 타인비방글 등 선량한 업주나 제3자의 권리를 침해하는 게시물은 서비스 이용약관이나 관련 법률에 따라 제재를 받을 수 있습니다. </p>
               <input class="review--submit" type="submit" value="완료">
-            </div>
+            </footer>
           </form>
         </div>
       </div>
@@ -96,6 +104,21 @@ $store_name = select_one_store($param);
         }
       };
     }
+    const starWidget = document.querySelector(".stars-widget");
+    const reviewH2 = document.querySelector(".review-h2");
+    const reviewLogo = document.querySelector(".review-logo");
+    const reviewSanctions = document.querySelector(".review-sanctions");
+    const reviewCtnt = document.querySelector("#review_ctnt");
+    const imageInput = document.querySelector(".image-input");
+
+    starWidget.addEventListener("click", () => {
+      starWidget.classList.add("click-ani")
+      reviewH2.classList.add("d_none");
+      reviewLogo.classList.add("d_none");
+      reviewSanctions.classList.add("d_none");
+      reviewCtnt.classList.add("d_block");
+      imageInput.classList.add("d_block");
+    })
   </script>
 </body>
 
