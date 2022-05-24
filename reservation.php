@@ -42,6 +42,7 @@ if (isset($list_menu)) {
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8" />
     <title>reservation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
@@ -52,9 +53,11 @@ if (isset($list_menu)) {
     <link rel="stylesheet" href="css/screens/reservation.css" />
     <link rel="stylesheet" href="css/styles_std.css">
 
+
 </head>
 
 <body>
+
     <div class="container">
         <header>
             <?php
@@ -123,6 +126,7 @@ if (isset($list_menu)) {
         <?= "let closeTime = '$closeTime';" ?>
         <?= "let openDay = '$openDay';" ?>
 
+
         var swiper = new Swiper(".mySwiper1", {
             slidesPerView: 6.5,
             spaceBetween: 15,
@@ -143,6 +147,7 @@ if (isset($list_menu)) {
         });
     </script>
     <script src="./js/reservation_create_time_fn.js"></script>
+
 </body>
 
 </html>

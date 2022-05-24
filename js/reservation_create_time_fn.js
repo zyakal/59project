@@ -1,6 +1,9 @@
+console.log(document.querySelector(".swiper-slide2"));
+
 // <div class="day-box"></div>
 // <div class="time-box"></div>
 console.log(document.querySelector(".swiper-slide2"));
+
 let howManyDays = 30;
 let howManyTimes = 48;
 

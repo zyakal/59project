@@ -56,7 +56,13 @@
   background-color: var(--white-bg);
   box-shadow: var(--box-shadow);
 }
-.day_num {
+.mySwiper1 {
+  height: 47px;
+}
+.mySwiper1 .swiper-wrapper {
+  margin-left: 30px;
+}
+.mySwiper1 .swiper-slide {
   display: flex;
 }
 
