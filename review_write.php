@@ -108,16 +108,16 @@ $page_name = $store_menu['store_nm'];
     const reviewH2 = document.querySelector(".review-h2");
     const reviewLogo = document.querySelector(".review-logo");
     const reviewSanctions = document.querySelector(".review-sanctions");
-    const reviewCtnt = document.querySelector("#review_ctnt");
-    const imageInput = document.querySelector(".image-input");
+    const reviewMain = document.querySelector(".review__main");
+    const reviewSubmit = document.querySelector(".review--submit")
 
     starWidget.addEventListener("click", () => {
       starWidget.classList.add("click-ani")
       reviewH2.classList.add("d_none");
       reviewLogo.classList.add("d_none");
       reviewSanctions.classList.add("d_none");
-      reviewCtnt.classList.add("d_block");
-      imageInput.classList.add("d_block");
+      reviewMain.classList.add("d_block");
+      reviewSubmit.classList.add("footer-ani");
     })
   </script>
 </body>

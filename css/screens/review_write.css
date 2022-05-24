@@ -63,16 +63,7 @@
   color: var(--text-gray);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
 }
-.review--submit {
-  margin-top: 20px;
-  background-color: var(--main-pink);
-  color: var(--text-white);
-  padding: 10px 100px;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
+
 .filereader .image-input__input,
 .filereader .image-input__pseudo,
 .filereader .image-input__thumb {
@@ -100,9 +91,36 @@
 }
 .review__main {
   visibility: hidden;
-  height: 0px;
+  height: 0;
 }
 .d_block {
+  animation: scale-up-ver-bottom 0.8s ease-in-out both;
+  position: static !important;
+  height: auto;
+}
+.review-sanctions {
+  margin-top: 10px;
+  width: 80%;
+  font-size: 12px;
+  color: var(--text-gray);
+}
+.review__footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.review--submit {
+  margin-top: 20px;
+  background-color: var(--main-pink);
+  color: var(--text-white);
+  padding: 10px 100px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.footer-ani {
   animation: scale-up-ver-bottom 0.8s ease-in-out both;
 }
 @keyframes scale-up-ver-bottom {
@@ -122,16 +140,4 @@
     position: static;
     visibility: visible;
   }
-}
-.review-sanctions {
-  margin-top: 10px;
-  width: 80%;
-  font-size: 12px;
-  color: var(--text-gray);
-}
-.review__footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
