@@ -271,8 +271,8 @@
                         
                         
                         <!-- 메뉴 등록 -->
-                        <li id = "store_menu_input" class="listing-card__item">
-                            <form action="" method="">
+                        <li id = "" class="listing-card__item">
+                            <form action="store_menu_input.php" method="post">
                             <div class="listing-card__info">
                             <?= card_top($card_name7)?>
                             <div>메뉴 카테고리</div>
