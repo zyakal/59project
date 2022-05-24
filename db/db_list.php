@@ -21,9 +21,10 @@
 
     //list page - 원하는 가게
     function sel_result_store(&$param) {
+        $store_num = $param['store_num'];
         $conn = get_conn();
         $sql = "SELECT store_nm, store_photo, store_num FROM t_store 
-            WHERE store_num = {$param['store_num']}";
+            WHERE store_num = '$store_num'";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return $result;
