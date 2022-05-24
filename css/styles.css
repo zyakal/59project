@@ -29,6 +29,7 @@
 @import "screens/myinfo_mod.css";
 @import "screens/user_dropout.css";
 @import "screens/mypage.css";
+@import "screens/notification.css";
 
 /* 은지 css */
 @import "screens/home.css";

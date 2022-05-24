@@ -73,6 +73,10 @@ function login_user(&$param){
     if(!empty($row))
     {       session_start();
             $_SESSION['login_user'] = $row;
+            $param = [
+               'user_num' => $row['user_num']
+            ];
+            sub_check($param);
     }
     return $row;
 }
@@ -237,4 +241,131 @@ function user_review_count(&$param)
     $row = mysqli_fetch_assoc($result);
     mysqli_close($conn);
     return $row['cnt'];
+}
+
+// DB 알림 기능
+
+function sub_check(&$param)
+{
+    $user_num = $param['user_num'];
+    $day = date("Y-m-d");
+    $beforeDay = date("Y-m-d", strtotime($day." -1 day"));
+
+    $sql = "SELECT store_num, menu_num, end_date FROM t_sub where user_num = $user_num
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    if($row['end_date'] == $beforeDay) {
+    $param = [
+        'user_num' => $param['user_num'],
+        'store_num' => $row['store_num'],
+        'menu_num' => $row['menu_num']
+    ];
+    ins_sub_not($param);
+}
+}
+
+function ins_sub_not(&$param)
+{
+    $user_num = $param['user_num'];
+    $store_num = $param['store_num'];
+    $menu_num = $param['menu_num'];
+
+    $sql_1 = "SELECT store_nm from t_store where store_num = $store_num
+    ";
+    $sql_2 = "SELECT menu_nm from t_menu where menu_num = $menu_num
+    ";
+    $conn = get_conn();
+    $result_1 = mysqli_query($conn, $sql_1);
+    $result_2 = mysqli_query($conn, $sql_2);
+    $row_1 = mysqli_fetch_assoc($result_1);
+    $row_2 = mysqli_fetch_assoc($result_2);
+    $store_nm = $row_1['store_nm'];
+    $menu_nm = $row ['menu_nm'];
+
+    $sql_3 = "INSERT INTO t_not
+            (user_num,user_nm,store_nm,not_type,not_url)
+            value
+            ('$user_num','$user_nm','$store_nm','4','store-detail.php?store_num=$store_num')
+    ";
+    $result_3 = mysqli_query($conn, $sql_3);
+    mysqli_close($conn);
+    return $result;
+}
+
+function upd_read(&$param)
+{
+    $not_num = $param['not_num'];
+
+    $sql = "UPDATE t_not
+    set not_read_check = 1
+    where not_num = $not_num";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+
+function sel_today(&$param)
+{
+    $not_num = $param['not_num'];
+    
+    $sql = "SELECT * FROM t_not
+            where not_num = '$not_num'";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row;
+}
+
+function check_not(&$param)
+{
+    $user_num = $param['user_num'];
+    
+    $sql = "SELECT COUNT(not_num) as cnt FROM t_not
+            where user_num = '$user_num'
+            and not_read_check = 0";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    mysqli_close($conn);
+    return $row['cnt'];
+}
+
+function sel_not_today(&$param)
+{
+    $user_num = $param['user_num'];
+    $row_count = $param['row_count'];
+    $start_idx = $param['start_idx'];
+
+    $day = date("Y-m-d");
+    
+    $sql = "SELECT * FROM t_not
+            where user_num = '$user_num' 
+            and not_read_check = 0
+            order by created_at DESC
+            limit $start_idx,$row_count";
+
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+
+function sel_not_last(&$param)
+{
+    $user_num = $param['user_num'];
+    $day = date("Y-m-d");
+    $sql = "SELECT * FROM t_not
+            where user_num = '$user_num' 
+            and not_read_check = 0
+            and left(created_at,10) < '$day'
+            order by created_at DESC";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
 }
