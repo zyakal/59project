@@ -183,6 +183,7 @@ $get_cate_nm = $_GET['cate_nm'];
                     contents[i].classList.add('is-active');
                     // console.log(tabs[i].innerHTML);
                     document.querySelector('input[type="radio"]').checked = false;
+                    tabs[i].style.backgroundColor = 'var(--main-pink)';
                 }
             }
 
@@ -193,10 +194,12 @@ $get_cate_nm = $_GET['cate_nm'];
                     });
                     tabs.forEach((tab) => {
                         tab.classList.remove('is-active');
+                        tab.style.backgroundColor = "";
                     });
                     cateNm[index].checked = true;
                     contents[index].classList.add('is-active');
                     tabs[index].classList.add('is-active');
+                    tabs[index].style.backgroundColor = 'var(--main-pink)';
                 });
             });
         </script>
