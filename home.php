@@ -32,80 +32,22 @@
             <?php
             include_once "main-banner.php";
             ?>
+            <!-- main 카테고리 -->
             <div class="home__categories">
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/Korean_Food.png"></div>
-                        <div class="category__name">한식</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/bunsik.png"></div>
-                        <div class="category__name">분식</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/hamburger.png"></div>
-                        <div class="category__name">패스트푸드</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/lunches.png"></div>
-                        <div class="category__name">도시락</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/Chinese_Food.png"></div>
-                        <div class="category__name">중식</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/American_Food.png"></div>
-                        <div class="category__name">양식</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/Japanese_Food.png"></div>
-                        <div class="category__name">일식</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/dessert.png"></div>
-                        <div class="category__name">커피,디저트</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/nail.png"></div>
-                        <div class="category__name">네일샵</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/hair.png"></div>
-                        <div class="category__name">헤어샵</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/hobby.png"></div>
-                        <div class="category__name">취미</div>
-                    </a>
-                </div>
-                <div class="category">
-                    <a href="list.php">
-                        <div class="category__img"><img src="img/banner_icon/yoga.png"></div>
-                        <div class="category__name">운동</div>
-                    </a>
-                </div>
+                <?php
+                    include_once "db/db_list.php";
+                    $result = sel_categories();
+
+                    while($row = mysqli_fetch_assoc($result)) { ?>
+                        <div class="category">
+                            <a href="list.php?cate_nm=<?=$row['cate_nm']?>">
+                                <div class="category__img"><img src="img/banner_icon/<?=$row['cate_nm']?>.png"></div>
+                                <div class="category__name"><?=$row['cate_nm']?></div>
+                            </a>
+                        </div>
+                    <?php } ?>
             </div>
+            <!-- 맞춤 추천 부분 -->
             <div class="recommend">
                 <div class="recommend--nav">
                     <div>맞춤 알림</div>

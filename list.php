@@ -1,6 +1,5 @@
 <?php
     include_once "db/db_list.php";
-
 ?>  
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
     <script src="js/swiper.js" defer></script>
+    <script src="js/store-tabs.js" defer></script>
     <title>59 - list</title>
 </head>
 <body>
@@ -49,7 +49,21 @@
                 </div>
             </div>
             <div class="list__main__list">
-                <?php
+                <div class="tabs__body">
+                    <div class="tabs__content" id="네일샵">
+                        <h2 class="tabs__title">First Title</h2>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                    </div>
+                    <div class="tabs__content" id="도시락">
+                        <h2 class="tabs__title">Second Title</h2>
+                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                    </div>
+                    <div class="tabs__content" id="미용실">
+                        <h2 class="tabs__title">Third Title</h2>
+                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                    </div>
+                </div>
+                <!-- <?php
                     $result = sel_store_list();
                     while($row = mysqli_fetch_assoc($result)) { 
                         $param = [
@@ -57,8 +71,8 @@
                         ];
                         $cate_nm = cate_name($param)['cate_nm'];
                         ?>
-                        <div><?=$cate_nm?></div>
-                        <?php
+                        <div><?=$cate_nm?></div> -->
+                        <!-- <?php
                         $star = store_star($param);
                         if (!$star) {
                             $star = "";
@@ -66,7 +80,8 @@
                             $star = $star['star'];
                         }
                         include_once "store_list_form.php";
-                    } ?>
+                    } 
+                    ?> -->
             </div>
         </main>
         <footer>

@@ -4,7 +4,7 @@
     //카테고리 목록 받아오는 함수
     function sel_categories() {
         $conn = get_conn();
-        $sql = "SELECT cate_nm FROM t_categorie";
+        $sql = "SELECT cate_nm, cate_num FROM t_categorie";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return $result;
