@@ -11,7 +11,7 @@
             'search_txt' => $search_txt
         ];
         $result = ins_search($param);
-        header("Location: search.php");
+        header("Location: search_list.php?search_txt={$search_txt}.php");
     }
 
 

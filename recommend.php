@@ -1,4 +1,36 @@
 <?php
+
+
+    include_once "db/db.php";
+
+    //구독중인 사용자와 가게번호 가지고 오는 함수
+    function sel_sub_num() {
+        $conn = get_conn();
+        $sql = "SELECT user_num, store_num
+        FROM t_sub
+        ORDER BY user_num";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
+
+    function sel_reviwe_star(&$param) {
+        $user_num = $param['user_num'];
+        $store_num = $param['store_num'];
+        $conn = get_conn();
+        $sql = "SELECT star_rating
+        FROM t_review
+        WHERE user_num = $user_num AND store_num = $store_num";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        if($result != null) {
+            $row = mysqli_fetch_assoc($result);
+            return $row['star_rating'];
+        } 
+        return 3;
+        
+    }
+
 class Recommend {
 
     public function similarityDistance($preferences, $person1, $person2)
