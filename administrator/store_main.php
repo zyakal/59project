@@ -293,7 +293,7 @@
                             <div>구독 할인가</div>
                             <div><input type="number" name="sub_price" id=""></div>
                             <div>월 총 횟수</div>
-                            <div><?=sales_count()?></div>
+                            <div><?=sales_count()?><?=menu_count_cd($menu_count_cd)?></div>
                             
                             </div>
                             </form>

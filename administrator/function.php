@@ -115,9 +115,9 @@ function menu_category($menu_cate){
 function sales_count(){
     $count = "";
     $i=1;
-    $count .= "<select name='sales_count'><option value=''>-- 구독 횟수 --</option>";
+    $count .= "<select name='sales_count'><option value=''>-- 구독 이용 --</option>";
     for($i;$i <= 30;$i++){        
-            $count .= "<option value='$i'>$i 회</option>";
+            $count .= "<option value='$i'>$i</option>";
         }     
     
     $count .= "</select>";
@@ -127,11 +127,12 @@ function sales_count(){
 function menu_count_cd($menu_count_cd){
     $menu_cd = "";
     $i=0;
-    $menu_cd .= "<select name='menu_cd'><option value=''>-- 카테고리 --</option>";
-    for($i;$i < count($menu_count_cd);$i++){        
-            $menu_category .= "<option value='$menu_cd[$i]'>$menu_cd[$i]</option>";
+    $menu_cd .= "<select name='menu_cd'><option value=''>-- 단위 --</option>";
+    for($i;$i < count($menu_count_cd);$i++){ 
+            $value = $i+1;       
+            $menu_cd .= "<option value='$value'>$menu_count_cd[$i]</option>";
         }     
     
     $menu_cd .= "</select>";
-    return $menu_category;
+    return $menu_cd;
 }

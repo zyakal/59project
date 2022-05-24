@@ -11,6 +11,22 @@
     $sales_count = $_POST['sales_count'];
     $price = $_POST['price'];
     $sub_price = $_POST['sub_price'];
+    $menu_cd = $_POST['menu_cd'];
+
+
+    //DB에 저장!
+    $param = [
+        "menu_photo" => $target_filenm,
+        "store_num" => $login["store_num"],
+        "menu_category" => $category,
+        "menu_nm" =>  $menu_nm,
+        "menu_intro" => $menu_intro,
+        "sales_count" => $sales_count,
+        "price" => $price,
+        "sub_price" => $sub_price,
+        "menu_cd" => $menu_cd
+        
+    ];
 
     
     // 로그인때만 세션에서 이메일값 받아오기, 수정필요
@@ -72,26 +88,21 @@
             }
         }
 
-        //DB에 저장!
-        $param = [
-            "menu_photo" => $target_filenm,
-            "store_num" => $login["store_num"],
-            "menu_category" => $category,
-            "menu_nm" =>  $menu_nm,
-            "menu_intro" => $menu_intro,
-            "sales_count" => $sales_count,
-            "price" => $price,
-            "sub_price" => $sub_price
-            
-        ];
+        
 
-        $result = store_menu_input($param);
+        
         $login["menu_photo"] = $target_filenm;
         
-        Header("Location: store_main.php");
+        
     } else { //업로드 실패!
         echo "업로드 실패";
     }
+
+    $result = store_menu_input($param);
+    if($result) {
+        Header("Location: store_main.php");
+    }
+    else{ echo "업로드 실패!";}
     
 
 

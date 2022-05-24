@@ -175,13 +175,14 @@
         $price = $param['price'];
         $sub_price = $param['sub_price'];        
         $store_num = $param['store_num'];
+        $cd_unit = $param['menu_cd'];
 
 
         $sql =
         "   INSERT INTO t_menu
-            (store_num, menu_cate, menu_nm, price, subed_price, subed_count, menu_intro, menu_photo)
+            (store_num, menu_cate, menu_nm, price, subed_price, subed_count, menu_intro, menu_photo, cd_unit)
             VALUE
-            ('$store_num','$category','$menu_nm','$price', '$sub_price', '$sales_count','$menu_intro','$menu_photo')
+            ('$store_num','$category','$menu_nm','$price', '$sub_price', '$sales_count','$menu_intro','$menu_photo', $cd_unit)
             
 
         ";
