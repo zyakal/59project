@@ -46,7 +46,7 @@
             $store_email = $param['store_email'];
     
                 $sql = 
-                "   SELECT A.*, B.menu_photo
+                "   SELECT A.*, B.menu_photo 
                     from t_store A
                     INNER JOIN t_menu B
                     ON A.store_num = B.store_num

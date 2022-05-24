@@ -272,7 +272,7 @@
                         
                         <!-- 메뉴 등록 -->
                         <li id = "" class="listing-card__item">
-                            <form action="store_menu_input.php" method="post">
+                            <form action="store_menu_input.php" method="post" enctype="multipart/form-data">
                             <div class="listing-card__info">
                             <?= card_top($card_name7)?>
                             <div>메뉴 카테고리</div>
@@ -285,11 +285,11 @@
                             </div>
                             <div class="store_img_input"> 메뉴 이미지</div>
                                 <div><label class="">
-                                    <input class="" type="file" name="menu_img" accept="image/*">
+                                    <input class="" type="file" name="menu_img" accept="image/*" >
                                 </label>
                             </div>
                             <div>메뉴 정가</div>
-                            <div><input type="number" name="price" id=""></div>
+                            <div><input type="number" name="price" id="" ></div>
                             <div>구독 할인가</div>
                             <div><input type="number" name="sub_price" id=""></div>
                             <div>월 총 횟수</div>

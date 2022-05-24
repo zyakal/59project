@@ -7,8 +7,7 @@
     // 포스트값 받아오기
     $category = $_POST['menu_category'];
     $menu_nm = $_POST['menu_nm'];
-    $menu_intro = $_POST['menu_intro'];
-    $menu_img = $_POST['menu_img'];
+    $menu_intro = $_POST['menu_intro'];    
     $sales_count = $_POST['sales_count'];
     $price = $_POST['price'];
     $sub_price = $_POST['sub_price'];
@@ -37,6 +36,7 @@
     
 
     var_dump($_FILES);
+    
     if($_FILES["menu_img"]["name"] === "") {
         echo "이미지 없음";
         exit;
@@ -67,25 +67,25 @@
     // mkdir 폴더 만들기, (위치, 권한, true일 경우 만들 폴더가 여러개라도 만들어짐)
     $tmp_img = $_FILES['menu_img']['tmp_name'];
     $imageUpload = move_uploaded_file($tmp_img, $target_full_path . "/" .$target_filenm); //파일이동 성공시 true, 실패시 false
-    if($imageUpload) { //업로드 성공!
+    // if($imageUpload) { //업로드 성공!
         
         //이전에 등록된 프사가 있으면 삭제!      
-        if($login["menu_photo"]) {
-            $saved_img = $target_full_path . "/" . $login["menu_photo"];
-            if(file_exists($saved_img)) {
-                unlink($saved_img);
-            }
-        }
+        // if($login["menu_photo"]) {
+        //     $saved_img = $target_full_path . "/" . $login["menu_photo"];
+        //     if(file_exists($saved_img)) {
+        //         unlink($saved_img);
+        //     }
+        // }
 
         
 
         
-        $login["menu_photo"] = $target_filenm;
+        // $login["menu_photo"] = $target_filenm;
         
         
-    } else { //업로드 실패!
-        echo "업로드 실패";
-    }
+    // } else { //업로드 실패!
+    //     echo "업로드 실패";
+    // }
     //DB에 저장!
     $param = [
         "menu_photo" => $target_filenm,
@@ -99,9 +99,12 @@
         "menu_cd" => $menu_cd
         
     ];
-    
+    print_r($param);
+
+
     $result = store_menu_input($param);
     if($result) {
+        echo "업로드 성공!";
         // Header("Location: store_main.php");
     }
     else{ echo "업로드 실패!";}
