@@ -1,8 +1,13 @@
 <?php
     include_once "../db/db_store.php";    
     include_once "function.php";
+    include_once "../check_reserve_for_store.php";
     session_start();
+   
     $login = $_SESSION['login_store'];
+    if(!isset($login)){
+        header("location: store_login.php");
+    }
     $login_email = $login['store_email'];
     
     
@@ -50,15 +55,23 @@
         "sun"
     ];
     $menu_cate = [
-        "음식",
-        "의류",
-        "여행/도서",
-        "생필품",
-        "뷰티",
-        "출산/유아",
-        "스포츠"
+        "한식",
+        "분식",
+        "패스트푸드",
+        "도시락",
+        "중식",
+        "양식",
+        "일식",
+        "커피/디저트",
+        "네일샵",
+        "헤어샵",
+        "취미",
+        "운동"
     ];
-
+    $menu_count_cd = [
+        "회",
+        "개"
+    ];
 
     
 
@@ -202,7 +215,7 @@
                         </li> 
                         <!-- 가게 이미지 -->
                         <li id = "store_img" class="listing-card__item">                        
-                            <form action="store_photo.php" method="post" enctype="multipart/form-data">
+                            <form class="img_test" action="store_photo.php" method="post" enctype="multipart/form-data">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name3)?>
                                 <div class="store_img_input"><label><input type="file" name="img" accept="image/*"></label></div>
@@ -255,30 +268,7 @@
                             </div>
                             </form>
                         </li>
-                        <!-- 임시 휴일 -->
-                        <li id = "store_dayOff" class="listing-card__item">
-                            <form action="store_main_dayOff.php" method="post">
-                            <div class="listing-card__info">
-                            <?= card_top($card_name5)?>
-                            <?php
-                                
-
-                            ?>
-                            
-                            <div>
-                                <input type = "date" name = "testDate_start" value = "<?=$testDate_start?>" ><span>부터</span>
-                                ~
-                                <input type = "date" name = "testDate_end" value = "<?=$testDate_end?>"> <span>까지</span>
-                                
-                            </div>
-                            
-                            
-                            
-
-                            
-                            </div>
-                            </form>
-                        </li>
+                        
                         
                         <!-- 메뉴 등록 -->
                         <li id = "store_menu_input" class="listing-card__item">
@@ -286,18 +276,22 @@
                             <div class="listing-card__info">
                             <?= card_top($card_name7)?>
                             <div>메뉴 카테고리</div>
-                            <div><?=menu_select($menu_cate)?></div>
+                            <div><?=menu_category($menu_cate)?></div>
                             <div>메뉴명</div>
-                                <div><input type="text" name="" id="">
+                                <div><input type="text" name="menu_nm" id="">
                             </div>
                             <div>메뉴 소개</div>
-                                <div><textarea name="" id="" cols="30" rows="10"></textarea>
+                                <div><textarea name="menu_intro" id="" cols="30" rows="10"></textarea>
                             </div>
                             <div class="store_img_input"> 메뉴 이미지</div>
                                 <div><label class="">
-                                    <input class="" type="file" name="img" accept="image/*">
+                                    <input class="" type="file" name="menu_img" accept="image/*">
                                 </label>
                             </div>
+                            <div>메뉴 정가</div>
+                            <div><input type="number" name="price" id=""></div>
+                            <div>구독 할인가</div>
+                            <div><input type="number" name="sub_price" id=""></div>
                             <div>월 총 횟수</div>
                             <div><?=sales_count()?></div>
                             

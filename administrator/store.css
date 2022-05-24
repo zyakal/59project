@@ -41,8 +41,8 @@ body {
 
 .wrap {
   display: grid;
-  grid-template-columns: 20% minmax(420px, 1fr);
-  grid-template-rows: 56px 1fr;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 5% 95%;
 }
 
 .header {
@@ -184,6 +184,7 @@ body {
 .main .listing-card__item {
   display: flex;
   flex-direction: column;
+  height: fit-content;
   width: 100%;
   background-color: var(--white-bg);
   border: 1px solid var(--border-color);
@@ -271,12 +272,12 @@ textarea {
   overflow: hidden;
   justify-content: space-around;
   width: 100% !important;
-  height: 100% !important;
+  height: 50% !important;
 }
 .store__img img {
   border-radius: 10px;
   width: 100%;
-  height: 50%;
+  height: 100%;
   object-fit: cover;
 }
 

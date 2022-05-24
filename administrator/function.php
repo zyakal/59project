@@ -100,10 +100,10 @@ function sales_time_close_minute(){
     return $minute;
 }
 
-function menu_select($menu_cate){
+function menu_category($menu_cate){
     $menu_category = "";
     $i=0;
-    $menu_category .= "<select name='menu_select'><option value=''>-- 카테고리 --</option>";
+    $menu_category .= "<select name='menu_category'><option value=''>-- 카테고리 --</option>";
     for($i;$i < count($menu_cate);$i++){        
             $menu_category .= "<option value='$menu_cate[$i]'>$menu_cate[$i]</option>";
         }     
@@ -115,11 +115,23 @@ function menu_select($menu_cate){
 function sales_count(){
     $count = "";
     $i=1;
-    $count .= "<select name='menu_select'><option value=''>-- 구독 횟수 --</option>";
+    $count .= "<select name='sales_count'><option value=''>-- 구독 횟수 --</option>";
     for($i;$i <= 30;$i++){        
             $count .= "<option value='$i'>$i 회</option>";
         }     
     
     $count .= "</select>";
     return $count;
+}
+
+function menu_count_cd($menu_count_cd){
+    $menu_cd = "";
+    $i=0;
+    $menu_cd .= "<select name='menu_cd'><option value=''>-- 카테고리 --</option>";
+    for($i;$i < count($menu_count_cd);$i++){        
+            $menu_category .= "<option value='$menu_cd[$i]'>$menu_cd[$i]</option>";
+        }     
+    
+    $menu_cd .= "</select>";
+    return $menu_category;
 }

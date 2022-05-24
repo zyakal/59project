@@ -46,8 +46,10 @@
             $store_email = $param['store_email'];
     
                 $sql = 
-                "   SELECT *
-                    from t_store
+                "   SELECT A.*, B.menu_photo
+                    from t_store A
+                    INNER JOIN t_menu B
+                    ON A.store_num = B.store_num
                     where store_email = '$store_email'
             ";
             $conn = get_conn();
@@ -67,7 +69,7 @@
             return $result;
          }
 
-         
+         // 영업요일 등록/수정
         function sales_day(&$param){
             $mon = $param['mon'];
             $tue = $param['tue'];
@@ -76,7 +78,7 @@
             $fri = $param['fri'];
             $sat = $param['sat'];
             $sun = $param['sun'];
-        
+            
             $sql = 
             "   UPDATE t_store
                 SET sales_day = '$mon $tue $wed $thu $fri $sat $sun'
@@ -90,9 +92,9 @@
             
         }
 
-        function store_time_insert(&$login){
-            $store_email = $login['store_email'];
-            $sales_time = $login['sales_time'];
+        function store_time_insert(&$param){
+            $store_email = $param['store_email'];
+            $sales_time = $param['sales_time'];
     
             $store_open_hour = $_POST['sales_open_hour'];           
             $store_open_minute = $_POST['sales_open_minute'];           
@@ -121,9 +123,9 @@
             mysqli_close($conn);   
             return $result; 
         }
-        function store_notice_insert(&$login){
+        function store_notice_insert(&$param){
             $store_notice = $_POST['store_notice'];
-            $store_email = $login['store_email'];
+            $store_email = $param['store_email'];
             if(!isset($store_notice))  {
                 $sql = 
             "   INSERT INTO t_store
@@ -147,3 +149,47 @@
             mysqli_close($conn);   
             return $result; 
     }
+    // 해당 가게 메뉴 선택
+    function store_menu_select(&$param){
+        $store_num = $param['store_num'];
+    
+                $sql = 
+                "   SELECT *
+                    from t_menu
+                    where store_num = '$store_num'
+            ";
+            $conn = get_conn();
+            $result = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_assoc($result);
+            mysqli_close($conn);
+            return $row;
+    }
+
+    // 가게 메뉴 등록
+    function store_menu_input(&$param){
+        $category = $param['menu_category'];
+        $menu_nm = $param['menu_nm'];
+        $menu_intro = $param['menu_intro'];
+        $menu_photo = $param['menu_photo'];
+        $sales_count = $param['sales_count'];
+        $price = $param['price'];
+        $sub_price = $param['sub_price'];        
+        $store_num = $param['store_num'];
+
+
+        $sql =
+        "   INSERT INTO t_menu
+            (store_num, menu_cate, menu_nm, price, subed_price, subed_count, menu_intro, menu_photo)
+            VALUE
+            ('$store_num','$category','$menu_nm','$price', '$sub_price', '$sales_count','$menu_intro','$menu_photo')
+            
+
+        ";
+
+        
+        $conn = get_conn();
+        $result = mysqli_query($conn, $sql);   
+        
+        mysqli_close($conn);   
+        return $result; 
+}
