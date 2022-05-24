@@ -1,7 +1,7 @@
 .swiper_box {
   padding: 10px 0;
   position: sticky;
-  height: 100px;
+  height: 4rem;
   top: 0;
   background-color: var(--white-bg);
 }
