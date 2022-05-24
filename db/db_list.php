@@ -4,7 +4,7 @@
     //카테고리 목록 받아오는 함수
     function sel_categories() {
         $conn = get_conn();
-        $sql = "SELECT cate_nm FROM t_categorie";
+        $sql = "SELECT cate_nm, cate_num FROM t_categorie";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return $result;
@@ -14,6 +14,16 @@
     function sel_store_list() {
         $conn = get_conn();
         $sql = "SELECT store_nm, store_photo, store_num FROM t_store";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
+
+    //list page - 원하는 가게
+    function sel_result_store(&$param) {
+        $conn = get_conn();
+        $sql = "SELECT store_nm, store_photo, store_num FROM t_store 
+            WHERE store_num = {$param['store_num']}";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return $result;
@@ -86,3 +96,13 @@
         return $result;
     }
     
+    function search_result_list(&$param) {
+        $search = $param['search_txt'];
+        // $search_txt = explode(" ", $search);
+        $conn = get_conn();
+        $sql = "SELECT store_num, store_nm FROM t_store
+        WHERE store_nm LIKE '%$search%'";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
+    }
