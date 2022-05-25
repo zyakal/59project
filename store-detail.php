@@ -1,7 +1,7 @@
 <?php
 include_once "db/db_store_and_menu.php";
 
-$store_detail = $_GET['store-detail'];
+// $store_detail = $_GET['store-detail'];
 $param = [
     "store_num" => 1
 ];

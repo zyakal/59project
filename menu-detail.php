@@ -58,7 +58,7 @@ if ($menu['cd_unit'] == 2) {
             </div>
             <div class="menu--box">
                 <!-- 정보 -->
-                <form class="num--form" method="post" action="payment.php?user_num=">
+                <form class="num--form" method="post" action="shopping_basket.php">
                     <input type="hidden" name="menu_num" value="<?= $menu_num ?>">
                     <div class="num--box">
                         <div class="value-button .decrease" onclick="decreaseValue()" value="Decrease Value">-</div>
