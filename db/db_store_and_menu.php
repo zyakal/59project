@@ -98,12 +98,16 @@ function select_menu_cate(&$param)
     return $result;
 }
 
+//쇼핑카트에 담겨있는 메뉴 리스트 보기
 function get_menus_for_shopping(&$param)
 {
 
     $menu_or = "menu_num=0";
-    foreach ($param as $k => $v) {
-        $menu_or =  $menu_or . " OR menu_num=" . $k;
+    foreach ($param as  $v) {
+        if ($v == "totalPrice") {
+            continue;
+        }
+        $menu_or =  $menu_or . " OR menu_num=" . $v;
     }
     $sql =
         "   SELECT A.*, B.store_nm FROM t_menu A 

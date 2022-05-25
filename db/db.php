@@ -10,9 +10,9 @@
 //     return mysqli_connect(URL, USERNAME, PASSWORD, DB_NAME, PORT);
 // }
 
-define("URL", "127.0.0.1");
+define("URL", "localhost");
 define("USERNAME", "root");
-define("PASSWORD", "0915");
+define("PASSWORD", "506greendg@");
 define("DB_NAME", "59project");
 define("PORT", "3306");
 
