@@ -50,17 +50,21 @@
             <!-- 맞춤 추천 부분 -->
             <div class="recommend">
                 <div class="recommend--nav">
-                    <div>맞춤 알림</div>
+                    <?php
+                    if(isset($_SESSION['login_user'])) { ?>
+                    <div>맞춤 추천</div>
+                    <?php } else { ?>
+                        <div>거리순 추천</div>
+                    <?php } ?>
                     <div class="recommend--nav" id="nav--right">모두보기</div>
                 </div>
                 <?php
                 require_once("recommend.php");
-                session_start();
-                // if(isset($_SESSION['login_user'])) {
-                //     $login_user = $_SESSION['login_user'];
-                //     $user_num = $login_user['user_num'];
-                $user_num = 10;
-                if($user_num) {
+                // session_start();
+                // $login_user = $_SESSION['login_user'];
+                if(isset($_SESSION['login_user'])) {
+                    $user_num = $login_user['user_num'];
+
                     $sub = sel_sub_num();
                     while($row = mysqli_fetch_assoc($sub)) {
                         $param = [
@@ -71,22 +75,38 @@
                         $subs = array (
                             $row['user_num'] => array($row['store_num'] => $star) 
                         );
-                        
-                    }
-    
-                    $re = new Recommend();
-                    //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
-                    $result = $re->getRecommendations($subs, $user_num);
+                        $re = new Recommend();
+                        //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
+                        $result = $re->getRecommendations($subs, $user_num);
+                    } 
                 } else {
 
                 }
-
                
                 ?>
                 <div class="recommend--list">
-                    <?php
-                        print_r($result);
-                    ?>
+                    <div class="recommend__item">
+                        <h2 class="recommend__title">그린버거</h2>
+                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                    </div>
+                </div>
+                <div class="recommend--list">
+                    <div class="recommend__item">
+                        <h2 class="recommend__title">그린네일</h2>
+                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                    </div>
+                </div>
+                <div class="recommend--list">
+                    <div class="recommend__item">
+                        <h2 class="recommend__title">그린카페</h2>
+                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                    </div>
+                </div>
+                <div class="recommend--list">
+                    <div class="recommend__item">
+                        <h2 class="recommend__title">그린헤어샵</h2>
+                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                    </div>
                 </div>
             </div>
             <div
