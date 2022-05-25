@@ -334,11 +334,11 @@
                                 // $_GET[menu_detail]
                                 echo "$menu_nm 1달 구독
                                 <form action='store_main?1' 'method='get'>
-                                    <button name='menu_detail' type='submit' value='$menu_num'>
-                                        <i class='menu_detail fa-solid fa-bars'></i>
+                                    <button class='tabs__toggle' name='menu_detail' type='submit' value='$menu_num'>
+                                        <i class='fa-solid fa-bars'></i>
                                     </button>
                                 </form>
-                                </div> $subed_price <br><div>";
+                                </div> $subed_price <br><div class = 'tabs__content.is-active'>11111111111</div><div>";
                                 
                             }
                             ?>

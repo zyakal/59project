@@ -366,3 +366,14 @@ textarea {
 .menu_detail {
   cursor: pointer;
 }
+
+/* ------------------탭 토글 ---------------------- */
+.tabs__toggle.is-active {
+  font-weight: bold;
+  background: var(--white-bg);
+  color: var(--main-pink);
+  border: 3px solid var(--main-pink);
+}
+.tabs__content {
+  display: none;
+}
