@@ -19,6 +19,17 @@
         return $result;
     }
 
+    //카테고리 별 가게 목록
+    function sel_cate_store(&$param) {
+        $cate = $param['cate'];
+        $conn = get_conn();
+        $sql = "SELECT store_nm, store_photo, store_num FROM t_store 
+           WHERE cate_num = '$cate'";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;  
+    }
+
     //list page - 원하는 가게
     function sel_result_store(&$param) {
         $store_num = $param['store_num'];
@@ -97,6 +108,7 @@
         return $result;
     }
     
+    //인기검색어 누르면 검색결과 나오는 함수
     function search_result_list(&$param) {
         $search = $param['search_txt'];
         // $search_txt = explode(" ", $search);
