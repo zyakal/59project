@@ -26,10 +26,14 @@
   font-size: 2.5rem;
 }
 .click-ani {
-  animation: scale-down-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: scale-down-top 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 @keyframes scale-down-top {
   0% {
+    transform: scale(1);
+    transform-origin: 50% 0;
+  }
+  50% {
     transform: scale(1);
     transform-origin: 50% 0;
   }
@@ -59,30 +63,23 @@
   color: var(--text-gray);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
 }
-.review--submit {
-  margin-top: 20px;
-  background-color: var(--main-pink);
-  color: var(--text-white);
-  padding: 10px 100px;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-}
+
 .filereader .image-input__input,
 .filereader .image-input__pseudo,
 .filereader .image-input__thumb {
   width: 100%;
 }
 .d_none {
-  animation: scale-out-top 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: scale-out-top 0.4s ease-in-out both;
 }
 @keyframes scale-out-top {
   0% {
     opacity: 1;
     transform: scale(1);
     transform-origin: 50% 0;
-    visibility: visible;
+  }
+  50% {
+    opacity: 0;
   }
   100% {
     opacity: 0;
@@ -92,22 +89,14 @@
     position: fixed;
   }
 }
-.d_block {
-  animation: slide-in-fwd-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+.review__main {
+  visibility: hidden;
+  height: 0;
 }
-@keyframes slide-in-fwd-center {
-  0% {
-    opacity: 0;
-    transform: translateZ(-1400px);
-    position: absolute;
-    visibility: hidden;
-  }
-  100% {
-    opacity: 1;
-    transform: translateZ(0);
-    position: static;
-    visibility: visible;
-  }
+.d_block {
+  animation: scale-up-ver-bottom 0.8s ease-in-out both;
+  position: static !important;
+  height: auto;
 }
 .review-sanctions {
   margin-top: 10px;
@@ -120,4 +109,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.review--submit {
+  margin-top: 20px;
+  background-color: var(--main-pink);
+  color: var(--text-white);
+  padding: 10px 100px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.footer-ani {
+  animation: scale-up-ver-bottom 0.8s ease-in-out both;
+}
+@keyframes scale-up-ver-bottom {
+  0% {
+    transform: translateY(50px);
+    transform-origin: 0 100%;
+  }
+  50% {
+    transform: translateY(-0px);
+    transform-origin: 0 100%;
+    position: static;
+    visibility: visible;
+  }
+  100% {
+    transform: translateY(-20px);
+    transform-origin: 0 100%;
+    position: static;
+    visibility: visible;
+  }
 }
