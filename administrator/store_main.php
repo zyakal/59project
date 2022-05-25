@@ -1,10 +1,17 @@
 <?php
     include_once "../db/db_store.php";    
     include_once "function.php";
+    include_once "../check_reserve_for_store.php";
     session_start();
+   
     $login = $_SESSION['login_store'];
+    if(!isset($login)){
+        header("location: store_login.php");
+    }
     $login_email = $login['store_email'];
+    $store_num = $login['store_num'];
     
+    $param = [ "store_num" => $store_num];
     
 
     $result = login_store($login);
@@ -50,15 +57,23 @@
         "sun"
     ];
     $menu_cate = [
-        "음식",
-        "의류",
-        "여행/도서",
-        "생필품",
-        "뷰티",
-        "출산/유아",
-        "스포츠"
+        "한식",
+        "분식",
+        "패스트푸드",
+        "도시락",
+        "중식",
+        "양식",
+        "일식",
+        "커피/디저트",
+        "네일샵",
+        "헤어샵",
+        "취미",
+        "운동"
     ];
-
+    $menu_count_cd = [
+        "회",
+        "개"
+    ];
 
     
 
@@ -183,7 +198,7 @@
                             
                             <?= card_top($card_name6)?>
                             <div>
-                                <textarea name="store_notice" placeholder="공지사항"><?=$store_notice?></textarea>
+                                <textarea name="store_notice" placeholder="공지사항을 입력하세요"><?=$store_notice?></textarea>
                             </div>
                             
                             </div>
@@ -202,18 +217,24 @@
                         </li> 
                         <!-- 가게 이미지 -->
                         <li id = "store_img" class="listing-card__item">                        
-                            <form action="store_photo.php" method="post" enctype="multipart/form-data">
+                            <form class="img_test" action="store_photo.php" method="post" enctype="multipart/form-data">
                                 <div class="listing-card__info">
                                 <?= card_top($card_name3)?>
-                                <div class="store_img_input"><label><input type="file" name="img" accept="image/*"></label></div>
+                                <div class="image-input">
+                                <div class="image-input__input-wrapper" id="inputWrapper"><label><input type="file" id="imageInput"  name="img" accept="image/*"></label></div>
+                                <div class="image-input__pseudo">
+                                <div><i class="fa-solid fa-plus"></i></div>
+                                <div>이미지 넣기</div>
+                                </div>
                                 <?php  
                                     $session_img = $_SESSION["login_store"]["store_photo"];
                                     $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
                                 ?>
                                 <div class="store__img">                                    
-                                    <img src="<?=$store_img?>">
+                                    <img src="<?=$store_img?>" onerror= "this.src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png'">
                                 </div>
-                            </a>
+                                </div>
+                           
                                 </div>
                             </form>
                             
@@ -255,60 +276,76 @@
                             </div>
                             </form>
                         </li>
-                        <!-- 임시 휴일 -->
-                        <li id = "store_dayOff" class="listing-card__item">
-                            <form action="store_main_dayOff.php" method="post">
-                            <div class="listing-card__info">
-                            <?= card_top($card_name5)?>
-                            <?php
-                                
-
-                            ?>
-                            
-                            <div>
-                                <input type = "date" name = "testDate_start" value = "<?=$testDate_start?>" ><span>부터</span>
-                                ~
-                                <input type = "date" name = "testDate_end" value = "<?=$testDate_end?>"> <span>까지</span>
-                                
-                            </div>
-                            
-                            
-                            
-
-                            
-                            </div>
-                            </form>
-                        </li>
+                        
                         
                         <!-- 메뉴 등록 -->
-                        <li id = "store_menu_input" class="listing-card__item">
-                            <form action="" method="">
+                        <li id = "" class="listing-card__item">
+                            <form action="store_menu_input.php" method="post" enctype="multipart/form-data">
                             <div class="listing-card__info">
                             <?= card_top($card_name7)?>
                             <div>메뉴 카테고리</div>
-                            <div><?=menu_select($menu_cate)?></div>
+                            <div><?=menu_category($menu_cate)?></div>
                             <div>메뉴명</div>
-                                <div><input type="text" name="" id="">
+                                <div><input type="text" name="menu_nm" placeholder="메뉴명을 입력하세요" id="">
                             </div>
                             <div>메뉴 소개</div>
-                                <div><textarea name="" id="" cols="30" rows="10"></textarea>
+                                <div><textarea name="menu_intro" id="" cols="30" rows="10" placeholder="메뉴를 소개하세요"></textarea>
                             </div>
                             <div class="store_img_input"> 메뉴 이미지</div>
                                 <div><label class="">
-                                    <input class="" type="file" name="img" accept="image/*">
+                                    <input class="" type="file" name="menu_img" accept="image/*" >
                                 </label>
                             </div>
+                            <div>메뉴 정가</div>
+                            <div><input type="number" name="price" id="" step="500" placeholder="구독할인전 가격" ></div>
+                            <div>구독 할인가</div>
+                            <div><input type="number" name="sub_price" id="" step="500" placeholder="구독할인 가격"></div>
                             <div>월 총 횟수</div>
-                            <div><?=sales_count()?></div>
+                            <div><?=sales_count()?><?=menu_count_cd($menu_count_cd)?></div>
                             
                             </div>
                             </form>
                         </li>
                         <!-- 메뉴 편집 -->
                         <li id = "store_menu_edit" class="listing-card__item">
-                            <form action="" method="">
+                            <form action="" method="get">
                             <div class="listing-card__info">
-                            <?= card_top($card_name8)?>
+                            <div class='listing-card__info--top'>
+                                <strong class='listing-card__name'> <?=$card_name8?> > </strong>
+                                    
+                            </div>
+                            <?php 
+                            $row = menu_edit($param);
+                            foreach($row as $item) {
+                                $menu_num = $item['menu_num'];
+                                $menu_cate = $item['menu_cate'];
+                                $menu_nm = $item['menu_nm'];
+                                $price = $item['price'];
+                                $subed_price = $item['subed_price'];
+                                $subed_count = $item['subed_count'];
+                                $cd_unit = $item['cd_unit'];
+                                $menu_intro = $item['menu_intro'];
+                                $menu_photo = $item['menu_photo'];
+                                $menu_img =  "../img/store/" . $store_name . "/Menu_img/" . $menu_photo;
+                                
+                            ?>
+                                <div><img class="menu_img" src="<?=$menu_img?>"  onerror="this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'">
+                            <?php
+                                // $_GET[menu_detail]
+                                echo "$menu_nm 1달 구독
+                                <form action='store_main?1' 'method='get'>
+                                    <button class='tabs__toggle' name='menu_detail' type='submit' value='$menu_num'>
+                                        <i class='fa-solid fa-bars'></i>
+                                    </button>
+                                </form>
+                                </div> $subed_price <br><div class = 'tabs__content.is-active'>11111111111</div><div>";
+                                
+                            }
+                            ?>
+                                
+
+                            
+                            
                             
                             </div>  
                           </form>
@@ -323,8 +360,9 @@
 
         </div>
     </div>
-    
+    <script src="https://kit.fontawesome.com/6a1759ba21.js" crossorigin="anonymous"></script>
     <script src="store.js"></script>
+    <script src="../image-input/image-input.js"></script>
 </body>
 </html>
 

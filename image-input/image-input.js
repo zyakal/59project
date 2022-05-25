@@ -17,35 +17,35 @@
         )
           for (s = 0; s < n.options.aliases.length; s++)
             e.push(n.options.aliases[s].toLowerCase());
-        for (a = o(n.fn, 'function') ? n.fn() : n.fn, i = 0; i < e.length; i++)
+        for (a = o(n.fn, "function") ? n.fn() : n.fn, i = 0; i < e.length; i++)
           (f = e[i]),
-            (r = f.split('.')),
+            (r = f.split(".")),
             1 === r.length
               ? (Modernizr[r[0]] = a)
               : (!Modernizr[r[0]] ||
                   Modernizr[r[0]] instanceof Boolean ||
                   (Modernizr[r[0]] = new Boolean(Modernizr[r[0]])),
                 (Modernizr[r[0]][r[1]] = a)),
-            t.push((a ? '' : 'no-') + r.join('-'));
+            t.push((a ? "" : "no-") + r.join("-"));
       }
   }
   function i(e) {
     var n = r.className,
-      s = Modernizr._config.classPrefix || '';
+      s = Modernizr._config.classPrefix || "";
     if ((c && (n = n.baseVal), Modernizr._config.enableJSClass)) {
-      var o = new RegExp('(^|\\s)' + s + 'no-js(\\s|$)');
-      n = n.replace(o, '$1' + s + 'js$2');
+      var o = new RegExp("(^|\\s)" + s + "no-js(\\s|$)");
+      n = n.replace(o, "$1" + s + "js$2");
     }
     Modernizr._config.enableClasses &&
-      ((n += ' ' + s + e.join(' ' + s)),
+      ((n += " " + s + e.join(" " + s)),
       c ? (r.className.baseVal = n) : (r.className = n));
   }
   var t = [],
     l = [],
     f = {
-      _version: '3.6.0',
+      _version: "3.6.0",
       _config: {
-        classPrefix: '',
+        classPrefix: "",
         enableClasses: !0,
         enableJSClass: !0,
         usePrefixes: !0,
@@ -67,8 +67,8 @@
     Modernizr = function () {};
   (Modernizr.prototype = f), (Modernizr = new Modernizr());
   var r = n.documentElement,
-    c = 'svg' === r.nodeName.toLowerCase();
-  Modernizr.addTest('filereader', !!(e.File && e.FileList && e.FileReader)),
+    c = "svg" === r.nodeName.toLowerCase();
+  Modernizr.addTest("filereader", !!(e.File && e.FileList && e.FileReader)),
     a(),
     i(t),
     delete f.addTest,
@@ -79,32 +79,32 @@
 
 if (window.FileReader) {
   document
-    .getElementById('imageInput')
-    .addEventListener('change', handleFileSelect, false);
+    .getElementById("imageInput")
+    .addEventListener("change", handleFileSelect, false);
 
   function handleFileSelect(evt) {
-    const thumbnails = document.getElementById('thumbnails');
+    const thumbnails = document.getElementById("thumbnails");
     const files = evt.target.files;
 
     if (document.contains(thumbnails)) {
       thumbnails.remove();
     }
 
-    const images = [...files].filter((file) => file.type.match('image.*'));
+    const images = [...files].filter((file) => file.type.match("image.*"));
     for (const imageFile of images) {
       const reader = new FileReader();
 
       reader.onload = (function (theFile) {
         return function (e) {
-          const el = document.createElement('div');
-          el.setAttribute('id', 'thumbnails');
+          const el = document.createElement("div");
+          el.setAttribute("id", "thumbnails");
           el.innerHTML = `<img class="image-input__thumb" src="${
             e.target.result
           }" title="${escape(theFile.name)}" />`;
-          document.getElementById('inputWrapper').insertBefore(el, null);
+          document.getElementById("inputWrapper").insertBefore(el, null);
           document.getElementsByClassName(
-            'image-input__meta'
-          )[0].style.display = 'block';
+            "image-input__meta"
+          )[0].style.display = "block";
         };
       })(imageFile);
 
