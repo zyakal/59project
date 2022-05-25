@@ -30,7 +30,9 @@ if (isset($list_menu)) {
     $menu_nm = $list_menu['menu_nm'];
     $menu_subed_count = $list_menu['subed_count'];
 }
-
+if (!$list_menu['required_time']) {
+    $list_menu['required_time'] = 0;
+}
 ?>
 <script>
     let requiredTimeMin = <?= $list_menu['required_time'] ?>;
