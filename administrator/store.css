@@ -41,8 +41,8 @@ body {
 
 .wrap {
   display: grid;
-  grid-template-columns: 20% minmax(420px, 1fr);
-  grid-template-rows: 56px 1fr;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 5% 95%;
 }
 
 .header {
@@ -184,6 +184,7 @@ body {
 .main .listing-card__item {
   display: flex;
   flex-direction: column;
+  height: fit-content;
   width: 100%;
   background-color: var(--white-bg);
   border: 1px solid var(--border-color);
@@ -215,7 +216,7 @@ textarea {
   padding: 10px;
 }
 
-.btn_reset {
+.btn {
   font-weight: bold;
   color: var(--main-pink);
   background-color: var(--white-bg);
@@ -225,7 +226,7 @@ textarea {
   height: 1.5rem;
 }
 
-.btn_submit {
+.btn:hover {
   font-weight: bold;
   color: white;
   background-color: var(--main-pink);
@@ -233,6 +234,7 @@ textarea {
   border-radius: 8px;
   width: 3rem;
   height: 1.5rem;
+  cursor: pointer;
 }
 
 .listing-card__info--top {
@@ -271,16 +273,107 @@ textarea {
   overflow: hidden;
   justify-content: space-around;
   width: 100% !important;
-  height: 100% !important;
+  height: 50% !important;
 }
 .store__img img {
   border-radius: 10px;
   width: 100%;
-  height: 50%;
+  height: 100%;
   object-fit: cover;
 }
 
 .store_img_input {
   display: flex;
   justify-content: space-around;
+}
+
+/* --------------------------- 이미지 삽입 ---------------------------*/
+.image-form {
+  border: 1px solid #dde1e4;
+  padding: 40px;
+  margin: 24px auto;
+  max-width: 552px;
+  background: #fff;
+}
+
+.image-input__label {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.image-input__input-wrapper {
+  margin-top: 4px;
+}
+
+.filereader .image-input__input-wrapper {
+  display: flex;
+  position: relative;
+}
+
+.filereader .image-input__input,
+.filereader .image-input__pseudo,
+.filereader .image-input__thumb {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 112px;
+  height: 112px;
+  margin-right: 1.6rem;
+}
+
+.filereader .image-input__input {
+  position: relative;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 1;
+}
+
+.filereader .image-input__pseudo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid var(--main-pink);
+  color: var(--main-pink);
+  border-radius: 6px;
+  background-color: #f9fafc;
+  font-size: var(--font-md);
+  font-weight: 600;
+}
+
+.filereader .image-input__thumb {
+  position: relative;
+  border: 1px solid #eaeaee;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.filereader .image-input__input:focus + .image-input__pseudo {
+  outline: 1px dotted #212121;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+/* -----------------------이미지 삽입 끝------------------------------- */
+.menu_img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.menu_detail {
+  cursor: pointer;
+}
+
+/* ------------------탭 토글 ---------------------- */
+.tabs__toggle.is-active {
+  font-weight: bold;
+  background: var(--white-bg);
+  color: var(--main-pink);
+  border: 3px solid var(--main-pink);
+}
+.tabs__content {
+  display: none;
 }

@@ -1,7 +1,7 @@
 <?php
 
 $page_name = '구독관리';
-$user_num = 1; //세션 로그인정보 받기
+$user_num = 45; //세션 로그인정보 받기
 $param = [
     "user_num" => $user_num
 ];

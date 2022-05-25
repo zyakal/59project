@@ -17,7 +17,7 @@
 
 
    $result = insert_usedsub($param);
-   echo $result;
+   // echo $result;
    if(!$result) {
       echo "<script>alert('오류가 발생했습니다');
       window.location.href = 'sub_manage.php';</script>";
@@ -28,5 +28,3 @@
       
      
    }
-?>
-
