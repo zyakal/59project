@@ -71,6 +71,7 @@
 #nav--right { color: var(--main-pink); margin-left: 200px;}
 .recommend--list { background-color: var(--light-gray-bg); width: 326px;
     height: 78px; margin: 20px 0;
-    border-radius: 1rem;}
+    border-radius: 1rem;
+    display: flex; justify-content: center; align-items: center;}
 
 .home__main__kakao { position: fixed; bottom: 125px; left: 280px;}

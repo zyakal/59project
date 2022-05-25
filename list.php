@@ -18,9 +18,7 @@ $get_cate_nm = $_GET['cate_nm'];
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
     <script src="js/swiper.js" defer></script>
     <title>59 - list</title>
-    <style>
-       
-    </style>
+    
 </head>
 
 <body>
@@ -79,56 +77,341 @@ $get_cate_nm = $_GET['cate_nm'];
             <div class="list__main__list">
                 <div class="tabs__body">
                     <div class="tabs__content">
-                        <h2 class="tabs__title">모두 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, voluptates nihil reprehenderit architecto deleniti a blanditiis dolore voluptate cupiditate saepe sequi, quo iusto tempora itaque excepturi! Sunt optio nihil minus?</p>
+                        <?php
+                            include_once "db/db_list.php";
+                            $result = sel_store_list();
+                            while($row = mysqli_fetch_assoc($result)) { ?>
+                            <div class="tabs__item">
+                                <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                    <div class="list__item">
+                                        <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                        <div class="list__store__info">
+                                            <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                            <div class="store__info__info">가게 정보</div>
+                                            <?php 
+                                            if ($star == "") { ?>
+                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                            <?php } else { ?>
+                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                    </div>
+                                </a>
+                            </div>
+                           <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">네일 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora natus voluptas, molestias voluptates consequuntur quibusdam aspernatur expedita tempore libero excepturi obcaecati earum minus omnis adipisci fuga officia, autem, perferendis voluptatibus!</p>
+                        <?php
+                            $cate = 9;
+                            $param = [
+                                'cate' => $cate
+                            ];
+                            $result = sel_cate_store($param);
+                            while($row = mysqli_fetch_assoc($result)) { ?>
+                            <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                    <div class="list__item">
+                                        <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                        <div class="list__store__info">
+                                            <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                            <div class="store__info__info">가게 정보</div>
+                                            <?php 
+                                            if ($star == "") { ?>
+                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                            <?php } else { ?>
+                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                    </div>
+                                </a>
+                            <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">도시락 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 4;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">분식 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 2;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">양식 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 6;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">운동 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 12;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">일식 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 7;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">중식 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 5;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">취미 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 11;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">커피,디저트 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 8;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">패스트푸드 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 3;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">한식 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 1;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                     <div class="tabs__content">
-                        <h2 class="tabs__title">헤어샵 Title</h2>
-                        <p class="tabs__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia quasi commodi nisi ex nostrum, aspernatur dicta perferendis deserunt reiciendis a delectus molestias eius porro, tempore molestiae ipsam sit quam aut officia, autem, perferendis?</p>
+                        <?php
+                        $cate = 10;
+                        $param = [
+                            'cate' => $cate
+                        ];
+                        $result = sel_cate_store($param);
+                        while($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info">가게 정보</div>
+                                        <?php 
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- <?php
