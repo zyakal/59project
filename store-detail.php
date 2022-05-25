@@ -1,9 +1,9 @@
 <?php
 include_once "db/db_store_and_menu.php";
 
-// $store_detail = $_GET['store-detail'];
+$store_num = $_GET['store_num'];
 $param = [
-    "store_num" => 1
+    "store_num" => $store_num
 ];
 
 $menu_info = select_store_menus($param);
