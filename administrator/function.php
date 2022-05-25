@@ -6,8 +6,8 @@ function card_top( $card_name){
         <div class='listing-card__info--top'>
         <strong class='listing-card__name'> $card_name > </strong>
             <span>
-                <button class='btn_reset' type='reset' >취소</button>
-                <button class='btn_submit' type='submit' >등록</button>
+                <button class='btn' type='reset' >취소</button>
+                <button class='btn' type='submit' >등록</button>
             </span>
         </div>
         <div> &nbsp </div>";

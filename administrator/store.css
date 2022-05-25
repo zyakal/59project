@@ -216,7 +216,7 @@ textarea {
   padding: 10px;
 }
 
-.btn_reset {
+.btn {
   font-weight: bold;
   color: var(--main-pink);
   background-color: var(--white-bg);
@@ -226,7 +226,7 @@ textarea {
   height: 1.5rem;
 }
 
-.btn_submit {
+.btn:hover {
   font-weight: bold;
   color: white;
   background-color: var(--main-pink);
@@ -234,6 +234,7 @@ textarea {
   border-radius: 8px;
   width: 3rem;
   height: 1.5rem;
+  cursor: pointer;
 }
 
 .listing-card__info--top {
@@ -355,4 +356,13 @@ textarea {
 .filereader .image-input__input:focus + .image-input__pseudo {
   outline: 1px dotted #212121;
   outline: 5px auto -webkit-focus-ring-color;
+}
+/* -----------------------이미지 삽입 끝------------------------------- */
+.menu_img {
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.menu_detail {
+  cursor: pointer;
 }

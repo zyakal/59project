@@ -231,7 +231,7 @@
                                     $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
                                 ?>
                                 <div class="store__img">                                    
-                                    <img src="<?=$store_img?>">
+                                    <img src="<?=$store_img?>" onerror= "this.src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png'">
                                 </div>
                                 </div>
                            
@@ -326,12 +326,26 @@
                                 $cd_unit = $item['cd_unit'];
                                 $menu_intro = $item['menu_intro'];
                                 $menu_photo = $item['menu_photo'];
-
-                                echo "$menu_num $menu_cate $menu_nm $price $subed_price $subed_count $cd_unit $menu_intro $menu_photo<br>";
-
+                                $menu_img =  "../img/store/" . $store_name . "/Menu_img/" . $menu_photo;
+                                
+                            ?>
+                                <div><img class="menu_img" src="<?=$menu_img?>"  onerror="this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'">
+                            <?php
+                                // $_GET[menu_detail]
+                                echo "$menu_nm 1달 구독
+                                <form action='store_main?1' 'method='get'>
+                                    <button name='menu_detail' type='submit' value='$menu_num'>
+                                        <i class='menu_detail fa-solid fa-bars'></i>
+                                    </button>
+                                </form>
+                                </div> $subed_price <br><div>";
+                                
                             }
                             ?>
-                            <div> &nbsp </div>
+                                
+
+                            
+                            
                             
                             </div>  
                           </form>
@@ -346,7 +360,7 @@
 
         </div>
     </div>
-    
+    <script src="https://kit.fontawesome.com/6a1759ba21.js" crossorigin="anonymous"></script>
     <script src="store.js"></script>
     <script src="../image-input/image-input.js"></script>
 </body>
