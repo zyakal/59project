@@ -43,7 +43,7 @@ if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user'
         <header>
             <?php
             $page_name = "내 정보 수정";
-            include_once "header.php";
+            include_once "user-header.php";
             ?>
         </header>
         <!-- main -->
@@ -69,10 +69,18 @@ if($_GET['user_num'] !== $login_user['user_num'] || empty($_SESSION['login_user'
             </div>
         </div>
         <div class="info_div">
+            <div class="info_type">이름</div>
+            <div class="myinfo_text"><?=$user_info['user_nm']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
+        </div>
+        <div class="info_div">
             <div class="info_type">닉네임</div>
             <div class="myinfo_text"><?=$user_info['nickname']?><button class="upd_button" onclick="location.href='join.php?user_num=<?=$login_user['user_num']?>'">변경</button></div>
         </div>
             </div>
+        <div class="myinfo_small_flex_box">
+            <a href="logout.php">로그아웃</a>
+            <a href="user_dropout.php?user_num=<?=$login_user['user_num']?>">회원탈퇴</a>
+        </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>

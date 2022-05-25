@@ -11,7 +11,7 @@ class KakaoLogin {
     
     public function __construct($csrf_token = "") 
     { 
-        $this->callback_url = "https://callback-url"; // 콜백 URL 
+        $this->callback_url = "http://localhost/59-PROJECT/kakao_login_test.php"; // 콜백 URL 
         $this->auth_url = "https://kauth.kakao.com"; // 카카오 인증서버 
         $this->api_url = "https://kapi.kakao.com"; // 카카오 API 서버 
         $this->cliend_id = "962871d51831e698e957fdd5574c9640"; 

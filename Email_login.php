@@ -27,7 +27,7 @@ $param = [
     if(!empty($result))
     {        
             $user_num = $result['user_num'];
-            header("Location: myinfo_mod.php?user_num=$user_num");
+            header("Location: mypage.php?user_num=$user_num");
     }
 }
 

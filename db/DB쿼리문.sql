@@ -121,3 +121,15 @@ CREATE TABLE t_usedsub (
 	PRIMARY KEY(sub_num, used_at),
 	FOREIGN KEY(sub_num) REFERENCES t_sub(sub_num)
 );
+
+-- 알림 테이블
+CREATE TABLE t_not(
+not_num INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+user_num INT UNSIGNED NOT NULL,
+store_nm VARCHAR(100),
+menu_nm VARCHAR(100),
+not_type INT UNSIGNED,
+not_url VARCHAR(100),
+created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+not_read_check INT UNSIGNED DEFAULT 0
+);
