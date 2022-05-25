@@ -28,6 +28,11 @@
                     <input type="submit" value="주소 설정">
                 </div>
             </form>
+            <div>
+                <p>현재 위치로 주소설정 원하는 경우 아래의 버튼을 누르고 위치 정보에 동의 해주세요</p>
+                <button onclick="getLocation()">현재 위치로 주소설정</button>
+                <p id="demo"></p>
+            </div>
         </main>
         <footer>
             <?php
@@ -35,6 +40,23 @@
             ?>
         </footer>
     </div>
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+        }
+
+        function showPosition(position) {
+        x.innerHTML = "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+        }
+    </script>
+
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
