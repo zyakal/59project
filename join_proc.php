@@ -60,7 +60,7 @@ else
                 'user_nm' => $_POST['user_nm']
             ];
             join_user($param);
-            header("Location: login.php");
+            header("Location: email_login.php");
         }
     }
 }
