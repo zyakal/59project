@@ -1,6 +1,6 @@
 <?php 
 
-include $_SERVER["DOCUMENT_ROOT"] . "/openapi/kakaoLogin/KakaoLogin.php"; 
+include $_SERVER["DOCUMENT_ROOT"] . "/59-PROJECT/kakao_login_proc.php"; 
 // callback 으로 들어온 값을 확인한다. 
 
 $code = $_REQUEST["code"]; 
