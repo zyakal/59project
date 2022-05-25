@@ -340,8 +340,6 @@ function sel_not_today(&$param)
     $user_num = $param['user_num'];
     $row_count = $param['row_count'];
     $start_idx = $param['start_idx'];
-
-    $day = date("Y-m-d");
     
     $sql = "SELECT * FROM t_not
             where user_num = '$user_num' 
@@ -364,6 +362,25 @@ function sel_not_last(&$param)
             and not_read_check = 0
             and left(created_at,10) < '$day'
             order by created_at DESC";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+
+function user_review(&$param)
+{
+    $user_num = $param['user_num'];
+    $row_count = $param['row_count'];
+    $start_idx = $param['start_idx'];
+    
+    $sql = "SELECT * FROM t_not
+            where user_num = '$user_num' 
+            and not_read_check = 0
+            and not_type = 7
+            order by created_at DESC
+            limit $start_idx,$row_count";
+
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);

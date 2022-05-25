@@ -78,7 +78,7 @@ $page_name = "마이페이지";
             <div class = "myinfo_box_text">구독관리</div>
             <div class = "myinfo_box_small_text"><?=$sub_count?>개</div>
             </div></a>
-            <a href="">
+            <a href="user_review.php">
             <div class = "myinfo_box">
             <div class = "myinfo_box_text">리뷰관리</div>
             <div class = "myinfo_box_small_text"><?=$review_count?>장</div>
