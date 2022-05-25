@@ -6,8 +6,8 @@ function card_top( $card_name){
         <div class='listing-card__info--top'>
         <strong class='listing-card__name'> $card_name > </strong>
             <span>
-                <button class='btn_reset' type='reset' >취소</button>
-                <button class='btn_submit' type='submit' >등록</button>
+                <button class='btn' type='reset' >취소</button>
+                <button class='btn' type='submit' >등록</button>
             </span>
         </div>
         <div> &nbsp </div>";
@@ -100,10 +100,10 @@ function sales_time_close_minute(){
     return $minute;
 }
 
-function menu_select($menu_cate){
+function menu_category($menu_cate){
     $menu_category = "";
     $i=0;
-    $menu_category .= "<select name='menu_select'><option value=''>-- 카테고리 --</option>";
+    $menu_category .= "<select name='menu_category'><option value=''>-- 카테고리 --</option>";
     for($i;$i < count($menu_cate);$i++){        
             $menu_category .= "<option value='$menu_cate[$i]'>$menu_cate[$i]</option>";
         }     
@@ -115,11 +115,24 @@ function menu_select($menu_cate){
 function sales_count(){
     $count = "";
     $i=1;
-    $count .= "<select name='menu_select'><option value=''>-- 구독 횟수 --</option>";
+    $count .= "<select name='sales_count'><option value=''>-- 구독 이용 --</option>";
     for($i;$i <= 30;$i++){        
-            $count .= "<option value='$i'>$i 회</option>";
+            $count .= "<option value='$i'>$i</option>";
         }     
     
     $count .= "</select>";
     return $count;
+}
+
+function menu_count_cd($menu_count_cd){
+    $menu_cd = "";
+    $i=0;
+    $menu_cd .= "<select name='menu_cd'><option value=''>-- 단위 --</option>";
+    for($i;$i < count($menu_count_cd);$i++){ 
+            $value = $i+1;       
+            $menu_cd .= "<option value='$value'>$menu_count_cd[$i]</option>";
+        }     
+    
+    $menu_cd .= "</select>";
+    return $menu_cd;
 }
