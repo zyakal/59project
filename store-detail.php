@@ -18,6 +18,7 @@ $store_reviews = select_store_review($param);
 $store_stars = select_store_stars($param);
 $cates = select_menu_cate($param);
 
+
 // 별점 평균과 각 점수별 퍼센트 만들기
 $star_avg = round($store_stars['star_avg'], 1);
 if ($store_stars['star_total'] == 0) {
