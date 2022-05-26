@@ -1,9 +1,15 @@
 <?php
 include_once "db/db_store_and_menu.php";
 
+session_start();
+$login_user = $_SESSION['login_user'];
+$user_num = $login_user['user_num'];
+
+
 $store_num = $_GET['store_num'];
 $param = [
-    "store_num" => $store_num
+    "store_num" => $store_num,
+    "user_num" => $user_num
 ];
 
 $menu_info = select_store_menus($param);
