@@ -301,11 +301,11 @@ $cate = '';
             </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
-        <!-- <footer>
+        <footer>
             <?php
             include_once "footer.html";
             ?>
-        </footer> -->
+        </footer>
     </div>
     <script>
         // 리스트 클릭해도 페이지이동
