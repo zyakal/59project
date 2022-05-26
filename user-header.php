@@ -31,7 +31,7 @@ $unread_not = check_not($param);
 ?>
 <nav class="header--nav">
     <div class="nav--logo">
-        <a href="#" class="nav--back">
+        <a href="javascript:history.back();" class="nav--back">
             <i class="fa-solid fa-arrow-left"></i>
         </a>
     </div>

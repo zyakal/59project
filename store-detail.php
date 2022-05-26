@@ -14,6 +14,9 @@ $cates = select_menu_cate($param);
 
 // 별점 평균과 각 점수별 퍼센트 만들기
 $star_avg = round($store_stars['star_avg'], 1);
+if ($store_stars['star_total'] == 0) {
+    $store_stars['star_total'] = 1;
+}
 $stars_avg = [
     'star5_avg' => round(($store_stars['star5'] / $store_stars['star_total']) * 100),
     'star4_avg' => round(($store_stars['star4'] / $store_stars['star_total']) * 100),
@@ -144,7 +147,8 @@ $cate = '';
                                     <td>휴무일</td>
                                     <td>매주 <?php foreach ($off_days as $day) {
                                                 print $day;
-                                            }; ?></td>
+                                            };
+                                            ?></td>
                                 </tr>
                                 <tr>
                                     <td>전화번호</td>
@@ -297,11 +301,11 @@ $cate = '';
             </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
-        <!-- <footer>
+        <footer>
             <?php
             include_once "footer.html";
             ?>
-        </footer> -->
+        </footer>
     </div>
     <script>
         // 리스트 클릭해도 페이지이동
