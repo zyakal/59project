@@ -5,9 +5,10 @@ footer {
   padding: 0 1.25rem;
   background-color: var(--white-bg);
   position: fixed;
-  height: 80px;
-  left: 0px;
-  right: 0px;
+  height: 4.5rem;
+  width: 100%;
+  min-width: var(--mobile-min-width);
+  max-width: var(--mobile-max-width);
   bottom: 0px;
 
   /* Background/Bg Secondary */
