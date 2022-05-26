@@ -56,7 +56,6 @@
                     <?php } else { ?>
                         <div>거리순 추천</div>
                     <?php } ?>
-                    <div class="recommend--nav" id="nav--right">모두보기</div>
                 </div>
                 <?php
                 require_once("recommend.php");
