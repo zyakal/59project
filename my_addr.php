@@ -18,19 +18,20 @@
         </header>
         <main class="my_addr--main">
             <form action="home.php" method="post">
-                <div class="my_addr--input">
+                <div class="my_addr--form--input">
                     <div class="input--top">
                         <i class='fa-solid fa-magnifying-glass'></i>
                         <input type="text" id="my_address" name="my_addr" placeholder="건물명, 도로명 또는 지번으로 검색">
                     </div>
                 </div>
-                <div class="my_addr--button">
-                    <input type="submit" value="주소 설정">
+                <div class="my_addr--form--button">
+                    <input class="my_addr--button" type="submit" value="주소 설정">
                 </div>
             </form>
-            <div>
-                <p>현재 위치로 주소설정 원하는 경우 아래의 버튼을 누르고 위치 정보에 동의 해주세요</p>
-                <button onclick="getLocation()">현재 위치로 주소설정</button>
+            <div id="my_address">
+                <div>현재 위치로 주소설정 원하는 경우</div>
+                <div>아래의 버튼을 누르고 위치 정보에 동의 해주세요</div>
+                <button class="my_addr--button" onclick="getLocation()">현재 위치로 주소설정</button>
                 <p id="demo"></p>
             </div>
         </main>
@@ -47,7 +48,7 @@
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
+            x.innerHTML = "현재 위치가 확인 되지 않습니다.";
         }
         }
 
