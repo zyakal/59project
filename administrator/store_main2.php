@@ -162,19 +162,10 @@
           
                      
         <!-- 공지 -->
-         <?=공지($card_name6,$store_notice)?>
+        <?=공지($card_name6,$store_notice)?>
         <!-- 가게 소개 -->
-                    
-                        <form class="listing-card__form" action="store_main_intro.php" method="post">
-                            <div class="listing-card__info">
-                                <?= card_top($card_name1)?>
-                                <div>
-                                    <textarea name="store_intro" placeholder="가게를 소개하세요"><?=$store_info?></textarea>
-                                </div>
-                            </div>
-                        </form>
-                   
-                    <!-- 가게 이미지 -->
+        <?=가게소개($card_name1, $store_info)?>
+        <!-- 가게 이미지 -->
                           
                         <form class="img_test" action="store_photo.php" method="post" enctype="multipart/form-data">
                             <div class="listing-card__info">
@@ -193,7 +184,7 @@
                                 <img src="<?=$store_img?>" onerror= "this.src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png'">
                             </div>
                             </div>
-                        
+                            192.168.0.27
                             </div>
                         </form>
                         

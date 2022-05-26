@@ -165,3 +165,36 @@ function 공지($card_name6,$store_notice) {
     </form>"
     ;
 }
+
+function 가게소개($card_name1, $store_info){
+    echo "<form class='listing-card__form' action='store_main_intro.php' method='post'>
+    <div class='listing-card__info'>";
+    card_top($card_name1);
+    echo "<div>
+    <textarea name='store_intro' placeholder='가게를 소개하세요'> $store_info </textarea>
+</div>
+</div>
+</form>";
+}
+
+function 가게이미지($card_name3){
+    echo "<form class='img_test' action='store_photo.php' method='post' enctype='multipart/form-data'>
+                            <div class='listing-card__info'>";
+    card_top($card_name3);
+    echo "<div class='image-input'>
+          <div class='image-input__input-wrapper' id='inputWrapper'><label><input type='file' id='imageInput'  name='img' accept='image/*'></label></div>
+                            <div class='image-input__pseudo'>
+                            <div><i class='fa-solid fa-plus'></i></div>
+                            <div>이미지 넣기</div>
+                            </div>";
+    $session_img = $_SESSION['login_store']['store_photo'];
+    $store_img = $session_img == null ? 'https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png' : '../img/store/' . $store_name . '/Main_img/' . $session_img;
+    echo "<div class='store__img'>                                    
+    <img src='$store_img' onerror= 'this.src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png''>
+</div>
+</div>
+
+</div>
+</form>";
+                            
+}
