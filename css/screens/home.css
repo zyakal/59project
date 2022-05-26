@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 18px;
+    margin: 0 12%;
     margin-bottom: 21px;
     width: 294px;
     height: 48px;
@@ -21,6 +21,7 @@
   width: 21rem;
   height: 140px;
   border-radius: 1rem;
+  justify-content: center;
 }
 .slide__list {
   display: flex;
