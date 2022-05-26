@@ -29,7 +29,7 @@ function weeks($week_value, $week_id, $sales_day_arr){
         $week .= "<input id='$week_id[$i]' type='checkbox' name='$week_id[$i]' value='$week_value[$i]' $check hidden>
         <label class='listing-card__info__week$weeks_style' for='$week_id[$i]'>$week_value[$i]</label>";
     }
-    return $week;
+    echo $week;
 }
 
 function sales_time_open_hour(){
@@ -46,7 +46,7 @@ function sales_time_open_hour(){
         
     }
     $hour .= "</select>";
-    return $hour;
+    echo $hour;
 }
 
 function sales_time_open_minute(){
@@ -63,7 +63,7 @@ function sales_time_open_minute(){
         
     }
     $minute .= "</select>";
-    return $minute;
+    echo $minute;
 }
 
 function sales_time_close_hour(){
@@ -80,7 +80,7 @@ function sales_time_close_hour(){
         
     }
     $hour .= "</select>";
-    return $hour;
+    echo $hour;
 }
 
 function sales_time_close_minute(){
@@ -97,7 +97,7 @@ function sales_time_close_minute(){
         
     }
     $minute .= "</select>";
-    return $minute;
+    echo $minute;
 }
 
 function menu_category($menu_cate){
@@ -109,7 +109,7 @@ function menu_category($menu_cate){
         }     
     
     $menu_category .= "</select>";
-    return $menu_category;
+    echo $menu_category;
 }
 
 function sales_count(){
@@ -121,7 +121,7 @@ function sales_count(){
         }     
     
     $count .= "</select>";
-    return $count;
+    echo $count;
 }
 
 function menu_count_cd($menu_count_cd){
@@ -134,18 +134,21 @@ function menu_count_cd($menu_count_cd){
         }     
     
     $menu_cd .= "</select>";
-    return $menu_cd;
+    echo $menu_cd;
 }
 
-function 로그인($login_email){
+function 로그아웃($login_email){
     if(isset($login_email)){
-    echo "<div class='store_login'> <a href='store_logout.php'>로그아웃</a></div>"; } 
-    else {  
-    echo "<div class='store_login'> <a href='store_login.php'>로그인</a></div>"; }
+    echo "
+    <a href='store_logout.php'>
+    <i class='bx bx-log-out icon'></i>    
+    <span class='text nav-text'>로그아웃</span>
+    </a>
+    "; }     
 } 
 
 function 상단문구($store_name){
-    echo "<div class='col-9'>
+    echo "<div class=''>
             <div class='main__header'>
                 <h2 class='main__title'> $store_name 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
             </div>
@@ -153,7 +156,7 @@ function 상단문구($store_name){
 }
 
 function 공지($card_name6,$store_notice) {
-    echo "<form action='store_main_notice.php' method='post'>
+    echo "<form class = 'card' id ='store_notice' action='store_main_notice.php' method='post'>
     <div class='listing-card__info'>";
     card_top($card_name6);
     echo "<div>
@@ -208,4 +211,46 @@ function 영업요일($card_name2,$week_value, $week_id, $sales_day_arr){
     <div class='listing-card__ctnt' name='sale_day'>";                                 
     weeks($week_value, $week_id, $sales_day_arr);
     echo " </div></form>";
+}
+
+function 영업시간($card_name4,$sales_time_arr ){
+    echo "<form action='store_main_sales_time.php' method='post'>
+                        <div class='listing-card__info'>";
+    card_top($card_name4);
+    echo "<div> <h3>오픈 시간 $sales_time_arr[0] </h3>";            
+    sales_time_open_hour();
+    sales_time_open_minute();
+    echo "</div><div><h3>마감 시간 $sales_time_arr[1]</h3>";                       
+    sales_time_close_hour();
+    sales_time_close_minute();
+    echo "</div> </div> </form>";
+                            
+}
+
+function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
+    echo "<form action='store_menu_input.php' method='post' enctype='multipart/form-data'>
+    <div class='listing-card__info'>";
+    card_top($card_name7);
+    echo "<div>메뉴 카테고리</div><div>";
+    menu_category($menu_cate);
+    echo "</div> <div>메뉴명</div>
+        <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' id=''>
+    </div>
+    <div>메뉴 소개</div>
+        <div><textarea name='menu_intro' id='' cols='30' rows='10' placeholder='메뉴를 소개하세요'></textarea>
+    </div>
+    <div class='store_img_input'> 메뉴 이미지</div>
+        <div><label class=''>
+            <input class='' type='file' name='menu_img' accept='image/*' >
+        </label>
+    </div>
+    <div>메뉴 정가</div>
+    <div><input type='number' name='price' id='' step='500' placeholder='구독할인전 가격' ></div>
+    <div>구독 할인가</div>
+    <div><input type='number' name='sub_price' id='' step='500' placeholder='구독할인 가격'></div>
+    <div>월 총 횟수</div>
+    <div>";
+    sales_count();
+    menu_count_cd($menu_count_cd);
+    echo "</div> </div> </form>";
 }
