@@ -76,7 +76,7 @@
     ];
 
     
-
+    // DB에서 데이터 불러오기용 문자열 자르기
     $sales_day_arr = explode(" ",$store_sales_day);
     $sales_time_arr = explode(",",$sales_time);
     
@@ -98,7 +98,7 @@
     <title>사업자 메인 페이지</title>
 </head>
 <body>  
-
+<!-- 좌측 메뉴바 해당 -->
     <div class="wrap"> 
         <div class="header">
             <div><img class="logo" title="logo" src="../img/logo.png"></div>
@@ -172,7 +172,7 @@
 
                 </div>
             </nav>
-            
+            <!-- 로그아웃 / 로그인 -->
             <?php if(isset($login_email)){ ?>
                 <div class="store_login"> <a href="store_logout.php">로그아웃</a></div>
             <?php ; } else { ?>
@@ -181,7 +181,7 @@
             <?php ; } ?>
             
         </div>
-        
+        <!-- 상단 문구 -->
         <div class="main">
             <div class="main__header">
                 <h2 class="main__title"> <?=$store_name?> 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>

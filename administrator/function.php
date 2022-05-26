@@ -136,3 +136,32 @@ function menu_count_cd($menu_count_cd){
     $menu_cd .= "</select>";
     return $menu_cd;
 }
+
+function 로그인($login_email){
+    if(isset($login_email)){
+    echo "<div class='store_login'> <a href='store_logout.php'>로그아웃</a></div>"; } 
+    else {  
+    echo "<div class='store_login'> <a href='store_login.php'>로그인</a></div>"; }
+} 
+
+function 상단문구($store_name){
+    echo "<div class='col-9'>
+            <div class='main__header'>
+                <h2 class='main__title'> $store_name 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
+            </div>
+        </div>";
+}
+
+function 공지($card_name6,$store_notice) {
+    echo "<form action='store_main_notice.php' method='post'>
+    <div class='listing-card__info'>";
+    card_top($card_name6);
+    echo "<div>
+    <textarea name='store_notice' placeholder='공지사항을 입력하세요'> $store_notice";
+    echo "</textarea>
+    </div>
+    
+    </div>
+    </form>"
+    ;
+}

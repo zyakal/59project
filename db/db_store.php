@@ -2,7 +2,7 @@
 
     include_once "db.php";
 
-
+    // 회원가입 함수, 수정필요
     function create_store(&$param) {
 
         $store_mail = $param['store_email'];
@@ -21,7 +21,7 @@
             mysqli_close($conn);
             return $result;
         }
-        
+        // ID체크, 사장님들은 이메일로
         function id_check(&$param)
         {
             $store_email = $param['store_email'];
@@ -40,7 +40,7 @@
             }
             return false;
         }
-        
+        // 로그인 세션값, 그냥 필요한 셀렉트 문 있을 때마다 씀. 추후 구분필요
         function login_store(&$param){
         
             $store_email = $param['store_email'];
@@ -58,7 +58,7 @@
             mysqli_close($conn);
             return $row;
         }
-        
+        // 가게 사진 업로드
         function upd_store_photo(&$param) {
             $sql = "UPDATE t_store
                        SET store_photo = '{$param["store_photo"]}' 
@@ -91,7 +91,7 @@
             return $result;
             
         }
-
+        // 영업 시간 등록
         function store_time_insert(&$param){
             $store_email = $param['store_email'];
             $sales_time = $param['sales_time'];
@@ -123,6 +123,7 @@
             mysqli_close($conn);   
             return $result; 
         }
+        //공지사항 등록
         function store_notice_insert(&$param){
             $store_notice = $_POST['store_notice'];
             $store_email = $param['store_email'];
@@ -195,7 +196,7 @@
         return $result; 
 }
 
-
+// 메뉴 편집
 function menu_edit(&$param){
     $store_num = $param['store_num'];    
     $sql = 
