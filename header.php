@@ -11,7 +11,7 @@
         </a>
     </div>
     <div class="nav--notice">
-        <a href="#">
+        <a href="not.php">
         </a>
     </div>
 </nav>
