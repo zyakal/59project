@@ -1,4 +1,5 @@
 .store--header {
+  position: absolute;
   background: none;
 }
 .store--header nav a {
