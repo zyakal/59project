@@ -57,7 +57,7 @@ $page_name = "마이페이지";
         </header>
         <!-- main -->
         <main>
-        <?php if(isset($_GET['user_num']) && isset($_SESSION['login_user'])) {?>
+        <?php if(isset($_SESSION['login_user'])) {?>
         <div class = "flex_box">
         <div class = "mypage_id">
             <div class = "myinfo_text">
