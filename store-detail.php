@@ -1,23 +1,26 @@
 <?php
 include_once "db/db_store_and_menu.php";
 
-session_start();
-$login_user = $_SESSION['login_user'];
-$user_num = $login_user['user_num'];
-
-
 $store_num = $_GET['store_num'];
+session_start();
+
 $param = [
     "store_num" => $store_num,
-    "user_num" => $user_num
 ];
+
+if (isset($_SESSION['login_user'])) {
+    $login_user = $_SESSION['login_user'];
+    $user_num = $login_user['user_num'];
+    $param['user_num'] = $user_num;
+}
 
 $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
 $store_reviews = select_store_review($param);
 $store_stars = select_store_stars($param);
 $cates = select_menu_cate($param);
-
+// 찜하기 submit 의 name
+// $like_num = 1;
 
 // 별점 평균과 각 점수별 퍼센트 만들기
 $star_avg = round($store_stars['star_avg'], 1);
@@ -78,6 +81,26 @@ $cate = '';
                     <div class="store-point__heart">
                         <i class="fa-regular fa-heart"></i>
                         <div>단골 찜</div>
+                        <form action="" method="post">
+                            <input type="submit" class="like-btn" name="<?= $like_num ?>" value="단골 찜">
+                        </form>
+                        <?php
+                        if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['1'])) {
+                            func();
+                            $like_num = 0;
+                        } else {
+                            func1();
+                            $like_num = 1;
+                        }
+                        function func1()
+                        {
+                            print "되라";
+                        }
+                        function func()
+                        {
+                            print "제발";
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="store-cummuni">
@@ -348,6 +371,18 @@ $cate = '';
             heartCtn.classList.toggle('heart--click');
             heartIcon.classList.toggle('fa-regular');
             heartIcon.classList.toggle('fa-solid');
+        })
+        const likeBtn = document.querySelector('.like-btn');
+        console.log(`Btn : ${likeBtn.name}`);
+        likeBtn.addEventListener('click', () => {
+            if (likeBtn.name == 1) {
+                console.log(likeBtn.name)
+                likeBtn.name = 0
+            } else {
+                console.log(likeBtn.name);
+                likeBtn.name = 1;
+            }
+            // event.preventDefault();
         })
     </script>
 </body>
