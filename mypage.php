@@ -92,11 +92,11 @@ $page_name = "마이페이지";
             </div>
             <?php } ?>
         <div>
-            <a href=""><div class="info_div mypage_text">공지사항</div></a>
-            <a href=""><div class="info_div mypage_text">오구 안내</div></a>
-            <a href=""><div class="info_div mypage_text">이벤트 소식</div></a>
-            <a href=""><div class="info_div mypage_text">고객센터</div></a>
-            <a href=""><div class="info_div mypage_text">서비스 약관</div></a>
+            <a href="#"><div class="info_div mypage_text">공지사항</div></a>
+            <a href="#"><div class="info_div mypage_text">오구 안내</div></a>
+            <a href="#"><div class="info_div mypage_text">이벤트 소식</div></a>
+            <a href="#"><div class="info_div mypage_text">고객센터</div></a>
+            <a href="#"><div class="info_div mypage_text">서비스 약관</div></a>
         </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
