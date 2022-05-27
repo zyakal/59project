@@ -29,6 +29,8 @@ tabs.forEach((tab, index) => {
 // ---------------------------------nav 바---------------------------------
 
 const body = document.querySelector("body"),
+  darkMode = body.querySelector(".mode-text"),
+  listcard = body.querySelectorAll(".listing-card__item"),
   sidebar = body.querySelector(".sidebar"),
   toggle = body.querySelector(".toggle"),
   searchBtn = body.querySelector(".search-box"),
@@ -40,10 +42,21 @@ toggle.addEventListener("click", () => {
 });
 modeSwitch.addEventListener("click", () => {
   body.classList.toggle("dark");
+  darkMode.classList.toggle("dark");
 
   if (body.classList.contains("dark")) {
     modeText.innerHTML = "Light Mode";
   } else {
     modeText.innerHTML = "Dark Mode";
   }
+});
+
+// ---------------------------------편집 카드---------------------------------
+
+let details = document.querySelectorAll(".edit__detail");
+console.log(details);
+details.forEach((detail, index) => {
+  detail.addEventListener("click", () => {
+    detail[index].classList.toggle("show");
+  });
 });

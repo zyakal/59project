@@ -94,12 +94,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="store.css">
+    <link rel="stylesheet" href="store2.css">
     
     <title>사업자 메인 페이지</title>
 </head>
 <body>  
-    <nav class="sidebar close">
+    <nav class="sidebar">
         <header>
             <div class="image-text">
                 <span class="image_bg">
@@ -176,12 +176,14 @@
                         <a href="#">
                             <i class='bx bx-wallet icon'></i>
                             <span class="text nav-text">쿠폰</span>
+                            
                         </a>
                     </li>
                 </ul>
             </div>
             <!-- 로그아웃 버튼 -->
             <div class="bottom-content">
+                
                 <li class="">
                     <?= 로그아웃($login_email)?>
                     </a>
@@ -191,7 +193,7 @@
                         <i class='bx bx-moon icon moon'></i>
                         <i class='bx bx-sun icon sun'></i>
                     </div>
-                    <span class="mode-text text">Dark Mode</span>
+                    <span class="mode-text">Dark Mode</span>
                     <div class="toggle-switch">
                         <span class="switch"></span>
                     </div>
@@ -205,33 +207,46 @@
 
 
     <section class="container home"> 
-        <div class="">
-            
-
+        
     
         <!-- 상단 문구 -->
             <div class="">
             <?= 상단문구($store_name) ?>
+
+            <div class="listing-card">
             
-                        
+                <ul class="listing-card__list">
+            
+            
             <!-- 공지 -->
+            <li class="listing-card__item">
             <?=공지($card_name6,$store_notice)?>
+            </li>
             <!-- 가게 소개 -->
+            <li class="listing-card__item">
             <?=가게소개($card_name1, $store_info)?>
+            </li>
             <!-- 가게 이미지 -->
+            <li class="listing-card__item">
             <?=가게이미지($card_name3, $store_name)?>
+            </li>
                             
                     
-            <!-- 영업 요일 -->             
+            <!-- 영업 요일 -->
+            <li class="listing-card__item">             
             <?=영업요일($card_name2,$week_value, $week_id, $sales_day_arr)?>
+            </li>
                         
-            <!-- 영업 시간 -->        
-            <?=영업시간($card_name4,$sales_time_arr ) ?>  
+            <!-- 영업 시간 -->
+            <li class="listing-card__item">        
+            <?=영업시간($card_name4,$sales_time_arr ) ?>
+            </li>  
                         
                         
             <!-- 메뉴 등록 -->
-                                
+            <li class="listing-card__item">                    
             <?=메뉴등록($card_name7, $menu_cate, $menu_count_cd)?>
+            </li>
             
            
         <!-- 메뉴 편집 -->
@@ -260,13 +275,9 @@
                             <div><img class="menu_img" src="<?=$menu_img?>"  onerror="this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'">
                         <?php
                             // $_GET[menu_detail]
-                            echo "$menu_nm 1달 구독
-                            <form action='store_main?1' 'method='get'>
-                                <button class='tabs__toggle' name='menu_detail' type='submit' value='$menu_num'>
-                                    <i class='fa-solid fa-bars'></i>
-                                </button>
-                            </form>
-                            </div> $subed_price <br><div class = 'tabs__content.is-active'>11111111111</div><div>";
+                            echo "$menu_nm 1달 구독 <div class='edit__detail'><i class='fa-solid fa-bars'></i></div>
+                            <form ></form>
+                            </div> $subed_price <br><div class = ''>11111111111</div><div>";
                             
                         }
                         ?>
@@ -282,6 +293,7 @@
 
 
                         
+                </div>
                 </div>
         </div>
         </section>

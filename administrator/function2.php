@@ -150,14 +150,14 @@ function 로그아웃($login_email){
 function 상단문구($store_name){
     echo "<div class=''>
             <div class='main__header'>
-                <h2 class='main__title'> $store_name 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
+                <h2 class='main__title'> $store_name 사장님,<div><br>입금 예정금액은 210,000 원입니다.</div></h2>
             </div>
         </div>";
 }
 
 function 공지($card_name6,$store_notice) {
-    echo "<form class = 'card' id ='store_notice' action='store_main_notice.php' method='post'>
-    <div class='listing-card__info'>";
+    echo "<form class = 'listing-card__form' id ='store_notice' action='store_main_notice.php' method='post'>
+    <div class='listing-card__notice'>";
     card_top($card_name6);
     echo "<div>
     <textarea name='store_notice' placeholder='공지사항을 입력하세요'> $store_notice";
@@ -182,7 +182,7 @@ function 가게소개($card_name1, $store_info){
 
 function 가게이미지($card_name3, $store_name){
     echo "<form class='img_test' action='store_photo.php' method='post' enctype='multipart/form-data'>
-                            <div class='listing-card__info'>";
+                            <div class='listing-card__img'>";
     card_top($card_name3);
     $error_img = 'this.src="https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png"';
     echo "<div class='image-input'>
@@ -204,7 +204,7 @@ function 가게이미지($card_name3, $store_name){
 function 영업요일($card_name2,$week_value, $week_id, $sales_day_arr){
     echo "<form action='sales_day_proc.php' method='post'>
                             
-    <div class='listing-card__info'>";
+    <div class='listing-card__week'>";
     card_top($card_name2);                               
     echo "</div>
     
