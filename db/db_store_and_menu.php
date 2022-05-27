@@ -157,5 +157,5 @@ function sel_store_like(&$param)
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
-    return $result;
+    return mysqli_fetch_assoc($result);
 }
