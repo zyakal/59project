@@ -3,21 +3,24 @@ include_once "db/db_store_and_menu.php";
 
 $store_num = $_GET['store_num'];
 session_start();
-$user_num = 1;
+// $user_num = 10;
 $param = [
     "store_num" => $store_num,
-    "user_num" => $user_num
+    "user_num" => 10
 ];
-$store_like = 0;
 if (isset($_SESSION['login_user'])) {
     $login_user = $_SESSION['login_user'];
     $user_num = $login_user['user_num'];
     $param['user_num'] = $user_num;
 
+    $store_like = 0;
     $store_like = sel_store_like($param);
 }
-// $store_like = sel_store_like($param);
 
+$heart = 0;
+if (isset($store_like)) {
+    $heart = 1;
+}
 
 $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
@@ -86,12 +89,13 @@ $cate = '';
                     <div class="store-point__heart">
                         <!-- <i class="fa-regular fa-heart"></i>
                         <div>단골 찜</div> -->
-                        <?php if ($store_like !== 0) {  // 좋아요 있으면 꽉찬하트 보여주기 
+                        <?php
+                        if ($heart !== 0) {  // 좋아요 있으면 꽉찬하트 보여주기 
                         ?>
-                            <div id="btn_like"><i class='fas fa-heart'></i></div>
+                            <div id="btn_like"><i class='fas fa-heart'></i>단골찜</div>
                         <?php } else {  // 좋아요 없으면 빈하트 보여주기
                         ?>
-                            <div id="btn_like"><i class='far fa-heart'></i></div>
+                            <div id="btn_like"><i class='far fa-heart'></i>단골찜</div>
                         <?php } ?>
                     </div>
                 </div>
@@ -334,20 +338,13 @@ $cate = '';
         const btnLike = document.querySelector('#btn_like')
         document.addEventListener("DOMContentLoaded", function() {
             btnLike.addEventListener('click', () => {
-                const url = 'store_detail_proc.php';
-                const options = {
-                    method: 'POST',
-                    header: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        store_num: "<?= $store_num ?>",
-                        user_num: "<?= $user_num ?>",
-                        store_like: "<?= 0 ?>"
-                    })
-                }
-                fetch(url, options).then(response => response.json())
+                const url = 'store_detail_proc.php?store_num=<?= $store_num ?>&user_num=<?= $user_num ?>&store_like=<?= $store_like ?>';
+                fetch(url).then((response) => {
+                    console.log(response);
+                    return response.json();
+                }).then((element) => {
+                    console.log(element);
+                })
             })
         })
 
