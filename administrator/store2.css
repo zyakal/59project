@@ -599,3 +599,10 @@ body.dark .switch::before {
 .mode .mode-text {
   color: var(--text-dark-gray);
 }
+
+.edit__detail {
+  display: none;
+}
+.show .edit__detail {
+  display: block;
+}

@@ -251,8 +251,9 @@
            
         <!-- 메뉴 편집 -->
                     
+                <li class="listing-card__item">
                         <form action="" method="get">
-                        <div class="listing-card__info">
+                        
                         <div class='listing-card__info--top'>
                             <strong class='listing-card__name'> <?=$card_name8?> > </strong>
                                 
@@ -275,9 +276,9 @@
                             <div><img class="menu_img" src="<?=$menu_img?>"  onerror="this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'">
                         <?php
                             // $_GET[menu_detail]
-                            echo "$menu_nm 1달 구독 <div class='edit__detail'><i class='fa-solid fa-bars'></i></div>
+                            echo "$menu_nm 1달 구독 <span id='detail__icon' ><i class='fa-solid fa-bars'></i></span><div class='edit__detail'>11111111111</div>
                             <form ></form>
-                            </div> $subed_price <br><div class = ''>11111111111</div><div>";
+                            </div> $subed_price <br><div class = ''></div><div>";
                             
                         }
                         ?>
@@ -293,7 +294,7 @@
 
 
                         
-                </div>
+                </li>
                 </div>
         </div>
         </section>
