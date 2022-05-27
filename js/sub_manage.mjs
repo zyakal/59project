@@ -1,12 +1,13 @@
 let moveCount = 0;
+let nowSubCheck = 0;
 //총할인금액 월 변경을 체크 위한 변수
 
 let divContainer1 = document.querySelector(".total-save-price");
 let divContainer2 = document.querySelector(".total-save-price__month");
 let subListContainer = document.querySelector(".sub-list");
-console.log(subListContainer);
 let monthSave = getSaveData();
 
+console.log("list::::");
 console.log(list);
 printSubList();
 printTotalSave();
@@ -14,18 +15,26 @@ printTotalSave();
 
 //총할인금액 출력 함수
 function printTotalSave(m = 0, moved = 0) {
-  console.log("movecount" + m);
   if (!moved) {
     divContainer1.style.display = "none";
   }
   divContainer2.textContent = "";
+  if (list.length == 0) {
+    anySubNone();
+    return;
+  }
 
   let key = monthSave.keys.length - 1 + m;
+  console.log("key:" + key);
 
   divContainer2.innerHTML = `
-      <div class='total-save-price__left' onclick="moveMonth(0,${key})"><</div>
+      <div class='total-save-price__left' onclick="moveMonth(0,${
+        monthSave.keys.length
+      })"><</div>
       <div class='total-save-price__this-month' >${monthSave.keys[key]}</div>
-      <div class='total-save-price__right' onclick="moveMonth(1,${key})">></div>
+      <div class='total-save-price__right' onclick="moveMonth(1,${
+        monthSave.keys.length
+      })">></div>
     <div class='total-save-price__month-save'>월 할인금액  ${
       monthSave[monthSave.keys[key]]
     }원</div>
@@ -41,6 +50,7 @@ function printSubList() {
     if (ValidityCheck < 0) {
       continue;
     }
+    nowSubCheck += 1;
 
     let validity = getValidity(list[i].pay_date, list[i].end_date);
 
@@ -61,6 +71,9 @@ function printSubList() {
     divEachSub.innerHTML = subHTML;
     subListContainer.append(divEachSub);
   }
+  if (nowSubCheck == 0) {
+    nowSubNone();
+  }
 }
 
 function getValidity(payDateTime, endDateTime) {
@@ -71,7 +84,7 @@ function getValidity(payDateTime, endDateTime) {
 }
 
 //총할인금액-월 변경
-function moveMonth(n, key) {
+function moveMonth(n, l) {
   if (n) {
     moveCount += 1;
   } else {
@@ -80,8 +93,9 @@ function moveMonth(n, key) {
   if (moveCount > 0) {
     moveCount -= 1;
     return;
-  } else if (moveCount < -key - 2) {
+  } else if (moveCount <= -l) {
     moveCount += 1;
+    return;
   }
   printTotalSave(moveCount, 1);
 }
@@ -213,4 +227,22 @@ function printChart() {
       },
     },
   });
+}
+
+function nowSubNone() {
+  let noList = document.createElement("div");
+  noList.className += "nowSubNone";
+  noList.innerHTML = "<div>현재 구독중인 상품이 없습니다</div>";
+  document.querySelector(".sub-list").append(noList);
+}
+
+function anySubNone() {
+  document.querySelector(".total-save-price__month").style.display = "none";
+  document.querySelector(".total-save-price__graph").style.display = "none";
+
+  let noList = document.createElement("div");
+  noList.className += "anySubNone";
+  noList.innerHTML =
+    "<div>구독 내역이 없습니다<br>합리적인 구독 서비스를 이용해보세요</div>";
+  document.querySelector(".total-save-price").append(noList);
 }

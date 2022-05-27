@@ -1,7 +1,17 @@
 <?php
-
+session_start();
 $page_name = '구독관리';
-$user_num = 45; //세션 로그인정보 받기
+
+if (isset($_SESSION['login_user'])) {
+    $login_user = $_SESSION['login_user'];
+    $user_num = $_SESSION['login_user']['user_num'];
+} else {
+    echo "<script>
+    alert('로그인 후 이용 가능합니다.');
+    window.location.href = 'login.php';
+    </script>";
+}
+
 $param = [
     "user_num" => $user_num
 ];
@@ -14,13 +24,13 @@ foreach ($result as $item) {
 mysqli_free_result($result);
 $list_json = json_encode($list);
 
-$now_res_list = [];
-$result = search_now_reservation_for_user($param);
-foreach ($result as $item) {
-    if ($item['cd_sub_status'] != 9) {
-        array_push($now_res_list, $item);
-    }
-}
+// $now_res_list = [];
+// $result = search_now_reservation_for_user($param);
+// foreach ($result as $item) {
+//     if ($item['cd_sub_status'] != 9) {
+//         array_push($now_res_list, $item);
+//     }
+// }
 // print_r($now_res_list);
 
 ?>
@@ -70,13 +80,14 @@ foreach ($result as $item) {
             include_once "footer.html";
             ?>
         </footer>
-        <script>
-            const list = JSON.parse('<?= $list_json ?>');
-        </script>
 
-        <script src="./js/sub_manage.mjs"></script>
 
     </div>
+    <script>
+        const list = JSON.parse('<?= $list_json ?>');
+    </script>
+
+    <script src="./js/sub_manage.mjs"></script>
 
 </body>
 

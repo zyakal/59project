@@ -22,13 +22,13 @@
             ?>
         </header>
         <main class="home--main">
-            <a href="search.php">
-                <div id="top">
+            <div id="top">
+                <a href="search.php">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <span class="home__main__top">Search</span>
                     <i class="fa-solid fa-sliders"></i>
-                </div>
-            </a>
+                </a>            
+            </div>
             <?php
             include_once "main-banner.php";
             ?>
@@ -56,7 +56,6 @@
                     <?php } else { ?>
                         <div>거리순 추천</div>
                     <?php } ?>
-                    <div class="recommend--nav" id="nav--right">모두보기</div>
                 </div>
                 <?php
                 require_once("recommend.php");
