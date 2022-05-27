@@ -91,7 +91,7 @@ function select_menu_cate(&$param)
     $store_num = $param['store_num'];
 
     $conn = get_conn();
-    $sql = "SELECT menu_cate FROM t_menu WHERE store_num=$store_num GROUP BY menu_cate DESC";
+    $sql = "SELECT menu_cate FROM t_menu WHERE store_num=$store_num GROUP BY menu_cate";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
@@ -118,5 +118,44 @@ function get_menus_for_shopping(&$param)
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
 
+    return $result;
+}
+// 가게 찜하기 
+function ins_store_like(&$param)
+{
+    $store_num = $param['store_num'];
+    $user_num = $param['user_num'];
+
+    $conn = get_conn();
+    $sql = "INSERT INTO t_likestore (store_num,user_num) VALUES ($store_num,$user_num)";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+// 가게 찜 취소하기
+function del_store_like(&$param)
+{
+    $store_num = $param['store_num'];
+    $user_num = $param['user_num'];
+
+    $conn = get_conn();
+    $sql = "INSERT INTO t_likestore (store_num,user_num) VALUES ($store_num,$user_num)";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+// 가게 찜 확인하기
+function sel_store_like(&$param)
+{
+    $store_num = $param['store_num'];
+    $user_num = $param['user_num'];
+
+    $conn = get_conn();
+    $sql = "select * from t_likestore where store_num=$store_num and user_num=$user_num";
+
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
     return $result;
 }

@@ -57,7 +57,7 @@ $page_name = "결제하기";
             <div class="basket__touch"></div>
 
 
-            <div class="payment__button" onclick="goPayment()">결제하기</div>
+            <div class="payment__button">결제하기</div>
         </div>
 </body>
 
@@ -66,6 +66,8 @@ $page_name = "결제하기";
 <script>
     let totalPrice = sessionStorage['totalPrice'];
     document.querySelector('.payment__button').textContent = `${totalPrice}원 결제하기`;
+    document.querySelectorAll('.not-ready').forEach(e => e.onclick = goPayment);
+    document.querySelector('.payment__button').onclick = goPayment;
 
     function goPayment() {
         alert('준비중입니다');

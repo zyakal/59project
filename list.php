@@ -80,6 +80,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         <?php
                             include_once "db/db_list.php";
                             $result = sel_store_list();
+                           
                             while($row = mysqli_fetch_assoc($result)) { ?>
                             <div class="tabs__item">
                                 <a href="store-detail.php?store_num=<?=$row['store_num']?>">
@@ -89,6 +90,12 @@ $get_cate_nm = $_GET['cate_nm'];
                                             <div class="store__info__nm"><?=$row['store_nm']?></div>
                                             <div class="store__info__info">가게 정보</div>
                                             <?php 
+                                            $star = store_star($param);
+                                            // if (!$star) {
+                                            //     $star = "";
+                                            // } else {
+                                            //     $star = $star['star'];
+                                            // }
                                             if ($star == "") { ?>
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
                                             <?php } else { ?>

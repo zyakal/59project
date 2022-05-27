@@ -1,4 +1,5 @@
 .store--header {
+  position: absolute;
   background: none;
 }
 .store--header nav a {
@@ -70,7 +71,6 @@ main .store-main .store-cummuni a i {
   margin-right: 0.25rem;
 }
 .store-tabs {
-  max-width: 400px;
   display: flex;
   flex-direction: column;
   width: 100%;
