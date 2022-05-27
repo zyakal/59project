@@ -17,7 +17,7 @@
             ?>
         </header>
         <main class="my_addr--main">
-            <form action="home.php" method="post">
+            <form action="my_addr_proc.php" method="post">
                 <div class="my_addr--form--input">
                     <div class="input--top">
                         <i class='fa-solid fa-magnifying-glass'></i>

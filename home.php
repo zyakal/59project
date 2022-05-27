@@ -1,5 +1,6 @@
 <?php
-
+    session_start();
+    $login_user = $_SESSION['login_user'];
 ?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
@@ -59,9 +60,7 @@
                 </div>
                 <?php
                 require_once("recommend.php");
-                // session_start();
-                // $login_user = $_SESSION['login_user'];
-                if(isset($_SESSION['login_user'])) {
+                if(isset($login_user)) {
                     $user_num = $login_user['user_num'];
 
                     $sub = sel_sub_num();
@@ -141,5 +140,6 @@
     js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
     fjs.parentNode.insertBefore(js, fjs);
   })(document, 'script', 'kakao-js-sdk');
+
 </script>
 </html>

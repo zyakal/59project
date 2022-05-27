@@ -33,7 +33,13 @@ $get_cate_nm = $_GET['cate_nm'];
                 <div class="nav--addr">
                     <a href="my_addr.php">
                         <i class="fa-solid fa-location-dot"></i>
-                        송현동
+                        <script>
+                            if(localStorage.getItem('my_addr') !== '') {
+                                document.write(localStorage.getItem('my_addr'));
+                            } else {
+                                document.write('현재 위치 없음');
+                            }
+                        </script>
                         <i class="fa-solid fa-angle-down"></i>
                     </a>
                 </div>
