@@ -334,25 +334,23 @@ $cate = '';
         const btnLike = document.querySelector('#btn_like')
         document.addEventListener("DOMContentLoaded", function() {
             btnLike.addEventListener('click', () => {
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'store_detail_proc.php',
-                    data: {
+                const url = 'store_detail_proc.php';
+                const options = {
+                    method: 'POST',
+                    header: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
                         store_num: "<?= $store_num ?>",
                         user_num: "<?= $user_num ?>",
-                        store_like: "<?= 1 ?>"
-                    },
-                    success: function(result) {
-                        if (result) {
-                            alert("저장되었습니다.");
-                        } else {
-                            alert("잠시 후에 시도해주세요.");
-                        }
-                    }
-                });
+                        store_like: "<?= 0 ?>"
+                    })
+                }
+                fetch(url, options).then(response => response.json())
             })
         })
+
         // 리스트 클릭해도 페이지이동
         const rows = document.querySelectorAll(".menu-list");
 
