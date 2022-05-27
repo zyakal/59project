@@ -31,6 +31,9 @@
 @import "screens/mypage.css";
 @import "screens/notification.css";
 
+/* --------- 사장님페이지 login --------- */
+@import "screens/owner_login.css";
+
 /* 은지 css */
 @import "screens/home.css";
 @import "screens/list.css";
