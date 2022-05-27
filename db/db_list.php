@@ -119,3 +119,14 @@
         mysqli_close($conn);
         return $result;
     }
+
+    //검색결과의 갯수를 구하는 함수
+    function search_result_count(&$param) {
+        $search = $param['search_txt'];
+        $conn = get_conn();
+        $sql = "SELECT COUNT(*) cnt FROM t_store
+        WHERE store_nm LIKE '%$search%'";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return mysqli_fetch_assoc($result);
+    }

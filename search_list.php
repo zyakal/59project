@@ -8,11 +8,9 @@
     ];
 
     $result = search_result_list($param); 
-    if(empty($result)) {
-        $mag = "검색 결과가 없습니다!";
-    } else {
-        $mag = count(mysqli_fetch_array($result)) . "개가 검색되었습니다.";
-    }
+    $result_count = search_result_count($param);
+    $mag = $result_count['cnt'] . "개가 검색되었습니다.";
+    
 ?>
 
 <!DOCTYPE html>
@@ -60,9 +58,6 @@
                 <?php
                     while($row = mysqli_fetch_array($result)) {
                         $store_num = $row['store_num'];
-                        if(!$row['store_num']) {
-                            print "<div>검색결과 없음</div>";
-                        } else {
                         $param = [
                             'store_num' => $store_num
                         ];
@@ -90,8 +85,7 @@
                                 <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
                             </div>
                         </a>
-                       <?php } 
-                    } ?>
+                       <?php } ?>
             </div>
         </main>
     </div>
