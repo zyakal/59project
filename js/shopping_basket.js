@@ -30,11 +30,13 @@ function makeBasketBox(list) {
                     <div class="basket__price" id="sumPrice${key}">${sumPrice}원</div>
                 </div>
                 <div class="basket__menu-count">
-                    <div class="basket__change-count" onclick="changeCount(${key},0)">-</div>
+                  <div class="basket__margin-for-click" id='click${key}'>
+                    <div class="basket__change-count basket__minus" id='minus${key}'">-</div>
                             
-                    <div id='count${key}'>${menuCount}</div>
+                    <div class="basket__number" id='count${key}'>${menuCount}</div>
                             
-                    <div class="basket__change-count" onclick="changeCount(${key},1)">+</div>
+                    <div class="basket__change-count basket__plus" id='plus${key}' ">+</div>
+                  </div>
                 </div>`;
 
     basketContainer.append(basketBox);
@@ -45,10 +47,26 @@ function makeBasketBox(list) {
     document.getElementsByClassName("totalPrice")[1].innerText =
       totalPrice + "원";
     sessionStorage["totalPrice"] = totalPrice;
+    let countMinus = document.querySelector(`#minus${key}`);
+    countMinus.addEventListener("click", function (e) {
+      changeCount(key, 0);
+      e.stopPropagation();
+    });
+    let countPlus = document.querySelector(`#plus${key}`);
+    countPlus.addEventListener("click", function (e) {
+      changeCount(key, 1);
+      e.stopPropagation();
+    });
+    let marginForClick = document.querySelector(`#click${key}`);
+    marginForClick.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
   });
+  return 1;
 }
 
 function changeCount(key, pm) {
+  console.log(key + ":::" + pm);
   let nowCount = sessionStorage.getItem(key);
   if (pm) {
     sessionStorage.setItem(Number(key), Number(nowCount) + 1);
@@ -69,13 +87,16 @@ function changeCount(key, pm) {
       sessionStorage.getItem(key);
   }
 
-  document.getElementById(`sumPrice${key}`).innerText =
-    prices[key] * sessionStorage.getItem(key);
+  let sumPrice = prices[key] * sessionStorage.getItem(key);
+  if (sumPrice != 0) {
+    document.getElementById(`sumPrice${key}`).innerText = sumPrice;
+  }
   document.getElementsByClassName("totalPrice")[0].innerText =
     totalPrice + "원";
   document.getElementsByClassName("totalPrice")[1].innerText =
     totalPrice + "원";
   sessionStorage["totalPrice"] = totalPrice;
+  checkBoxCount();
 }
 
 function goPayment() {
@@ -84,4 +105,34 @@ function goPayment() {
 function setScroll() {
   let payBoxH = document.querySelector(".basket-payment").clientHeight;
   document.querySelector(".basket-container").style.paddingBottom = payBoxH + 5;
+}
+
+function afterBox() {
+  checkBoxCount();
+  setScroll();
+  setBoxLink();
+}
+
+function setBoxLink() {
+  let itemIds = [];
+  Object.keys(itemList).forEach((val) => {
+    itemIds.push("box" + val);
+  });
+  itemIds.forEach((val) => {
+    document.querySelector(`#${val}`).addEventListener("click", (e) => {
+      window.location = `menu-detail.php?menu_num=${val.substring(3)}`;
+      e.stopPropagation();
+    });
+  });
+}
+
+function checkBoxCount() {
+  console.log(sessionStorage.length);
+  if (sessionStorage.length == 1) {
+    let noList = document.createElement("div");
+    noList.className += "basket__no-list";
+    noList.innerHTML = "<div>🎁선택한 상품이 없습니다</div>";
+    console.log(noList);
+    document.querySelector(".basket-container").append(noList);
+  }
 }

@@ -11,7 +11,7 @@ if (isset($_SESSION['login_user'])) {
 } else {
     echo "<script>
     alert('로그인 후 이용 가능합니다.');
-    window.location.href = 'home.php';
+    window.location.href = 'login.php';
     </script>";
 }
 // if (isset($_POST['menu_num']) || isset($_POST['menu_count'])) {
@@ -44,16 +44,16 @@ if (isset($_SESSION['login_user'])) {
     let basketListJson = JSON.stringify(basketList);
     console.log(basketListJson);
 
-
+    let itemList;
     fetch(`shopping_basket_json.php?menus=${basketListJson}`)
         .then((response) => {
             return response.json();
         }).then((list) => {
             console.log(list);
-            makeBasketBox(list);
-            setScroll();
-
-
+            itemList = list;
+            return makeBasketBox(list);
+        }).then((listDone) => {
+            afterBox();
         });
 </script>
 
@@ -108,15 +108,7 @@ if (isset($_SESSION['login_user'])) {
             <div class="payment__button" onclick="goPayment()">결제하기</div>
         </div>
     </div>
-    <script>
-        const ff = (e) => {
-            console.log(':::');
-            console.log(this);
-            console.log(e);
-        }
-        console.log(document.querySelectorAll('.basket__box'));
-        document.querySelectorAll('.basket__box')[0].onclick = ff;
-    </script>
+
 </body>
 
 </html>

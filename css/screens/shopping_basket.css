@@ -63,7 +63,14 @@ main {
   justify-content: right;
   align-items: flex-end;
   gap: 15px;
-  margin: 0 15px 15px 0;
+  height: 90%;
+  /* padding: 0 15px 15px 0; */
+}
+.basket__menu-count > div {
+  display: flex;
+  align-items: center;
+
+  margin: 0 8px;
 }
 
 img {
@@ -81,6 +88,13 @@ img {
   align-items: center;
   background-color: var(--main-pink);
   color: var(--text-white);
+  z-index: 2;
+  margin: 10px;
+}
+.basket__number {
+  margin: 10px 0;
+  width: 18px;
+  text-align: center;
 }
 
 .container {
@@ -148,4 +162,12 @@ img {
   height: 6px;
   width: 50px;
   margin-top: 20px;
+}
+.basket__no-list {
+  width: 90%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
 }
