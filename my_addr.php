@@ -41,21 +41,55 @@
             ?>
         </footer>
     </div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bfb673c0f6bf2c1ea0c0bdce834d211&libraries=services"></script>
     <script>
         var x = document.getElementById("demo");
 
         function getLocation() {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
+            navigator.geolocation.getCurrentPosition(getAddr);
         } else { 
             x.innerHTML = "현재 위치가 확인 되지 않습니다.";
         }
         }
 
-        function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude;
+        // var geocoder = new kakao.maps.services.Geocoder();
+
+        
+        // function  getCoordinate(address) {
+        // // x.innerHTML = "Latitude: " + position.coords.latitude + 
+        // // "<br>Longitude: " + position.coords.longitude;
+        // let result = "";
+
+        // const header = `Authorization: KakaoAk ${rest_api_key}`;
+
+        // let r = requests.get(url, headers=header);
+        //     if (r.status_code == 200) {
+        //         if (len(r.json()['documents']) != 0) {
+        //             result_address = r.json()["documents"][0]["address"];
+        //             result = (result_address["y"],result_address["x"]);
+        //         }
+        //         return result;
+        //     }
+        // }
+        
+        // console.log(getCoordinate("대구 중구 동성로 1"));
+
+        function getAddr(address){
+            var lat = coords.latitude; // 위도
+            var lng = coords.longitude; // 경도
+            let geocoder = new kakao.maps.services.Geocoder();
+
+            let coord = new kakao.maps.LatLng(lat, lng);
+            let callback = function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    console.log(result);
+                }
+            };
+
+            geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
         }
+        
     </script>
 
 </body>
