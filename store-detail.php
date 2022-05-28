@@ -3,11 +3,12 @@ include_once "db/db_store_and_menu.php";
 
 $store_num = $_GET['store_num'];
 session_start();
-$user_num = 2;
+$user_num = 0;
 $param = [
     "store_num" => $store_num,
     "user_num" => $user_num
 ];
+// 세션에 정보가 있으면 셀렉트
 if (isset($_SESSION['login_user'])) {
     $login_user = $_SESSION['login_user'];
     $user_num = $login_user['user_num'];
@@ -15,10 +16,13 @@ if (isset($_SESSION['login_user'])) {
 
     $store_like = 0;
     $store_like = sel_store_like($param);
+} else {
+    // $user_num = 0;
 }
 $store_like = sel_store_like($param);
 print_r($store_like);
 
+// 처음 가게페이지에 들어 왔을 때 디비에 좋아요 데이터가 있는지 확인 후 있으면 꽉찬하트 아니면 빈 하트
 $heart = 0;
 if (isset($store_like)) {
     $store_like = 1;
@@ -340,17 +344,33 @@ $cate = '';
     <script>
         // 가게 좋아요를 위한 ajax
         const btnLike = document.querySelector('#btn_like')
+        const heartIcon = btnLike.querySelector('i');
+        const heartCtn = document.querySelector(".store-point__heart");
+        // 하트 아이콘이 꽉 차 있으면 색을 넣어줌
+        if (heartIcon.classList.value === "fas fa-heart") {
+            heartCtn.classList.add('heart--click');
+        }
         document.addEventListener("DOMContentLoaded", function() {
+            // 단골찜 버튼 클릭 시 fetch로 proc와 연결, 버튼 토글
             btnLike.addEventListener('click', () => {
-                const url = 'store-detail_proc.php?store_num=<?= $store_num ?>&user_num=<?= $user_num ?>&store_like=<?= $store_like ?>';
 
+                const url = 'store-detail_proc.php?store_num=<?= $store_num ?>&user_num=<?= $user_num ?>&store_like=<?= $store_like ?>';
                 fetch(url).then((response) => {
                     console.log(response);
                     return response.json();
                 }).then((element) => {
                     console.log(element);
                 })
-                console.log(<?= $heart ?>);
+                if (<?= $user_num ?> === 0) {
+                    let userConfirm = confirm("로그인을 하셔야 찜을 하실 수 있습니다.[확인 시 로그인 페이지로 이동]");
+                    if (userConfirm === true) {
+                        location.href = 'mypage.php';
+                    }
+                } else {
+                    heartCtn.classList.toggle('heart--click');
+                    heartIcon.classList.toggle('fas');
+                    heartIcon.classList.toggle('far');
+                }
             })
         })
 
@@ -378,16 +398,6 @@ $cate = '';
         three.style.width = '<?= $stars_avg['star3_avg'] ?>%';
         two.style.width = '<?= $stars_avg['star2_avg'] ?>%';
         one.style.width = '<?= $stars_avg['star1_avg'] ?>%';
-
-        // 단골 찜하기 토글 
-        // const heartCtn = document.querySelector(".store-point__heart"),
-        //     heartIcon = heartCtn.querySelector('i');
-
-        // heartCtn.addEventListener('click', () => {
-        //     heartCtn.classList.toggle('heart--click');
-        //     heartIcon.classList.toggle('fa-regular');
-        //     heartIcon.classList.toggle('fa-solid');
-        // })
     </script>
 </body>
 
