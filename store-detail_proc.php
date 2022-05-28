@@ -12,12 +12,6 @@ $param = [
 ];
 
 print json_encode($param);
-$sel_result = sel_store_like($param);
-if (isset($sel_result)) {
-  $parma['store_like'] = 1;
-} else {
-  $parma['store_like'] = 0;
-}
 
 if ($store_like !== "0") { //이미 좋아요를 누른 경우 기존 좋아요 삭제
   // 내역 삭제
