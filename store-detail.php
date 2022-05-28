@@ -3,10 +3,10 @@ include_once "db/db_store_and_menu.php";
 
 $store_num = $_GET['store_num'];
 session_start();
-// $user_num = 10;
+$user_num = 2;
 $param = [
     "store_num" => $store_num,
-    "user_num" => 10
+    "user_num" => 2
 ];
 if (isset($_SESSION['login_user'])) {
     $login_user = $_SESSION['login_user'];
@@ -16,11 +16,15 @@ if (isset($_SESSION['login_user'])) {
     $store_like = 0;
     $store_like = sel_store_like($param);
 }
+$store_like = sel_store_like($param);
+print_r($store_like);
 
 $heart = 0;
 if (isset($store_like)) {
+    $store_like = 0;
     $heart = 1;
 }
+// $store_like = 1;
 
 $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
