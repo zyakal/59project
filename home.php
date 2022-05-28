@@ -54,57 +54,51 @@
                     <?php
                     if(isset($_SESSION['login_user'])) { ?>
                     <div>맞춤 추천</div>
-                    <?php } else { ?>
+                    <?php
+                        require_once("recommend.php");
+                        $user_num = $login_user['user_num'];
+
+                        $sub = sel_sub_num();
+                        while($row = mysqli_fetch_assoc($sub)) {
+                            $param = [
+                                'user_num' => $row['user_num'],
+                                'store_num' => $row['store_num']
+                            ];
+                            $star = sel_reviwe_star($param);
+                            $subs = array (
+                                $row['user_num'] => array($row['store_num'] => $star) 
+                            );
+                            $re = new Recommend();
+                            //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
+                            $result = $re->getRecommendations($subs, $user_num);
+                        } 
+                    } elseif (localStorage.getItem('my_addr') !== null) { ?>
                         <div>거리순 추천</div>
+                        <div class="recommend--list">
+                            <div class="recommend__item">
+                                <h2 class="recommend__title">그린버거</h2>
+                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                            </div>
+                        </div>
+                        <div class="recommend--list">
+                            <div class="recommend__item">
+                                <h2 class="recommend__title">그린네일</h2>
+                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                            </div>
+                        </div>
+                        <div class="recommend--list">
+                            <div class="recommend__item">
+                                <h2 class="recommend__title">그린카페</h2>
+                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                            </div>
+                        </div>
+                        <div class="recommend--list">
+                            <div class="recommend__item">
+                                <h2 class="recommend__title">그린헤어샵</h2>
+                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
+                            </div>
+                        </div>
                     <?php } ?>
-                </div>
-                <?php
-                require_once("recommend.php");
-                if(isset($login_user)) {
-                    $user_num = $login_user['user_num'];
-
-                    $sub = sel_sub_num();
-                    while($row = mysqli_fetch_assoc($sub)) {
-                        $param = [
-                            'user_num' => $row['user_num'],
-                            'store_num' => $row['store_num']
-                        ];
-                        $star = sel_reviwe_star($param);
-                        $subs = array (
-                            $row['user_num'] => array($row['store_num'] => $star) 
-                        );
-                        $re = new Recommend();
-                        //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
-                        $result = $re->getRecommendations($subs, $user_num);
-                    } 
-                } else {
-
-                }
-               
-                ?>
-                <div class="recommend--list">
-                    <div class="recommend__item">
-                        <h2 class="recommend__title">그린버거</h2>
-                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                    </div>
-                </div>
-                <div class="recommend--list">
-                    <div class="recommend__item">
-                        <h2 class="recommend__title">그린네일</h2>
-                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                    </div>
-                </div>
-                <div class="recommend--list">
-                    <div class="recommend__item">
-                        <h2 class="recommend__title">그린카페</h2>
-                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                    </div>
-                </div>
-                <div class="recommend--list">
-                    <div class="recommend__item">
-                        <h2 class="recommend__title">그린헤어샵</h2>
-                        <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                    </div>
                 </div>
             </div>
             <div
