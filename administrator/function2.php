@@ -112,6 +112,19 @@ function menu_category($menu_cate){
     echo $menu_category;
 }
 
+function menu_category_edit($menu_cate,$store_menu_cate){
+    $menu_category = "";
+    $i=0;
+    $menu_category .= "<select name='menu_category'><option value=''>-- 기존 : $store_menu_cate --</option>";
+    for($i;$i < count($menu_cate);$i++){        
+            $menu_category .= "<option value='$menu_cate[$i]'>$menu_cate[$i]</option>";
+        }     
+    
+    $menu_category .= "</select>";
+    echo $menu_category;
+}
+
+
 function sales_count(){
     $count = "";
     $i=1;
@@ -235,6 +248,35 @@ function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
     menu_category($menu_cate);
     echo "</div> <div>메뉴명</div>
         <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' id=''>
+    </div>
+    <div>메뉴 소개</div>
+        <div><textarea name='menu_intro' id='' cols='30' rows='10' placeholder='메뉴를 소개하세요'></textarea>
+    </div>
+    <div class='store_img_input'> 메뉴 이미지</div>
+        <div><label class=''>
+            <input class='' type='file' name='menu_img' accept='image/*' >
+        </label>
+    </div>
+    <div>메뉴 정가</div>
+    <div><input type='number' name='price' id='' step='500' placeholder='구독할인전 가격' ></div>
+    <div>구독 할인가</div>
+    <div><input type='number' name='sub_price' id='' step='500' placeholder='구독할인 가격'></div>
+    <div>월 총 횟수</div>
+    <div>";
+    sales_count();
+    menu_count_cd($menu_count_cd);
+    echo "</div> </div> </form>";
+}
+
+
+function 메뉴편집($card_name8, $menu_cate, $menu_count_cd, $store_menu_cate){
+    echo "<form action='store_menu_edit.php' method='post' enctype='multipart/form-data'>
+    <div class='listing-card__info'>";
+    card_top($card_name8);
+    echo "<div>메뉴 카테고리</div><div>";
+    menu_category_edit($menu_cate,$store_menu_cate);
+    echo "</div> <div>메뉴명</div>
+        <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' value=''>
     </div>
     <div>메뉴 소개</div>
         <div><textarea name='menu_intro' id='' cols='30' rows='10' placeholder='메뉴를 소개하세요'></textarea>

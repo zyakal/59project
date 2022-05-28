@@ -95,7 +95,6 @@ body {
   position: relative;
   font-size: 1.2rem;
   padding: 20px 20px;
-  background-color: var(--dark-bg);
 }
 .main__header::after {
   position: absolute;
@@ -105,12 +104,11 @@ body {
   height: 100%;
   content: "";
   display: block;
-  background-color: var(--dark-bg);
 }
-.main__title {
-  color: #fff;
+.main__title {  
   z-index: 1;
   position: relative;
+  margin: 30px 0 0 40px;
 }
 .listing-card {
   max-width: 1600px;
@@ -600,9 +598,9 @@ body.dark .switch::before {
   color: var(--text-dark-gray);
 }
 
-.edit__detail {
+.detail__icon .detail_ctnt {
   display: none;
 }
-.show .edit__detail {
+.detail__icon.show .detail_ctnt {
   display: block;
 }
