@@ -342,7 +342,8 @@ $cate = '';
         const btnLike = document.querySelector('#btn_like')
         document.addEventListener("DOMContentLoaded", function() {
             btnLike.addEventListener('click', () => {
-                const url = 'store_detail_proc.php?store_num=<?= $store_num ?>&user_num=<?= $user_num ?>&store_like=<?= $store_like ?>';
+                const url = 'store-detail_proc.php?store_num=<?= $store_num ?>&user_num=<?= $user_num ?>&store_like=<?= $store_like ?>';
+                console.log(<?= $heart ?>);
                 fetch(url).then((response) => {
                     console.log(response);
                     return response.json();

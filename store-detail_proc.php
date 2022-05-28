@@ -12,19 +12,17 @@ $param = [
 ];
 
 print json_encode($param);
-
+$sel_result = sel_store_like($param);
+if (isset($sel_result)) {
+  $parma['store_like'] = 1;
+} else {
+  $parma['store_like'] = 0;
+}
 
 if ($store_like !== "0") { //이미 좋아요를 누른 경우 기존 좋아요 삭제
-
   // 내역 삭제
   $del_result = del_store_like($param);
-
-  echo "<i class='far fa-heart'></i> "; // 빈 하트
-  print "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam error sunt nam consequatur animi quo commodi atque laborum nesciunt culpa?";
 } else {
-
   // 내역 생성
   $ins_result = ins_store_like($param);
-
-  echo "<i class='fas fa-heart'></i> "; // 꽉찬 하트
 }
