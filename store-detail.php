@@ -6,7 +6,7 @@ session_start();
 $user_num = 2;
 $param = [
     "store_num" => $store_num,
-    "user_num" => 2
+    "user_num" => $user_num
 ];
 if (isset($_SESSION['login_user'])) {
     $login_user = $_SESSION['login_user'];
@@ -21,11 +21,11 @@ print_r($store_like);
 
 $heart = 0;
 if (isset($store_like)) {
-    $store_like = 0;
+    $store_like = 1;
     $heart = 1;
+} else {
+    $store_like = 0;
 }
-// $store_like = 1;
-
 $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
 $store_reviews = select_store_review($param);

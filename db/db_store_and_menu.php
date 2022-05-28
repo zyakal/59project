@@ -140,7 +140,7 @@ function del_store_like(&$param)
     $user_num = $param['user_num'];
 
     $conn = get_conn();
-    $sql = "INSERT INTO t_likestore (store_num,user_num) VALUES ($store_num,$user_num)";
+    $sql = "DELETE FROM t_likestore WHERE store_num=$store_num AND user_num=$user_num";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
@@ -153,7 +153,7 @@ function sel_store_like(&$param)
     $user_num = $param['user_num'];
 
     $conn = get_conn();
-    $sql = "select * from t_likestore where store_num=$store_num and user_num=$user_num";
+    $sql = "SELECT * FROM t_likestore WHERE store_num=$store_num AND user_num=$user_num";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
