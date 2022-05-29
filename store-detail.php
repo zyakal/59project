@@ -3,7 +3,7 @@ include_once "db/db_store_and_menu.php";
 
 $store_num = $_GET['store_num'];
 session_start();
-$user_num = 0;
+$user_num = 1;
 $param = [
     "store_num" => $store_num,
     "user_num" => $user_num
@@ -20,7 +20,7 @@ if (isset($_SESSION['login_user'])) {
     // $user_num = 0;
 }
 $store_like = sel_store_like($param);
-print_r($store_like);
+
 
 // 처음 가게페이지에 들어 왔을 때 디비에 좋아요 데이터가 있는지 확인 후 있으면 꽉찬하트 아니면 빈 하트
 $heart = 0;
@@ -63,7 +63,7 @@ $cate = '';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>가게페이지</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
