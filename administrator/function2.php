@@ -100,7 +100,7 @@ function sales_time_close_minute(){
     echo $minute;
 }
 
-function menu_category($menu_cate){
+function menu_category_input($menu_cate){
     $menu_category = "";
     $i=0;
     $menu_category .= "<select name='menu_category'><option value=''>-- 카테고리 --</option>";
@@ -112,7 +112,7 @@ function menu_category($menu_cate){
     echo $menu_category;
 }
 
-function menu_category_edit($menu_cate,$store_menu_cate){
+function menu_category_edit($store_menu_cate){
     $menu_cate = [
         "한식",
         "분식",
@@ -135,7 +135,7 @@ function menu_category_edit($menu_cate,$store_menu_cate){
         }     
     
     $menu_category .= "</select>";
-    return $menu_category;
+    echo $menu_category;
 }
 
 
@@ -151,10 +151,40 @@ function sales_count(){
     echo $count;
 }
 
+function sales_count_edit($subed_count){
+    $count = "";
+    $i=1;
+    $count .= "<select name='sales_count'><option value='$subed_count'>-- $subed_count --</option>";
+    for($i;$i <= 30;$i++){        
+            $count .= "<option value='$i'>$i</option>";
+        }     
+    
+    $count .= "</select>";
+    echo $count;
+}
+
+
 function menu_count_cd($menu_count_cd){
     $menu_cd = "";
     $i=0;
     $menu_cd .= "<select name='menu_cd'><option value=''>-- 단위 --</option>";
+    for($i;$i < count($menu_count_cd);$i++){ 
+            $value = $i+1;       
+            $menu_cd .= "<option value='$value'>$menu_count_cd[$i]</option>";
+        }     
+    
+    $menu_cd .= "</select>";
+    echo $menu_cd;
+}
+
+function menu_count_cd_edit($cd_unit){
+    $menu_count_cd = [
+        "회",
+        "개"
+    ];
+    $menu_cd = "";
+    $i=0;
+    $menu_cd .= "<select name='menu_cd'><option value='$cd_unit'>-- $cd_unit --</option>";
     for($i;$i < count($menu_count_cd);$i++){ 
             $value = $i+1;       
             $menu_cd .= "<option value='$value'>$menu_count_cd[$i]</option>";
@@ -259,7 +289,7 @@ function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
     <div class='listing-card__info'>";
     card_top($card_name7);
     echo "<div>메뉴 카테고리</div><div>";
-    menu_category($menu_cate);
+    menu_category_input($menu_cate);
     echo "</div> <div>메뉴명</div>
         <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' id=''>
     </div>
@@ -283,37 +313,37 @@ function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
 }
 
 
-function 메뉴편집($card_name8, $menu_cate, $menu_count_cd, $store_menu_cate){
-    echo "<form action='store_menu_edit.php' method='post' enctype='multipart/form-data'>
-    <div class='listing-card__info'>
+function 메뉴편집($menu_num, $menu_nm,$menu_intro,$price,$subed_price, $store_menu_cate,$subed_count ,$cd_unit){
+    echo "<div class='listing-card__info'>
         <div class='listing-card__info--top'>
-        <strong class='listing-card__name'>" . $card_name8 ." > </strong>
+        <strong class='listing-card__name'>   </strong>
+        <input name='menu_num' type='text' value='$menu_num' hidden>
             <span>
                 <button class='btn' type='reset' >취소</button>
-                <button class='btn' type='submit' >등록</button>
+                <button class='btn' type='submit' >수정</button>
             </span>
         </div>
         <div> &nbsp </div>
-        <div>메뉴 카테고리</div><div>";
-    echo menu_category_edit($menu_cate,$store_menu_cate);
-    echo "</div> <div>메뉴명</div>
-        <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' value=''>
+        <div>메뉴 카테고리</div><div>";  
+    menu_category_edit($store_menu_cate); 
+    echo "</div> <div>메뉴명</div>  
+        <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' value='$menu_nm'>
     </div>
     <div>메뉴 소개</div>
-        <div><textarea name='menu_intro' id='' cols='30' rows='10' placeholder='메뉴를 소개하세요'></textarea>
+        <div><textarea name='menu_intro' id='' cols='30' rows='10' placeholder='메뉴를 소개하세요'>$menu_intro</textarea>
     </div>
     <div class='store_img_input'> 메뉴 이미지</div>
         <div><label class=''>
-            <input class='' type='file' name='menu_img' accept='image/*' >
+            <input class='' type='file' name='menu_img' accept='image/*' enctype='multipart/form-data'>
         </label>
     </div>
     <div>메뉴 정가</div>
-    <div><input type='number' name='price' id='' step='500' placeholder='구독할인전 가격' ></div>
+    <div><input type='number' name='price' id='' step='500' placeholder='구독할인전 가격' value='$price'></div>
     <div>구독 할인가</div>
-    <div><input type='number' name='sub_price' id='' step='500' placeholder='구독할인 가격'></div>
+    <div><input type='number' name='sub_price' id='' step='500' placeholder='구독할인 가격' value='$subed_price'></div>
     <div>월 총 횟수</div>
     <div>";
-    sales_count();
-    menu_count_cd($menu_count_cd);
-    echo "</div> </div> </form>";
+    sales_count_edit($subed_count);
+    menu_count_cd_edit($cd_unit);
+    echo "</div> </div>";
 }

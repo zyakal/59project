@@ -195,6 +195,37 @@
         mysqli_close($conn);   
         return $result; 
 }
+// 가게 메뉴 편집
+function store_menu_edit(&$param){
+    $category = $param['menu_category'];
+    $menu_nm = $param['menu_nm'];
+    $menu_intro = $param['menu_intro'];
+    $menu_photo = $param['menu_photo'];
+    $sales_count = $param['sales_count'];
+    $price = $param['price'];
+    $sub_price = $param['sub_price'];        
+    $store_num = $param['store_num'];
+    $cd_unit = $param['menu_cd'];
+    $menu_num = $param['menu_num'];
+
+
+    $sql =
+    "   UPDATE t_menu
+        SET store_num ='$store_num', menu_cate ='$category', menu_nm='$menu_nm', price='$price', 
+        subed_price='$sub_price', subed_count='$sales_count', menu_intro='$menu_intro', menu_photo='$menu_photo', cd_unit='$cd_unit'
+        WHERE menu_num = $menu_num
+        
+
+    ";
+
+    
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);   
+    
+    mysqli_close($conn);  
+    echo $sql; 
+    return $result; 
+}
 
 // 메뉴 편집
 function menu_edit(&$param){
