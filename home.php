@@ -72,8 +72,10 @@
                             //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
                             $result = $re->getRecommendations($subs, $user_num);
                         } 
-                    } elseif (localStorage.getItem('my_addr') !== null) { ?>
-                        <div>거리순 추천</div>
+                    } ?>
+                    <!-- localStorage.getItem('my_addr') !== null  -->
+                    <!-- <div>거리순 추천</div>
+                    </div>
                         <div class="recommend--list">
                             <div class="recommend__item">
                                 <h2 class="recommend__title">그린버거</h2>
@@ -97,9 +99,15 @@
                                 <h2 class="recommend__title">그린헤어샵</h2>
                                 <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
                             </div>
-                        </div>
-                    <?php } ?>
-                </div>
+                        </div> -->
+                    <script>
+                        if(localStorage.getItem('my_addr') !== null) { 
+                            document.write('<div>거리순 추천</div>');
+                            document.write('</div>');
+                            document.write('<div class="recommend--list"><div class="recommend__item"><h2 class="recommend__title">그린버거</h2><p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p></div></div>')
+                    } 
+                    </script>
+                    
             </div>
             <div
                 id="kakao-talk-channel-chat-button"
@@ -134,6 +142,7 @@
     js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
     fjs.parentNode.insertBefore(js, fjs);
   })(document, 'script', 'kakao-js-sdk');
+
 
 </script>
 </html>
