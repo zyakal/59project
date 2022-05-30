@@ -7,7 +7,7 @@ $param = [
   'star_rating' => $_POST['star'],
   'ctnt' => $_POST['review_ctnt']
 ];
-
+print_r($param);
 $result = ins_menu_review($param);
 print_r($result);
 // header("Location: store-detail.php?store_num={$param['store_num']}");
