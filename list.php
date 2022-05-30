@@ -25,7 +25,7 @@ $get_cate_nm = $_GET['cate_nm'];
     <div class="container">
         <header class="list__header">
             <?php
-            include_once "list_header.html";
+            include_once "list_header.php";
             ?>
         </header>
         <main class="list__main">
@@ -34,7 +34,6 @@ $get_cate_nm = $_GET['cate_nm'];
                 include_once "db/db_list.php";
                 $result = sel_categories();
                 ?>
-
                 <div class="top__list swiper-wrapper">
                     <div class="top__item tabs__toggle swiper-slide">
                         <input type="radio" name="tabs__name" id="모두보기" value="모두보기">

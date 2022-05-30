@@ -31,7 +31,7 @@
     <div class="container">
         <header class="search_list__header">
             <?php
-            include_once "list_header.html";
+            include_once "list_header.php";
             ?>
         </header>
         <main class="search_list_main">
