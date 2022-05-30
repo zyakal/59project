@@ -73,7 +73,7 @@ $page_name = "마이페이지";
             <div class = "myinfo_box_text">쿠폰함</div>
             <div class = "myinfo_box_small_text"><?=$coupon_count?>장</div>
             </div></a>
-            <a href="">
+            <a href="sub_manage.php">
             <div class = "myinfo_box">
             <div class = "myinfo_box_text">구독관리</div>
             <div class = "myinfo_box_small_text"><?=$sub_count?>개</div>
