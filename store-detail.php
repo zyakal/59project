@@ -1,22 +1,42 @@
 <?php
 include_once "db/db_store_and_menu.php";
 
-session_start();
-$login_user = $_SESSION['login_user'];
-$user_num = $login_user['user_num'];
-
-
 $store_num = $_GET['store_num'];
+session_start();
+$user_num = 1;
 $param = [
     "store_num" => $store_num,
     "user_num" => $user_num
 ];
+// 세션에 정보가 있으면 셀렉트
+if (isset($_SESSION['login_user'])) {
+    $login_user = $_SESSION['login_user'];
+    $user_num = $login_user['user_num'];
+    $param['user_num'] = $user_num;
 
+    $store_like = 0;
+    $store_like = sel_store_like($param);
+} else {
+    // $user_num = 0;
+}
+$store_like = sel_store_like($param);
+
+
+// 처음 가게페이지에 들어 왔을 때 디비에 좋아요 데이터가 있는지 확인 후 있으면 꽉찬하트 아니면 빈 하트
+$heart = 0;
+if (isset($store_like)) {
+    $store_like = 1;
+    $heart = 1;
+} else {
+    $store_like = 0;
+}
 $menu_info = select_store_menus($param);
 $store_info = select_one_store($param);
 $store_reviews = select_store_review($param);
 $store_stars = select_store_stars($param);
 $cates = select_menu_cate($param);
+// 찜하기 submit 의 name
+// $like_num = 1;
 
 // 별점 평균과 각 점수별 퍼센트 만들기
 $star_avg = round($store_stars['star_avg'], 1);
@@ -43,7 +63,7 @@ $cate = '';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>가게페이지</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
@@ -75,8 +95,16 @@ $cate = '';
                         <div><?= $star_avg ?></div>
                     </div>
                     <div class="store-point__heart">
-                        <i class="fa-regular fa-heart"></i>
-                        <div>단골 찜</div>
+                        <!-- <i class="fa-regular fa-heart"></i>
+                        <div>단골 찜</div> -->
+                        <?php
+                        if ($heart !== 0) {  // 좋아요 있으면 꽉찬하트 보여주기 
+                        ?>
+                            <div id="btn_like"><i class='fas fa-heart'></i>단골찜</div>
+                        <?php } else {  // 좋아요 없으면 빈하트 보여주기
+                        ?>
+                            <div id="btn_like"><i class='far fa-heart'></i>단골찜</div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="store-cummuni">
@@ -314,6 +342,38 @@ $cate = '';
         </footer>
     </div>
     <script>
+        // 가게 좋아요를 위한 ajax
+        const btnLike = document.querySelector('#btn_like')
+        const heartIcon = btnLike.querySelector('i');
+        const heartCtn = document.querySelector(".store-point__heart");
+        // 하트 아이콘이 꽉 차 있으면 색을 넣어줌
+        if (heartIcon.classList.value === "fas fa-heart") {
+            heartCtn.classList.add('heart--click');
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            // 단골찜 버튼 클릭 시 fetch로 proc와 연결, 버튼 토글
+            btnLike.addEventListener('click', () => {
+
+                const url = 'store-detail_proc.php?store_num=<?= $store_num ?>&user_num=<?= $user_num ?>&store_like=<?= $store_like ?>';
+                fetch(url).then((response) => {
+                    console.log(response);
+                    return response.json();
+                }).then((element) => {
+                    console.log(element);
+                })
+                if (<?= $user_num ?> === 0) {
+                    let userConfirm = confirm("로그인을 하셔야 찜을 하실 수 있습니다.[확인 시 로그인 페이지로 이동]");
+                    if (userConfirm === true) {
+                        location.href = 'mypage.php';
+                    }
+                } else {
+                    heartCtn.classList.toggle('heart--click');
+                    heartIcon.classList.toggle('fas');
+                    heartIcon.classList.toggle('far');
+                }
+            })
+        })
+
         // 리스트 클릭해도 페이지이동
         const rows = document.querySelectorAll(".menu-list");
 
@@ -338,16 +398,6 @@ $cate = '';
         three.style.width = '<?= $stars_avg['star3_avg'] ?>%';
         two.style.width = '<?= $stars_avg['star2_avg'] ?>%';
         one.style.width = '<?= $stars_avg['star1_avg'] ?>%';
-
-        // 단골 찜하기 토글 
-        const heartCtn = document.querySelector(".store-point__heart"),
-            heartIcon = heartCtn.querySelector('i');
-
-        heartCtn.addEventListener('click', () => {
-            heartCtn.classList.toggle('heart--click');
-            heartIcon.classList.toggle('fa-regular');
-            heartIcon.classList.toggle('fa-solid');
-        })
     </script>
 </body>
 
