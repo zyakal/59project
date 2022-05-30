@@ -68,7 +68,7 @@ $get_cate_nm = $_GET['cate_nm'];
                             <div class="tabs__item">
                                 <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                     <div class="list__item">
-                                        <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                        <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                         <div class="list__store__info">
                                             <div class="store__info__nm"><?=$row['store_nm']?></div>
                                             <div class="store__info__info">가게 정보</div>
@@ -101,7 +101,7 @@ $get_cate_nm = $_GET['cate_nm'];
                             while($row = mysqli_fetch_assoc($result)) { ?>
                             <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                     <div class="list__item">
-                                        <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                        <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                         <div class="list__store__info">
                                             <div class="store__info__nm"><?=$row['store_nm']?></div>
                                             <div class="store__info__info">가게 정보</div>
@@ -127,7 +127,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -153,7 +153,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -179,7 +179,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -205,7 +205,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -231,7 +231,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -257,7 +257,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -283,7 +283,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -309,7 +309,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -335,7 +335,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -361,7 +361,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
@@ -387,7 +387,7 @@ $get_cate_nm = $_GET['cate_nm'];
                         while($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                 <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/test_store1/Main_img/bb8122e7-3786-46d3-9258-665c77ce95b4.jpg"></div>
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                     <div class="list__store__info">
                                         <div class="store__info__nm"><?=$row['store_nm']?></div>
                                         <div class="store__info__info">가게 정보</div>
