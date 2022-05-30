@@ -105,7 +105,7 @@ body {
   content: "";
   display: block;
 }
-.main__title {  
+.main__title {
   z-index: 1;
   position: relative;
   margin: 30px 0 0 40px;
@@ -598,9 +598,9 @@ body.dark .switch::before {
   color: var(--text-dark-gray);
 }
 
-.detail__icon .detail_ctnt {
+.detail__icon ~ .detail_ctnt {
   display: none;
 }
-.detail__icon.show .detail_ctnt {
+.detail__icon.show ~ .detail_ctnt {
   display: block;
 }

@@ -80,6 +80,7 @@
     $sales_day_arr = explode(" ",$store_sales_day);
     $sales_time_arr = explode(",",$sales_time);
     
+    
   
 
 ?>
@@ -259,7 +260,7 @@
                                 
                         </div>
                         <?php 
-                        $store_menu_cate = "abcd";
+                        
                         $row = menu_edit($param);
                         foreach($row as $item) {
                             $menu_num = $item['menu_num'];
@@ -277,10 +278,14 @@
                             <div><img class="menu_img" src="<?=$menu_img?>"  onerror="this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'">
                         <?php
                             // $_GET[menu_detail]
-                            echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i><div class='detail_ctnt'>" 
-                            . 메뉴편집($card_name8, $menu_cate, $menu_count_cd, $store_menu_cate) . "</div></span> 
                             
-                            </div> $subed_price <br><div class = ''></div>";
+
+                            $store_menu_cate = "abcd";
+                            echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>$subed_price  <div class='detail_ctnt'>";
+                            
+                            메뉴편집($card_name8, $menu_cate, $menu_count_cd, $store_menu_cate);
+                            echo "</div>";
+                            
                             
                         }
                         ?>

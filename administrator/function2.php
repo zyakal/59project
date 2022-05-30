@@ -113,15 +113,29 @@ function menu_category($menu_cate){
 }
 
 function menu_category_edit($menu_cate,$store_menu_cate){
+    $menu_cate = [
+        "한식",
+        "분식",
+        "패스트푸드",
+        "도시락",
+        "중식",
+        "양식",
+        "일식",
+        "커피/디저트",
+        "네일샵",
+        "헤어샵",
+        "취미",
+        "운동"
+    ];
     $menu_category = "";
     $i=0;
-    $menu_category .= "<select name='menu_category'><option value=''>-- 기존 : $store_menu_cate --</option>";
+    $menu_category .= "<select name='menu_category'><option value='$store_menu_cate'>-- $store_menu_cate --</option>";
     for($i;$i < count($menu_cate);$i++){        
             $menu_category .= "<option value='$menu_cate[$i]'>$menu_cate[$i]</option>";
         }     
     
     $menu_category .= "</select>";
-    echo $menu_category;
+    return $menu_category;
 }
 
 
@@ -271,10 +285,17 @@ function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
 
 function 메뉴편집($card_name8, $menu_cate, $menu_count_cd, $store_menu_cate){
     echo "<form action='store_menu_edit.php' method='post' enctype='multipart/form-data'>
-    <div class='listing-card__info'>";
-    card_top($card_name8);
-    echo "<div>메뉴 카테고리</div><div>";
-    menu_category_edit($menu_cate,$store_menu_cate);
+    <div class='listing-card__info'>
+        <div class='listing-card__info--top'>
+        <strong class='listing-card__name'>" . $card_name8 ." > </strong>
+            <span>
+                <button class='btn' type='reset' >취소</button>
+                <button class='btn' type='submit' >등록</button>
+            </span>
+        </div>
+        <div> &nbsp </div>
+        <div>메뉴 카테고리</div><div>";
+    echo menu_category_edit($menu_cate,$store_menu_cate);
     echo "</div> <div>메뉴명</div>
         <div><input type='text' name='menu_nm' placeholder='메뉴명을 입력하세요' value=''>
     </div>

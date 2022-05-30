@@ -54,9 +54,8 @@ modeSwitch.addEventListener("click", () => {
 // ---------------------------------편집 카드---------------------------------
 
 const details = document.querySelectorAll(".detail__icon");
-details.forEach((detail) => {
+details.forEach((detail, index) => {
   detail.addEventListener("click", () => {
-    detail.classList.toggle("show");
-    // detail.stopPropagation();
+    details[index].classList.toggle("show");
   });
 });
