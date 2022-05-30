@@ -8,11 +8,9 @@
     ];
 
     $result = search_result_list($param); 
-    if(empty($result)) {
-        $mag = "검색 결과가 없습니다!";
-    } else {
-        $mag = count(mysqli_fetch_array($result)) . "개가 검색되었습니다.";
-    }
+    $result_count = search_result_count($param);
+    $mag = $result_count['cnt'] . "개가 검색되었습니다.";
+    
 ?>
 
 <!DOCTYPE html>
@@ -31,26 +29,10 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <nav class="header--nav">
-                <div class="nav--logo">
-                    <a href="javascript:history.back();" class="nav--back">
-                        <i class="fa-solid fa-arrow-left"></i>
-                    </a> 
-                </div>
-                <div class="nav--addr">
-                    <a href="my_addr.php">
-                        <i class="fa-solid fa-location-dot"></i>
-                        송현동
-                        <i class="fa-solid fa-angle-down"></i>
-                    </a>
-                </div>
-                <div class="nav--notice">
-                    <a href="not.php">
-                        <i class="fa-regular fa-bell"></i>
-                    </a>
-                </div>
-            </nav>
+        <header class="search_list__header">
+            <?php
+            include_once "list_header.html";
+            ?>
         </header>
         <main class="search_list_main">
             <div class="search__main__list">
@@ -60,9 +42,6 @@
                 <?php
                     while($row = mysqli_fetch_array($result)) {
                         $store_num = $row['store_num'];
-                        if(!$row['store_num']) {
-                            print "<div>검색결과 없음</div>";
-                        } else {
                         $param = [
                             'store_num' => $store_num
                         ];
@@ -90,8 +69,7 @@
                                 <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
                             </div>
                         </a>
-                       <?php } 
-                    } ?>
+                       <?php } ?>
             </div>
         </main>
     </div>
