@@ -5,6 +5,12 @@
 <?php
 include_once "db/db_store_login.php"
 
+if(isset($_POST)) {
+    $param = [
+    'owner_email' => $_POST['owner_email']
+    ]
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +38,9 @@ include_once "db/db_store_login.php"
                 <div class = "owner_login_logo">로그인</div>
                 <a href=""><div class = "owner_login_grayfont">이메일로 로그인</div></a>
                 <div class = "owner_input">
-                    <form action="" method="post">
-                        <div class = "owner_img_rel_mail"><label><i class="fa-regular fa-envelope fa-xl"></i><input type="text" placeholder = "이메일"></label></div>
-                        <div class = "owner_img_rel_lock"><label><i class="fa-solid fa-unlock-keyhole fa-xl"></i><input type="password" placeholder = "비밀번호"></label></div>
+                    <form action="owner_login.php" method="post">
+                        <div class = "owner_img_rel_mail"><label><i class="fa-regular fa-envelope fa-xl"></i><input type="text" name = "owner_email" placeholder = "이메일"></label></div>
+                        <div class = "owner_img_rel_lock"><label><i class="fa-solid fa-unlock-keyhole fa-xl"></i><input type="password" name = "owner_password" placeholder = "비밀번호"></label></div>
                         <button type="submit">로그인</button>
                     </form>
                 </div>
