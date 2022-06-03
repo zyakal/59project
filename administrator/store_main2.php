@@ -233,7 +233,7 @@
             </li>
                             
                     
-            <!-- 영업 요일 -->
+            <!-- 영업 요일 --> 
             <li class="listing-card__item">             
             <?=영업요일($card_name2,$week_value, $week_id, $sales_day_arr)?>
             </li>
