@@ -253,7 +253,7 @@
         <!-- 메뉴 편집 -->
                     
                 <li class="listing-card__item">
-                        <form action="store_menu_edit.php" method="post">
+                        
                         
                         <div class='listing-card__info--top'>
                             <strong class='listing-card__name'> <?=$card_name8?> > </strong>
@@ -280,10 +280,11 @@
                         
                             // $_GET[menu_detail]
                             
-                            echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>  <div class='detail_ctnt'>";
+                            echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>  <div class='detail_ctnt'>
+                            <form action='store_menu_edit.php' method='post'>";
                             
                             메뉴편집($menu_num, $menu_nm, $menu_intro,$price,$subed_price, $store_menu_cate,$subed_count,$cd_unit);
-                            echo "</div>";
+                            echo "</div></form>";
                             
                             
                         }
