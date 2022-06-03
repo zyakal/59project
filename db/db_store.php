@@ -2,7 +2,7 @@
 
     include_once "db.php";
 
-
+    // 회원가입 함수, 수정필요
     function create_store(&$param) {
 
         $store_mail = $param['store_email'];
@@ -21,7 +21,7 @@
             mysqli_close($conn);
             return $result;
         }
-        
+        // ID체크, 사장님들은 이메일로
         function id_check(&$param)
         {
             $store_email = $param['store_email'];
@@ -40,7 +40,7 @@
             }
             return false;
         }
-        
+        // 로그인 세션값, 그냥 필요한 셀렉트 문 있을 때마다 씀. 추후 구분필요
         function login_store(&$param){
         
             $store_email = $param['store_email'];
@@ -58,7 +58,7 @@
             mysqli_close($conn);
             return $row;
         }
-        
+        // 가게 사진 업로드
         function upd_store_photo(&$param) {
             $sql = "UPDATE t_store
                        SET store_photo = '{$param["store_photo"]}' 
@@ -91,7 +91,7 @@
             return $result;
             
         }
-
+        // 영업 시간 등록
         function store_time_insert(&$param){
             $store_email = $param['store_email'];
             $sales_time = $param['sales_time'];
@@ -123,6 +123,7 @@
             mysqli_close($conn);   
             return $result; 
         }
+        //공지사항 등록
         function store_notice_insert(&$param){
             $store_notice = $_POST['store_notice'];
             $store_email = $param['store_email'];
@@ -194,8 +195,39 @@
         mysqli_close($conn);   
         return $result; 
 }
+// 가게 메뉴 편집
+function store_menu_edit(&$param){
+    $category = $param['menu_category'];
+    $menu_nm = $param['menu_nm'];
+    $menu_intro = $param['menu_intro'];
+    $menu_photo = $param['menu_photo'];
+    $sales_count = $param['sales_count'];
+    $price = $param['price'];
+    $sub_price = $param['sub_price'];        
+    $store_num = $param['store_num'];
+    $cd_unit = $param['menu_cd'];
+    $menu_num = $param['menu_num'];
 
 
+    $sql =
+    "   UPDATE t_menu
+        SET store_num ='$store_num', menu_cate ='$category', menu_nm='$menu_nm', price='$price', 
+        subed_price='$sub_price', subed_count='$sales_count', menu_intro='$menu_intro', menu_photo='$menu_photo', cd_unit='$cd_unit'
+        WHERE menu_num = $menu_num
+        
+
+    ";
+
+    
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);   
+    
+    mysqli_close($conn);  
+    echo $sql; 
+    return $result; 
+}
+
+// 메뉴 편집
 function menu_edit(&$param){
     $store_num = $param['store_num'];    
     $sql = 
