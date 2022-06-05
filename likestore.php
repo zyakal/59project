@@ -1,6 +1,15 @@
 <?php
     include_once "db/db_list.php";
     $page_name = "찜 가게 list";
+    session_start();
+    if (isset($_SESSION['login_user'])) {
+        $login_user = $_SESSION['login_user'];
+    } else {
+        echo "<script>
+        alert('로그인 후 이용 가능합니다.');
+        window.location.href = 'login.php';
+        </script>";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,31 +31,47 @@
             ?>
         </header>
         <main class="likestore_main">
-            <div class="likestore_list">
             <?php
-                $user_num = 10;
+                $user_num = $login_user['user_num'];
                 $param = [
                     'user_num' => $user_num
                 ];
-                $result = sel_like_stores($param);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    // if(isset($row['store_nm'])) {
-                    //     print "있다";
-                    // } else {
-                    //     print "없다";
-                    // }
-                    if (isset($row['store_nm'])) {
-                
-                    include_once "store_list_form.php";
-                    
-                } else { ?>
+                if(search_like($param)['cnt'] === '0') { ?>
+                <div class="likestore__null">
                     <div class="likestore__null__bigfont">찜한 구독이 없어요</div>
-                    <div class="likestore__null__smallfont">하트를 눌러 마음에 드는 구독을 찜해보세요.</div>
-            <?php }
-            }?>
-                    
-                
-               
+                    <div class="likestore__null__smallfont">하트를 눌러 마음에 드는 구독을 찜해보세요.</div>    
+                </div>
+                <?php } else { ?>
+            <div class="likestore_list">
+                <?php $result = sel_like_stores($param);
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                            <div class="list__item">
+                                <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
+                                <div class="list__store__info">
+                                    <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                    <div class="store__info__info"><?=$row['info']?></div>
+                                    <?php 
+                                    $param = [
+                                        'store_num' => $row['store_num']
+                                    ];
+                                    $star = store_star($param);
+                                    if (!$star) {
+                                        $star = "";
+                                    } else {
+                                        $star = $star['star'];
+                                    }
+                                    if ($star == "") { ?>
+                                        <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                    <?php } else { ?>
+                                        <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                    <?php } ?>
+                                </div>
+                                <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                            </div>
+                        </a>
+                    <?php } 
+                } ?>
             </div>
         </main>
         <footer>
