@@ -1,4 +1,5 @@
 <?php
+define("URL", "localhost");
 define("USERNAME", "root");
 define("PASSWORD", "506greendg@");
 define("DB_NAME", "59project");

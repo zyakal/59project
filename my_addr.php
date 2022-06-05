@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>59 - My address</title>
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -32,7 +34,8 @@
                 <div>현재 위치로 주소설정 원하는 경우</div>
                 <div>아래의 버튼을 누르고 위치 정보에 동의 해주세요</div>
                 <button class="my_addr--button" onclick="getLocation()">현재 위치로 주소설정</button>
-                <p id="demo"></p>
+                <div id="current-location"></div>
+                <div id="current-addr"></div>
             </div>
         </main>
         <footer>
@@ -43,24 +46,46 @@
     </div>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7bfb673c0f6bf2c1ea0c0bdce834d211&libraries=services"></script>
     <script>
-        var x = document.getElementById("demo");
+        const currentLocation = document.querySelector("#current-location");
+        const currentAddr = document.querySelector("#current-addr");
+
+        // 주소-좌표 변환 객체를 생성합니다
+        var geocoder = new kakao.maps.services.Geocoder();
 
         function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                currentLocation.innerHTML = "Geolocation is not supported by this browser.";
+            }
         }
 
         function showPosition(position) {
-        x.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude;
+            currentLocation.innerHTML = `<div>Latitude: ${position.coords.latitude}</div><div>Longitude: ${position.coords.longitude}</div>`;
+            // 좌표로 주소 데이터 확인
+            let lat = position.coords.latitude;
+            let lng = position.coords.longitude;
+            getAddr(lat, lng);
+
+            function getAddr(lat, lng) {
+                let geocoder = new kakao.maps.services.Geocoder();
+
+                let coord = new kakao.maps.LatLng(lat, lng);
+                let callback = function(result, status) {
+                    if (status === kakao.maps.services.Status.OK) {
+                        var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
+                        detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+                        currentAddr.innerHTML = detailAddr;
+                    }
+                }
+                geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+            }
         }
+
 
         // var geocoder = new kakao.maps.services.Geocoder();
 
-        
+
         // function  getCoordinate(address) {
         // // x.innerHTML = "Latitude: " + position.coords.latitude + 
         // // "<br>Longitude: " + position.coords.longitude;
@@ -77,7 +102,7 @@
         //         return result;
         //     }
         // }
-        
+
         // console.log(getCoordinate("대구 중구 동성로 1"));
 
         // function getAddr(address){
@@ -94,61 +119,61 @@
 
         //     geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
         // }
-        
     </script>
     <?php
-        $addr = '35.8700317,128.6005225';
+    $addr = '35.8700317,128.6005225';
 
-        function Kakao_API_request($path, $query)
-        {
-             $api_server = "https://dapi.kakao.com";
-             $headers = array("Authorization: KakaoAK b7d008b2ea839a53161a51e428af7648");
-             $opts = array(CURLOPT_URL => $api_server.$path."?query=".urlencode($query), CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPGET => true, CURLOPT_SSL_VERIFYPEER => false, CURLOPT_SSL_VERIFYHOST => 0, CURLOPT_SSLVERSION => true, CURLOPT_HEADER => false, CURLOPT_HTTPHEADER => $headers);
-        
-            $curl_session = curl_init();
-             curl_setopt_array($curl_session, $opts);
-            $return_data = curl_exec($curl_session);
-             curl_close($curl_session);
-            //  return $return_data;
-        }
-        $path_url = "/v2/local/search/address.json";
-        $res = Kakao_API_request($path_url, trim($_GET['add_query']));
-        echo $res;
+    function Kakao_API_request($path, $query)
+    {
+        $api_server = "https://dapi.kakao.com";
+        $headers = array("Authorization: KakaoAK b7d008b2ea839a53161a51e428af7648");
+        $opts = array(CURLOPT_URL => $api_server . $path . "?query=" . urlencode($query), CURLOPT_RETURNTRANSFER => true, CURLOPT_HTTPGET => true, CURLOPT_SSL_VERIFYPEER => false, CURLOPT_SSL_VERIFYHOST => 0, CURLOPT_SSLVERSION => true, CURLOPT_HEADER => false, CURLOPT_HTTPHEADER => $headers);
 
-        // $url = "https://dapi.kakao.com/v2/local/search/address.json";
-        // $url .= "?query=" . urlencode(iconv("euc-kr", "utf-8", $addr));
+        $curl_session = curl_init();
+        curl_setopt_array($curl_session, $opts);
+        $return_data = curl_exec($curl_session);
+        curl_close($curl_session);
+        //  return $return_data;
+    }
+    $path_url = "/v2/local/search/address.json";
+    $res = Kakao_API_request($path_url, trim($_GET['add_query']));
+    echo $res;
 
-        // $ch = curl_init();
-        // curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // curl_setopt($ch, CURLOPT_URL, $url);
-        // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    // $url = "https://dapi.kakao.com/v2/local/search/address.json";
+    // $url .= "?query=" . urlencode(iconv("euc-kr", "utf-8", $addr));
 
-        // curl_setopt($ch, CURLOPT_HTTPHEADER, 
-        //             array('Accept: application/json', 'Content-Type: application/json',
-        //             'Authorization: KakaoAK b7d008b2ea839a53161a51e428af7648'));
-        // curl_setopt($ch, CURLOPT_VERBOSE, true);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-        // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    // $ch = curl_init();
+    // curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_URL, $url);
+    // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
-        // $response = curl_exec($ch);
-        // print_r($response);
-        // var_dump($response);
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, 
+    //             array('Accept: application/json', 'Content-Type: application/json',
+    //             'Authorization: KakaoAK b7d008b2ea839a53161a51e428af7648'));
+    // curl_setopt($ch, CURLOPT_VERBOSE, true);
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    // curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-    ?>  
+    // $response = curl_exec($ch);
+    // print_r($response);
+    // var_dump($response);
+
+    ?>
 
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-window.onload = function(){
-    document.getElementById("my_address").addEventListener("click", function(){ //주소입력칸을 클릭하면
-        //카카오 지도 발생
-        new daum.Postcode({
-            oncomplete: function(data) { //선택시 입력값 세팅
-                document.getElementById("my_address").value = data.address; // 주소 넣기
-            }
-        }).open();
-    });
-}
+    window.onload = function() {
+        document.getElementById("my_address").addEventListener("click", function() { //주소입력칸을 클릭하면
+            //카카오 지도 발생
+            new daum.Postcode({
+                oncomplete: function(data) { //선택시 입력값 세팅
+                    document.getElementById("my_address").value = data.address; // 주소 넣기
+                }
+            }).open();
+        });
+    }
 </script>
+
 </html>
