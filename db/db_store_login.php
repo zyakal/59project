@@ -3,25 +3,6 @@
 include_once "db.php";
 
 
-function owner_login() {
-        $store_email = $param['store_email'];
-        $store_pw = $param['store_pw'];
-
-            $sql = "SELECT *
-            from t_store 
-            where store_email = '$store_email' and store_pw = password('$store_pw')
-    ";
-    $conn = get_conn();
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    mysqli_close($conn);
-    if(!empty($row))
-    {       session_start();
-            $_SESSION['login_owner'] = $row;
-    }
-    return $row;
-}
-
 function id_check(&$param)
 {
     $store_email = $param['store_email'];
@@ -90,9 +71,9 @@ function owner_login(&$param){
 
             $sql = "SELECT *
             from t_store 
-            where store_email = '$store_email' and store_pw = $store_pw 
-            -- //password(해야함)
-    ";
+            where store_email = '$store_email' and store_pw = '$store_pw' 
+            ";
+    //password(해야함)
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);

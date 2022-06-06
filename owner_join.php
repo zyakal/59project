@@ -9,7 +9,7 @@ $we = "";
 $wp = "";
 $wnm = "";
 
-.if(isset($_POST['store_email'])) {
+if(isset($_POST['store_email'])) {
 include_once "owner_join_proc.php";
 }
 ?>
