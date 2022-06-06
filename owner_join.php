@@ -7,39 +7,12 @@ include_once "db/db_store_login.php";
 
 $we = "";
 $wp = "";
+$wnm = "";
 
-//아이디 또는 비밀번호 일치하는지 체크 후 로그인
-if(isset($_POST['owner_email']) && isset($_POST['owner_password']))
-{
-$param = [
-        'owner_email' => $_POST['owner_email'],
-        'owner_password' => $_POST['owner_password']
-        ];
-        
-    $result = owner_login($param);
-
-    if(empty($result))
-    {
-        $wp = "아이디 또는 비밀번호가 틀렸습니다.";
-    }
-    if(!empty($result))
-    {        
-            $user_num = $result['user_num'];
-            header("Location: mypage.php?user_num=$user_num");
-    }
+.if(isset($_POST['store_email'])) {
+include_once "owner_join_proc.php";
 }
-
-//이메일 비밀번호 공백이면 뜨는 알림
-if(isset($_POST['owner_email']))
-{
-if ($_POST['owner_email'] == "") {
-        $we = "이메일을 입력해주세요.";
-    }
-if ($_POST['owner_password'] == "") {
-        $wp = "비밀번호를 입력해주세요.";
-    }
-}
-    ?>
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,23 +40,21 @@ if ($_POST['owner_password'] == "") {
                 <div class = "owner_login_logo">회원가입</div>
                 <div class = "owner_login_grayfont">이메일로 회원가입</div>                                                          
                 <div class = "owner_input">                                 
-                    <form method="post" action="owner_login.php">
-                            <label>                                                                                                     
-                                <input type="text" name = "owner_nm" placeholder = "이름">                                              
-                                                                 
-                                                              
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
-                            </label>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-                            <p class="owner_warning_massage"><?=$we?></p>
+                    <form method="post" action="owner_join.php">
                             <label>
-                                <input type="text" name = "owner_nm" placeholder = "이">
+                                <input type="text" name = "store_email" placeholder = "이메일">
+                                </label>
+                                <p class="owner_warning_massage"><?=$we?></p>
+                            <label>
+                                <input type="text" name = "owner_nm" placeholder = "이름">
                             </label>
-                            <p class="owner_warning_massage"><?=$we?></p>
+                            <p class="owner_warning_massage"><?=$wnm?></p>
                             <label>
-                                <input type="password" name = "owner_password" placeholder = "패스워드"></label>
+                                <input type="password" name = "store_pw" placeholder = "패스워드"></label>
+                                <input type="password" name = "store_pw_check" placeholder = "패스워드 확인"></label>
                                 <p class="owner_warning_massage"><?=$wp?></p>
                             </div>
-                        <button type="submit" onclick="loginChk()">로그인</button>
+                        <button type="submit">로그인</button>
                     </form>
                 </div>
             </div>
