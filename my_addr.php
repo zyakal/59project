@@ -67,7 +67,7 @@
             let lat = position.coords.latitude;
             let lng = position.coords.longitude;
             getAddr(lat, lng);
-
+            // 좌표로 도로명, 지번주소 가져오는 함수
             function getAddr(lat, lng) {
                 let geocoder = new kakao.maps.services.Geocoder();
 
