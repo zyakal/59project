@@ -3,7 +3,7 @@
         <div class="list__store__img"><img src="img/store/<?=$row['store_nm']?>/Main_img/<?=$row['store_photo']?>"></div>
         <div class="list__store__info">
             <div class="store__info__nm"><?=$row['store_nm']?></div>
-            <div class="store__info__info">가게 정보</div>
+            <div class="store__info__info"><?=$row['info']?></div>
             <?php 
             if ($star == "") { ?>
                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>

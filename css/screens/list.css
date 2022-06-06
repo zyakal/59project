@@ -17,7 +17,7 @@
     }
 #nav__right { 
     position: fixed;
-    left: 270px;
+    left: 70%;
     color: var(--main-pink) !important;
     cursor: pointer;
 }

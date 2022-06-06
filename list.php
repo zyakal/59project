@@ -71,14 +71,17 @@ $get_cate_nm = $_GET['cate_nm'];
                                         <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                         <div class="list__store__info">
                                             <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                            <div class="store__info__info">가게 정보</div>
+                                            <div class="store__info__info"><?=$row['info']?></div>
                                             <?php 
+                                            $param = [
+                                                'store_num' => $row['store_num']
+                                            ];
                                             $star = store_star($param);
-                                            // if (!$star) {
-                                            //     $star = "";
-                                            // } else {
-                                            //     $star = $star['star'];
-                                            // }
+                                            if (!$star) {
+                                                $star = "";
+                                            } else {
+                                                $star = $star['star'];
+                                            }
                                             if ($star == "") { ?>
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
                                             <?php } else { ?>
@@ -91,21 +94,34 @@ $get_cate_nm = $_GET['cate_nm'];
                             </div>
                            <?php } ?>
                     </div>
-                    <div class="tabs__content">
                         <?php
-                            $cate = 9;
+                            include_once "db/db_list.php";
+                            $result = sel_categories();
+                            while($row = mysqli_fetch_assoc($result)) { ?>
+                            <div class="tabs__content">
+                            <?php
+                            $cate = $row['cate_num'];
                             $param = [
                                 'cate' => $cate
                             ];
-                            $result = sel_cate_store($param);
-                            while($row = mysqli_fetch_assoc($result)) { ?>
+                            $stores = sel_cate_store($param);
+                            while($row = mysqli_fetch_assoc($stores)) { ?>
                             <a href="store-detail.php?store_num=<?=$row['store_num']?>">
                                     <div class="list__item">
                                         <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                         <div class="list__store__info">
                                             <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                            <div class="store__info__info">가게 정보</div>
+                                            <div class="store__info__info"><?=$row['info']?></div>
                                             <?php 
+                                            $param = [
+                                                'store_num' => $row['store_num']
+                                            ];
+                                            $star = store_star($param);
+                                            if (!$star) {
+                                                $star = "";
+                                            } else {
+                                                $star = $star['star'];
+                                            }
                                             if ($star == "") { ?>
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
                                             <?php } else { ?>
@@ -116,313 +132,9 @@ $get_cate_nm = $_GET['cate_nm'];
                                     </div>
                                 </a>
                             <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 4;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 2;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 6;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 12;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 7;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 5;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 11;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 8;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 3;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 1;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
-                    <div class="tabs__content">
-                        <?php
-                        $cate = 10;
-                        $param = [
-                            'cate' => $cate
-                        ];
-                        $result = sel_cate_store($param);
-                        while($row = mysqli_fetch_assoc($result)) { ?>
-                        <a href="store-detail.php?store_num=<?=$row['store_num']?>">
-                                <div class="list__item">
-                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
-                                    <div class="list__store__info">
-                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                        <div class="store__info__info">가게 정보</div>
-                                        <?php 
-                                        if ($star == "") { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
-                                        <?php } else { ?>
-                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
-                                </div>
-                            </a>
-                        <?php } ?>
-                    </div>
+                        </div>
+                    <?php }?>
                 </div>
-                <!-- <?php
-                        $result = sel_store_list();
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            $param = [
-                                'store_num' => $row['store_num']
-                            ];
-                            $cate_nm = cate_name($param)['cate_nm'];
-                        ?>
-                        <div><?= $cate_nm ?></div> -->
-                <!-- <?php
-                            $star = store_star($param);
-                            if (!$star) {
-                                $star = "";
-                            } else {
-                                $star = $star['star'];
-                            }
-                            include_once "store_list_form.php";
-                        }
-                        ?> -->
             </div>
         </main>
         <footer>
