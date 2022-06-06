@@ -20,7 +20,7 @@ span {
 }
 
 .home--main {
-  padding-top: 25%;
+  padding-top: 40px;
   margin: 0 30px;
 }
 
@@ -101,6 +101,7 @@ span {
 
 .home__categories .category__img img {
   height: 30px;
+  margin-bottom: 4px;
 }
 
 .home__categories .category__name {
@@ -117,8 +118,10 @@ span {
   margin: 0 auto;
 }
 
-
-.recommend .recommend--nav { color: var(--main-pink); margin-bottom: 25px;}
+.recommend .recommend--nav {
+  color: var(--main-pink);
+  margin-bottom: 25px;
+}
 
 .home__main__kakao {
   position: fixed;

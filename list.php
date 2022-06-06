@@ -18,7 +18,7 @@ $get_cate_nm = $_GET['cate_nm'];
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
     <script src="js/swiper.js" defer></script>
     <title>59 - list</title>
-    
+
 </head>
 
 <body>
@@ -40,39 +40,40 @@ $get_cate_nm = $_GET['cate_nm'];
                         <label for="모두보기" class="tabs__name">모두보기</label>
                     </div>
                     <?php
-                    while ($row = mysqli_fetch_assoc($result)) { 
-                        if($get_cate_nm == $row['cate_nm']) { ?>
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        if ($get_cate_nm == $row['cate_nm']) { ?>
                             <div class="top__item tabs__toggle swiper-slide">
-                            <input type="radio" name="tabs__name" id="<?= $row['cate_nm'] ?>" value="<?= $row['cate_nm'] ?>" checked>
-                            <label for="<?= $row['cate_nm'] ?>" class="tabs__name"><?= $row['cate_nm'] ?></label>
-                        </div>
+                                <input type="radio" name="tabs__name" id="<?= $row['cate_nm'] ?>" value="<?= $row['cate_nm'] ?>" checked>
+                                <label for="<?= $row['cate_nm'] ?>" class="tabs__name"><?= $row['cate_nm'] ?></label>
+                            </div>
                         <?php } else { ?>
-                        <div class="top__item tabs__toggle swiper-slide">
-                            <input type="radio" name="tabs__name" id="<?= $row['cate_nm'] ?>" value="<?= $row['cate_nm'] ?>">
-                            <label for="<?= $row['cate_nm'] ?>" class="tabs__name"><?= $row['cate_nm'] ?></label>
-                        </div>
-                    <?php }} ?>
-                </div>
-                <div class="top__nav">
-                    <div id="nav__right">주변가게보기</div>
+                            <div class="top__item tabs__toggle swiper-slide">
+                                <input type="radio" name="tabs__name" id="<?= $row['cate_nm'] ?>" value="<?= $row['cate_nm'] ?>">
+                                <label for="<?= $row['cate_nm'] ?>" class="tabs__name"><?= $row['cate_nm'] ?></label>
+                            </div>
+                    <?php }
+                    } ?>
                 </div>
             </div>
             <div class="list__main__list">
                 <div class="tabs__body">
+                    <div class="top__nav">
+                        <div id="nav__right">주변가게보기</div>
+                    </div>
                     <div class="tabs__content">
                         <?php
-                            include_once "db/db_list.php";
-                            $result = sel_store_list();
-                           
-                            while($row = mysqli_fetch_assoc($result)) { ?>
+                        include_once "db/db_list.php";
+                        $result = sel_store_list();
+
+                        while ($row = mysqli_fetch_assoc($result)) { ?>
                             <div class="tabs__item">
-                                <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <a href="store-detail.php?store_num=<?= $row['store_num'] ?>">
                                     <div class="list__item">
                                         <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                         <div class="list__store__info">
-                                            <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                            <div class="store__info__info"><?=$row['info']?></div>
-                                            <?php 
+                                            <div class="store__info__nm"><?= $row['store_nm'] ?></div>
+                                            <div class="store__info__info"><?= $row['info'] ?></div>
+                                            <?php
                                             $param = [
                                                 'store_num' => $row['store_num']
                                             ];
@@ -85,34 +86,34 @@ $get_cate_nm = $_GET['cate_nm'];
                                             if ($star == "") { ?>
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
                                             <?php } else { ?>
-                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
                                         <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
                                     </div>
                                 </a>
                             </div>
-                           <?php } ?>
+                        <?php } ?>
                     </div>
-                        <?php
-                            include_once "db/db_list.php";
-                            $result = sel_categories();
-                            while($row = mysqli_fetch_assoc($result)) { ?>
-                            <div class="tabs__content">
+                    <?php
+                    include_once "db/db_list.php";
+                    $result = sel_categories();
+                    while ($row = mysqli_fetch_assoc($result)) { ?>
+                        <div class="tabs__content">
                             <?php
                             $cate = $row['cate_num'];
                             $param = [
                                 'cate' => $cate
                             ];
                             $stores = sel_cate_store($param);
-                            while($row = mysqli_fetch_assoc($stores)) { ?>
-                            <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                            while ($row = mysqli_fetch_assoc($stores)) { ?>
+                                <a href="store-detail.php?store_num=<?= $row['store_num'] ?>">
                                     <div class="list__item">
                                         <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
                                         <div class="list__store__info">
-                                            <div class="store__info__nm"><?=$row['store_nm']?></div>
-                                            <div class="store__info__info"><?=$row['info']?></div>
-                                            <?php 
+                                            <div class="store__info__nm"><?= $row['store_nm'] ?></div>
+                                            <div class="store__info__info"><?= $row['info'] ?></div>
+                                            <?php
                                             $param = [
                                                 'store_num' => $row['store_num']
                                             ];
@@ -125,7 +126,7 @@ $get_cate_nm = $_GET['cate_nm'];
                                             if ($star == "") { ?>
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
                                             <?php } else { ?>
-                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                                <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
                                         <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
@@ -133,7 +134,7 @@ $get_cate_nm = $_GET['cate_nm'];
                                 </a>
                             <?php } ?>
                         </div>
-                    <?php }?>
+                    <?php } ?>
                 </div>
             </div>
         </main>
@@ -152,11 +153,11 @@ $get_cate_nm = $_GET['cate_nm'];
 
             let tabs = document.querySelectorAll('.tabs__toggle'),
                 contents = document.querySelectorAll('.tabs__content');
- 
+
             let cateNm = document.querySelectorAll('.tabs__name');
-            
-            for(let i=0; i<cateNm.length; i++){
-                if(document.querySelector('input[type="radio"]:checked').value == cateNm[i].innerHTML){
+
+            for (let i = 0; i < cateNm.length; i++) {
+                if (document.querySelector('input[type="radio"]:checked').value == cateNm[i].innerHTML) {
                     // console.log(cateNm[i].innerHTML);
                     contents.forEach((content) => {
                         content.classList.remove('is-active');
