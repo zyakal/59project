@@ -13,10 +13,10 @@ function ins_menu_review(&$param)
     "INSERT INTO t_review 
     (store_num, user_num, ctnt, star_rating) 
     VALUES 
-    ($store_num,$user_num,'$ctnt', $star_rating)";
+    ($store_num,$user_num,'${ctnt}', $star_rating)";
 
   $result = mysqli_query($conn, $sql);
   mysqli_close($conn);
 
-  return mysqli_fetch_assoc($result);
+  return $result;
 }

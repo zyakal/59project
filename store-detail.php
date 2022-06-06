@@ -3,7 +3,7 @@ include_once "db/db_store_and_menu.php";
 
 $store_num = $_GET['store_num'];
 session_start();
-$user_num = 1;
+$user_num = 10;
 $param = [
     "store_num" => $store_num,
     "user_num" => $user_num
@@ -17,7 +17,7 @@ if (isset($_SESSION['login_user'])) {
     $store_like = 0;
     $store_like = sel_store_like($param);
 } else {
-    // $user_num = 0;
+    $user_num = 0;
 }
 $store_like = sel_store_like($param);
 

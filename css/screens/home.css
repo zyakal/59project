@@ -117,10 +117,33 @@ span {
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
 .recommend .recommend--nav { color: var(--main-pink); margin-bottom: 25px;}
+=======
+.recommend--nav {
+  display: inline-flex;
+}
+
+.recommend--list {
+  background-color: var(--light-gray-bg);
+  width: 100%;
+  height: 80px;
+  margin: 30px 0;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+>>>>>>> ae63a63e4928f37ca7cc4815829a0d71e8762171
 
 .home__main__kakao {
   position: fixed;
   bottom: 10%;
   left: 70%;
+}
+.addr__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
