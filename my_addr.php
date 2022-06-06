@@ -30,7 +30,7 @@
                     <input class="my_addr--button" type="submit" value="주소 설정">
                 </div>
             </form>
-            <div id="my_address">
+            <div id="my_address-box">
                 <div>현재 위치로 주소설정 원하는 경우</div>
                 <div>아래의 버튼을 누르고 위치 정보에 동의 해주세요</div>
                 <button class="my_addr--button" onclick="getLocation()">현재 위치로 주소설정</button>
@@ -58,6 +58,7 @@
             } else {
                 currentLocation.innerHTML = "Geolocation is not supported by this browser.";
             }
+
         }
 
         function showPosition(position) {
@@ -76,9 +77,27 @@
                         var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
                         detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
                         currentAddr.innerHTML = detailAddr;
+                        // ------------- 좌표를 로컬스토리지에 저장 -------------
+                        const getAddr = localStorage.getItem('my_addr');
+                        let parseAddr = JSON.parse(getAddr);
+                        const setAddr = {
+                            title: result[0].road_address.address_name,
+                            // 위도와 경도 저장
+                            coords: coord
+                        };
+                        let stringifyAddr = JSON.stringify(setAddr);
+                        if (getAddr !== stringifyAddr) {
+                            localStorage.clear();
+                            localStorage.setItem('my_addr', stringifyAddr);
+                        } else {
+                            localStorage.setItem('my_addr', stringifyAddr);
+                        }
+                        location.href = 'home.php';
                     }
+
                 }
                 geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+
             }
         }
 
