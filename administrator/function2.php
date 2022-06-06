@@ -182,9 +182,10 @@ function menu_count_cd_edit($cd_unit){
         "회",
         "개"
     ];
+    $cd_calc=$cd_unit-1;
     $menu_cd = "";
     $i=0;
-    $menu_cd .= "<select name='menu_cd'><option value='$cd_unit'>-- $cd_unit --</option>";
+    $menu_cd .= "<select name='menu_cd'><option value='$cd_unit'>-- $menu_count_cd[$cd_calc] --</option>";
     for($i;$i < count($menu_count_cd);$i++){ 
             $value = $i+1;       
             $menu_cd .= "<option value='$value'>$menu_count_cd[$i]</option>";
@@ -227,7 +228,7 @@ function 공지($card_name6,$store_notice) {
 }
 
 function 가게소개($card_name1, $store_info){
-    echo "<form class='listing-card__form' action='store_main_intro.php' method='post'>
+    echo "<form class='listing-card__form' id='store_info' action='store_main_intro.php' method='post'>
     <div class='listing-card__info'>";
     card_top($card_name1);
     echo "<div>
@@ -238,7 +239,7 @@ function 가게소개($card_name1, $store_info){
 }
 
 function 가게이미지($card_name3, $store_name){
-    echo "<form class='img_test' action='store_photo.php' method='post' enctype='multipart/form-data'>
+    echo "<form class='img_test' id='store_img' action='store_photo.php' method='post' enctype='multipart/form-data'>
                             <div class='listing-card__img'>";
     card_top($card_name3);
     $error_img = 'this.src="https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png"';
@@ -259,7 +260,7 @@ function 가게이미지($card_name3, $store_name){
                             
 }
 function 영업요일($card_name2,$week_value, $week_id, $sales_day_arr){
-    echo "<form action='sales_day_proc.php' method='post'>
+    echo "<form id='store_week' action='sales_day_proc.php' method='post'>
                             
     <div class='listing-card__week'>";
     card_top($card_name2);                               
@@ -271,7 +272,7 @@ function 영업요일($card_name2,$week_value, $week_id, $sales_day_arr){
 }
 
 function 영업시간($card_name4,$sales_time_arr ){
-    echo "<form action='store_main_sales_time.php' method='post'>
+    echo "<form id='store_time' action='store_main_sales_time.php' method='post'>
                         <div class='listing-card__info'>";
     card_top($card_name4);
     echo "<div> <h3>오픈 시간 $sales_time_arr[0] </h3>";            
@@ -285,7 +286,7 @@ function 영업시간($card_name4,$sales_time_arr ){
 }
 
 function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
-    echo "<form action='store_menu_input.php' method='post' enctype='multipart/form-data'>
+    echo "<form id='store_menu_input' action='store_menu_input.php' method='post' enctype='multipart/form-data'>
     <div class='listing-card__info'>";
     card_top($card_name7);
     echo "<div>메뉴 카테고리</div><div>";
@@ -314,7 +315,7 @@ function 메뉴등록($card_name7, $menu_cate, $menu_count_cd){
 
 
 function 메뉴편집($menu_num, $menu_nm,$menu_intro,$price,$subed_price, $store_menu_cate,$subed_count ,$cd_unit){
-    echo "<div class='listing-card__info'>
+    echo "<div class='listing-card__info' >
         <div class='listing-card__info--top'>
         <strong class='listing-card__name'>   </strong>
         <input name='menu_num' type='text' value='$menu_num' hidden>

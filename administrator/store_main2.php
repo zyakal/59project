@@ -143,12 +143,7 @@
                             <span class="text nav-text">영업 시간</span>
                         </a>
                     </li>
-                    <li class="nav-link">
-                        <a href="#store_dayOff">
-                            <i class='bx bx-wallet icon'></i>
-                            <span class="text nav-text">임시 휴일</span>
-                        </a>
-                    </li>
+                    
                     <li class="nav-link">
                         <a href="#store_menu_input">
                             <i class='bx bx-wallet icon'></i>
@@ -255,7 +250,7 @@
                 <li class="listing-card__item">
                         
                         
-                        <div class='listing-card__info--top'>
+                        <div id='store_menu_edit' class='listing-card__info--top'>
                             <strong class='listing-card__name'> <?=$card_name8?> > </strong>
                                 
                         </div>
@@ -276,7 +271,7 @@
                             $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
                             
                         
-                            echo '<div><img class="menu_img" src="<?=$menu_img?>"  onerror="' . $adr . '">';
+                            echo '<div><img class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
                         
                             // $_GET[menu_detail]
                             
