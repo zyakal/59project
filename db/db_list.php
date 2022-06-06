@@ -13,7 +13,8 @@
     //list page - 전체 가게
     function sel_store_list() {
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num FROM t_store";
+        $sql = "SELECT store_nm, store_photo, store_num, 
+            CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) info FROM t_store";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return $result;
@@ -23,7 +24,8 @@
     function sel_cate_store(&$param) {
         $cate = $param['cate'];
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num FROM t_store 
+        $sql = "SELECT store_nm, store_photo, store_num, 
+            CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) as info FROM t_store 
            WHERE cate_num = '$cate'";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
@@ -34,7 +36,8 @@
     function sel_result_store(&$param) {
         $store_num = $param['store_num'];
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num FROM t_store 
+        $sql = "SELECT store_nm, store_photo, store_num, 
+            CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) as info FROM t_store 
             WHERE store_num = '$store_num'";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
@@ -69,14 +72,28 @@
         return mysqli_fetch_assoc($result);     //복수일 경우 변경 해야함!!
     }
 
+    //찜한 가게가 있는지 확인하는 함수
+    function search_like(&$param) {
+        $user_num = $param['user_num'];
+        $conn = get_conn();
+        $sql = "SELECT count(B.store_num) cnt FROM t_likestore A
+        INNER JOIN t_store B
+        ON A.store_num = B.store_num
+        WHERE A.user_num = $user_num";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return mysqli_fetch_assoc($result);
+    }
+
     //likestore page - 찜한 가게 불러오는 함수
     function sel_like_stores(&$param) {
         $user_num = $param['user_num'];
         $conn = get_conn();
-        $sql = "SELECT B.store_nm, B.store_photo, B.store_num FROM t_likestore A
-        INNER JOIN t_store B
-        ON A.store_num = B.store_num
-        WHERE A.user_num = $user_num";
+        $sql = "SELECT B.store_nm, B.store_photo, B.store_num,
+            CONCAT(B.sales_day, '/ ', REPLACE(B.sales_time, ',', ' ~ ')) as info FROM t_likestore A
+            INNER JOIN t_store B
+            ON A.store_num = B.store_num
+            WHERE A.user_num = $user_num";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return $result;
@@ -129,4 +146,22 @@
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
         return mysqli_fetch_assoc($result);
+    }
+
+    //사용자가 구독하는 가게를 구독하는 다른 사용자의 다른 가게 찾는 함수
+    function sel_user_recom(&$param) {
+        $user_num = $param['user_num'];
+        $conn = get_conn();
+        $sql = "SELECT DISTINCT(store_num) FROM t_sub
+        WHERE user_num IN (SELECT user_num FROM t_sub
+        WHERE store_num IN (SELECT DISTINCT(store_num) FROM t_sub
+        WHERE user_num = $user_num)
+        GROUP BY user_num
+        HAVING user_num <> $user_num)
+        except
+        SELECT DISTINCT(store_num) FROM t_sub
+        WHERE user_num = $user_num";
+        $result = mysqli_query($conn, $sql);
+        mysqli_close($conn);
+        return $result;
     }

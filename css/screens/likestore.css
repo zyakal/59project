@@ -1,4 +1,5 @@
-.likestore_main { padding-top: 122px; margin: 0 32px;}
-.likestore_list .likestore__null__bigfont {font-size: 1.5rem; font-weight: bold;}
-.likestore_list .likestore__null__smallfont { font-size: 0.5rem; 
+.likestore_main { padding-top: 122px;}
+.likestore__null { text-align: center; line-height: 50px;}
+.likestore__null__bigfont {font-size: 2rem; font-weight: bold;}
+.likestore__null__smallfont { font-size: 1rem; 
     color: var(--text-gray);}

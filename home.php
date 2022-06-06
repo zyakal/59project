@@ -13,6 +13,7 @@
     <title>59 - HOME</title>
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/screens/store_list.css">
 </head>
 
 <body>
@@ -50,63 +51,69 @@
             </div>
             <!-- 맞춤 추천 부분 -->
             <div class="recommend">
+                <?php
+                if(isset($_SESSION['login_user'])) { ?>
                 <div class="recommend--nav">
-                    <?php
-                    if(isset($_SESSION['login_user'])) { ?>
                     <div>맞춤 추천</div>
-                    <?php
-                        require_once("recommend.php");
-                        $user_num = $login_user['user_num'];
+                </div>
+                <div class="recommend--list">
+                <?php
+                    include_once("db/db_list.php");
+                    $user_num = $login_user['user_num'];
+                    $param = [
+                        'user_num' => $user_num
+                    ];
+                    $users_num = sel_user_recom($param);
 
-                        $sub = sel_sub_num();
-                        while($row = mysqli_fetch_assoc($sub)) {
-                            $param = [
-                                'user_num' => $row['user_num'],
-                                'store_num' => $row['store_num']
-                            ];
-                            $star = sel_reviwe_star($param);
-                            $subs = array (
-                                $row['user_num'] => array($row['store_num'] => $star) 
-                            );
-                            $re = new Recommend();
-                            //만약 별점이 null인경우 3점으로 수정 후 계산하도록 하기!
-                            $result = $re->getRecommendations($subs, $user_num);
-                        } 
+                    while($row = mysqli_fetch_assoc($users_num)) { 
+                        $param = [
+                            'store_num' => $row['store_num']
+                        ];
+                        $stores = sel_result_store($param);
+                        while($row = mysqli_fetch_assoc($stores)) { ?>
+                            <a href="store-detail.php?store_num=<?=$row['store_num']?>">
+                                <div class="list__item">
+                                    <!-- <div class="list__store__img"><img src="img/store/<?=$row['store_nm']?>/Main_img/<?=$row['store_photo']?>"></div> -->
+                                    <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
+                                    <div class="list__store__info">
+                                        <div class="store__info__nm"><?=$row['store_nm']?></div>
+                                        <div class="store__info__info"><?=$row['info']?></div>
+                                        <?php
+                                        $param = [
+                                            'store_num' => $row['store_num']
+                                        ];
+                                        $star = store_star($param);
+                                        if (!$star) {
+                                            $star = "";
+                                        } else {
+                                            $star = $star['star'];
+                                        }
+                                        if ($star == "") { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>
+                                        <?php } else { ?>
+                                            <div class='store__info__star_rating'><i class='fa-solid fa-star'><?=intval($star)?></i></div>
+                                        <?php } ?>
+                                    </div>
+                                    <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                </div>
+                            </a>
+                        <?php }
                     } ?>
-                    <!-- localStorage.getItem('my_addr') !== null  -->
-                    <!-- <div>거리순 추천</div>
-                    </div>
-                        <div class="recommend--list">
-                            <div class="recommend__item">
-                                <h2 class="recommend__title">그린버거</h2>
-                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                            </div>
-                        </div>
-                        <div class="recommend--list">
-                            <div class="recommend__item">
-                                <h2 class="recommend__title">그린네일</h2>
-                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                            </div>
-                        </div>
-                        <div class="recommend--list">
-                            <div class="recommend__item">
-                                <h2 class="recommend__title">그린카페</h2>
-                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                            </div>
-                        </div>
-                        <div class="recommend--list">
-                            <div class="recommend__item">
-                                <h2 class="recommend__title">그린헤어샵</h2>
-                                <p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p>
-                            </div>
-                        </div> -->
-                    <script>
-                        if(localStorage.getItem('my_addr') !== null) { 
-                            document.write('<div>거리순 추천</div>');
-                            document.write('</div>');
-                            document.write('<div class="recommend--list"><div class="recommend__item"><h2 class="recommend__title">그린버거</h2><p class="recommend__text">Lorem ipsum dolor Sunt optio nihil minus?</p></div></div>')
-                    } 
-                    </script>
+                </div>
+                <?php } else {?>
+                <script>
+                    if(localStorage.getItem('my_addr') !== null) { 
+                        document.write('<div class="recommend--nav">');
+                        document.write('<div>거리순 추천</div>');
+                        document.write('</div>');
+                        document.write('<div class="list__item"><div class="list__store__info"><div class="store__info__nm">그린버거</div><div class="store__info__info">Lorem ipsum dolor Sunt optio nihil minus?</div></div></div>')
+                    } else {
+                        document.write('<div class="recommend--nav">로그인, 거리설정 전</div>');
+                        document.write('</div>');
+                        document.write('<div>로그인 또는 거리 설정 시에는 더 많은 맞춤추천이 가능합니다!</div>')
+                    }
+                </script>
+                <?php }?>
                     
             </div>
             <div
