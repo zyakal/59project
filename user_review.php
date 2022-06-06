@@ -10,19 +10,18 @@ session_start();
 $login_user = $_SESSION['login_user'];
 $user_num = $login_user['user_num'];
 
-if(isset($_GET['user_num'])) {
-if($_GET['user_num'] !== $user_info['user_num'])
-{ ?>
-<script>
-    alert("잘못된 접근입니다.")
-    location.href = "login.php"
-</script>
-<?php    
-}}
+if (isset($_GET['user_num'])) {
+    if ($_GET['user_num'] !== $user_info['user_num']) { ?>
+        <script>
+            alert("잘못된 접근입니다.")
+            location.href = "login.php"
+        </script>
+<?php
+    }
+}
 
-$page =1;
-if(isset($_GET['page']))
-{
+$page = 1;
+if (isset($_GET['page'])) {
     $page = intval($_GET['page']);
 }
 $row_count = 7;
@@ -35,8 +34,7 @@ $param = [
 
 $review_list = user_review($param);
 
-if(!$login_user)
-{
+if (!$login_user) {
     header("Location:mypage.php");
 }
 
@@ -50,7 +48,9 @@ $page_name = "리뷰관리";
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <title>리뷰관리페이지</title>
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -66,20 +66,19 @@ $page_name = "리뷰관리";
         </header>
         <!-- main -->
         <main>
-            <div class = "center_flex_box">
-                <div class = "not_list">
-                <?php
-                foreach($review_list as $item) 
-                    { ?>
-                    <div class = "not_box">
-                    <a href="readcheck_proc.php?not_num=<?=$item['not_num']?>">
-                    <?=$item['store_nm']?>에서 수령하신 <?=$item['menu_nm']?>의 리뷰를 <br> 기다리고 있습니다~!.
-                    <div class = "not_ctreat_at"><?=$item['created_at']?></div>    
-                </a>
+            <div class="center_flex_box">
+                <div class="not_list">
+                    <?php
+                    foreach ($review_list as $item) { ?>
+                        <div class="not_box">
+                            <a href="readcheck_proc.php?not_num=<?= $item['not_num'] ?>">
+                                <?= $item['store_nm'] ?>에서 수령하신 <?= $item['menu_nm'] ?>의 리뷰를 <br> 기다리고 있습니다~!.
+                                <div class="not_ctreat_at"><?= $item['created_at'] ?></div>
+                            </a>
+                        </div>
+                    <?php } ?>
+                    <button class="not_button" onclick="next_page()">이전 리뷰보기</button>
                 </div>
-                <?php }?>
-                <button class = "not_button" onclick="next_page()">이전 리뷰보기</button>
-            </div>
         </main>
         <!-- footer 인클루드해서 사용 -->
         <footer>
@@ -91,10 +90,11 @@ $page_name = "리뷰관리";
 </body>
 <script>
     let page = 1;
-    function next_page()
-    {
+
+    function next_page() {
         page = page + 1;
         location.href = `user_review.php?page=${page}`;
     }
 </script>
+
 </html>
