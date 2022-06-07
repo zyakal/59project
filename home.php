@@ -1,6 +1,7 @@
 <?php
 session_start();
 $login_user = $_SESSION['login_user'];
+
 ?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
@@ -58,6 +59,10 @@ $login_user = $_SESSION['login_user'];
                 if (isset($_SESSION['login_user'])) { ?>
                     <div class="recommend--nav">
                         <div>맞춤 추천</div>
+                        <div>
+                            <?=$my_lat?>
+                            <?=$my_lng?>
+                        </div>
                     </div>
                     <div class="recommend--list">
                         <?php
@@ -97,7 +102,9 @@ $login_user = $_SESSION['login_user'];
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                        <?php
+                                        $distance = store_distance($my_lat, $my_lng, intval($row['store_lat']), intval($row['store_lng'])) ?>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
                                     </div>
                                 </a>
                         <?php }
@@ -143,6 +150,13 @@ $login_user = $_SESSION['login_user'];
             js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'kakao-js-sdk');
+
+        const lat = JSON.parse(localStorage.getItem('my_addr'))['coords']['La'];
+        const lng = JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma'];
+        const url = `store_distance.php?my_lat=${lat}&my_lng=${lng}`;
+        fetch(url).then((Response) => console.log(Response))
+        .then((date) => console.log(data));
+
     </script>
 </body>
 

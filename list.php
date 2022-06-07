@@ -3,6 +3,7 @@ include_once "db/db_list.php";
 
 $get_cate_nm = $_GET['cate_nm'];
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -91,7 +92,9 @@ $get_cate_nm = $_GET['cate_nm'];
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                        <?php
+                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
                                     </div>
                                 </a>
                             </div>
@@ -131,7 +134,9 @@ $get_cate_nm = $_GET['cate_nm'];
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                        <?php
+                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
                                     </div>
                                 </a>
                             <?php } ?>
@@ -190,6 +195,16 @@ $get_cate_nm = $_GET['cate_nm'];
                     tabs[index].style.backgroundColor = 'var(--main-pink)';
                 });
             });
+
+            fetch("/59-project/store_distance.php", {
+                method:"POST",
+                body: JSON.stringify({
+                    lat : "localStorage.getItem('my_addr'))['coords']['La']",
+                    lng : "localStorage.getItem('my_addr'))['coords']['Ma']",
+                }),
+            }).then((Response) => console.log(Response))
+            
+            
         </script>
     </div>
 </body>

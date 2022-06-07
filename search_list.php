@@ -11,6 +11,9 @@ $result = search_result_list($param);
 $result_count = search_result_count($param);
 $mag = $result_count['cnt'] . "개가 검색되었습니다.";
 
+$my_lat = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['La']);</script>";
+$my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma']);</script>";
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +76,9 @@ $mag = $result_count['cnt'] . "개가 검색되었습니다.";
                                     <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                 <?php } ?>
                             </div>
-                            <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                            <?php
+                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
                         </div>
                     </a>
                 <?php } ?>
