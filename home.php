@@ -143,6 +143,12 @@ $login_user = $_SESSION['login_user'];
             js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'kakao-js-sdk');
+
+        const url = list.php
+        fetch(url, {
+            method:'POST',
+            body:JSON.stringify(localStorage.getItem('my_addr'))
+        })
     </script>
 </body>
 

@@ -2,7 +2,9 @@
 include_once "db/db_list.php";
 
 $get_cate_nm = $_GET['cate_nm'];
+$get_addr = $_POST['my_addr'];
 
+print $get_addr;
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -13,7 +13,7 @@
     //list page - 전체 가게
     function sel_store_list() {
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num, 
+        $sql = "SELECT store_nm, store_photo, store_num, store_lat, store_lng,
             CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) info FROM t_store";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
