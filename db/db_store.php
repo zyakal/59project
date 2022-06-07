@@ -241,3 +241,14 @@ function menu_edit(&$param){
     mysqli_close($conn);
     return $result;
 }
+
+// 등록될 메뉴넘버 받아오기
+function menu_num_load(){
+    $sql = 
+    "   SELECT MAX(menu_num) FROM t_menu
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
