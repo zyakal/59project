@@ -80,10 +80,11 @@
     font-family: "Montserrat";
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 22px;
     text-align: center;
+    margin-bottom: 10px;
 
-    line-height: 25px;
+    line-height: 40px;
 
     color: #ffffff;
 }
@@ -118,11 +119,11 @@
 
 .owner_login_page input {
     width: 52%;
-    height: 26px;
+    height: 65px;
     background: #f4f8f5;
     border: none;
-    padding: 15px;
     padding-left: 58px;
+    font-size: 1rem;
 }
 .owner_login_page button {
     background-color: #ff6464;
@@ -156,4 +157,17 @@
     top: 44%;
     left: 21.5%;
     color: #9a9a9a;
+}
+
+.owner_warning_massage {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.375rem;
+
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 150%;
+    color: #ff6464;
 }
