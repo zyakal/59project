@@ -271,7 +271,7 @@
                             $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
                             
                         
-                            echo '<div><img class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
+                            echo '<div><img id="menu_img_edit" class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
                         
                             // $_GET[menu_detail]
                             
