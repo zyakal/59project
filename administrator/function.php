@@ -335,7 +335,7 @@ function 메뉴편집($menu_num, $menu_nm,$menu_intro,$price,$subed_price, $stor
     </div>
     <div class='store_img_input'> 메뉴 이미지</div>
         <div><label class=''>
-            <input class='' type='file' name='menu_img' accept='image/*' enctype='multipart/form-data'>
+            <input class='' type='file' name='menu_img_edit' accept='image/*' >
         </label>
     </div>
     <div>메뉴 정가</div>

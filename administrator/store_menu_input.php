@@ -67,7 +67,9 @@
         mkdir($target_full_path, 0777, true);
     }
     // mkdir 폴더 만들기, (위치, 권한, true일 경우 만들 폴더가 여러개라도 만들어짐)
-    $tmp_img = $_FILES['menu_img']['tmp_name'];
+    $tmp_img = $_FILES["menu_img"]["tmp_name"];
+    
+    
     $imageUpload = move_uploaded_file($tmp_img, $target_full_path . "/" .$target_filenm); //파일이동 성공시 true, 실패시 false
     // if($imageUpload) { //업로드 성공!
         
@@ -107,7 +109,7 @@
     $result = store_menu_input($param);
     if($result) {
         echo "업로드 성공!";
-        // Header("Location: store_main.php");
+        Header("Location: store_main.php");
     }
     else{ echo "업로드 실패!";}
     

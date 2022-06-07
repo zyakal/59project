@@ -1,7 +1,7 @@
 <?php
 
     include_once "../db/db_store.php";
-    include_once "function2.php";
+    include_once "function.php";
 
     
     // 포스트값 받아오기
@@ -26,10 +26,8 @@
     
     $store_num = $login['store_num'];
     $store_nm = $login['store_nm'];
-    $row = menu_num_load();
-    foreach($row as $menu_num_row);
-    $menu_num = $menu_num_row['MAX(menu_num)']+1;
-
+    print $menu_num;
+   
     
 
     //이미지 경로설정
@@ -39,11 +37,13 @@
     
 
     var_dump($_FILES);
-    
-    if($_FILES["menu_img"]["name"] === "") {
+    if($_FILES["menu_img_edit"]["name"] === "") {
         echo "이미지 없음";
         exit;
     }
+
+    
+    
 
     function gen_uuid_v4() { 
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x' // printf - % 자리에 변수들을 넣어준다.
@@ -57,7 +57,7 @@
             , mt_rand(0, 0xffff) 
         ); 
     }
-    $img_name = $_FILES["menu_img"]["name"]; // $_FILES["포스트하는 코드의 name 값"]["name=파일이름"]
+    $img_name = $_FILES["menu_img_edit"]["name"]; // $_FILES["포스트하는 코드의 name 값"]["name=파일이름"]
     $last_index = mb_strrpos($img_name, ".");
     $ext = mb_substr($img_name, $last_index); // substr(자르고 싶은 문자열, 시작위치, 입력하지 않으면 나머지 전부-입력하면 그자리부터 입력한 자릿수까지)
 
@@ -68,23 +68,26 @@
         mkdir($target_full_path, 0777, true);
     }
     // mkdir 폴더 만들기, (위치, 권한, true일 경우 만들 폴더가 여러개라도 만들어짐)
-    $tmp_img = $_FILES['menu_img']['tmp_name'];
-    $imageUpload = move_uploaded_file($tmp_img, $target_full_path . "/" .$target_filenm); //파일이동 성공시 true, 실패시 false
+    $tmp_img = $_FILES['menu_img_edit']['tmp_name'];
     
+    $imageUpload = move_uploaded_file($tmp_img, $target_full_path . "/" .$target_filenm); //파일이동 성공시 true, 실패시 false
+    print "<br>" . $target_full_path . "/" .$target_filenm;
+    // $imageUpload = move_uploaded_file($tmp_img, '../img/store/한식집/Menu_img/1/' . $target_filenm); //파일이동 성공시 true, 실패시 false
+    $login["menu_photo"] = $target_filenm;
     if($imageUpload) { //업로드 성공!
-        
+        print '이미지 생성 성공';
         // 이전에 등록된 프사가 있으면 삭제!      
-        if($login["menu_photo"]) {
-            $saved_img = $target_full_path . "/" . $login["menu_photo"];
-            if(file_exists($saved_img)) {
-                unlink($saved_img);
-            }
-        }
+        // if($login["menu_photo"]) {
+        //     $saved_img = $target_full_path . "/" . $login["menu_photo"];
+        //     if(file_exists($saved_img)) {
+        //         unlink($saved_img);
+        //     }
+        // }
 
         
 
         
-        $login["menu_photo"] = $target_filenm;
+        
         
         
     } else { //업로드 실패!
@@ -104,7 +107,7 @@
         "menu_num" => $menu_num
         
     ];
-    print_r($param);
+    
 
 
     $result = store_menu_edit($param);
@@ -120,15 +123,5 @@
 
 
 
-    // // 포스트값+세션값 배열화
-    // $param = [
-    //     "menu_category" => $category,
-    //     "menu_nm" => $menu_nm,
-    //     "menu_intro" => $menu_intro,
-    //     "menu_img" => $menu_img,
-    //     "sales_count" => $sales_count,
-    //     "store_email" => $store_email,
-    //     "store_num" => $store_num
-    // ];
 
     

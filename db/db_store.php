@@ -252,3 +252,12 @@ function menu_num_load(){
     mysqli_close($conn);
     return $result;
 }
+function menu_num_load_edit(){
+    $sql = 
+    "   SELECT menu_num FROM t_menu
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
