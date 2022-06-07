@@ -80,6 +80,7 @@
     $sales_day_arr = explode(" ",$store_sales_day);
     $sales_time_arr = explode(",",$sales_time);
     
+    
   
 
 ?>
@@ -95,271 +96,205 @@
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="store.css">
+    
     <title>사업자 메인 페이지</title>
 </head>
 <body>  
-<!-- 좌측 메뉴바 해당 -->
-    <div class="wrap"> 
-        <div class="header">
-            <div><img class="logo" title="logo" src="../img/logo.png"></div>
-            <nav class="nav" >
-                <div class="nav__wrap">
-                    <div class="nav__container">
-                        <strong class="nav__title">가게</strong>
-                        <div class="nav__list">                            
-                            <div class="nav__item">
-                                <a href=""  class="nav__link">전체현황</a>
-                            </div>
-                            <div class="nav__item">
-                                <a href="#store_notice" class="nav__link">공지 한마디</a>
-                            </div>
-                            <div class="nav__item">
-                                <a href="#store_info"  class="nav__link">가게 소개</a>
-                            </div>   
-                            
-                            <div class="nav__item">
-                                <a href="#store_img"  class="nav__link">가게 이미지</a>
-                            </div>                            
-                        </div>
-                    </div>
-
-                    <div class="nav__container">
-                        <strong class="nav__title">영업</strong>
-                        <div class="nav__list">                            
-                            <div class="nav__item">
-                                <a href="#store_week"  class="nav__link">영업 요일</a>
-                            </div>
-                            <div class="nav__item">
-                                <a href="#store_time"  class="nav__link">영업 시간</a>
-                            </div>
-                            <div class="nav__item">
-                                <a href="#store_dayOff"  class="nav__link">임시 휴일</a>
-                            </div>                           
-                        </div>
-                    </div>
-
-                    <div class="nav__container">
-                        <strong class="nav__title">메뉴</strong>
-                        <div class="nav__list">                            
-                            <div class="nav__item">
-                                <a href="#store_menu_input"  class="nav__link">메뉴 등록</a>
-                            </div>
-                            <div class="nav__item">
-                                <a href="#store_menu_edit"  class="nav__link">메뉴 편집</a>
-                            </div>                           
-                        </div>
-                    </div>
-                    <div class="nav__container">
-                        <strong class="nav__title">혜택</strong>
-                        <div class="nav__list">                            
-                            <div class="nav__item">
-                                <a href=""  class="nav__link">쿠폰내역</a>
-                            </div>                                        
-                        </div>
-                    </div>
-                    <div class="nav__container">
-                        <strong class="nav__title">주문정산</strong>
-                        <div class="nav__list">                            
-                            <div class="nav__item">
-                                <a href=""  class="nav__link">주문내역</a>
-                            </div>                                        
-                            <div class="nav__item">
-                                <a href=""  class="nav__link">정산내역</a>
-                            </div>                                        
-                        </div>
-                    </div>
-
-
-                </div>
-            </nav>
-            <!-- 로그아웃 / 로그인 -->
-            <?php if(isset($login_email)){ ?>
-                <div class="store_login"> <a href="store_logout.php">로그아웃</a></div>
-            <?php ; } else { ?>
-            
-                <div class="store_login"> <a href="store_login.php">로그인</a></div>
-            <?php ; } ?>
-            
-        </div>
-        <!-- 상단 문구 -->
-        <div class="main">
-            <div class="main__header">
-                <h2 class="main__title"> <?=$store_name?> 사장님,<br>입금 예정금액은 210,000 원입니다.</h2>
+    <nav class="sidebar">
+        <header>
+            <div class="image-text">
+                <span class="image_bg">
+                    <img class="image" src="../img/logo.png" alt="logo">
+                </span>                
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
                 
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#store_notice">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">공지 한마디</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#store_info">
+                            <i class='bx bx-bar-chart-alt-2 icon'></i>
+                            <span class="text nav-text">가게 소개</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#store_img">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">가게 이미지</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#store_week">
+                            <i class='bx bx-pie-chart-alt icon'></i>
+                            <span class="text nav-text">영업 요일</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#store_time">
+                            <i class='bx bx-heart icon'></i>
+                            <span class="text nav-text">영업 시간</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-link">
+                        <a href="#store_menu_input">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">메뉴 등록</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#store_menu_edit">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">메뉴 편집</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">주문내역</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">정산내역</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+                            <span class="text nav-text">쿠폰</span>
+                            
+                        </a>
+                    </li>
+                </ul>
             </div>
-            
-            <div class="main__body">
-                <div class="listing-card">
-                    <ul class="listing-card__list">     
-                        <!-- 공지 -->
-                        <li id = "store_notice" class="listing-card__item"> 
-                            <form action="store_main_notice.php" method="post">
-                            <div class="listing-card__info">
-                            
-                            <?= card_top($card_name6)?>
-                            <div>
-                                <textarea name="store_notice" placeholder="공지사항을 입력하세요"><?=$store_notice?></textarea>
-                            </div>
-                            
-                            </div>
-                            </form>
-                        </li> 
-                        <!-- 가게 소개 -->
-                        <li id = "store_info" class="listing-card__item">
-                            <form class="listing-card__form" action="store_main_intro.php" method="post">
-                                <div class="listing-card__info">
-                                    <?= card_top($card_name1)?>
-                                    <div>
-                                        <textarea name="store_intro" placeholder="가게를 소개하세요"><?=$store_info?></textarea>
-                                    </div>
-                                </div>
-                            </form>
-                        </li> 
-                        <!-- 가게 이미지 -->
-                        <li id = "store_img" class="listing-card__item">                        
-                            <form class="img_test" action="store_photo.php" method="post" enctype="multipart/form-data">
-                                <div class="listing-card__info">
-                                <?= card_top($card_name3)?>
-                                <div class="image-input">
-                                <div class="image-input__input-wrapper" id="inputWrapper"><label><input type="file" id="imageInput"  name="img" accept="image/*"></label></div>
-                                <div class="image-input__pseudo">
-                                <div><i class="fa-solid fa-plus"></i></div>
-                                <div>이미지 넣기</div>
-                                </div>
-                                <?php  
-                                    $session_img = $_SESSION["login_store"]["store_photo"];
-                                    $store_img = $session_img == null ? "https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png" : "../img/store/" . $store_name . "/Main_img/" . $session_img;
-                                ?>
-                                <div class="store__img">                                    
-                                    <img src="<?=$store_img?>" onerror= "this.src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png'">
-                                </div>
-                                </div>
-                           
-                                </div>
-                            </form>
-                            
-                        </li>
-                        <!-- 영업 요일 -->
-                        <li id = "store_week" class="listing-card__item"> 
-                            <!-- 실수로 수정하지 않도록 수정 버튼을 삽입 후 클릭하였을때만 수정되도록 구현 필요-->
-                            <form action="sales_day_proc.php" method="post">
-                                
-                                <div class="listing-card__info">
-                                <?= card_top($card_name2)?>                                
-                                </div>
-                                
-                                <div class="listing-card__ctnt" name="sale_day">                                  
-                                <?=weeks($week_value, $week_id, $sales_day_arr)?>                                    
-                                </div>
-                                
-                            </form>
-                        </li>
-                        
-                        <!-- 영업 시간 -->
-                        <li id = "store_time" class="listing-card__item">
-                            <form action="store_main_sales_time.php" method="post">
-                            <div class="listing-card__info">
-                            <?= card_top($card_name4)?>
-                            
-                                <div>
-                                    <h3>오픈 시간 <?=$sales_time_arr[0]?></h3>
-                                    <?= sales_time_open_hour()?>
-                                    <?= sales_time_open_minute()?> 
-                                </div>                            
-                                <div>
-                                    <h3>마감 시간 <?=$sales_time_arr[1]?></h3>
-                                    <?= sales_time_close_hour()?>
-                                    <?= sales_time_close_minute()?> 
-                                </div>
-                            
-                            
-                            </div>
-                            </form>
-                        </li>
-                        
-                        
-                        <!-- 메뉴 등록 -->
-                        <li id = "" class="listing-card__item">
-                            <form action="store_menu_input.php" method="post" enctype="multipart/form-data">
-                            <div class="listing-card__info">
-                            <?= card_top($card_name7)?>
-                            <div>메뉴 카테고리</div>
-                            <div><?=menu_category($menu_cate)?></div>
-                            <div>메뉴명</div>
-                                <div><input type="text" name="menu_nm" placeholder="메뉴명을 입력하세요" id="">
-                            </div>
-                            <div>메뉴 소개</div>
-                                <div><textarea name="menu_intro" id="" cols="30" rows="10" placeholder="메뉴를 소개하세요"></textarea>
-                            </div>
-                            <div class="store_img_input"> 메뉴 이미지</div>
-                                <div><label class="">
-                                    <input class="" type="file" name="menu_img" accept="image/*" >
-                                </label>
-                            </div>
-                            <div>메뉴 정가</div>
-                            <div><input type="number" name="price" id="" step="500" placeholder="구독할인전 가격" ></div>
-                            <div>구독 할인가</div>
-                            <div><input type="number" name="sub_price" id="" step="500" placeholder="구독할인 가격"></div>
-                            <div>월 총 횟수</div>
-                            <div><?=sales_count()?><?=menu_count_cd($menu_count_cd)?></div>
-                            
-                            </div>
-                            </form>
-                        </li>
-                        <!-- 메뉴 편집 -->
-                        <li id = "store_menu_edit" class="listing-card__item">
-                            <form action="" method="get">
-                            <div class="listing-card__info">
-                            <div class='listing-card__info--top'>
-                                <strong class='listing-card__name'> <?=$card_name8?> > </strong>
-                                    
-                            </div>
-                            <?php 
-                            $row = menu_edit($param);
-                            foreach($row as $item) {
-                                $menu_num = $item['menu_num'];
-                                $menu_cate = $item['menu_cate'];
-                                $menu_nm = $item['menu_nm'];
-                                $price = $item['price'];
-                                $subed_price = $item['subed_price'];
-                                $subed_count = $item['subed_count'];
-                                $cd_unit = $item['cd_unit'];
-                                $menu_intro = $item['menu_intro'];
-                                $menu_photo = $item['menu_photo'];
-                                $menu_img =  "../img/store/" . $store_name . "/Menu_img/" . $menu_photo;
-                                
-                            ?>
-                                <div><img class="menu_img" src="<?=$menu_img?>"  onerror="this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'">
-                            <?php
-                                // $_GET[menu_detail]
-                                echo "$menu_nm 1달 구독
-                                <form action='store_main?1' 'method='get'>
-                                    <button class='tabs__toggle' name='menu_detail' type='submit' value='$menu_num'>
-                                        <i class='fa-solid fa-bars'></i>
-                                    </button>
-                                </form>
-                                </div> $subed_price <br><div class = 'tabs__content.is-active'>11111111111</div><div>";
-                                
-                            }
-                            ?>
-                                
-
-                            
-                            
-                            
-                            </div>  
-                          </form>
-                          </li>
-                          
-
-
-                    </ul>
-                </div>
+            <!-- 로그아웃 버튼 -->
+            <div class="bottom-content">
+                
+                <li class="">
+                    <?= 로그아웃($login_email)?>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="moon-sun">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text">Dark Mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
             </div>
-
-
         </div>
-    </div>
+    </nav>
+    
+
+
+
+
+    <section class="container home"> 
+        
+    
+        <!-- 상단 문구 -->
+            <div class="">
+            <?= 상단문구($store_name) ?>
+
+            <div class="listing-card">
+            
+                <ul class="listing-card__list">
+            
+            
+            <!-- 공지 -->
+            <li class="listing-card__item">
+            <?=공지($card_name6,$store_notice)?>
+            </li>
+            <!-- 가게 소개 -->
+            <li class="listing-card__item">
+            <?=가게소개($card_name1, $store_info)?>
+            </li>
+            <!-- 가게 이미지 -->
+            <li class="listing-card__item">
+            <?=가게이미지($card_name3, $store_name)?>
+            </li>
+                            
+                    
+            <!-- 영업 요일 --> 
+            <li class="listing-card__item">             
+            <?=영업요일($card_name2,$week_value, $week_id, $sales_day_arr)?>
+            </li>
+                        
+            <!-- 영업 시간 -->
+            <li class="listing-card__item">        
+            <?=영업시간($card_name4,$sales_time_arr ) ?>
+            </li>  
+                        
+                        
+            <!-- 메뉴 등록 -->
+            <li class="listing-card__item">                    
+            <?=메뉴등록($card_name7, $menu_cate, $menu_count_cd)?>
+            </li>
+            
+           
+        <!-- 메뉴 편집 -->
+                    
+                <li class="listing-card__item">
+                        
+                        
+                        <div id='store_menu_edit' class='listing-card__info--top'>
+                            <strong class='listing-card__name'> <?=$card_name8?> > </strong>
+                                
+                        </div>
+                        <?php 
+                        
+                        $row = menu_edit($param);
+                        foreach($row as $item) {
+                            $menu_num = $item['menu_num'];
+                            $store_menu_cate = $item['menu_cate'];
+                            $menu_nm = $item['menu_nm'];
+                            $price = $item['price'];
+                            $subed_price = $item['subed_price'];
+                            $subed_count = $item['subed_count'];
+                            $cd_unit = $item['cd_unit'];
+                            $menu_intro = $item['menu_intro'];
+                            $menu_photo = $item['menu_photo'];
+                            $menu_img =  "../img/store/" . $store_name . "/Menu_img/" . $menu_photo;
+                            $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
+                            
+                        
+                            echo '<div><img class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
+                        
+                            // $_GET[menu_detail]
+                            
+                            echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>  <div class='detail_ctnt'>
+                            <form action='store_menu_edit.php' method='post'>";
+                            
+                            메뉴편집($menu_num, $menu_nm, $menu_intro,$price,$subed_price, $store_menu_cate,$subed_count,$cd_unit);
+                            echo "</div></form>";
+                            
+                            
+                        }
+                        ?>
+                        </form>
+                          
+                        
+
+
+                        
+                </li>
+                </div>
+        </div>
+        </section>
+    
     <script src="https://kit.fontawesome.com/6a1759ba21.js" crossorigin="anonymous"></script>
     <script src="store.js"></script>
     <script src="../image-input/image-input.js"></script>
