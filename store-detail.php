@@ -3,7 +3,7 @@ include_once "db/db_store_and_menu.php";
 
 $store_num = $_GET['store_num'];
 session_start();
-$user_num = 1;
+$user_num = 10;
 $param = [
     "store_num" => $store_num,
     "user_num" => $user_num
@@ -17,7 +17,7 @@ if (isset($_SESSION['login_user'])) {
     $store_like = 0;
     $store_like = sel_store_like($param);
 } else {
-    // $user_num = 0;
+    $user_num = 0;
 }
 $store_like = sel_store_like($param);
 
@@ -63,6 +63,8 @@ $cate = '';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <title>가게페이지</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>

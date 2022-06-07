@@ -25,3 +25,37 @@ tabs.forEach((tab, index) => {
     tabs[index].classList.add("is-active");
   });
 });
+
+// ---------------------------------nav 바---------------------------------
+
+const body = document.querySelector("body"),
+  darkMode = body.querySelector(".mode-text"),
+  listcard = body.querySelectorAll(".listing-card__item"),
+  sidebar = body.querySelector(".sidebar"),
+  toggle = body.querySelector(".toggle"),
+  searchBtn = body.querySelector(".search-box"),
+  modeSwitch = body.querySelector(".toggle-switch"),
+  modeText = body.querySelector(".mode-text");
+
+toggle.addEventListener("click", () => {
+  sidebar.classList.toggle("close");
+});
+modeSwitch.addEventListener("click", () => {
+  body.classList.toggle("dark");
+  darkMode.classList.toggle("dark");
+
+  if (body.classList.contains("dark")) {
+    modeText.innerHTML = "Light Mode";
+  } else {
+    modeText.innerHTML = "Dark Mode";
+  }
+});
+
+// ---------------------------------편집 카드---------------------------------
+
+const details = document.querySelectorAll(".detail__icon");
+details.forEach((detail, index) => {
+  detail.addEventListener("click", () => {
+    details[index].classList.toggle("show");
+  });
+});

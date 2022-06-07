@@ -93,7 +93,7 @@ video {
   box-sizing: border-box;
   /* font-family: 'Black Han Sans', sans-serif; */
   /* font-family: 'Noto Sans KR', sans-serif; */
-  font-family: 'Do Hyeon', sans-serif;
+  font-family: "Do Hyeon", sans-serif;
   scroll-behavior: smooth;
 }
 /* HTML5 display-role reset for older browsers */
@@ -125,7 +125,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 table {
@@ -138,22 +138,4 @@ a {
 .container {
   position: relative;
   width: 100%;
-  min-width: var(--mobile-min-width);
-  max-width: var(--mobile-max-width);
-  padding-bottom: 4.5rem;
-}
-body {
-  animation: mainScreenAnimation 0.7s ease-in-out;
-}
-@keyframes mainScreenAnimation {
-  0% {
-    transform: scale(0.5);
-    transform-origin: 50% 100%;
-    border-radius: 50px;
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1);
-    transform-origin: 50% 100%;
-  }
 }

@@ -5,9 +5,12 @@
 <?php
 include_once 'db/db_store_and_menu.php';
 session_start();
-$login_user = $_SESSION['login_user'];
-
+if (isset($_SESSION['login_user'])) {
+  $login_user = $_SESSION['login_user'];
+  $user_num = $login_user['user_num'];
+}
 $menu_num = $_POST['menu_num'];
+$user_num = 44;
 
 $param = [
   'menu_num' => 4
@@ -24,7 +27,9 @@ $page_name = $store_menu['store_nm'];
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <title>리뷰페이지</title>
   <script src="https://kit.fontawesome.com/8eb4f0837a.js" crossorigin="anonymous" defer></script>
   <script src="js/image-input.js" defer></script>
   <link rel="stylesheet" href="css/styles.css">
@@ -50,7 +55,7 @@ $page_name = $store_menu['store_nm'];
         <div class="review--content">
           <form action="review_write_proc.php" method="post">
             <input type="hidden" name="store_num" value="<?= $store_menu['store_num'] ?>">
-            <input type="hidden" name="user_num" value="<?= $login_user['user_num'] ?>">
+            <input type="hidden" name="user_num" value="<?= $user_num ?>">
             <img class="review-logo" src="img/logo.png" alt="">
             <h2 class="review-h2">구독상품은 어떠셨어요?</h2>
             <div class="stars-widget">
