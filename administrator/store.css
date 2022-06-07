@@ -45,64 +45,6 @@ body {
   grid-template-rows: 5% 95%;
 }
 
-.header {
-  background-color: var(--dark-bg);
-  grid-row: span 2;
-  height: 100vh;
-  width: 100%;
-  color: #fff;
-}
-.logo {
-  width: 70%;
-  height: auto;
-}
-
-.header .nav__container {
-  margin-bottom: 40px;
-}
-
-.header .nav__title {
-  display: block;
-  padding: 8px 20px;
-  margin-bottom: 12px;
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  /* identical to box height, or 129% */
-
-  display: flex;
-  align-items: center;
-
-  /* Light/Greyscale/Disabled text */
-
-  color: #8a8a8a;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-.header .nav__list {
-  font-size: 16px;
-  padding: 0 20px;
-}
-.header .nav__item {
-  margin-bottom: 8px;
-  font-family: "Mulish";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 18px;
-  display: flex;
-  align-items: center;
-}
-.header .nav__link {
-  color: #fff;
-  text-decoration: none;
-}
 .top-bar {
   background-color: #f0f0f0;
   display: grid;
@@ -151,11 +93,10 @@ body {
 }
 .main__header {
   position: relative;
-  font-size: 12px;
+  font-size: 1.2rem;
   padding: 20px 20px;
-  background-color: var(--dark-bg);
 }
-.main .main__header::after {
+.main__header::after {
   position: absolute;
   left: 0;
   top: 0;
@@ -163,47 +104,42 @@ body {
   height: 100%;
   content: "";
   display: block;
-  background-color: var(--dark-bg);
 }
 .main__title {
-  color: #fff;
   z-index: 1;
   position: relative;
+  margin: 30px 0 0 40px;
 }
-.main .listing-card {
+.listing-card {
   max-width: 1600px;
   margin: 30px auto 60px;
   padding: 0 20px;
 }
-.main .listing-card__list {
+.listing-card__list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(504px, 1fr));
   gap: 30px;
 }
-.main .listing-card__item {
+.listing-card__item {
   display: flex;
   flex-direction: column;
   height: fit-content;
   width: 100%;
-  background-color: var(--white-bg);
   border: 1px solid var(--border-color);
   border-radius: 1rem;
   padding: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/*
-.main .listing-card__info {
-    
-} */
-.main .listing-card__name {
-  font-size: 18px;
+.listing-card__name {
+  font-size: 1rem;
+  padding: 0.3rem;
 }
-.main .listing-card__date {
+.listing-card__date {
   color: #333;
   margin-top: 6px;
 }
-.main .listing-card__form {
+.listing-card__form {
   display: grid;
 }
 
@@ -242,6 +178,9 @@ textarea {
 }
 
 .listing-card__item .listing-card__info__week {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   width: 12%;
   height: 94px;
@@ -420,12 +359,13 @@ body {
   transition: var(--tran-05);
 }
 body.dark {
-  --body-color: #18191a;
+  --body-color: var(--dark-bg);
   --sidebar-color: #242526;
   --primary-color: #3a3b3c;
   --primary-color-light: #3a3b3c;
   --toggle-color: #fff;
   --text-color: #ccc;
+  color: var(--text-white);
 }
 
 /* ===== Sidebar ====== */
@@ -650,7 +590,17 @@ body.dark .switch::before {
   justify-content: center;
 }
 
-.card__form {
-  background-color: var(--white-bg);
+.mode .mode-text.dark {
+  color: var(--text-white);
+}
+
+.mode .mode-text {
   color: var(--text-dark-gray);
+}
+
+.detail__icon ~ .detail_ctnt {
+  display: none;
+}
+.detail__icon.show ~ .detail_ctnt {
+  display: block;
 }
