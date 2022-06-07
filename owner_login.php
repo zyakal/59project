@@ -23,9 +23,9 @@ $param = [
         $wp = "아이디 또는 비밀번호가 틀렸습니다.";
     }
     if(!empty($result))
-    {        
-            $user_num = $result['user_num'];
-            header("Location: owner_join.php");
+    {       session_start();
+            $_SESSION['login_store'] = $result;
+            header("Location: administrator/store_main.php");
     }
 }
 
