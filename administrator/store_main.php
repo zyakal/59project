@@ -267,7 +267,7 @@
                             $cd_unit = $item['cd_unit'];
                             $menu_intro = $item['menu_intro'];
                             $menu_photo = $item['menu_photo'];
-                            $menu_img =  "../img/store/" . $store_name . "/Menu_img/" . $menu_photo;
+                            $menu_img =  "../img/store/" . $store_name . "/Menu_img/" .$menu_num."/" .$menu_photo;
                             $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
                             
                         
