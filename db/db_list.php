@@ -24,7 +24,7 @@
     function sel_cate_store(&$param) {
         $cate = $param['cate'];
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num, 
+        $sql = "SELECT store_nm, store_photo, store_num, store_lat, store_lng, 
             CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) as info FROM t_store 
            WHERE cate_num = '$cate'";
         $result = mysqli_query($conn, $sql);
@@ -36,7 +36,7 @@
     function sel_result_store(&$param) {
         $store_num = $param['store_num'];
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num, 
+        $sql = "SELECT store_nm, store_photo, store_num, store_lat, store_lng, 
             CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) as info FROM t_store 
             WHERE store_num = '$store_num'";
         $result = mysqli_query($conn, $sql);
@@ -89,7 +89,7 @@
     function sel_like_stores(&$param) {
         $user_num = $param['user_num'];
         $conn = get_conn();
-        $sql = "SELECT B.store_nm, B.store_photo, B.store_num,
+        $sql = "SELECT B.store_nm, B.store_photo, B.store_num, B.store_lat, B.store_lng,
             CONCAT(B.sales_day, '/ ', REPLACE(B.sales_time, ',', ' ~ ')) as info FROM t_likestore A
             INNER JOIN t_store B
             ON A.store_num = B.store_num
@@ -165,3 +165,26 @@
         mysqli_close($conn);
         return $result;
     }
+
+ 
+    function my_deg2rad($num) {
+        return ($num * M_PI / 180.0);
+    } 
+    function my_rad2deg($num) {
+        return ($num * 180 / M_PI);
+    } 
+    //거리 계산 함수
+    function store_distance($my_lat, $my_lng, $s_lat, $s_lng) {
+        $dist = sin(my_deg2rad($my_lat)) * sin(my_deg2rad($s_lat)) + cos(my_deg2rad($my_lat)) * cos(my_deg2rad($s_lat)) * COS(my_deg2rad($my_lng) - my_deg2rad($s_lng));
+        $dist = acos($dist);
+        $result = $dist * 6371;
+        return $result;
+    }
+
+    // function store_distance($my_lat, $my_lng, $s_lat, $s_lng) {
+    //     $theta = $my_lng - $s_lng;
+    //     $x = (COS(90-$my_lat) * 6400 * 2 * M_PI / 360) * $theta;
+    //     $y = 111 * ($my_lat - $s_lat);
+    //     $dis = sqrt(pow($x, 2) + pow($y, 2));
+    //     return $dis;
+    // }

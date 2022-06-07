@@ -1,6 +1,8 @@
 <?php
 session_start();
 $login_user = $_SESSION['login_user'];
+$my_lat = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['La']);</script>";
+$my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma']);</script>";
 ?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
@@ -97,7 +99,9 @@ $login_user = $_SESSION['login_user'];
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                        <?php
+                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance)?> KM</div>
                                     </div>
                                 </a>
                         <?php }
@@ -144,11 +148,6 @@ $login_user = $_SESSION['login_user'];
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'kakao-js-sdk');
 
-        const url = list.php
-        fetch(url, {
-            method:'POST',
-            body:JSON.stringify(localStorage.getItem('my_addr'))
-        })
     </script>
 </body>
 
