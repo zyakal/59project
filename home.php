@@ -104,7 +104,7 @@ $login_user = $_SESSION['login_user'];
                                         </div>
                                         <input type="hidden" name="" value="<?= $row['store_lat'] ?>" id="store_lat">
                                         <input type="hidden" name="" value="<?= $row['store_lng'] ?>" id="store_lng">
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> KM</div>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> </div>
                                     </div>
                                 </a>
                         <?php }
@@ -162,9 +162,9 @@ $login_user = $_SESSION['login_user'];
         //     console.log(element);
         // })
 
-        const storeLat = document.querySelectorAll('store_lat')
-        const storeLng = document.querySelectorAll('store_lng')
-
+        const storeLat = document.querySelectorAll('#store_lat');
+        const storeLng = document.querySelectorAll('#store_lng');
+        const locat = document.querySelectorAll('.list__store__location');
 
         function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
             function deg2rad(deg) {
@@ -180,8 +180,8 @@ $login_user = $_SESSION['login_user'];
             return d;
         }
         for (let i = 0; i < storeLat.length; i++) {
-            let result = getDistanceFromLatLonInKm(lat, lan, storeLat[i].value, storeLng[i].value);
-            console.log(result);
+            let result = getDistanceFromLatLonInKm(lat, lng, storeLat[i].value, storeLng[i].value);
+            locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
         }
     </script>
 </body>
