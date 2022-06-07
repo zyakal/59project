@@ -5,15 +5,9 @@
         </a>
     </div>
     <div class="nav--addr">
-        <a href="my_addr.php">
+        <a href="my_addr.php" class="addr__link">
             <i class="fa-solid fa-location-dot"></i>
-            <script>
-                if(localStorage.getItem('my_addr') !== null) {
-                    document.write(localStorage.getItem('my_addr'));
-                } else {
-                    document.write('현재 위치 없음');
-                }
-            </script>
+            <div class="user-addr"></div>
             <i class="fa-solid fa-angle-down"></i>
         </a>
     </div>
@@ -23,3 +17,14 @@
         </a>
     </div>
 </nav>
+<script>
+    const userAddr = document.querySelector(".user-addr");
+    const getAddr = localStorage.getItem('my_addr');
+    const stringifyAddr = JSON.parse(getAddr);
+
+    if (getAddr !== null) {
+        userAddr.innerHTML = stringifyAddr['title'];
+    } else {
+        document.write('현재 위치 없음');
+    }
+</script>

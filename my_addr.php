@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <title>59 - My address</title>
@@ -67,7 +69,7 @@
             let lat = position.coords.latitude;
             let lng = position.coords.longitude;
             getAddr(lat, lng);
-
+            // 좌표로 도로명, 지번주소 가져오는 함수
             function getAddr(lat, lng) {
                 let geocoder = new kakao.maps.services.Geocoder();
 
@@ -75,8 +77,10 @@
                 let callback = function(result, status) {
                     if (status === kakao.maps.services.Status.OK) {
                         var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-                        detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-                        currentAddr.innerHTML = detailAddr;
+                        // detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+                        detailAddr += result[0].address.address_name;
+                        // currentAddr.innerHTML = detailAddr;
+                        my_address.value = detailAddr;
                         // ------------- 좌표를 로컬스토리지에 저장 -------------
                         const getAddr = localStorage.getItem('my_addr');
                         let parseAddr = JSON.parse(getAddr);
