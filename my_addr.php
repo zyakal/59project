@@ -77,8 +77,10 @@
                 let callback = function(result, status) {
                     if (status === kakao.maps.services.Status.OK) {
                         var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-                        detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-                        currentAddr.innerHTML = detailAddr;
+                        // detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
+                        detailAddr += result[0].address.address_name;
+                        // currentAddr.innerHTML = detailAddr;
+                        my_address.value = detailAddr;
                         // ------------- 좌표를 로컬스토리지에 저장 -------------
                         const getAddr = localStorage.getItem('my_addr');
                         let parseAddr = JSON.parse(getAddr);
