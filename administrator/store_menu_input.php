@@ -26,11 +26,13 @@
     
     $store_num = $login['store_num'];
     $store_nm = $login['store_nm'];
-
+    $row = menu_num_load();
+    foreach($row as $menu_num_row);
+    $menu_num = $menu_num_row['MAX(menu_num)']+1;
     
 
     //이미지 경로설정
-    define("PROFILE_PATH", "../img/store/$store_nm/");
+    define("PROFILE_PATH", "../img/store/$store_nm/Menu_img/");
 
    
     
@@ -59,7 +61,7 @@
     $ext = mb_substr($img_name, $last_index); // substr(자르고 싶은 문자열, 시작위치, 입력하지 않으면 나머지 전부-입력하면 그자리부터 입력한 자릿수까지)
 
     $target_filenm = gen_uuid_v4() . $ext;
-    $target_full_path = PROFILE_PATH . "Menu_img";
+    $target_full_path = PROFILE_PATH . "$menu_num";
     // is_dir, file_exists 폴더 및 파일 있는지 확인할때, 폴더확인은 is_dir이 파일 확인은 file_exists가 낫다
     if(!is_dir($target_full_path)) {
         mkdir($target_full_path, 0777, true);
