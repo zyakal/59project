@@ -1,8 +1,7 @@
 <?php
 session_start();
 $login_user = $_SESSION['login_user'];
-$my_lat = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['La']);</script>";
-$my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma']);</script>";
+
 ?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
@@ -60,6 +59,10 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
                 if (isset($_SESSION['login_user'])) { ?>
                     <div class="recommend--nav">
                         <div>맞춤 추천</div>
+                        <div>
+                            <?=$my_lat?>
+                            <?=$my_lng?>
+                        </div>
                     </div>
                     <div class="recommend--list">
                         <?php
@@ -100,8 +103,8 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
                                             <?php } ?>
                                         </div>
                                         <?php
-                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance)?> KM</div>
+                                        $distance = store_distance($my_lat, $my_lng, intval($row['store_lat']), intval($row['store_lng'])) ?>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
                                     </div>
                                 </a>
                         <?php }
@@ -147,6 +150,12 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
             js.src = 'https://developers.kakao.com/sdk/js/kakao.channel.min.js';
             fjs.parentNode.insertBefore(js, fjs);
         })(document, 'script', 'kakao-js-sdk');
+
+        const lat = JSON.parse(localStorage.getItem('my_addr'))['coords']['La'];
+        const lng = JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma'];
+        const url = `store_distance.php?my_lat=${lat}&my_lng=${lng}`;
+        fetch(url).then((Response) => console.log(Response))
+        .then((date) => console.log(data));
 
     </script>
 </body>

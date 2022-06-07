@@ -78,7 +78,7 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
                             </div>
                             <?php
                                         $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance)?> KM</div>
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
                         </div>
                     </a>
                 <?php } ?>
