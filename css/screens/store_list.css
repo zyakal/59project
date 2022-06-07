@@ -19,7 +19,8 @@
 .list__item .list__store__info .store__info__info { font-size: 12px; color: var(--text-gray);}
 .list__item .list__store__info .store__info__star_rating {font-size: 10px;}
 .list__item .list__store__info .store__info__star_rating i {color: var(--star-yellow);}
-.list__item .list__store__location {font-size: 12px; font-weight: bold;
+.list__item .list__store__location,#all__list__store__location {font-size: 12px; font-weight: bold;
     margin-top: 13px;
     color: var(--text-dark-gray);}
 .list__item .list__store__location i {color: var(--main-pink);}
+.list__item #all__list__store__location i {color: var(--main-pink);}
