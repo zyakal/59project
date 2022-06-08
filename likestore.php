@@ -51,7 +51,8 @@ if (isset($_SESSION['login_user'])) {
                     while ($row = mysqli_fetch_assoc($result)) { ?>
                         <a href="store-detail.php?store_num=<?= $row['store_num'] ?>">
                             <div class="list__item">
-                                <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
+                                <div class="list__store__img"><img src="img/store/<?=$row['store_nm']?>/Main_img/<?=$row['store_photo']?>"></div>
+                                <!-- <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div> -->
                                 <div class="list__store__info">
                                     <div class="store__info__nm"><?= $row['store_nm'] ?></div>
                                     <div class="store__info__info"><?= $row['info'] ?></div>
@@ -71,7 +72,9 @@ if (isset($_SESSION['login_user'])) {
                                         <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                     <?php } ?>
                                 </div>
-                                <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> 1.0 KM</div>
+                                <input type="hidden" name="" value="<?= $row['store_lat'] ?>" id="store_lat">
+                                <input type="hidden" name="" value="<?= $row['store_lng'] ?>" id="store_lng">
+                                <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> </div>
                             </div>
                         </a>
                 <?php }
@@ -84,6 +87,33 @@ if (isset($_SESSION['login_user'])) {
             ?>
         </footer>
     </div>
+    <script>
+        const lat = JSON.parse(localStorage.getItem('my_addr'))['coords']['La'];
+        const lng = JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma'];
+
+        const storeLat = document.querySelectorAll('#store_lat');
+        const storeLng = document.querySelectorAll('#store_lng');
+        const locat = document.querySelectorAll('.list__store__location');
+
+
+        function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
+            function deg2rad(deg) {
+                return deg * (Math.PI / 180)
+            }
+
+            var R = 6371; // Radius of the earth in km
+            var dLat = deg2rad(lat2 - lat1); // deg2rad below
+            var dLon = deg2rad(lng2 - lng1);
+            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            var d = R * c; // Distance in km
+            return d;
+        }
+        for (let i = 0; i < storeLat.length; i++) {
+            let result = getDistanceFromLatLonInKm(lat, lng, storeLat[i].value, storeLng[i].value);
+            locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
+        }
+    </script>
 </body>
 
 </html>
