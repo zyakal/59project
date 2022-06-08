@@ -59,10 +59,6 @@ $login_user = $_SESSION['login_user'];
                 if (isset($_SESSION['login_user'])) { ?>
                     <div class="recommend--nav">
                         <div>맞춤 추천</div>
-                        <div>
-                            <?= $my_lat ?>
-                            <?= $my_lng ?>
-                        </div>
                     </div>
                     <div class="recommend--list">
                         <?php
