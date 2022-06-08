@@ -17,7 +17,7 @@ $get_cate_nm = $_GET['cate_nm'];
     <script src="https://kit.fontawesome.com/57749be668.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/screens/store_list.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
     <script src="js/swiper.js" defer></script>
     <title>59 - list</title>
@@ -92,9 +92,9 @@ $get_cate_nm = $_GET['cate_nm'];
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
-                                        <?php
-                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
+                                        <input type="hidden" name="" value="<?= $row['store_lat'] ?>" id="all_store_lat">
+                                        <input type="hidden" name="" value="<?= $row['store_lng'] ?>" id="all_store_lng">
+                                        <div id="all__list__store__location"><i class="fa-solid fa-location-dot"></i> </div>
                                     </div>
                                 </a>
                             </div>
@@ -134,9 +134,9 @@ $get_cate_nm = $_GET['cate_nm'];
                                                 <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                             <?php } ?>
                                         </div>
-                                        <?php
-                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
+                                        <input type="hidden" name="" value="<?= $row['store_lat'] ?>" id="ctg_store_lat">
+                                        <input type="hidden" name="" value="<?= $row['store_lng'] ?>" id="ctg_store_lng">
+                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> </div>
                                     </div>
                                 </a>
                             <?php } ?>
@@ -196,14 +196,38 @@ $get_cate_nm = $_GET['cate_nm'];
                 });
             });
 
-            fetch("/59-project/store_distance.php", {
-                method:"POST",
-                body: JSON.stringify({
-                    lat : "localStorage.getItem('my_addr'))['coords']['La']",
-                    lng : "localStorage.getItem('my_addr'))['coords']['Ma']",
-                }),
-            }).then((Response) => console.log(Response))
-            
+            const lat = JSON.parse(localStorage.getItem('my_addr'))['coords']['La'];
+            const lng = JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma'];
+            const allStoreLat = document.querySelectorAll('#all_store_lat');
+            const allStoreLng = document.querySelectorAll('#all_store_lng');
+            const ctgStoreLat = document.querySelectorAll('#all_store_lat');
+            const ctgStoreLng = document.querySelectorAll('#all_store_lng');
+            const locat = document.querySelectorAll('#all__list__store__location');
+            const locat2 = document.querySelectorAll('.list__store__location');
+
+
+            function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
+                function deg2rad(deg) {
+                    return deg * (Math.PI / 180)
+                }
+
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2 - lat1); // deg2rad below
+                var dLon = deg2rad(lng2 - lng1);
+                var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                var d = R * c; // Distance in km
+                return d;
+            }
+            for (let i = 0; i < allStoreLat.length; i++) {
+                let result = getDistanceFromLatLonInKm(lat, lng, allStoreLat[i].value, allStoreLng[i].value);
+                locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
+            }
+
+            for (let i = 0; i < ctgStoreLat.length; i++) {
+                let result = getDistanceFromLatLonInKm(lat, lng, ctgStoreLat[i].value, ctgStoreLng[i].value);
+                locat2[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
+            }
             
         </script>
     </div>
