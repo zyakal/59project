@@ -1,4 +1,5 @@
 <?php
+// 192.168.0.70
 define("URL", "192.168.0.70");
 define("USERNAME", "root");
 define("PASSWORD", "506greendg@");

@@ -13,7 +13,7 @@
     //list page - 전체 가게
     function sel_store_list() {
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num, 
+        $sql = "SELECT store_nm, store_photo, store_num, store_lat, store_lng,
             CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) info FROM t_store";
         $result = mysqli_query($conn, $sql);
         mysqli_close($conn);
@@ -24,7 +24,7 @@
     function sel_cate_store(&$param) {
         $cate = $param['cate'];
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num, 
+        $sql = "SELECT store_nm, store_photo, store_num, store_lat, store_lng, 
             CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) as info FROM t_store 
            WHERE cate_num = '$cate'";
         $result = mysqli_query($conn, $sql);
@@ -36,7 +36,7 @@
     function sel_result_store(&$param) {
         $store_num = $param['store_num'];
         $conn = get_conn();
-        $sql = "SELECT store_nm, store_photo, store_num, 
+        $sql = "SELECT store_nm, store_photo, store_num, store_lat, store_lng, 
             CONCAT(sales_day, '/ ', REPLACE(sales_time, ',', ' ~ ')) as info FROM t_store 
             WHERE store_num = '$store_num'";
         $result = mysqli_query($conn, $sql);
@@ -89,7 +89,7 @@
     function sel_like_stores(&$param) {
         $user_num = $param['user_num'];
         $conn = get_conn();
-        $sql = "SELECT B.store_nm, B.store_photo, B.store_num,
+        $sql = "SELECT B.store_nm, B.store_photo, B.store_num, B.store_lat, B.store_lng,
             CONCAT(B.sales_day, '/ ', REPLACE(B.sales_time, ',', ' ~ ')) as info FROM t_likestore A
             INNER JOIN t_store B
             ON A.store_num = B.store_num
@@ -165,3 +165,5 @@
         mysqli_close($conn);
         return $result;
     }
+
+
