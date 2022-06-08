@@ -1,5 +1,5 @@
 /* --------- Noto Sans Font --------- */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
 
 /* --------- reset CSS --------- */
 @import "reset.css";
@@ -13,3 +13,4 @@
 @import "components/footer.css";
 @import "components/store-header.css";
 @import "components/input-num.css";
+@import "components/image-input.css";

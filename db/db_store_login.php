@@ -70,12 +70,21 @@ function owner_login(&$param){
         $store_pw = $param['store_pw'];
 
             $sql = 
+<<<<<<< HEAD
         "   SELECT A.*, B.menu_photo 
             from t_store A
             INNER JOIN t_menu B
             ON A.store_num = B.store_num
             where store_email = '$store_email'
         ";
+=======
+                "   SELECT A.*, B.menu_photo 
+                    from t_store A
+                    INNER JOIN t_menu B
+                    ON A.store_num = B.store_num
+                    where store_email = '$store_email'
+            ";
+>>>>>>> b8a7ac793d4806f350879a3b9fe5e36d0c293519
     //password(해야함)
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
