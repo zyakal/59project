@@ -241,10 +241,10 @@ $sales_time_arr = explode(",", $sales_time);
                                     data: [12, 19, 3, 8, 14, 5],
                                     backgroundColor: gradient,
                                     hoverBackgroundColor: gradient,
-                                    borderRadius: 30,
+                                    borderRadius: 10,
                                     hoverBorderWidth: 2,
                                     hoverBorderColor: 'green',
-                                    barPercentage: 0.3
+                                    barPercentage: 0.2
                                 }]
                             },
                             options: {
