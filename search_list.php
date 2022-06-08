@@ -11,8 +11,7 @@ $result = search_result_list($param);
 $result_count = search_result_count($param);
 $mag = $result_count['cnt'] . "개가 검색되었습니다.";
 
-$my_lat = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['La']);</script>";
-$my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma']);</script>";
+
 
 ?>
 
@@ -36,7 +35,6 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header class="search_list__header">
@@ -56,7 +54,7 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
                         'store_num' => $store_num
                     ];
                     $re_store = sel_result_store($param);
-                    $row = mysqli_fetch_array($re_store);
+                    $row = mysqli_fetch_assoc($re_store);
                     $star = store_star($param);
                     if (!$star) {
                         $star = "";
@@ -76,15 +74,45 @@ $my_lng = "<script>document.write(JSON.parse(localStorage.getItem('my_addr'))['c
                                     <div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>
                                 <?php } ?>
                             </div>
-                            <?php
-                                        $distance = store_distance(intval($my_lat), intval($my_lng), intval($row['store_lat']), intval($row['store_lng'])) ?>
-                                        <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> <?=round($distance, 2)?> KM</div>
+                            <input type="hidden" name="" value="<?= $row['store_lat'] ?>" id="store_lat">
+                            <input type="hidden" name="" value="<?= $row['store_lng'] ?>" id="store_lng">
+                            <div class="list__store__location"><i class="fa-solid fa-location-dot"></i> </div>
                         </div>
                     </a>
                 <?php } ?>
             </div>
         </main>
+        <footer>
+            <?php
+            include_once "footer.html";
+            ?>
+        </footer>
     </div>
 </body>
+    <script>
+    const lat = JSON.parse(localStorage.getItem('my_addr'))['coords']['La'];
+    const lng = JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma'];
+    const storeLat = document.querySelectorAll('#store_lat');
+    const storeLng = document.querySelectorAll('#store_lng');
+    const locat = document.querySelectorAll('.list__store__location');
 
+    function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
+        function deg2rad(deg) {
+            return deg * (Math.PI / 180)
+        }
+
+        var R = 6371; // Radius of the earth in km
+        var dLat = deg2rad(lat2 - lat1); // deg2rad below
+        var dLon = deg2rad(lng2 - lng1);
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d;
+    }
+    for (let i = 0; i < storeLat.length; i++) {
+        let result = getDistanceFromLatLonInKm(lat, lng, storeLat[i].value, storeLng[i].value);
+        locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
+        // console.log(result);
+    }
+    </script>
 </html>
