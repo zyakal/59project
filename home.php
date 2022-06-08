@@ -162,9 +162,8 @@ $login_user = $_SESSION['login_user'];
         //     console.log(element);
         // })
 
-        const storeLat = document.querySelectorAll('store_lat')
-        const storeLng = document.querySelectorAll('store_lng')
-
+        const storeLat = document.querySelectorAll('#store_lat')
+        const storeLng = document.querySelectorAll('#store_lng')
 
         function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
             function deg2rad(deg) {
@@ -180,7 +179,7 @@ $login_user = $_SESSION['login_user'];
             return d;
         }
         for (let i = 0; i < storeLat.length; i++) {
-            let result = getDistanceFromLatLonInKm(lat, lan, storeLat[i].value, storeLng[i].value);
+            let result = getDistanceFromLatLonInKm(lat, lng, storeLat[i].value, storeLng[i].value);
             console.log(result);
         }
     </script>
