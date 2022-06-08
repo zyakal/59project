@@ -162,9 +162,11 @@ $login_user = $_SESSION['login_user'];
         //     console.log(element);
         // })
 
+
         const storeLat = document.querySelectorAll('#store_lat');
         const storeLng = document.querySelectorAll('#store_lng');
         const locat = document.querySelectorAll('.list__store__location');
+
 
         function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
             function deg2rad(deg) {
