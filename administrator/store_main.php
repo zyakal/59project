@@ -217,18 +217,20 @@ $sales_time_arr = explode(",", $sales_time);
                 <ul class="listing-card__list">
                     <!-- 월매출 그래프 -->
                     <li class="listing-card__item">
-                        <div>월간매출액</div>
-                        <div>
-                            <h1>2,540,700원</h1>
-                            <h3>+2.45%</h3>
+                        <div class="item__box">
+                            <div class="graph-item">
+                                <div class="graph-title">월간매출액</div>
+                                <div class="graph-content">
+                                    <h1 class="graph-value"><strong>2,540,700</strong>원</h1>
+                                    <h3>+2.45%</h3>
+                                </div>
+                            </div>
+                            <canvas id="monthly_sales"></canvas>
                         </div>
-
-                        <canvas id="monthly_sales"></canvas>
                     </li>
                     <script>
                         var bar_ctx = document.getElementById('monthly_sales').getContext('2d');
-
-                        var gradient = bar_ctx.createLinearGradient(0, 0, 0, 400);
+                        var gradient = bar_ctx.createLinearGradient(0, 0, 0, 500);
                         gradient.addColorStop(0, '#10B981');
                         gradient.addColorStop(1, '#fff');
 
@@ -263,13 +265,17 @@ $sales_time_arr = explode(",", $sales_time);
                     </script>
                     <!-- 주간구독수 -->
                     <li class="listing-card__item">
-                        <div>주간구독수</div>
-                        <div>
-                            <h1>82건</h1>
-                            <h3>+2.45%</h3>
-                        </div>
+                        <div class="item__box">
+                            <div class="graph-item">
+                                <div class="graph-title ">주간구독수</div>
+                                <div class="graph-content">
+                                    <h1 class="graph-value"><strong>82</strong>건</h1>
+                                    <h3>+2.45%</h3>
+                                </div>
+                            </div>
 
-                        <canvas id="monthly_sub"></canvas>
+                            <canvas id="monthly_sub"></canvas>
+                        </div>
                     </li>
                     <script>
                         new Chart(document.getElementById("monthly_sub"), {
@@ -320,6 +326,65 @@ $sales_time_arr = explode(",", $sales_time);
                             },
                         });
                     </script>
+                    <!-- 요청처리현황 -->
+                    <li class="listing-card__item">
+                        <div class="item__box">
+                            <div class="list-header">
+                                <div class="list-header__title">
+                                    요청 처리 현황 <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                                <div class="list-header__month">
+                                    최근 1개월
+                                </div>
+                            </div>
+                            <div class="sub-status__box">
+                                <div class="box-item">
+                                    <div class="box-item__title yellow-box">대기</div>
+                                    <div><strong>1</strong>건</div>
+                                </div>
+                                <div class="box-item">
+                                    <div class="box-item__title green-box">진행</div>
+                                    <div><strong>3</strong>건</div>
+                                </div>
+                                <div class="box-item">
+                                    <div class="box-item__title red-box">반려</div>
+                                    <div><strong>0</strong>건</div>
+                                </div>
+                                <div class="box-item">
+                                    <div class="box-item__title gray-box">취소</div>
+                                    <div><strong>1</strong>건</div>
+                                </div>
+                                <div class="box-item">
+                                    <div class="box-item__title gray-box">승인</div>
+                                    <div><strong>5</strong>건</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- 전체리뷰 -->
+                    <li class="listing-card__item">
+                        <div class="item__box">
+                            <div class="list-header">
+                                <div class="list-header__title">
+                                    전체 리뷰 <i class="fa-solid fa-angle-right"></i>
+                                </div>
+                            </div>
+                            <div class="sub-status__box">
+                                <div class="box-item">
+                                    <div class="box-item__title gray-box">전체</div>
+                                    <div><strong>150</strong>건</div>
+                                </div>
+                                <div class="box-item">
+                                    <div class="box-item__title yellow-box">대기</div>
+                                    <div><strong>25</strong>건</div>
+                                </div>
+                                <div class="box-item ">
+                                    <div class="box-item__title red-box">차단</div>
+                                    <div><strong>1</strong>건</div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
                     <!-- 공지 -->
                     <li class="listing-card__item">
                         <?= 공지($card_name6, $store_notice) ?>
