@@ -81,7 +81,7 @@ $page_name = "마이페이지";
                     <a href="sub_manage.php">
                         <div class="myinfo_box">
                             <div class="myinfo_box_text">구독관리</div>
-                            <div class="myinfo_box_small_text"><?= $sub_count ?>개</div>
+                            <div class="myinfo_box_small_text">2개</div>
                         </div>
                     </a>
                     <a href="user_review.php">
