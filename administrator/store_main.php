@@ -215,7 +215,7 @@ $sales_time_arr = explode(",", $sales_time);
             <div class="listing-card">
 
                 <ul class="listing-card__list">
-                    <!-- 그래프 -->
+                    <!-- 월매출 그래프 -->
                     <li class="listing-card__item">
                         <div>월간매출액</div>
                         <div>
@@ -223,10 +223,10 @@ $sales_time_arr = explode(",", $sales_time);
                             <h3>+2.45%</h3>
                         </div>
 
-                        <canvas id="myChart"></canvas>
+                        <canvas id="monthly_sales"></canvas>
                     </li>
                     <script>
-                        var bar_ctx = document.getElementById('myChart').getContext('2d');
+                        var bar_ctx = document.getElementById('monthly_sales').getContext('2d');
 
                         var gradient = bar_ctx.createLinearGradient(0, 0, 0, 400);
                         gradient.addColorStop(0, '#10B981');
@@ -259,6 +259,65 @@ $sales_time_arr = explode(",", $sales_time);
                                     }
                                 }
                             }
+                        });
+                    </script>
+                    <!-- 주간구독수 -->
+                    <li class="listing-card__item">
+                        <div>주간구독수</div>
+                        <div>
+                            <h1>82건</h1>
+                            <h3>+2.45%</h3>
+                        </div>
+
+                        <canvas id="monthly_sub"></canvas>
+                    </li>
+                    <script>
+                        new Chart(document.getElementById("monthly_sub"), {
+                            type: 'line',
+                            data: {
+                                labels: ['월', '화', '수', '목', '금', '토', '일'],
+                                datasets: [{
+                                    data: [20, 8, 16, 10, 14, 8, 14],
+                                    label: "이번 주 구독수",
+                                    borderColor: "#10B981",
+                                    fill: false,
+                                    tension: 0.2
+                                }, {
+                                    data: [13, 14, 10, 10, 5, 13, 10],
+                                    label: "저번 주 구독수",
+                                    borderColor: "#6AD2FF",
+                                    fill: false,
+                                    tension: 0.2
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    title: {
+                                        display: true,
+                                        text: '주간 구독수'
+                                    },
+                                },
+                                interaction: {
+                                    intersect: false,
+                                },
+                                scales: {
+                                    x: {
+                                        display: true,
+                                        title: {
+                                            display: true
+                                        }
+                                    },
+                                    y: {
+                                        display: true,
+                                        title: {
+                                            display: true,
+                                        },
+                                        suggestedMin: 0,
+                                        suggestedMax: 25
+                                    }
+                                }
+                            },
                         });
                     </script>
                     <!-- 공지 -->
