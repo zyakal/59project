@@ -215,82 +215,6 @@ $sales_time_arr = explode(",", $sales_time);
             <div class="listing-card">
 
                 <ul class="listing-card__list">
-<<<<<<< HEAD
-            
-            
-            <!-- 공지 -->
-            <li class="listing-card__item">
-            <?=공지($card_name6,$store_notice)?>
-            </li>
-            <!-- 가게 소개 -->
-            <li class="listing-card__item">
-            <?=가게소개($card_name1, $store_info)?>
-            </li>
-            <!-- 가게 이미지 -->
-            <li class="listing-card__item">
-            <?=가게이미지($card_name3, $store_name)?>
-            </li>
-                            
-                    
-            <!-- 영업 요일 --> 
-            <li class="listing-card__item">             
-            <?=영업요일($card_name2,$week_value, $week_id, $sales_day_arr)?>
-            </li>
-                        
-            <!-- 영업 시간 -->
-            <li class="listing-card__item">        
-            <?=영업시간($card_name4,$sales_time_arr ) ?>
-            </li>  
-                        
-                        
-            <!-- 메뉴 등록 -->
-            <li class="listing-card__item">                    
-            <?=메뉴등록($card_name7, $menu_cate, $menu_count_cd)?>
-            </li>
-            
-           
-        <!-- 메뉴 편집 -->
-                    
-            <li class="listing-card__item">
-                <div id='store_menu_edit' class='listing-card__info--top'>
-                    <strong class='listing-card__name'> <?=$card_name8?> > </strong>
-                        
-                </div>
-                <?php 
-                
-                $row = menu_edit($param);
-                foreach($row as $item) {
-                    $menu_num = $item['menu_num'];
-                    $store_menu_cate = $item['menu_cate'];
-                    $menu_nm = $item['menu_nm'];
-                    $price = $item['price'];
-                    $subed_price = $item['subed_price'];
-                    $subed_count = $item['subed_count'];
-                    $cd_unit = $item['cd_unit'];
-                    $menu_intro = $item['menu_intro'];
-                    $menu_photo = $item['menu_photo'];
-                    $menu_img =  "../img/store/" . $store_name . "/Menu_img/" .$menu_num."/" .$menu_photo;
-                    $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
-                    
-                
-                    echo '<div><img id="menu_img_edit" class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
-                
-                    // $_GET[menu_detail]
-                    
-                    echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>  <div class='detail_ctnt'>
-                    <form action='store_menu_edit.php' method='post' enctype='multipart/form-data'>";
-                    
-                    메뉴편집($menu_num, $menu_nm, $menu_intro,$price,$subed_price, $store_menu_cate,$subed_count,$cd_unit);
-                    echo "</div></form>";
-                    
-                    
-                }
-                ?>
-                </form>  
-                </div>                        
-            </li>
-                
-=======
                     <!-- 월매출 그래프 -->
                     <li class="listing-card__item">
                         <div class="item__box">
@@ -537,7 +461,6 @@ $sales_time_arr = explode(",", $sales_time);
 
                     </li>
             </div>
->>>>>>> 71c3c2cb2696dfee8462aa9da4224334054cd933
         </div>
     </section>
 
