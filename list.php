@@ -156,7 +156,7 @@ $get_cate_nm = $_GET['cate_nm'];
             //a태그 대신 자바스크립트로 페이지 이동
             const row = document.querySelector('#nav__right');
             row.addEventListener("click", function() {
-                location.href = `map.php`;
+                location.href = `map_test.php`;
             });
 
 
