@@ -247,51 +247,45 @@
            
         <!-- 메뉴 편집 -->
                     
-                <li class="listing-card__item">
+            <li class="listing-card__item">
+                <div id='store_menu_edit' class='listing-card__info--top'>
+                    <strong class='listing-card__name'> <?=$card_name8?> > </strong>
                         
-                        
-                        <div id='store_menu_edit' class='listing-card__info--top'>
-                            <strong class='listing-card__name'> <?=$card_name8?> > </strong>
-                                
-                        </div>
-                        <?php 
-                        
-                        $row = menu_edit($param);
-                        foreach($row as $item) {
-                            $menu_num = $item['menu_num'];
-                            $store_menu_cate = $item['menu_cate'];
-                            $menu_nm = $item['menu_nm'];
-                            $price = $item['price'];
-                            $subed_price = $item['subed_price'];
-                            $subed_count = $item['subed_count'];
-                            $cd_unit = $item['cd_unit'];
-                            $menu_intro = $item['menu_intro'];
-                            $menu_photo = $item['menu_photo'];
-                            $menu_img =  "../img/store/" . $store_name . "/Menu_img/" .$menu_num."/" .$menu_photo;
-                            $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
-                            
-                        
-                            echo '<div><img id="menu_img_edit" class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
-                        
-                            // $_GET[menu_detail]
-                            
-                            echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>  <div class='detail_ctnt'>
-                            <form action='store_menu_edit.php' method='post' enctype='multipart/form-data'>";
-                            
-                            메뉴편집($menu_num, $menu_nm, $menu_intro,$price,$subed_price, $store_menu_cate,$subed_count,$cd_unit);
-                            echo "</div></form>";
-                            
-                            
-                        }
-                        ?>
-                        </form>
-                          
-                        
-
-
-                        
-                </li>
                 </div>
+                <?php 
+                
+                $row = menu_edit($param);
+                foreach($row as $item) {
+                    $menu_num = $item['menu_num'];
+                    $store_menu_cate = $item['menu_cate'];
+                    $menu_nm = $item['menu_nm'];
+                    $price = $item['price'];
+                    $subed_price = $item['subed_price'];
+                    $subed_count = $item['subed_count'];
+                    $cd_unit = $item['cd_unit'];
+                    $menu_intro = $item['menu_intro'];
+                    $menu_photo = $item['menu_photo'];
+                    $menu_img =  "../img/store/" . $store_name . "/Menu_img/" .$menu_num."/" .$menu_photo;
+                    $adr = "this.src='https://cdn.pixabay.com/photo/2015/12/22/04/00/photo-1103594_960_720.png'";
+                    
+                
+                    echo '<div><img id="menu_img_edit" class="menu_img" src="' . $menu_img . '" onerror="' . $adr . '" >';
+                
+                    // $_GET[menu_detail]
+                    
+                    echo "$menu_nm 1달 구독 <span class='detail__icon' ><i class='fa-solid fa-bars'></i></span><br>  <div class='detail_ctnt'>
+                    <form action='store_menu_edit.php' method='post' enctype='multipart/form-data'>";
+                    
+                    메뉴편집($menu_num, $menu_nm, $menu_intro,$price,$subed_price, $store_menu_cate,$subed_count,$cd_unit);
+                    echo "</div></form>";
+                    
+                    
+                }
+                ?>
+                </form>  
+                </div>                        
+            </li>
+                
         </div>
         </section>
     
