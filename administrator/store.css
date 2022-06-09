@@ -225,7 +225,6 @@ textarea {
   display: flex;
   justify-content: space-around;
 }
-
 /* ------------------탭 토글 ---------------------- */
 .tabs__toggle.is-active {
   font-weight: bold;
@@ -618,4 +617,17 @@ body.dark .switch::before {
 .filereader .image-input__pseudo,
 .filereader .image-input__thumb {
   height: 300px;
+}
+
+/* -----------------------이미지 삽입 끝------------------------------- */
+.menu_img {
+  width: 50px !important;
+  height: 50px !important;
+}
+#menu_img_edit {
+  border-radius: 50%;
+}
+
+.menu_detail {
+  cursor: pointer;
 }
