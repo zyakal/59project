@@ -33,7 +33,7 @@ if (isset($_SESSION['login_user'])) {
 
         <header>
             <?php
-            include_once "header.php";
+            include_once "header_plus_home.php";
             ?>
         </header>
 
