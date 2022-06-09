@@ -101,6 +101,9 @@ $sales_time_arr = explode(",", $sales_time);
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <!-- chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- 이미지 input -->
+
+    <link rel="stylesheet" href="../css/components/image-input.css">
     <link rel="stylesheet" href="store.css">
 
     <title>사업자 메인 페이지</title>
@@ -400,6 +403,7 @@ $sales_time_arr = explode(",", $sales_time);
                     <!-- 가게 이미지 -->
                     <li class="listing-card__item">
                         <?= 가게이미지($card_name3, $store_name) ?>
+                        <script src="../js/image-input.js"></script>
                     </li>
 
 
@@ -472,27 +476,26 @@ $sales_time_arr = explode(",", $sales_time);
                             <div class='listing-card__info'>
                                 <div class='listing-card__info--top'>
                                     <strong class='listing-card__name'> 주문 현황 > </strong>
-                                        <?php
-                                            $row = reserv_menu($store_num);
-                                            if(isset($row)){
-                                                foreach($row as $item){
-                                                    if(isset($item['cd_unit']) && isset($item['subed_count']) && isset($item['reservation_date'])){
-                                                        $subed_count = $item['subed_count'];
-                                                        $reserv_at = $item['reservation_date'];
-                                                        $cd_unit = $item['cd_unit'];
-                                                        echo $subed_count. $reserv_at. $cd_unit;
-                                                    }
-                                                    
-                                                }
+                                    <?php
+                                    $row = reserv_menu($store_num);
+                                    if (isset($row)) {
+                                        foreach ($row as $item) {
+                                            if (isset($item['cd_unit']) && isset($item['subed_count']) && isset($item['reservation_date'])) {
+                                                $subed_count = $item['subed_count'];
+                                                $reserv_at = $item['reservation_date'];
+                                                $cd_unit = $item['cd_unit'];
+                                                echo $subed_count . $reserv_at . $cd_unit;
                                             }
-                                            
-                                        ?>
-                                        <span>
-                                            <button class='btn' type='reset' >취소</button>
-                                            <button class='btn' type='submit' >등록</button>
-                                        </span>
+                                        }
+                                    }
+
+                                    ?>
+                                    <span>
+                                        <button class='btn' type='reset'>취소</button>
+                                        <button class='btn' type='submit'>등록</button>
+                                    </span>
                                 </div>
-                            <div> &nbsp </div>
+                                <div> &nbsp </div>
                     </li>
 
                     <!-- 주문 완료
