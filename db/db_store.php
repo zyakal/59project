@@ -266,12 +266,16 @@ function menu_num_load_edit(){
 
 function reserv_menu(&$store_num){    
     $sql = 
-    "   SELECT * FROM t_usedsub A
-        INNER JOIN t_sub B
-        ON A.sub_num = B.sub_num
-        INNER JOIN t_menu C
-        ON B.store_num = C.store_num
+    "   SELECT A.remaining_count, B.menu_nm, C.cd_sub_status, C.reservation_date, D.user_nm
+        FROM t_sub A
+        INNER JOIN t_menu B
+        ON A.menu_num = B.menu_num
+        INNER JOIN t_usedsub C
+        ON A.sub_num = C.sub_num
+        INNER JOIN t_user D
+        ON A.user_num = D.user_num
         WHERE B.store_num = $store_num
+        AND C.cd_sub_status = 0
 
     ";
     $conn = get_conn();
@@ -281,4 +285,3 @@ function reserv_menu(&$store_num){
 }
 
 
-}
