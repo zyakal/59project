@@ -20,9 +20,10 @@ function makeBasketBox(list) {
     let basketBox = document.createElement("div");
     basketBox.className += "basket__box";
     basketBox.id = `box${key}`;
+    let imgsrc = `img/store/${list[key].store_nm}/Menu_img/${list[key].menu_num}/${list[key].menu_photo}`;
     basketBox.innerHTML = ` 
                 <div class="basket__img">
-                    <img src="${menuPhoto}">
+                    <img src="${imgsrc}">
                 </div>
                 <div class="basket__menu-nm">${menuName}</div>
                 <div class="basket__nm-price">
