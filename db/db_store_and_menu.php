@@ -22,7 +22,9 @@ function select_store_menus(&$param)
     $store_num = $param['store_num'];
 
     $conn = get_conn();
-    $sql = "SELECT * FROM t_menu WHERE store_num={$store_num}";
+    $sql = "SELECT A.*, B.store_nm FROM t_menu A 
+    INNER JOIN t_store B 
+    ON A.store_num = B.store_num WHERE A.store_num={$store_num}";
 
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
