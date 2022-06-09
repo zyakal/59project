@@ -4,7 +4,9 @@
 -->
 <?php
 session_start();
-$user_info = $_SESSION['login_user'];
+if (isset($_SESSION['login_user'])) {
+    $user_info = $_SESSION['login_user'];
+}
 
 if (isset($_GET['user_num'])) {
     if ($_GET['user_num'] !== $user_info['user_num']) { ?>
@@ -18,19 +20,25 @@ if (isset($_GET['user_num'])) {
 
 include_once "db/db_user.php";
 
-$param = [
-    'user_num' => $user_info['user_num']
-];
+if (isset($_SESSION['login_user'])) {
+    $param = [
+        'user_num' => $user_info['user_num']
+    ];
 
-$coupon_count = 0;
-$sub_count = 0;
-$review_count = 0;
-if (user_coupon_count($param) !== null) {
-    $coupon_count = user_coupon_count($param);}
-if (user_sub_count($param) !== null) {
-    $sub_count = user_sub_count($param);}
-if (user_review_count($param) !== null) {
-    $review_count = user_review_count($param);}
+
+    $coupon_count = 0;
+    $sub_count = 0;
+    $review_count = 0;
+    if (user_coupon_count($param) !== null) {
+        $coupon_count = user_coupon_count($param);
+    }
+    if (user_sub_count($param) !== null) {
+        $sub_count = user_sub_count($param);
+    }
+    if (user_review_count($param) !== null) {
+        $review_count = user_review_count($param);
+    }
+}
 
 $page_name = "마이페이지";
 ?>
