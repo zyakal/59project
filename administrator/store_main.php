@@ -34,7 +34,9 @@ $card_name5 = "영업 임시휴일";
 $card_name6 = "공지 한마디";
 $card_name7 = "메뉴 등록";
 $card_name8 = "메뉴 편집";
-$card_name10 = "쿠폰 추가";
+$card_name9 = "쿠폰 추가";
+$card_name10 = "주문 현황";
+$card_name11 = "메뉴 접수";
 
 
 
@@ -456,12 +458,41 @@ $sales_time_arr = explode(",", $sales_time);
                         }
                         ?>
                         </form>
-
-
-
-
-
                     </li>
+
+                    <!-- 주문 현황 -->
+                    <!-- 
+                    이름
+                    예약 시간 09:30 (t_usedsub 에서 reservation_dat)  취소/접수 버튼
+                    구독 메뉴 아메리카노(t_menu의 menu_nm) 총 12회(t_menu의 subed_count / cd_unit) 남음
+                    취소사유 -->
+                    <li class="listing-card__item">
+                        <form class='listing-card__form' id='store_info' action='store_main_intro.php' method='post'>
+
+                            <div class='listing-card__info'>
+                                <div class='listing-card__info--top'>
+                                    <strong class='listing-card__name'> 주문 현황 > </strong>
+                                        <span>
+                                            <button class='btn' type='reset' >취소</button>
+                                            <button class='btn' type='submit' >등록</button>
+                                        </span>
+                                </div>
+                            <div> &nbsp </div>
+                    </li>
+
+                    <!-- 주문 완료
+
+                    <li class="listing-card__item">
+                        <div class='listing-card__info--top'>
+                            <strong class='listing-card__name'> 주문 접수 > </strong>
+                                <span>
+                                    <button class='btn' type='reset' >취소</button>
+                                    <button class='btn' type='submit' >등록</button>
+                                </span>
+                        </div>
+                        <div> &nbsp </div>
+                    </li> -->
+
             </div>
         </div>
     </section>
