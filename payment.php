@@ -1,5 +1,18 @@
 <?php
 $page_name = "결제하기";
+session_start();
+
+//작업용 임시
+// $_SESSION['login_user']['user_num'] = 1;
+
+if (isset($_SESSION['login_user'])) {
+    $login_user = $_SESSION['login_user'];
+} else {
+    echo "<script>
+    alert('로그인 후 이용 가능합니다.');
+    window.location.href = 'login.php';
+    </script>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +83,21 @@ $page_name = "결제하기";
     document.querySelector('.payment__button').onclick = goPayment;
 
     function goPayment() {
-        alert('준비중입니다');
+        console.log(localStorage);
+        let itemListJson = localStorage.getItem('itemList');
+        let basket = JSON.stringify(sessionStorage);
+        localStorage.removeItem('itemList');
+        console.log(itemListJson);
+        console.log(basket);
+        fetch(`payment_proc.php?itemList=${itemListJson}&basket=${basket}`)
+            .then((res) => {
+                console.log(res);
+                if (res.ok) {
+                    sessionStorage.clear();
+                    location.href = 'sub_manage.php';
+                }
+            });
+        //t_sub에 정보담고 sub_manage.php로이동
 
     }
 </script>
