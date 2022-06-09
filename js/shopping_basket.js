@@ -42,10 +42,8 @@ function makeBasketBox(list) {
     basketContainer.append(basketBox);
 
     totalPrice += sumPrice;
-    document.getElementsByClassName("totalPrice")[0].innerText =
-      totalPrice + "원";
-    document.getElementsByClassName("totalPrice")[1].innerText =
-      totalPrice + "원";
+    document.getElementsByClassName("totalPrice")[0].innerText = totalPrice + "원";
+    document.getElementsByClassName("totalPrice")[1].innerText = totalPrice + "원";
     sessionStorage["totalPrice"] = totalPrice;
     let countMinus = document.querySelector(`#minus${key}`);
     countMinus.addEventListener("click", function (e) {
@@ -83,24 +81,26 @@ function changeCount(key, pm) {
     sessionStorage.removeItem(key);
     document.getElementById(`box${key}`).remove();
   } else {
-    document.getElementById(`count${key}`).innerText =
-      sessionStorage.getItem(key);
+    document.getElementById(`count${key}`).innerText = sessionStorage.getItem(key);
   }
 
   let sumPrice = prices[key] * sessionStorage.getItem(key);
   if (sumPrice != 0) {
     document.getElementById(`sumPrice${key}`).innerText = sumPrice;
   }
-  document.getElementsByClassName("totalPrice")[0].innerText =
-    totalPrice + "원";
-  document.getElementsByClassName("totalPrice")[1].innerText =
-    totalPrice + "원";
+  document.getElementsByClassName("totalPrice")[0].innerText = totalPrice + "원";
+  document.getElementsByClassName("totalPrice")[1].innerText = totalPrice + "원";
   sessionStorage["totalPrice"] = totalPrice;
   checkBoxCount();
 }
 
 function goPayment() {
-  location.href = "payment.php";
+  if (sessionStorage.length == 0) {
+    alert("장바구니에 상품이 없습니다");
+  } else {
+    localStorage.setItem("itemList", JSON.stringify(itemList));
+    location.href = "payment.php";
+  }
 }
 function setScroll() {
   let payBoxH = document.querySelector(".basket-payment").clientHeight;
