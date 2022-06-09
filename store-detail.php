@@ -87,7 +87,12 @@ $cate = '';
         <!-- main -->
         <main>
             <div class="store--img--box">
-                <img src="https://images.unsplash.com/photo-1564327368633-151ef1d45021?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="">
+                <?php if($store_info["store_photo"] === 'null') {
+                    print "<img src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png' alt=''>";
+                }else {
+                    print "<img src='img/store/{$store_info["store_nm"]}/Main_img/{$store_info["store_photo"]}'>";
+                }?>
+                <!-- <img src="https://images.unsplash.com/photo-1564327368633-151ef1d45021?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt=""> -->
             </div>
             <div class="store-main">
                 <h1><?= $store_info['store_nm'] ?></h1>
@@ -151,7 +156,7 @@ $cate = '';
                                 <div class="menu-list">
                                     <div class="menu-info">
                                         <div class="menu_num" style="display: none;"><?= $menu['menu_num'] ?></div>
-                                        <img src="https://images.unsplash.com/photo-1632789395770-20e6f63be806?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=839&q=80" alt="">
+                                        <?php $menu["menu_photo"] !== null ? print "<img src='img/store/{$menu["store_nm"]}/Menu_img/{$menu["menu_num"]}/{$menu["menu_photo"]}'>" : print "<img src='img/store/sub_basic'>";?>
                                         <div class="menu-text">
                                             <h2 class="menu-info__name"><?= $menu['menu_nm'] ?></h2>
                                             <div class="menu-info__count">월 <?= $menu['subed_count'] ?>회</div>
@@ -159,7 +164,7 @@ $cate = '';
                                     </div>
                                     <h2 class="menu--price"><?= $menu['subed_price'] ?>원</h2>
                                 </div>
-                            <?php } ?>
+                            <?php }; ?>
                         </div>
                     </div>
                     <!-- -------- 가게정보 -------- -->

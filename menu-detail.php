@@ -56,7 +56,7 @@ if ($menu['cd_unit'] == 2) {
                 </div>
             </div>
             <div class="menu--img">
-                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1637&q=80" alt="">
+            <?php $menu["menu_photo"] !== null ? print "<img src='img/store/{$menu["store_nm"]}/Menu_img/{$menu["menu_num"]}/{$menu["menu_photo"]}'>" : print "<img src='img/store/sub_basic'>"?>
             </div>
             <div class="menu--box">
                 <!-- 정보 -->
