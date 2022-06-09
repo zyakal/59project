@@ -106,48 +106,13 @@ $login_user = $_SESSION['login_user'];
                         <?php }
                         } ?>
                     </div>
-                <?php } else { ?>
+                <?php } else { 
+                    $local = '<script>JSON.parse(localStorage.getItem(my_addr))</script>';
+                    print $local;
+                    ?>
                     <script>
                         if (localStorage.getItem('my_addr') !== null) {
-                            <?php
-                               $result = sel_store_list();
-                               while ($row = mysqli_fetch_assoc($result)) { ?>
-                                let store_num = '<?php echo $row['store_num']?>';
-                                let store_nm = '<?php echo $row['store_nm']?>';
-                                let store_photo = '<?php echo $row['store_photo']?>';
-                                let info = '<?php echo $row['info']?>';
-                                let store_lat = '<?php echo $row['store_lat']?>';
-                                let store_lng = '<?php echo $row['store_lng']?>';
-
-                                document.write(`<a href="store-detail.php?store_num=${store_num}" class="displayA">`);
-                                document.write('<div class="list__item">');
-                                document.write(`<div class="list__store__img"><img src="img/store/${store_nm}/Main_img/${store_photo}"></div>`);
-                                document.write('<div class="list__store__info">');
-                                document.write(`<div class="store__info__nm">${store_nm}</div>`);
-                                document.write(`<div class="store__info__info">${info}</div>`);
-                                            <?php
-                                            $param = [
-                                                'store_num' => $row['store_num']
-                                            ];
-                                            $star = store_star($param);
-                                            if (!$star) {
-                                                $star = "";
-                                            } else {
-                                                $star = $star['star'];
-                                            }
-                                            if ($star == "") { ?>
-                                            //    document.write('<div class='store__info__star_rating'><i class='fa-solid fa-star'></i></div>');
-                                            <?php } else { ?>
-                                                // document.write('<div class='store__info__star_rating'><i class='fa-solid fa-star'><?= intval($star) ?></i></div>');
-                                            <?php } ?>
-                                            document.write('</div>');
-                                            document.write(`<input type="hidden" name="" value="${store_lat}" id="store_lat">`);
-                                            document.write(`<input type="hidden" name="" value="${store_lng}" id="store_lng">`);
-                                            document.write('<div class="list__store__location"><i class="fa-solid fa-location-dot"></i> </div>');
-                                            document.write('</div>');
-                                            document.write('</a>');
-                        <?php } ?>
-
+                           
                         } else {
                             document.write('<div class="recommend--nav">로그인, 거리설정 전</div>');
                             document.write('</div>');
