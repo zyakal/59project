@@ -177,7 +177,7 @@ $login_user = $_SESSION['login_user'];
         }
         for (let i = 0; i < storeLat.length; i++) {
             let result = getDistanceFromLatLonInKm(lat, lng, storeLat[i].value, storeLng[i].value);
-            if(result < 5) {
+            if (result < 5) {
                 locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
             } else {
                 displayA[i].style.display = 'none';
