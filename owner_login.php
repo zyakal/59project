@@ -11,7 +11,7 @@ $wp = "";
 //아이디 또는 비밀번호 일치하는지 체크 후 로그인
 if(isset($_POST['store_email']) && isset($_POST['store_pw']))
 {
-$param = [
+    $param = [
         'store_email' => $_POST['store_email'],
         'store_pw' => $_POST['store_pw']
         ];

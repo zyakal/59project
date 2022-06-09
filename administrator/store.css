@@ -300,6 +300,9 @@ textarea {
   width: 50px !important;
   height: 50px !important;
 }
+#menu_img_edit {
+  border-radius: 50%;
+}
 
 .menu_detail {
   cursor: pointer;
