@@ -59,3 +59,4 @@ details.forEach((detail, index) => {
     details[index].classList.toggle("show");
   });
 });
+
