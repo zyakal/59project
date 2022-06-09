@@ -279,6 +279,3 @@ function reserv_menu(&$store_num){
     mysqli_close($conn);
     return $result;
 }
-
-
-}
