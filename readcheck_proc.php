@@ -26,14 +26,8 @@ if($user_num !== $val['user_num'])
 $not_url = $val['not_url'];
 
 $result = upd_read($param);
-if($val['not_type'] == 4)
-{
+
     header("Location: $not_url");
-}
-else
-{
-    header("Location: not.php");
-}
 
 
 
