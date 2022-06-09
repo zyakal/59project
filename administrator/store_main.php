@@ -101,6 +101,9 @@ $sales_time_arr = explode(",", $sales_time);
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <!-- chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- 이미지 input -->
+
+    <link rel="stylesheet" href="../css/components/image-input.css">
     <link rel="stylesheet" href="store.css">
 
     <title>사업자 메인 페이지</title>
@@ -400,6 +403,7 @@ $sales_time_arr = explode(",", $sales_time);
                     <!-- 가게 이미지 -->
                     <li class="listing-card__item">
                         <?= 가게이미지($card_name3, $store_name) ?>
+                        <script src="../js/image-input.js"></script>
                     </li>
 
 
@@ -467,7 +471,6 @@ $sales_time_arr = explode(",", $sales_time);
                     구독 메뉴 아메리카노(t_menu의 menu_nm) 총 12회(t_menu의 subed_count / cd_unit) 남음
                     취소사유 -->
                     <li class="listing-card__item">
-                        
 
                         <div class='listing-card__info'>
                             <div class='listing-card__info--top'></div>
@@ -512,6 +515,7 @@ $sales_time_arr = explode(",", $sales_time);
                                     
                                 
                             <div> &nbsp </div>
+
                     </li>
 
                     <!-- 주문 완료
