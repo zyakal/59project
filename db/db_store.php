@@ -264,22 +264,72 @@ function menu_num_load_edit(){
 
 // 예약현황 불러오기
 
-function reserv_menu(&$store_num){    
+function reserve_menu(&$store_num){    
     $sql = 
-    "   SELECT A.remaining_count, B.menu_nm, C.cd_sub_status, C.reservation_date, D.user_nm
+    "   SELECT *
         FROM t_sub A
-        INNER JOIN t_menu B
-        ON A.menu_num = B.menu_num
-        INNER JOIN t_usedsub C
-        ON A.sub_num = C.sub_num
-        INNER JOIN t_user D
-        ON A.user_num = D.user_num
-        WHERE B.store_num = $store_num
-        AND C.cd_sub_status = 0
+        INNER JOIN t_usedsub B
+        ON A.sub_num = B.sub_num
+        WHERE A.store_num = $store_num
+        AND B.cd_sub_status = 0
 
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
+    mysqli_close($conn);
+    return $result;
+}
+
+function reserve_menu2($menu_num){
+    $sql = 
+    "   SELECT menu_nm FROM t_menu
+        WHERE menu_num = $menu_num
+    ";
+    $conn = get_conn();
+    $row = mysqli_query($conn, $sql);
+    foreach($row as $val){
+        $result = $val['menu_nm'];
+    }
+    mysqli_close($conn);
+    return $result;
+}
+
+function reserve_menu3($user_num){
+    $sql = 
+    "   SELECT user_nm FROM t_user
+        WHERE user_num = $user_num
+    ";
+    $conn = get_conn();
+    $row = mysqli_query($conn, $sql);
+    foreach($row as $val){
+        $result = $val['user_nm'];
+    }
+    mysqli_close($conn);
+    return $result;
+}
+
+function reserve_menu4($menu_num){
+    $sql = 
+    "   SELECT cd_unit FROM t_menu
+        WHERE menu_num = $menu_num
+    ";
+    $conn = get_conn();
+    $row = mysqli_query($conn, $sql);
+    foreach($row as $val){
+        $result = $val['cd_unit'];
+    }
+    mysqli_close($conn);
+    return $result;
+}
+
+function accept($sub_num){
+    $sql = 
+    "   UPDATE t_usedsub
+        SET cd_sub_status = 1
+        where sub_num = $sub_num
+    ";
+    $conn = get_conn();
+    $result = mysqli_query($conn, $sql);    
     mysqli_close($conn);
     return $result;
 }
