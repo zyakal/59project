@@ -11,7 +11,8 @@
         </a>
     </div>
     <div class="nav--notice">
-        <a href="not.php">
+        <a href="home.php">
+            <i class="fa-solid fa-house"></i>
         </a>
     </div>
 </nav>
