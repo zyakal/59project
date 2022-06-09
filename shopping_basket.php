@@ -42,7 +42,6 @@ if (isset($_SESSION['login_user'])) {
     let basketList = Object.keys(sessionStorage);
     console.log(basketList);
     let basketListJson = JSON.stringify(basketList);
-
     console.log(basketListJson);
 
     let itemList;
