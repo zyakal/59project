@@ -59,7 +59,7 @@ function printSubList() {
 <div class='sub-list__price'>${list[i].subed_price}원</div>
 <div class='sub-list__save-price'>총 할인금액 ${list[i].save_price}원</div>
 <div class='sub-list__button'>
-<div class='sub-list__detail'>상세페이지</div>
+<div class='sub-list__detail' onclick="moveToStoreDetail(${list[i].store_num})">상세페이지</div>
 <div class='sub-list__reservation' onclick="moveToReservation(${i})">예약하기</div>
 </div>
 `;
@@ -69,6 +69,10 @@ function printSubList() {
   if (nowSubCheck == 0) {
     nowSubNone();
   }
+}
+
+function moveToStoreDetail(store_num) {
+  location.href = `store-detail.php?store_num=${store_num}`;
 }
 
 function getValidity(payDateTime, endDateTime) {
