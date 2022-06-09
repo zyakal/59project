@@ -16,21 +16,21 @@ if (isset($_GET['user_num'])) {
     }
 }
 
+include_once "db/db_user.php";
+
 $param = [
     'user_num' => $user_info['user_num']
 ];
+
 $coupon_count = 0;
 $sub_count = 0;
 $review_count = 0;
-if ($coupon_count !== 0) {
-    $coupon_count = user_coupon_count($param);
-}
-if ($sub_count !== 0) {
-    $sub_count = user_sub_count($param);
-}
-if ($review_count !== 0) {
-    $review_count = user_review_count($param);
-}
+if (user_coupon_count($param) !== null) {
+    $coupon_count = user_coupon_count($param);}
+if (user_sub_count($param) !== null) {
+    $sub_count = user_sub_count($param);}
+if (user_review_count($param) !== null) {
+    $review_count = user_review_count($param);}
 
 $page_name = "마이페이지";
 ?>
@@ -81,7 +81,7 @@ $page_name = "마이페이지";
                     <a href="sub_manage.php">
                         <div class="myinfo_box">
                             <div class="myinfo_box_text">구독관리</div>
-                            <div class="myinfo_box_small_text">2개</div>
+                            <div class="myinfo_box_small_text"><?= $sub_count ?>개</div>
                         </div>
                     </a>
                     <a href="user_review.php">
