@@ -463,7 +463,7 @@ $sales_time_arr = explode(",", $sales_time);
                     <!-- 주문 현황 -->
                     <!-- 
                     이름
-                    예약 시간 09:30 (t_usedsub 에서 reservation_dat)  취소/접수 버튼
+                    예약 시간 09:30 (t_usedsub 에서 reservation_date)  취소/접수 버튼
                     구독 메뉴 아메리카노(t_menu의 menu_nm) 총 12회(t_menu의 subed_count / cd_unit) 남음
                     취소사유 -->
                     <li class="listing-card__item">
@@ -472,6 +472,21 @@ $sales_time_arr = explode(",", $sales_time);
                             <div class='listing-card__info'>
                                 <div class='listing-card__info--top'>
                                     <strong class='listing-card__name'> 주문 현황 > </strong>
+                                        <?php
+                                            $row = reserv_menu($store_num);
+                                            if(isset($row)){
+                                                foreach($row as $item){
+                                                    if(isset($item['cd_unit']) && isset($item['subed_count']) && isset($item['reservation_date'])){
+                                                        $subed_count = $item['subed_count'];
+                                                        $reserv_at = $item['reservation_date'];
+                                                        $cd_unit = $item['cd_unit'];
+                                                        echo $subed_count. $reserv_at. $cd_unit;
+                                                    }
+                                                    
+                                                }
+                                            }
+                                            
+                                        ?>
                                         <span>
                                             <button class='btn' type='reset' >취소</button>
                                             <button class='btn' type='submit' >등록</button>

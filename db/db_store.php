@@ -264,12 +264,13 @@ function menu_num_load_edit(){
 
 // 예약현황 불러오기
 
-function reserv_menu(){
-    $store_num = '';
+function reserv_menu(&$store_num){    
     $sql = 
     "   SELECT * FROM t_usedsub A
         INNER JOIN t_sub B
         ON A.sub_num = B.sub_num
+        INNER JOIN t_menu C
+        ON B.store_num = C.store_num
         WHERE B.store_num = $store_num
 
     ";
@@ -277,4 +278,7 @@ function reserv_menu(){
     $result = mysqli_query($conn, $sql);
     mysqli_close($conn);
     return $result;
+}
+
+
 }
