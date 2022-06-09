@@ -42,6 +42,7 @@ if (isset($_SESSION['login_user'])) {
     let basketList = Object.keys(sessionStorage);
     console.log(basketList);
     let basketListJson = JSON.stringify(basketList);
+
     console.log(basketListJson);
 
     let itemList;
@@ -79,7 +80,7 @@ if (isset($_SESSION['login_user'])) {
 
         <header>
             <?php
-            include_once "header.php";
+            include_once "header_plus_home.php";
             ?>
         </header>
 
