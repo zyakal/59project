@@ -220,9 +220,9 @@ function user_coupon_count(&$param)
 function user_sub_count(&$param)
 {
     $user_num = $param['user_num'];
+    $day = date("Y-m-d");
 
-    $sql = "SELECT COUNT(coupon_num) as cnt FROM t_sub WHERE user_num = $user_num
-    ";
+    $sql = "SELECT COUNT(sub_num) as cnt FROM t_sub WHERE user_num = $user_num and end_date > '$day'";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
@@ -234,7 +234,10 @@ function user_review_count(&$param)
 {
     $user_num = $param['user_num'];
 
-    $sql = "SELECT COUNT(review_num) as cnt FROM t_review WHERE user_num = $user_num
+    $sql = "SELECT COUNT(not_num) as cnt FROM t_not
+            where user_num = '$user_num' 
+            and not_read_check = 0
+            and not_type = 7
     ";
     $conn = get_conn();
     $result = mysqli_query($conn, $sql);
