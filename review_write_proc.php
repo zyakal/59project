@@ -10,4 +10,4 @@ $param = [
 print_r($param);
 $result = ins_menu_review($param);
 print_r($result);
-// header("Location: store-detail.php?store_num={$param['store_num']}");
+header("Location: store-detail.php?store_num={$param['store_num']}");
