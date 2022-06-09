@@ -75,10 +75,10 @@ $login_user = $_SESSION['login_user'];
                             ];
                             $stores = sel_result_store($param);
                             while ($row = mysqli_fetch_assoc($stores)) { ?>
-                                <a href="store-detail.php?store_num=<?= $row['store_num'] ?>">
+                                <a href="store-detail.php?store_num=<?= $row['store_num'] ?>" class="displayA">
                                     <div class="list__item">
-                                        <!-- <div class="list__store__img"><img src="img/store/<?= $row['store_nm'] ?>/Main_img/<?= $row['store_photo'] ?>"></div> -->
-                                        <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
+                                        <div class="list__store__img"><img src="img/store/<?= $row['store_nm'] ?>/Main_img/<?= $row['store_photo'] ?>"></div>
+                                        <!-- <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div> -->
                                         <div class="list__store__info">
                                             <div class="store__info__nm"><?= $row['store_nm'] ?></div>
                                             <div class="store__info__info"><?= $row['info'] ?></div>
@@ -149,20 +149,11 @@ $login_user = $_SESSION['login_user'];
 
         const lat = JSON.parse(localStorage.getItem('my_addr'))['coords']['La'];
         const lng = JSON.parse(localStorage.getItem('my_addr'))['coords']['Ma'];
-        console.log(lat, lng);
-        // const url = `store_distance.php?my_lat=${lat}&my_lng=${lng}`;
-        // fetch(url).then((response) => {
-        //     console.log(response);
-        //     return response.json();
-        // }).then((element) => {
-        //     console.log(element);
-        // })
-
 
         const storeLat = document.querySelectorAll('#store_lat');
         const storeLng = document.querySelectorAll('#store_lng');
         const locat = document.querySelectorAll('.list__store__location');
-
+        const displayA = document.querySelectorAll('.displayA');
 
         function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
             function deg2rad(deg) {
@@ -179,7 +170,11 @@ $login_user = $_SESSION['login_user'];
         }
         for (let i = 0; i < storeLat.length; i++) {
             let result = getDistanceFromLatLonInKm(lat, lng, storeLat[i].value, storeLng[i].value);
-            locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
+            if(result < 5) {
+                locat[i].innerHTML += `${Math.round(result * 10) / 10} KM`;
+            } else {
+                displayA[i].style.display = 'none';
+            }
         }
     </script>
 </body>
