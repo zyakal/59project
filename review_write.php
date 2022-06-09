@@ -9,11 +9,12 @@ if (isset($_SESSION['login_user'])) {
   $login_user = $_SESSION['login_user'];
   $user_num = $login_user['user_num'];
 }
-$menu_num = $_POST['menu_num'];
-$user_num = 44;
+$menu_num = $_GET['menu_num'];
+// $user_num = 44;
 
 $param = [
-  'menu_num' => 4
+  'menu_num' => $menu_num,
+  'user_num' => $user_num
 ];
 
 $store_menu = select_one_menu($param);

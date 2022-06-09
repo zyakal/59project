@@ -63,8 +63,13 @@ $mag = $result_count['cnt'] . "개가 검색되었습니다.";
                     } ?>
                     <a href="store-detail.php?store_num=<?= $row['store_num'] ?>" class="displayA">
                         <div class="list__item">
-                            <!-- <div class="list__store__img"><img src="img/store/<?=$row['store_nm']?>/Main_img/<?=$row['store_photo']?>"></div> -->
-                            <div class="list__store__img"><img src="img/store/그린네일/Main_img/9c4708ab-ca93-745d-86b7-06eea7c5e0dc.jpg"></div>
+                            <div class="list__store__img">
+                                <?php if($row['store_photo'] === 'null') {
+                                    print "<img src='https://cdn.pixabay.com/photo/2020/04/17/19/48/city-5056657_960_720.png' alt=''>";
+                                } else {
+                                    print "<img src='img/store/{$row['store_nm']}/Main_img/{$row['store_photo']}'>";
+                                } ?>
+                            </div>
                             <div class="list__store__info">
                                 <div class="store__info__nm"><?= $row['store_nm'] ?></div>
                                 <div class="store__info__info"><?= $row['info'] ?></div>
