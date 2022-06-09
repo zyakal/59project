@@ -1,10 +1,12 @@
 <?php
 include_once "../db/db_store.php";
+include_once "../db/db_store_login.php";
 include_once "function.php";
 include_once "../check_reserve_for_store.php";
 session_start();
 
 $login = $_SESSION['login_store'];
+
 if (!isset($login)) {
     header("location: store_login.php");
 }
@@ -14,7 +16,7 @@ $store_num = $login['store_num'];
 $param = ["store_num" => $store_num];
 
 
-$result = login_store($login);
+$result = owner_login($login);
 
 $store_name = $result['store_nm'];
 $store_info = $result['store_info'];
