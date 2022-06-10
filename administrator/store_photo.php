@@ -41,6 +41,7 @@
     // mkdir 폴더 만들기, (위치, 권한, true일 경우 만들 폴더가 여러개라도 만들어짐)
     $tmp_img = $_FILES['img']['tmp_name'];
     $imageUpload = move_uploaded_file($tmp_img, $target_full_path . "/" .$target_filenm); //파일이동 성공시 true, 실패시 false
+    echo $tmp_img . "---------" . $target_full_path . "----------" .$target_filenm;
     if($imageUpload) { //업로드 성공!
         
         //이전에 등록된 프사가 있으면 삭제!      
@@ -56,12 +57,13 @@
             "store_photo" => $target_filenm,
             "store_email" => $login["store_email"]
         ];
-
+        
         $result = upd_store_photo($param);
         $login["store_photo"] = $target_filenm;
         
         Header("Location: store_main.php");
     } else { //업로드 실패!
+        
         echo "업로드 실패";
     }
     

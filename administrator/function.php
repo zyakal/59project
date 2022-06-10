@@ -10,8 +10,7 @@ function card_top($card_name)
                 <button class='btn' type='reset' >취소</button>
                 <button class='btn' type='submit' >등록</button>
             </span>
-        </div>
-        <div> &nbsp </div>";
+        </div>";
 }
 function weeks($week_value, $week_id, $sales_day_arr)
 {
@@ -300,15 +299,15 @@ function 영업요일($card_name2, $week_value, $week_id, $sales_day_arr)
 function 영업시간($card_name4, $sales_time_arr)
 {
     echo "<form id='store_time' action='store_main_sales_time.php' method='post'>
-                        <div class='listing-card__info'>";
+                        <div class='listing-card__info' 'store_time'>";
     card_top($card_name4);
-    echo "<div> <h3>오픈 시간 $sales_time_arr[0] </h3>";
+    echo "<div> 오픈 시간 $sales_time_arr[0]<span>";
     sales_time_open_hour();
     sales_time_open_minute();
-    echo "</div><div><h3>마감 시간 $sales_time_arr[1]</h3>";
+    echo "</div></span><div>마감 시간 $sales_time_arr[1]<span>";
     sales_time_close_hour();
     sales_time_close_minute();
-    echo "</div> </div> </form>";
+    echo "</div></span></div> </form>";
 }
 
 function 메뉴등록($card_name7, $menu_cate, $menu_count_cd)
@@ -376,3 +375,4 @@ function 메뉴편집($menu_num, $menu_nm, $menu_intro, $price, $subed_price, $s
     menu_count_cd_edit($cd_unit);
     echo "</div> </div>";
 }
+
