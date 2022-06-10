@@ -1,7 +1,6 @@
 <?php
 session_start();
 $login_user = $_SESSION['login_user'];
-
 ?>
 <!-- 은지 - Home -->
 <!DOCTYPE html>
@@ -113,13 +112,55 @@ $login_user = $_SESSION['login_user'];
                         } ?>
                     </div>
                 <?php } else { 
-                    $local = '<script>JSON.parse(localStorage.getItem(my_addr))</script>';
-                    print $local;
                     ?>
                     <script>
                         if (localStorage.getItem('my_addr') !== null) {
                            document.write('<div class="recommend--nav">거리순 추천</div>')
                            document.write('</div>');
+                           <?php  
+                            $dis_result = sel_store_list();
+                            while($d_row = mysqli_fetch_assoc($dis_result)) {
+                            $store_nm = $d_row['store_nm']; 
+                            $store_num = $d_row['store_num'];
+                            $store_lat = $d_row['store_lat'];
+                            $store_lng = $d_row['store_lng'];
+                            $store_info = $d_row['info'];
+                            $s_photo = $d_row['store_photo'];
+
+                            $param = [
+                                'store_num' => $store_num
+                            ];
+                            $star = store_star($param);
+                            if (!$star) {
+                                $star = "";
+                            } else {
+                                $star = $star['star'];
+                            }
+                            ?>
+                            document.write('<a href="store-detail.php?store_num=<?= $store_num ?>" class="displayA">');
+                            document.write('<div class="list__item">');
+                            document.write('<div class="list__store__img">');
+                            <?php if($s_photo == 'null') { ?>
+                                document.write('<img src="img/store_main.webp">');
+                            <?php } else { ?>
+                                document.write('<img src="img/store/<?=$store_nm?>/Main_img/<?=$s_photo?>">');
+                            <?php } ?>
+                            document.write('</div>');
+                            document.write('<div class="list__store__info">');
+                            document.write('<div class="store__info__nm"><?= $store_nm ?></div>');
+                            document.write('<div class="store__info__info"><?= $store_info ?></div>');         
+                            <?php if($star == "") { ?>
+                                 document.write('<div class="store__info__star_rating"><i class="fa-solid fa-star"></i></div>');
+                            <?php } else { ?>
+                                document.write('<div class="store__info__star_rating"><i class="fa-solid fa-star"><?= intval($star) ?></i></div>')
+                            <?php } ?>
+                            document.write('</div>');
+                            document.write('<input type="hidden" name="" value="<?= $store_lat ?>" id="store_lat">');
+                            document.write('<input type="hidden" name="" value="<?= $store_lng ?>" id="store_lng">');
+                            document.write('<div class="list__store__location"><i class="fa-solid fa-location-dot"></i> </div>');
+                            document.write('</div>');
+                            document.write('</a>');                           
+                        <?php }?>
                         } else {
                             document.write('<div class="recommend--nav">로그인, 거리설정 전</div>');
                             document.write('</div>');
@@ -127,7 +168,6 @@ $login_user = $_SESSION['login_user'];
                         }
                     </script>
                 <?php } ?>
-
             </div>
             <div id="kakao-talk-channel-chat-button" data-channel-public-id="_kxastb" data-title="consult" data-size="small" data-color="yellow" data-shape="pc" data-support-multiple-densities="true" class="home__main__kakao"></div>
         </main>
