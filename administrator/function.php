@@ -217,7 +217,7 @@ function 상단문구($store_name)
 {
     echo "<div class=''>
             <div class='main__header'>
-                <h2 class='main__title'> $store_name 사장님,<div><br>입금 예정금액은 210,000 원입니다.</div></h2>
+                <h2 class='main__title'> $store_name 사장님,<div><br>입금 예정금액은 <strong>210,000</strong>원입니다.</div></h2>
             </div>
         </div>";
 }
