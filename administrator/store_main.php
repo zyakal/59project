@@ -401,7 +401,7 @@ $sales_time_arr = explode(",", $sales_time);
                         <?= 가게소개($card_name1, $store_info) ?>
                     </li>
                     <!-- 가게 이미지 -->
-                    <li class="listing-card__item">
+                    <li class="listing-card__item card__store__img">
                         <?= 가게이미지($card_name3, $store_name) ?>
                         <script src="../js/image-input.js"></script>
                     </li>
@@ -413,7 +413,7 @@ $sales_time_arr = explode(",", $sales_time);
                     </li>
 
                     <!-- 영업 시간 -->
-                    <li class="listing-card__item">
+                    <li class="listing-card__item card__store__time">
                         <?= 영업시간($card_name4, $sales_time_arr) ?>
                     </li>
 
@@ -493,16 +493,16 @@ $sales_time_arr = explode(",", $sales_time);
                                                     $cd_unit_int = reserve_menu4($user_num);
                                                     $cd_unit_int==1 ? $cd_unit = "회" : $cd_unit = "개";
                                                     if($cd_sub_status==0){
-                                                    echo "  <div> $user_nm 님$sub_num</div> 
-                                                            <div> 예약 시간 $reserve_at 
-                                                                <form action='store_menu_reserve.php' method='post'>
+                                                    echo "  <div class='store_time_item'> $user_nm 님</div>
+                                                            <div class='store_time_item_ctnt'> <span class='store_time_item_ctnt_top'>예약 시간 $reserve_at </span>
+                                                                <form class='form_store_time store_time_item' action='store_menu_reserve.php' method='post'>
                                                                     <input name='reserve' value='$sub_num' style='display:none;'></input>
                                                                     <button class='btn' >취소</button>
                                                                     <button class='btn' onclick='<script>clickReserve()</script>'>접수</button>
                                                                 </form>
                                                                 
-                                                            </div> 
-                                                            <div>구독 메뉴 $menu_nm 총 $remain_count$cd_unit 남음 </div>";
+                                                            
+                                                                </div><div class='store_time_item store_time_item_ctnt_bottom'>구독 메뉴 $menu_nm 총 $remain_count$cd_unit 남음 </div>  <hr>";
                                                     }
                                                 }
                                                 
