@@ -1,4 +1,4 @@
-<script src="../js/check_reserve_for_store.js"></script>
+<script src="js/check_reserve_for_store.js"></script>
 <script>
     
     const storeNum = '<?=isset($_SESSION['login_store']) ? $_SESSION['login_store']['store_num']:0 ?>';

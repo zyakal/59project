@@ -493,7 +493,7 @@ $sales_time_arr = explode(",", $sales_time);
                                                     echo "  <div> $user_nm 님$sub_num</div> 
                                                             <div> 예약 시간 $reserve_at 
                                                                 <form action='store_menu_reserve.php' method='post'>
-                                                                    <input name='reserve' value='$sub_num' display='none'></input>
+                                                                    <input name='reserve' value='$sub_num' style='display:none;'></input>
                                                                     <button class='btn' >취소</button>
                                                                     <button class='btn' onclick='<script>clickReserve()</script>'>접수</button>
                                                                 </form>
