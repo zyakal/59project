@@ -72,20 +72,21 @@
             // 좌표로 도로명, 지번주소 가져오는 함수
             function getAddr(lat, lng) {
                 let geocoder = new kakao.maps.services.Geocoder();
-
                 let coord = new kakao.maps.LatLng(lat, lng);
+                console.log(coord);
                 let callback = function(result, status) {
                     if (status === kakao.maps.services.Status.OK) {
                         var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-                        // detailAddr += '<div>지번 주소 : ' + result[0].address.address_name + '</div>';
-                        detailAddr += result[0].address.address_name;
+            detailAddr += result[0].address.address_name;
+                        console.log(detailAddr);
                         // currentAddr.innerHTML = detailAddr;
                         my_address.value = detailAddr;
                         // ------------- 좌표를 로컬스토리지에 저장 -------------
                         const getAddr = localStorage.getItem('my_addr');
                         let parseAddr = JSON.parse(getAddr);
                         const setAddr = {
-                            title: result[0].road_address.address_name,
+                            // 도로명 주소가 없을 시 지번주소로 저장
+                            title: !!result[0].road_address ? result[0].road_address.address_name : result[0].address.address_name,
                             // 위도와 경도 저장
                             coords: coord
                         };
@@ -96,7 +97,7 @@
                         } else {
                             localStorage.setItem('my_addr', stringifyAddr);
                         }
-                        location.href = 'home.php';
+                        // location.href = 'home.php';
                     }
 
                 }
