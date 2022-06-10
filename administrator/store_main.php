@@ -101,6 +101,9 @@ $sales_time_arr = explode(",", $sales_time);
     <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
     <!-- chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- 이미지 input -->
+
+    <link rel="stylesheet" href="../css/components/image-input.css">
     <link rel="stylesheet" href="store.css">
 
     <title>사업자 메인 페이지</title>
@@ -400,6 +403,7 @@ $sales_time_arr = explode(",", $sales_time);
                     <!-- 가게 이미지 -->
                     <li class="listing-card__item">
                         <?= 가게이미지($card_name3, $store_name) ?>
+                        <script src="../js/image-input.js"></script>
                     </li>
 
 
@@ -462,37 +466,56 @@ $sales_time_arr = explode(",", $sales_time);
 
                     <!-- 주문 현황 -->
                     <!-- 
-                    이름
+                    구독자 이름 (t_user 의 user_nm)
                     예약 시간 09:30 (t_usedsub 에서 reservation_date)  취소/접수 버튼
                     구독 메뉴 아메리카노(t_menu의 menu_nm) 총 12회(t_menu의 subed_count / cd_unit) 남음
                     취소사유 -->
                     <li class="listing-card__item">
-                        <form class='listing-card__form' id='store_info' action='store_main_intro.php' method='post'>
 
-                            <div class='listing-card__info'>
-                                <div class='listing-card__info--top'>
-                                    <strong class='listing-card__name'> 주문 현황 > </strong>
-                                        <?php
-                                            $row = reserv_menu($store_num);
-                                            if(isset($row)){
-                                                foreach($row as $item){
-                                                    if(isset($item['cd_unit']) && isset($item['subed_count']) && isset($item['reservation_date'])){
-                                                        $subed_count = $item['subed_count'];
-                                                        $reserv_at = $item['reservation_date'];
-                                                        $cd_unit = $item['cd_unit'];
-                                                        echo $subed_count. $reserv_at. $cd_unit;
-                                                    }
+                        <div class='listing-card__info'>
+                            <div class='listing-card__info--top'></div>
+                                <strong class='listing-card__name'> 주문 현황 > </strong>
+                                    
+                                    <?php
+                                        $row = reserve_menu($store_num);
+                                        if(isset($row)){
+                                            foreach($row as $item){
+                                                if(isset($item['subed_count']) && isset($item['reservation_date'])){
                                                     
+                                                    $remain_count = $item['remaining_count'];
+                                                    $reserve_at = substr($item['reservation_date'],11,5);                                                        
+                                                    $menu_num = $item['menu_num'];
+                                                    $user_num = $item['user_num'];
+                                                    $sub_num = $item['sub_num'];
+                                                    $cd_sub_status = $item['cd_sub_status'];
+                                                    $menu_nm = reserve_menu2($menu_num);
+                                                    $user_nm = reserve_menu3($user_num);
+                                                    $cd_unit_int = reserve_menu4($user_num);
+                                                    $cd_unit_int==1 ? $cd_unit = "회" : $cd_unit = "개";
+                                                    if($cd_sub_status==0){
+                                                    echo "  <div> $user_nm 님$sub_num</div> 
+                                                            <div> 예약 시간 $reserve_at 
+                                                                <form action='store_menu_reserve.php' method='post'>
+                                                                    <input name='reserve' value='$sub_num' display='none'></input>
+                                                                    <button class='btn' >취소</button>
+                                                                    <button class='btn' onclick='<script>clickReserve()</script>'>접수</button>
+                                                                </form>
+                                                                
+                                                            </div> 
+                                                            <div>구독 메뉴 $menu_nm 총 $remain_count$cd_unit 남음 </div>";
+                                                    }
                                                 }
+                                                
                                             }
-                                            
-                                        ?>
-                                        <span>
-                                            <button class='btn' type='reset' >취소</button>
-                                            <button class='btn' type='submit' >등록</button>
-                                        </span>
-                                </div>
+                                        }
+                                        
+                                    ?>
+                                    </form>
+                                    
+                                    
+                                
                             <div> &nbsp </div>
+
                     </li>
 
                     <!-- 주문 완료
