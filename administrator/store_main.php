@@ -391,7 +391,7 @@ $sales_time_arr = explode(",", $sales_time);
                                 </div>
                             </div>
                         </div>
-                    </li>
+                    </li> 
                     <!-- 공지 -->
                     <li class="listing-card__item">
                         <?= 공지($card_name6, $store_notice) ?>
