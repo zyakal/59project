@@ -6,6 +6,7 @@ let divContainer1 = document.querySelector(".total-save-price");
 let divContainer2 = document.querySelector(".total-save-price__month");
 let subListContainer = document.querySelector(".sub-list");
 let monthSave = getSaveData();
+console.log(monthSave);
 
 console.log("list::::");
 console.log(list);
