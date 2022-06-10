@@ -1,6 +1,6 @@
 <?php
 // 192.168.0.70
-define("URL", "localhost");
+define("URL", "192.168.0.70");
 define("USERNAME", "root");
 define("PASSWORD", "1234");
 define("DB_NAME", "59project");
