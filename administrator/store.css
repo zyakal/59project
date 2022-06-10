@@ -1,12 +1,14 @@
 @import 'reset.css';
 @import '../css/variables.css';
 @import '../css/components/image-input.css';
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   list-style: none;
   box-sizing: border-box;
+  font-family: 'Do Hyeon', sans-serif;
 }
 :root {
   /* ====== Mobile Colors ====== */
@@ -599,9 +601,6 @@ body.dark .switch::before {
 .gray-box {
   background-color: #5c5c5c;
 }
-.box-item div {
-  font-weight: bold;
-}
 .box-item strong {
   font-size: 32px;
 }
@@ -631,4 +630,13 @@ body.dark .switch::before {
 
 .menu_detail {
   cursor: pointer;
+}
+
+/* 관리자 css 작업 - 재훈 */
+.main__header {
+  font-size: 20px;
+}
+.main__header strong{
+  color: var(--main-pink);
+  font-size: 40px;
 }
