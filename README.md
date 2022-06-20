@@ -1,6 +1,8 @@
-g# PHP_MVC
+# php.ini
 
-.htaccess 파일 생성
+extension=pdo_mysql 주석 해제
+
+# .htaccess 파일 생성
 
     Options -MultiViews
     RewriteEngine On
@@ -9,6 +11,17 @@ g# PHP_MVC
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-l
     RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+#httpd.conf 파일 수정
+
+주석 해제
+
+LoadModule rewrite_module modules/mod_rewrite.so
+
+<Directory "${SRVROOT}/htdocs">
+AllowOverride All
+
+로 변경
 
 #Controller 예시
 use application\models\BoardModel;
