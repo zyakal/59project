@@ -24,16 +24,31 @@ class BoardModel extends Model {
     }
 
     public function delboard(&$param){
-        $sql = "DELETE FROM t_board WHERE i_board = :i_board";
+        $sql = "DELETE FROM t_board 
+                    WHERE i_board = :i_board";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':i_board', $param["i_board"]);
         $stmt->execute();
     }
 
-    public function modBoard(&$param){
-        $sql = "UPDATE t_board SET title = :title, ctnt = :ctnt WHERE i_board = :i_board";
+    public function updBoard(&$param){
+        $sql = "UPDATE t_board 
+                    SET title = :title
+                        , ctnt = :ctnt 
+                    WHERE i_board = :i_board";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':i_board', $param["i_board"]);
+        $stmt->bindValue(':title', $param["title"]);
+        $stmt->bindValue(':ctnt', $param["ctnt"]);
+        $stmt->execute();
+    }
+
+    public function insBoard(&$param){
+        $sql = "INSERT INTO t_board
+                    (title, ctnt, i_user)
+                    VALUES (:title, :ctnt, :i_user)";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':i_user', $param["i_user"]);
         $stmt->bindValue(':title', $param["title"]);
         $stmt->bindValue(':ctnt', $param["ctnt"]);
         $stmt->execute();
