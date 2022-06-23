@@ -204,8 +204,7 @@ function 로그아웃($login_email)
 {
     if (isset($login_email)) {
         echo "
-    <a href='store_logout.php'>
-    <i class='bx bx-log-out icon'></i>    
+    <a href='store_logout.php' class='fa-solid fa-arrow-right-from-bracket'>    
     <span class='text nav-text'>로그아웃</span>
     </a>
     ";
