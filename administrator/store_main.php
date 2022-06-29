@@ -162,12 +162,22 @@ $sales_time_arr = explode(",", $sales_time);
                         </a>
                     </li>
                     <li class="nav-link">
+<<<<<<< HEAD
                         <a href="#"  class="fa-solid fa-truck">
+=======
+                        <a href="#store_menu_reserve">
+                            <i class='bx bx-wallet icon'></i>
+>>>>>>> be73830e9658bcd4d469177c0f0b777d960948d7
                             <span class="text nav-text">주문내역</span>
                         </a>
                     </li>
                     <!-- <li class="nav-link">
+<<<<<<< HEAD
                         <a href="#" class="fa-solid fa-calculator">
+=======
+                        <a href="#">
+                            <i class='bx bx-wallet icon'></i>
+>>>>>>> be73830e9658bcd4d469177c0f0b777d960948d7
                             <span class="text nav-text">정산내역</span>
                         </a>
                     </li> -->
@@ -465,7 +475,7 @@ $sales_time_arr = explode(",", $sales_time);
 
                         <div class='listing-card__info'>
                             <div class='listing-card__info--top'></div>
-                                <strong class='listing-card__name'> 주문 현황 > </strong>
+                                <strong class='listing-card__name' id='store_menu_reserve'> 주문 현황 > </strong>
                                     
                                     <?php
                                         $row = reserve_menu($store_num);
